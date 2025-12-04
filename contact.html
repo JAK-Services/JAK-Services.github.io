@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JAK Services – Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact JAK Services to discuss software, geospatial, AI or electronics engineering projects." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="lang-en">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/jak-logo.svg" alt="JAK Services logo" class="logo" />
+        <div class="brand-text">
+          <span class="brand-name">JAK Services</span>
+          <span class="brand-tagline i18n i18n-en">Software and Electronics Engineering Solutions</span>
+          <span class="brand-tagline i18n i18n-fr">Solutions en ingénierie logicielle et électronique</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="i18n i18n-en">Home</a>
+        <a href="index.html#about" class="i18n i18n-en">About</a>
+        <a href="services.html" class="i18n i18n-en">Services</a>
+        <a href="portfolio.html" class="i18n i18n-en">Portfolio</a>
+        <a href="contact.html" class="active i18n i18n-en">Contact</a>
+
+        <a href="index.html" class="i18n i18n-fr">Accueil</a>
+        <a href="index.html#about" class="i18n i18n-fr">À propos</a>
+        <a href="services.html" class="i18n i18n-fr">Services</a>
+        <a href="portfolio.html" class="i18n i18n-fr">Portfolio</a>
+        <a href="contact.html" class="active i18n i18n-fr">Contact</a>
+      </nav>
+      <div class="lang-switch">
+        <button type="button" data-lang="en" class="lang-btn active">EN</button>
+        <button type="button" data-lang="fr" class="lang-btn">FR</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="i18n i18n-en">
+        <h1>Contact</h1>
+        <p>
+          Use the form below to get in touch about a project, a possible collaboration,
+          or any technical questions.
+        </p>
+      </div>
+      <div class="i18n i18n-fr">
+        <h1>Contact</h1>
+        <p>
+          Utilisez le formulaire ci-dessous pour nous contacter à propos d’un projet,
+          d’une collaboration ou pour toute question technique.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <form
+        action="https://formspree.io/f/XXXXXXXX"
+        method="POST"
+        class="contact-form"
+      >
+        <label class="i18n i18n-en">
+          Name / Company
+          <input type="text" name="name" required />
+        </label>
+        <label class="i18n i18n-fr">
+          Nom / Société
+          <input type="text" name="name" required />
+        </label>
+
+        <label class="i18n i18n-en">
+          Email address
+          <input type="email" name="email" required />
+        </label>
+        <label class="i18n i18n-fr">
+          Adresse e-mail
+          <input type="email" name="email" required />
+        </label>
+
+        <label class="i18n i18n-en">
+          Subject
+          <input type="text" name="subject" required />
+        </label>
+        <label class="i18n i18n-fr">
+          Sujet
+          <input type="text" name="subject" required />
+        </label>
+
+        <label class="i18n i18n-en">
+          Message
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+        <label class="i18n i18n-fr">
+          Message
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <input type="hidden" name="lang" value="en/fr" />
+
+        <button type="submit" class="btn primary i18n i18n-en">Send message</button>
+        <button type="submit" class="btn primary i18n i18n-fr">Envoyer le message</button>
+      </form>
+
+      <p class="form-note i18n i18n-en">
+        The information you provide is used solely to answer your request. No automated
+        marketing is performed.
+      </p>
+      <p class="form-note i18n i18n-fr">
+        Les informations fournies sont utilisées uniquement pour répondre à votre demande.
+        Aucun marketing automatisé n’est effectué.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> JAK Services – L’Union, France</p>
+      <p>
+        <a href="legal.html" class="footer-link i18n i18n-en">Legal mentions</a>
+        <a href="legal.html" class="footer-link i18n i18n-fr">Mentions légales</a>
+        ·
+        <a href="privacy.html" class="footer-link i18n i18n-en">Privacy policy</a>
+        <a href="privacy.html" class="footer-link i18n i18n-fr">Politique de confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const buttons = document.querySelectorAll('.lang-btn');
+    function setLang(lang) {
+      document.body.classList.remove('lang-en', 'lang-fr');
+      document.body.classList.add('lang-' + lang);
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+    buttons.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+  </script>
+</body>
+</html>

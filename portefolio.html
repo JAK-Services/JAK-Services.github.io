@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JAK Services – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Selected projects and examples of work delivered by JAK Services." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="lang-en">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/jak-logo.svg" alt="JAK Services logo" class="logo" />
+        <div class="brand-text">
+          <span class="brand-name">JAK Services</span>
+          <span class="brand-tagline i18n i18n-en">Software and Electronics Engineering Solutions</span>
+          <span class="brand-tagline i18n i18n-fr">Solutions en ingénierie logicielle et électronique</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="i18n i18n-en">Home</a>
+        <a href="index.html#about" class="i18n i18n-en">About</a>
+        <a href="services.html" class="i18n i18n-en">Services</a>
+        <a href="portfolio.html" class="active i18n i18n-en">Portfolio</a>
+        <a href="contact.html" class="i18n i18n-en">Contact</a>
+
+        <a href="index.html" class="i18n i18n-fr">Accueil</a>
+        <a href="index.html#about" class="i18n i18n-fr">À propos</a>
+        <a href="services.html" class="i18n i18n-fr">Services</a>
+        <a href="portfolio.html" class="active i18n i18n-fr">Portfolio</a>
+        <a href="contact.html" class="i18n i18n-fr">Contact</a>
+      </nav>
+      <div class="lang-switch">
+        <button type="button" data-lang="en" class="lang-btn active">EN</button>
+        <button type="button" data-lang="fr" class="lang-btn">FR</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="i18n i18n-en">
+        <h1>Portfolio</h1>
+        <p>
+          Here are a few examples of projects that illustrate the type of solutions
+          JAK Services provides. Details and references can be shared on request.
+        </p>
+      </div>
+      <div class="i18n i18n-fr">
+        <h1>Portfolio</h1>
+        <p>
+          Voici quelques exemples de projets illustrant le type de solutions proposées
+          par JAK Services. Des détails et références peuvent être fournis sur demande.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="i18n i18n-en">
+          <h2>Real-Time Seabed Survey Platform</h2>
+          <p>
+            Design and implementation of an automated platform for real-time streaming,
+            processing and quality control of seabed survey data. Enabled remote
+            operations without reliance on remote desktop tools.
+          </p>
+          <p class="meta">Technologies: Python, Flask, C#, C++, GIS, Nginx</p>
+        </div>
+        <div class="i18n i18n-fr">
+          <h2>Plateforme de Levés Bathymétriques Temps Réel</h2>
+          <p>
+            Conception et développement d’une plateforme automatisée pour le streaming,
+            le traitement et le contrôle qualité en temps réel de données de levés
+            bathymétriques. Permet des opérations à distance sans dépendre d’outils
+            de bureau à distance.
+          </p>
+          <p class="meta">Technologies : Python, Flask, C#, C++, GIS, Nginx</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="i18n i18n-en">
+          <h2>Secure Project Data Portal</h2>
+          <p>
+            Project-siloed web portal with per-project permissions, upload/download
+            workflows and visualization (maps, profiles, point clouds, video).
+          </p>
+          <p class="meta">Technologies: Python, JavaScript, WMS, PostGIS</p>
+        </div>
+        <div class="i18n i18n-fr">
+          <h2>Portail Web Sécurisé par Projet</h2>
+          <p>
+            Portail web cloisonné par projet, avec gestion fine des droits, flux
+            upload/download et visualisation (cartes, profils, nuages de points, vidéo).
+          </p>
+          <p class="meta">Technologies : Python, JavaScript, WMS, PostGIS</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="i18n i18n-en">
+          <h2>Electronics Test & Qualification Systems</h2>
+          <p>
+            Development of automated test benches and qualification setups for
+            industrial electronics, including temperature cycling and vibration testing.
+          </p>
+          <p class="meta">Technologies: C, LabVIEW, SQL, instrumentation</p>
+        </div>
+        <div class="i18n i18n-fr">
+          <h2>Systèmes de Test & Qualification Électronique</h2>
+          <p>
+            Développement de bancs de test automatisés et d’environnements de
+            qualification pour électroniques industrielles, incluant cyclage thermique
+            et tests de vibration.
+          </p>
+          <p class="meta">Technologies : C, LabVIEW, SQL, instrumentation</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> JAK Services – L’Union, France</p>
+      <p>
+        <a href="legal.html" class="footer-link i18n i18n-en">Legal mentions</a>
+        <a href="legal.html" class="footer-link i18n i18n-fr">Mentions légales</a>
+        ·
+        <a href="privacy.html" class="footer-link i18n i18n-en">Privacy policy</a>
+        <a href="privacy.html" class="footer-link i18n i18n-fr">Politique de confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const buttons = document.querySelectorAll('.lang-btn');
+    function setLang(lang) {
+      document.body.classList.remove('lang-en', 'lang-fr');
+      document.body.classList.add('lang-' + lang);
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+    buttons.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+  </script>
+</body>
+</html>
