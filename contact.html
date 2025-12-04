@@ -57,12 +57,12 @@
     </section>
 
     <section class="card">
-        <form
-          action="https://formspree.io/f/xrbnlejl"
-          method="POST"
-          class="contact-form"
-          target="_blank"
-        >
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/xrbnlejl"
+        method="POST"
+        class="contact-form"
+      >
         <label class="i18n i18n-en">
           Name / Company
           <input type="text" name="name" required />
@@ -99,11 +99,16 @@
           <textarea name="message" rows="6" required></textarea>
         </label>
 
+        <!-- You can later set this dynamically if you want -->
         <input type="hidden" name="lang" value="en/fr" />
 
         <button type="submit" class="btn primary i18n i18n-en">Send message</button>
         <button type="submit" class="btn primary i18n i18n-fr">Envoyer le message</button>
       </form>
+
+      <!-- Status messages -->
+      <p id="form-status-en" class="form-status i18n i18n-en"></p>
+      <p id="form-status-fr" class="form-status i18n i18n-fr"></p>
 
       <p class="form-note i18n i18n-en">
         The information you provide is used solely to answer your request. No automated
@@ -130,7 +135,10 @@
   </footer>
 
   <script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Language toggle
     const buttons = document.querySelectorAll('.lang-btn');
     function setLang(lang) {
       document.body.classList.remove('lang-en', 'lang-fr');
@@ -140,8 +148,61 @@
       });
     }
     buttons.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+
+    // Formspree AJAX submit + redirect
+    const form = document.getElementById('contact-form');
+    const statusEn = document.getElementById('form-status-en');
+    const statusFr = document.getElementById('form-status-fr');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault(); // don't let the browser do a normal POST
+
+      // Clear previous status
+      statusEn.textContent = '';
+      statusFr.textContent = '';
+      statusEn.className = 'form-status i18n i18n-en';
+      statusFr.className = 'form-status i18n i18n-fr';
+
+      // Built-in HTML5 validation first
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+
+        if (response.ok) {
+          // Optional: clear the form
+          form.reset();
+
+          // Show confirmation (briefly, in case redirect fails)
+          statusEn.textContent = 'Thank you, your message has been sent.';
+          statusFr.textContent = 'Merci, votre message a bien été envoyé.';
+          statusEn.classList.add('ok');
+          statusFr.classList.add('ok');
+
+          // Redirect client-side to thanks.html (no paid feature required)
+          window.location.href = 'thanks.html';
+        } else {
+          statusEn.textContent = 'An error occurred. Please try again later.';
+          statusFr.textContent = 'Une erreur est survenue. Merci de réessayer plus tard.';
+          statusEn.classList.add('error');
+          statusFr.classList.add('error');
+        }
+      } catch (error) {
+        statusEn.textContent = 'Unable to send the message. Please check your connection.';
+        statusFr.textContent = 'Impossible d\'envoyer le message. Veuillez vérifier votre connexion.';
+        statusEn.classList.add('error');
+        statusFr.classList.add('error');
+      }
+    });
   </script>
 </body>
 </html>
-
-
