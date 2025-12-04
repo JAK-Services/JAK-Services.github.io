@@ -243,8 +243,14 @@ main.container {
   margin: 0 0.15rem;
 }
 
+/* Meta / small text */
+.meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
 /* Language visibility */
-.i18n {
+body .i18n {
   display: none;
 }
 
@@ -256,16 +262,10 @@ body.lang-fr .i18n-fr {
   display: block;
 }
 
-/* Make inline elements visible as inline-block in both languages if needed */
+/* For inline elements if you ever need them */
 body.lang-en .i18n-en.inline,
 body.lang-fr .i18n-fr.inline {
   display: inline;
-}
-
-/* Meta / small text */
-.meta {
-  font-size: 0.85rem;
-  color: #6b7280;
 }
 
 /* Responsive */
