@@ -293,3 +293,16 @@ body.lang-fr .i18n-fr.inline {
     padding: 1.25rem 1rem;
   }
 }
+
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.form-status.ok {
+  color: #047857; /* green */
+}
+
+.form-status.error {
+  color: #b91c1c; /* red */
+}
