@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>JAK Services – Portefolio</title>
+  <title>JAK Services – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Selected projects and examples of work delivered by JAK Services." />
   <link rel="stylesheet" href="styles.css" />
@@ -14,17 +14,15 @@
   <main class="container">
     <section class="card">
       <div class="i18n i18n-en">
-        <h1>Portefolio</h1>
+        <h1>Portfolio</h1>
         <p>
-          Here are a few examples of projects that illustrate the type of solutions
-          JAK Services provides. Details and references can be shared on request.
+          Here is a selection of projects that demonstrate the experience and proven solutions delivered by JAK Services. Details and references can be demonstrated on request.
         </p>
       </div>
       <div class="i18n i18n-fr">
-        <h1>Portefolio</h1>
+        <h1>Portfolio</h1>
         <p>
-          Voici quelques exemples de projets illustrant le type de solutions proposées
-          par JAK Services. Des détails et références peuvent être fournis sur demande.
+          Voici une sélection de projets représentatifs du travail réalisé par JAK Services. Des détails et des références peuvent être présentés sur demande.
         </p>
       </div>
     </section>
@@ -32,23 +30,28 @@
     <section class="grid">
       <article class="card">
         <div class="i18n i18n-en">
-          <h2>Real-Time Seabed Survey Platform</h2>
+          <h2>Real-Time Automated Hydrographical Seabed Survey Processing</h2>
           <p>
-            Design and implementation of an automated platform for real-time streaming,
-            processing and quality control of seabed survey data. Enabled remote
-            operations without reliance on remote desktop tools.
-          </p>
-          <p class="meta">Technologies: Python, Flask, C#, C++, GIS, Nginx</p>
+			Design and implementation of an automated onboard hydrographic data-processing pipeline 
+			featuring real-time payload streaming and preliminary processing, comprising processing and linking 
+			of ancillary data, with the generation of go/no-go traffic-light matrices based on processed 
+			quality-control results, and with low-volume GIS outputs for transfer to a web portal for 
+			visualization and download. All components integrating seamlessly with existing workflows.
+		  </p>
+          <p class="meta">Technologies: Python, C#, C++, GIS, AI</p>
         </div>
         <div class="i18n i18n-fr">
-          <h2>Plateforme de Levés Bathymétriques Temps Réel</h2>
-          <p>
-            Conception et développement d’une plateforme automatisée pour le streaming,
-            le traitement et le contrôle qualité en temps réel de données de levés
-            bathymétriques. Permet des opérations à distance sans dépendre d’outils
-            de bureau à distance.
-          </p>
-          <p class="meta">Technologies : Python, Flask, C#, C++, GIS, Nginx</p>
+			<h2>Traitement Automatisé en Temps Réel des Données Hydrographiques de Levés</h2>
+			<p>
+			  Conception et mise en œuvre d’une chaîne de traitement hydrographique automatisée,
+			  comprenant la réception en temps réel (streaming) de données instruments,
+			  les traitements préliminaires ainsi que le traitement et l’association des données auxiliaires.
+			  Le système génère des matrices d’indicateurs « go/no-go » basées sur les résultats
+			  du contrôle qualité, ainsi que des jeux de données SIG allégés destinés à un portail
+			  web pour la visualisation et le téléchargement. L’ensemble s’intègre de manière fluide
+			  aux workflows existants.
+			</p>
+			<p class="meta">Technologies : Python, C#, C++, SIG, IA</p>
         </div>
       </article>
 
@@ -56,38 +59,54 @@
         <div class="i18n i18n-en">
           <h2>Secure Project Data Portal</h2>
           <p>
-            Project-siloed web portal with per-project permissions, upload/download
-            workflows and visualization (maps, profiles, point clouds, video).
+			A project-isolated web portal offering file browsing and a range of viewers—including 
+			Web Map Services, point-cloud and Sub-Bottom Profiler viewers, video playback, and 
+			more—with per-project access control and upload/download workflows governed by individual 
+			credentials and size limits. The portal connects seamlessly to various storage backends, 
+			including cloud-based storage solutions. The WMS component, supported by background workers 
+			that convert GIS data to WMS as low-volume datasets are streamed from the vessel to the portal
+			, includes a tree-view layer manager that allows users to add and reorder layers, and provides 
+			an overview of all projects accessible to the user. The published WMS layers can also be 
+			consumed by desktop GIS applications and other WMS-enabled portals.
           </p>
-          <p class="meta">Technologies: Python, JavaScript, WMS, PostGIS</p>
+          <p class="meta">Technologies: Flask, Python, JavaScript, WMS, PostGIS</p>
         </div>
         <div class="i18n i18n-fr">
-          <h2>Portail Web Sécurisé par Projet</h2>
-          <p>
-            Portail web cloisonné par projet, avec gestion fine des droits, flux
-            upload/download et visualisation (cartes, profils, nuages de points, vidéo).
-          </p>
-          <p class="meta">Technologies : Python, JavaScript, WMS, PostGIS</p>
+		<h2>Portail Sécurisé de Données de Projet</h2>
+		<p>
+		  Portail web isolé par projet offrant la navigation de fichiers et une gamme de visualiseurs — 
+		  notamment un service WMS, des visualiseurs de nuages de points et de profils sismiques,
+		  la lecture vidéo, etc. — avec un contrôle d’accès propre à chaque projet et des workflows 
+		  de dépôt et de téléchargement gérés par des identifiants individuels et des limites de taille.
+		  Le portail se connecte de manière transparente à différents types de stockage, y compris des 
+		  solutions cloud. La composante WMS, alimentée par des processus en arrière-plan qui convertissent 
+		  les données SIG en WMS au fil de la transmission de jeux de données allégés depuis le navire 
+		  vers le portail, intègre une gestion des couches via une arborescence permettant d’ajouter et 
+		  de réorganiser les couches, et propose une vue d’ensemble de l’ensemble des projets accessibles 
+		  à l’utilisateur. Les couches WMS publiées peuvent également être consultées depuis des applications 
+		  SIG de bureau ou d’autres portails compatibles WMS.
+		</p>
+		<p class="meta">Technologies : Flask, Python, JavaScript, WMS, PostGIS</p>
         </div>
       </article>
 
       <article class="card">
         <div class="i18n i18n-en">
-          <h2>Electronics Test & Qualification Systems</h2>
+          <h2>Electronics Systems</h2>
           <p>
-            Development of automated test benches and qualification setups for
-            industrial electronics, including temperature cycling and vibration testing.
+            Development of electronic systems for industrial equipment, including automated test benches and 
+			qualification setups, with capabilities spanning hardware design, layout and production, as well as software development.
           </p>
-          <p class="meta">Technologies: C, LabVIEW, SQL, instrumentation</p>
+          <p class="meta">Technologies: Embedded, Python, C, LabWindows, LabVIEW, SQL, instrumentation</p>
         </div>
         <div class="i18n i18n-fr">
-          <h2>Systèmes de Test & Qualification Électronique</h2>
-          <p>
-            Développement de bancs de test automatisés et d’environnements de
-            qualification pour électroniques industrielles, incluant cyclage thermique
-            et tests de vibration.
-          </p>
-          <p class="meta">Technologies : C, LabVIEW, SQL, instrumentation</p>
+		<h2>Systèmes Électroniques</h2>
+		<p>
+		  Développement de systèmes électroniques pour des équipements industriels, incluant des bancs de test automatisés 
+		  et des dispositifs de qualification, avec des compétences couvrant la conception matérielle, le routage et la 
+		  fabrication, ainsi que le développement logiciel.
+		</p>
+		<p class="meta">Technologies : Embarqué, Python, C, LabWindows, LabVIEW, SQL, instrumentation</p>
         </div>
       </article>
     </section>
