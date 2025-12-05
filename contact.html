@@ -95,43 +95,10 @@
     </div>
   </footer>
 
-	<script>
-	  // Load shared header
-	  fetch('header.html')
-		.then(response => response.text())
-		.then(html => {
-		  document.getElementById('site-header').innerHTML = html;
+  <script src="js/main.js"></script>
 
-		  // Reattach language-switch behavior after header is injected
-		  const buttons = document.querySelectorAll('.lang-btn');
-		  function setLang(lang) {
-			document.body.classList.remove('lang-en', 'lang-fr');
-			document.body.classList.add('lang-' + lang);
-			buttons.forEach(btn => {
-			  btn.classList.toggle('active', btn.dataset.lang === lang);
-			});
-		  }
-		  buttons.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
-		})
-		.catch(err => {
-		  console.error('Could not load header:', err);
-		});
-	</script>
 
   <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Language toggle
-    const buttons = document.querySelectorAll('.lang-btn');
-    function setLang(lang) {
-      document.body.classList.remove('lang-en', 'lang-fr');
-      document.body.classList.add('lang-' + lang);
-      buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
-    }
-    buttons.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
 
     // Formspree AJAX submit + client-side redirect
     const form = document.getElementById('contact-form');
