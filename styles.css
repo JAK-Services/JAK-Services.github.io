@@ -306,7 +306,6 @@ body.lang-fr .i18n-fr.inline {
 .form-status.error {
   color: #b91c1c; /* red */
 }
-
 /* Carousel */
 .carousel {
   position: relative;
@@ -314,27 +313,56 @@ body.lang-fr .i18n-fr.inline {
   margin-top: 1rem;
 }
 
+/* We still keep track as flex, even though we show one slide at a time */
 .carousel-track {
   display: flex;
   transition: transform 0.4s ease;
 }
 
+/* Each slide has a fixed, responsive height */
 .carousel-slide {
   min-width: 100%;
   flex-shrink: 0;
+  display: none; /* only .active is shown */
+  height: clamp(220px, 40vw, 360px); /* adapt to screen, but bounded */
+  display: none;
+  padding: 0.5rem 0.75rem;
+  box-sizing: border-box;
   display: none;
 }
 
+/* Shown slide */
 .carousel-slide.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
-.carousel img {
-  display: block;
+/* Caption above the image */
+.carousel-caption {
+  font-size: 0.9rem;
+  color: #4f5a6b;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Wrapper that centers the image inside the fixed-height slide */
+.carousel-image-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+}
+
+/* Image scales to fit both width and height, preserving aspect ratio */
+.carousel-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   border-radius: 10px;
 }
 
+/* Buttons & dots unchanged, just kept here for completeness */
 .carousel-btn {
   position: absolute;
   top: 50%;
