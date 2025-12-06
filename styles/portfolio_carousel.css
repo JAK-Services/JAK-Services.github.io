@@ -1,53 +1,51 @@
 /* --- Carousel layout (portfolio only) --- */
 
-/* Fixed-height carousel box */
+/* Carousel fills the card width; height is driven by the image (1280x720) */
 .carousel {
   position: relative;
   margin-top: 1rem;
+  width: 100%;
   max-width: 100%;
-  height: 320px;            /* Fixed carousel height: adjust if you like */
   overflow: hidden;
 }
 
-/* Make the track & slides fill the carousel height */
+/* Track spans full width */
 .carousel-track {
-  display: flex;
-  height: 100%;
+  width: 100%;
 }
 
+/* Each slide takes full width; only the active one is shown */
 .carousel-slide {
-  min-width: 100%;
-  flex-shrink: 0;
+  width: 100%;
   display: none;
-  height: 100%;
 }
 
 .carousel-slide.active {
   display: block;
 }
 
-/* Image wrapper centers the image inside the fixed box */
+/* Caption: one-liner above image, left aligned, wraps on multiple lines */
+.carousel-caption {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  text-align: left;
+  color: #000000;
+  white-space: normal;
+  overflow-wrap: anywhere;     /* allow wrapping instead of cropping */
+}
+
+/* Wrapper ensures the image scales responsively with no cropping */
 .carousel-image-wrapper {
-  height: calc(100% - 1.5rem); /* leave room for caption above; tweak if needed */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Make images fit INSIDE the carousel, no cropping, keep aspect ratio */
+/* Images scale to the carousel width, keep aspect ratio, no cropping */
 .carousel-image-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;      /* ensures no cropping */
-  border-radius: 10px;      /* keeps your existing rounded look */
-}
-
-/* Caption styling: one-liner above image, left aligned, black text */
-.carousel-caption {
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
-  text-align: left;
-  color: #000000;
+  display: block;
+  width: 100%;
+  height: auto;                /* 1280x720 ratio preserved */
+  border-radius: 10px;
 }
