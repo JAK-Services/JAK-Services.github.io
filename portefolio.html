@@ -94,10 +94,15 @@
 		</div>
 		<button class="carousel-btn prev" type="button" aria-label="Previous image">&#10094;</button>
 		<button class="carousel-btn next" type="button" aria-label="Next image">&#10095;</button>
+		<button class="carousel-toggle" type="button" aria-pressed="false">Pause</button>
+		
 		<div class="carousel-dots">
-		  <button type="button" class="dot active" data-index="0" aria-label="Show slide 1"></button>
-		  <button type="button" class="dot" data-index="1" aria-label="Show slide 2"></button>
-		  <button type="button" class="dot" data-index="2" aria-label="Show slide 3"></button>
+		  <button type="button" class="dot active" data-index="0" aria-label="Side Scan Sonar XTF file converted to normalized, bottom tracked and georeferenced tif file."></button>
+		  <button type="button" class="dot" data-index="1" aria-label="AI Detected Dense Boulder Area in a Difficult Sand Dune Area"></button>
+		  <button type="button" class="dot" data-index="2" aria-label="AI Detected, Positionned And Sized Boulders in a Difficult Sand Dune Area"></button>
+		  <button type="button" class="dot" data-index="2" aria-label="Side Scanning Sonar Coverage Polygon"></button>
+		  <button type="button" class="dot" data-index="2" aria-label="Side Scanning Sonar Track"></button>
+		  <button type="button" class="dot" data-index="2" aria-label="Side Scanning Sonar Decimated Track"></button>
 		</div>
 	  </div>
 	</section>
@@ -212,8 +217,12 @@
 		const prevBtn = carousel.querySelector('.carousel-btn.prev');
 		const nextBtn = carousel.querySelector('.carousel-btn.next');
 		const dots = carousel.querySelectorAll('.carousel-dots .dot');
+		const toggleBtn = carousel.querySelector('.carousel-toggle');
 
 		let current = 0;
+		let isPlaying = true;
+		let autoInterval = null;
+		const INTERVAL_MS = 4000; // 4 seconds
 
 		function showSlide(index) {
 		  slides.forEach((slide, i) => {
@@ -235,23 +244,71 @@
 		  showSlide(prev);
 		}
 
-		nextBtn.addEventListener('click', nextSlide);
-		prevBtn.addEventListener('click', prevSlide);
+		function startAuto() {
+		  if (autoInterval) return;
+		  autoInterval = setInterval(nextSlide, INTERVAL_MS);
+		}
 
+		function stopAuto() {
+		  if (!autoInterval) return;
+		  clearInterval(autoInterval);
+		  autoInterval = null;
+		}
+
+		// Hook up prev/next buttons
+		nextBtn.addEventListener('click', () => {
+		  nextSlide();
+		  if (isPlaying) {
+			stopAuto();
+			startAuto(); // reset timer after manual navigation
+		  }
+		});
+
+		prevBtn.addEventListener('click', () => {
+		  prevSlide();
+		  if (isPlaying) {
+			stopAuto();
+			startAuto();
+		  }
+		});
+
+		// Dot navigation (if dots exist)
 		dots.forEach(dot => {
 		  dot.addEventListener('click', () => {
 			const idx = parseInt(dot.dataset.index, 10);
 			showSlide(idx);
+			if (isPlaying) {
+			  stopAuto();
+			  startAuto();
+			}
 		  });
 		});
 
-		// Optional: auto-advance every 6 seconds
-		setInterval(nextSlide, 4000);
-		
+		// Play / Pause button
+		if (toggleBtn) {
+		  toggleBtn.addEventListener('click', () => {
+			if (isPlaying) {
+			  // Pause
+			  isPlaying = false;
+			  stopAuto();
+			  toggleBtn.textContent = 'Play';
+			  toggleBtn.setAttribute('aria-pressed', 'true');
+			} else {
+			  // Play
+			  isPlaying = true;
+			  startAuto();
+			  toggleBtn.textContent = 'Pause';
+			  toggleBtn.setAttribute('aria-pressed', 'false');
+			}
+		  });
+		}
+
+		// Initialize first slide and start auto-play
+		showSlide(0);
+		startAuto();
 	  });
 	</script>
 
 
 </body>
 </html>
-
