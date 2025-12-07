@@ -129,11 +129,60 @@
 
 
     <section class="grid">
-      <article class="card">
+
+      <article class="card" id="ai-systems">
+        <div class="i18n i18n-en">
+          <h2>AI Driven Applications</h2>
+          <p>
+			For a client conducting large-scale hydrographical survey operations, JAK Services designed and developed an 
+			AI-driven Side-Scan Sonar (SSS) target-detection application. The system processes XTF files to generate 
+			normalized (intensity-equalized), bottom-tracked, and georeferenced TIFF images. From these, targets are 
+			automatically detected, sized, and categorized by an AI model, producing target lists in ESRI Shapefile format 
+			as well as CSV files compatible with software such as <a href="https://www.mogasw.com/">Moga Software</a>.
+
+			The application includes both a command-line interface and a batch-enabled GUI, and it additionally generates 
+			SSS coverage data and survey tracks. When integrated into an orchestrated near–real-time data pipeline, it 
+			provides continuously updated GIS overview products—such as SSS mosaics, total coverage polygons with gap 
+			detection, comprehensive target lists, and ongoing track information—throughout the progress of the 
+			hydrographical survey.
+
+			The AI model selected and trained by JAK Services, using augmentation techniques, is a Nano-class OBB-capable 
+			model optimized for desktop deployment (such as autonomous vessel mounted systems or office 
+			user stations) equipped with medium- to low-spec NVIDIA GPUs.		  
+          </p>
+          <p class="meta">Technologies: Embedded, Python, C, LabWindows, LabVIEW, SQL, instrumentation</p>
+        </div>
+        <div class="i18n i18n-fr">
+		
+		<h2>Applications pilotées par l’IA</h2>
+		<p>
+			Pour un client menant des opérations de survey hydrographiques à grande échelle, JAK Services a conçu et développé 
+			une application detection de cibles à partir de sonar à balayage latéral (SSS) basée sur l’intelligence artificielle. 
+			Le système traite les fichiers XTF afin de générer des images TIFF normalisées (égalisation d’intensité), suivies de 
+			fond et géoréférencées. À partir de ces images, les cibles sont automatiquement détectées, dimensionnées et catégorisées 
+			par un modèle d’IA, puis exportées sous forme de fichiers ESRI Shapefile ainsi que de fichiers CSV compatibles avec 
+			des logiciels tels que <a href="https://www.mogasw.com/">Moga Software</a>.
+
+			L’application propose à la fois une interface en ligne de commande et une interface graphique avec traitement par lots. 
+			Elle génère également les données de couverture SSS ainsi que les traces de navigation. Intégrée dans un pipeline de 
+			données orchestré en quasi temps réel, elle fournit des produits SIG mis à jour en continu—tels que mosaïques SSS, 
+			polygones de couverture globale avec détection de lacunes, listes complètes de cibles et évolution des traces—au 
+			fur et à mesure de l’avancement du levé hydrographique.
+
+			Le modèle d’IA, sélectionné et entraîné par JAK Services à l’aide de techniques d’augmentation, est un modèle Nano 
+			compatible OBB, optimisé pour un déploiement sur des postes de travail—qu’il s’agisse de systèmes autonomes installés à 
+			bord de navires ou de stations de travail à terre—équipés de cartes NVIDIA de gamme moyenne à basse.
+		</p>
+		<p class="meta">Technologies : Embarqué, Python, C, LabWindows, LabVIEW, SQL, instrumentation</p>
+        </div>
+      </article>
+	
+      <article class="card" id="hydro-survey">
         <div class="i18n i18n-en">
           <h2>Real-Time Automated Hydrographical Seabed Survey Processing</h2>
           <p>
-			Design and implementation of an automated onboard hydrographic data-processing pipeline 
+		    For a client operating large-scale hydrographical survey projects, JAK Services designed and developed
+			an automated onboard hydrographic data-processing pipeline 
 			featuring real-time payload streaming and preliminary processing, comprising processing and linking 
 			of ancillary data, with the generation of go/no-go traffic-light matrices based on processed 
 			quality-control results, and with low-volume GIS outputs for transfer to a web portal for 
@@ -144,7 +193,8 @@
         <div class="i18n i18n-fr">
 			<h2>Traitement Automatisé en Temps Réel des Données Hydrographiques de Levés</h2>
 			<p>
-			  Conception et mise en œuvre d’une chaîne de traitement hydrographique automatisée,
+			  Pour un client gérant des projets de hydrographie à grande échelle, JAK Services a conçu et développé 
+			  une chaîne de traitement hydrographique automatisée,
 			  comprenant la réception en temps réel (streaming) de données instruments,
 			  les traitements préliminaires ainsi que le traitement et l’association des données auxiliaires.
 			  Le système génère des matrices d’indicateurs « go/no-go » basées sur les résultats
@@ -156,11 +206,12 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card" id="data-portal">
         <div class="i18n i18n-en">
           <h2>Secure Project Data Portal</h2>
           <p>
-			A project-isolated web portal offering file browsing and a range of viewers—including 
+			For a client operating large-scale hydrographical survey projects, JAK Services designed and developed 
+			a project-isolated web portal offering file browsing and a range of viewers—including 
 			Web Map Services, point-cloud and Sub-Bottom Profiler viewers, video playback, and 
 			more—with per-project access control and upload/download workflows governed by individual 
 			credentials and size limits. The portal connects seamlessly to various storage backends, 
@@ -175,7 +226,8 @@
         <div class="i18n i18n-fr">
 		<h2>Portail Sécurisé de Données de Projet</h2>
 		<p>
-		  Portail web isolé par projet offrant la navigation de fichiers et une gamme de visualiseurs — 
+		  Pour un client gérant des projets de survey à grande échelle, JAK Services a conçu et développé
+		  un portail web isolé par projet offrant la navigation de fichiers et une gamme de visualiseurs — 
 		  notamment un service WMS, des visualiseurs de nuages de points et de profils sismiques,
 		  la lecture vidéo, etc. — avec un contrôle d’accès propre à chaque projet et des workflows 
 		  de dépôt et de téléchargement gérés par des identifiants individuels et des limites de taille.
@@ -191,25 +243,6 @@
         </div>
       </article>
 
-      <article class="card">
-        <div class="i18n i18n-en">
-          <h2>Electronics Systems</h2>
-          <p>
-            Development of electronic systems for industrial equipment, including automated test benches and 
-			qualification setups, with capabilities spanning hardware design, layout and production, as well as software development.
-          </p>
-          <p class="meta">Technologies: Embedded, Python, C, LabWindows, LabVIEW, SQL, instrumentation</p>
-        </div>
-        <div class="i18n i18n-fr">
-		<h2>Systèmes Électroniques</h2>
-		<p>
-		  Développement de systèmes électroniques pour des équipements industriels, incluant des bancs de test automatisés 
-		  et des dispositifs de qualification, avec des compétences couvrant la conception matérielle, le routage et la 
-		  fabrication, ainsi que le développement logiciel.
-		</p>
-		<p class="meta">Technologies : Embarqué, Python, C, LabWindows, LabVIEW, SQL, instrumentation</p>
-        </div>
-      </article>
     </section>
   </main>
 
