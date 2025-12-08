@@ -175,6 +175,76 @@
 		</p>
 		<p class="meta">Technologies : Embarqué, Python, C, LabWindows, LabVIEW, SQL, instrumentation</p>
         </div>
+		<div class="carousel" aria-label="AI project images">
+			<div class="carousel-track">
+			<div class="carousel-slide active">
+			  <div class="carousel-caption">
+				Side Scan Sonar XTF file converted into a normalized TIFF image — intensities have been equalized to produce consistent contrast — then bottom-tracked and georeferenced.
+			  </div>
+			  <div class="carousel-image-wrapper">
+				<img src="images/portfolio/Sss/SSS_Normalized.png" alt="SSS XTF Normalized, bottom tracked and Georeferenced" />
+			  </div>
+			</div>
+			
+			<div class="carousel-slide">
+			  <div class="carousel-caption">
+				AI Detected Dense Boulder Area in a Difficult Sand Dune Area
+			  </div>
+			  <div class="carousel-image-wrapper">
+				<img src="images/portfolio/Sss/SSS_Dense_Boulder_Area.png" alt="SSS AI Detected Dense Boulder Area" />
+			  </div>
+			</div>
+			
+			<div class="carousel-slide">
+			  <div class="carousel-caption">
+				AI Detected, Positionned And Sized Boulders in a Difficult Sand Dune Area
+			  </div>
+			  <div class="carousel-image-wrapper">
+				<img src="images/portfolio/Sss/SSS_Targets_Shape_Attributes.png" alt="SSS AI Detected Dense Boulder Area" />
+			  </div>
+			</div>
+
+			<div class="carousel-slide">
+			  <div class="carousel-caption">
+				Side Scanning Sonar Coverage Polygon
+			  </div>
+			  <div class="carousel-image-wrapper">
+				<img src="images/portfolio/Sss/SSS_Outline.png" alt="SSS Coverage Polygon" />
+			  </div>
+			</div>
+
+			<div class="carousel-slide">
+			  <div class="carousel-caption">
+				Side Scanning Sonar Track
+			  </div>
+			  <div class="carousel-image-wrapper">
+				<img src="images/portfolio/Sss/SSS_Track.png" alt="SSS Coverage Polygon" />
+			  </div>
+			</div>
+
+			<div class="carousel-slide">
+			  <div class="carousel-caption">
+				Side Scanning Sonar Decimated Track
+			  </div>
+			  <div class="carousel-image-wrapper">
+				<img src="images/portfolio/Sss/SSS_Track_Decimated.png" alt="SSS Coverage Polygon" />
+			  </div>
+			</div>
+			</div>
+
+			<button class="carousel-btn prev" type="button" aria-label="Previous image">&#10094;</button>
+			<button class="carousel-btn next" type="button" aria-label="Next image">&#10095;</button>
+			<button class="carousel-toggle" type="button" aria-pressed="false" title="Pause or resume the slideshow">Pause</button>
+
+			<div class="carousel-dots">
+			  <button type="button" class="dot active" data-index="0" aria-label="Side Scan Sonar XTF file converted to normalized, bottom tracked and georeferenced tif file." title="Side Scan Sonar XTF file converted to normalized, bottom tracked and georeferenced tif file."></button>
+			  <button type="button" class="dot" data-index="1" aria-label="AI Detected Dense Boulder Area in a Difficult Sand Dune Area" title="AI Detected Dense Boulder Area in a Difficult Sand Dune Area"></button>
+			  <button type="button" class="dot" data-index="2" aria-label="AI Detected, Positionned And Sized Boulders in a Difficult Sand Dune Area" title="AI Detected, Positionned And Sized Boulders in a Difficult Sand Dune Area"></button>
+			  <button type="button" class="dot" data-index="2" aria-label="Side Scanning Sonar Coverage Polygon" title="Side Scanning Sonar Coverage Polygon"></button>
+			  <button type="button" class="dot" data-index="2" aria-label="Side Scanning Sonar Track" title="Side Scanning Sonar Track"></button>
+			  <button type="button" class="dot" data-index="2" aria-label="Side Scanning Sonar Decimated Track" title="Side Scanning Sonar Decimated Track"></button>
+			</div>
+		</div>
       </article>
 	
       <article class="card" id="hydro-survey">
@@ -259,104 +329,108 @@
 	<script src="js/main.js"></script>
 
 	<script>
-	  document.addEventListener('DOMContentLoaded', () => {
-		const carousel = document.querySelector('.carousel');
-		if (!carousel) return;
+		document.addEventListener('DOMContentLoaded', () => {
+		  const carousels = document.querySelectorAll('.carousel');
+		  if (!carousels.length) return;
 
-		const slides = carousel.querySelectorAll('.carousel-slide');
-		const prevBtn = carousel.querySelector('.carousel-btn.prev');
-		const nextBtn = carousel.querySelector('.carousel-btn.next');
-		const dots = carousel.querySelectorAll('.carousel-dots .dot');
-		const toggleBtn = carousel.querySelector('.carousel-toggle');
+		  const INTERVAL_MS = 4000; // 4 seconds
 
-		let current = 0;
-		let isPlaying = true;
-		let autoInterval = null;
-		const INTERVAL_MS = 4000; // 4 seconds
+		  carousels.forEach(carousel => {
+			const slides = carousel.querySelectorAll('.carousel-slide');
+			const prevBtn = carousel.querySelector('.carousel-btn.prev');
+			const nextBtn = carousel.querySelector('.carousel-btn.next');
+			const dots = carousel.querySelectorAll('.carousel-dots .dot');
+			const toggleBtn = carousel.querySelector('.carousel-toggle');
 
-		function showSlide(index) {
-		  slides.forEach((slide, i) => {
-			slide.classList.toggle('active', i === index);
-		  });
-		  dots.forEach((dot, i) => {
-			dot.classList.toggle('active', i === index);
-		  });
-		  current = index;
-		}
+			let current = 0;
+			let isPlaying = true;
+			let autoInterval = null;
 
-		function nextSlide() {
-		  const next = (current + 1) % slides.length;
-		  showSlide(next);
-		}
+			function showSlide(index) {
+			  slides.forEach((slide, i) => {
+				slide.classList.toggle('active', i === index);
+			  });
+			  dots.forEach((dot, i) => {
+				dot.classList.toggle('active', i === index);
+			  });
+			  current = index;
+			}
 
-		function prevSlide() {
-		  const prev = (current - 1 + slides.length) % slides.length;
-		  showSlide(prev);
-		}
+			function nextSlide() {
+			  const next = (current + 1) % slides.length;
+			  showSlide(next);
+			}
 
-		function startAuto() {
-		  if (autoInterval) return;
-		  autoInterval = setInterval(nextSlide, INTERVAL_MS);
-		}
+			function prevSlide() {
+			  const prev = (current - 1 + slides.length) % slides.length;
+			  showSlide(prev);
+			}
 
-		function stopAuto() {
-		  if (!autoInterval) return;
-		  clearInterval(autoInterval);
-		  autoInterval = null;
-		}
+			function startAuto() {
+			  if (autoInterval) return;
+			  autoInterval = setInterval(nextSlide, INTERVAL_MS);
+			}
 
-		// Hook up prev/next buttons
-		nextBtn.addEventListener('click', () => {
-		  nextSlide();
-		  if (isPlaying) {
-			stopAuto();
-			startAuto(); // reset timer after manual navigation
-		  }
-		});
+			function stopAuto() {
+			  if (!autoInterval) return;
+			  clearInterval(autoInterval);
+			  autoInterval = null;
+			}
 
-		prevBtn.addEventListener('click', () => {
-		  prevSlide();
-		  if (isPlaying) {
-			stopAuto();
-			startAuto();
-		  }
-		});
+			if (nextBtn) {
+			  nextBtn.addEventListener('click', () => {
+				nextSlide();
+				if (isPlaying) {
+				  stopAuto();
+				  startAuto();
+				}
+			  });
+			}
 
-		// Dot navigation (if dots exist)
-		dots.forEach(dot => {
-		  dot.addEventListener('click', () => {
-			const idx = parseInt(dot.dataset.index, 10);
-			showSlide(idx);
-			if (isPlaying) {
-			  stopAuto();
+			if (prevBtn) {
+			  prevBtn.addEventListener('click', () => {
+				prevSlide();
+				if (isPlaying) {
+				  stopAuto();
+				  startAuto();
+				}
+			  });
+			}
+
+			dots.forEach(dot => {
+			  dot.addEventListener('click', () => {
+				const idx = parseInt(dot.dataset.index, 10);
+				showSlide(idx);
+				if (isPlaying) {
+				  stopAuto();
+				  startAuto();
+				}
+			  });
+			});
+
+			if (toggleBtn) {
+			  toggleBtn.addEventListener('click', () => {
+				if (isPlaying) {
+				  isPlaying = false;
+				  stopAuto();
+				  toggleBtn.textContent = 'Play';
+				  toggleBtn.setAttribute('aria-pressed', 'true');
+				} else {
+				  isPlaying = true;
+				  startAuto();
+				  toggleBtn.textContent = 'Pause';
+				  toggleBtn.setAttribute('aria-pressed', 'false');
+				}
+			  });
+			}
+
+			// Initialize this carousel
+			if (slides.length) {
+			  showSlide(0);
 			  startAuto();
 			}
 		  });
 		});
-
-		// Play / Pause button
-		if (toggleBtn) {
-		  toggleBtn.addEventListener('click', () => {
-			if (isPlaying) {
-			  // Pause
-			  isPlaying = false;
-			  stopAuto();
-			  toggleBtn.textContent = 'Play';
-			  toggleBtn.setAttribute('aria-pressed', 'true');
-			} else {
-			  // Play
-			  isPlaying = true;
-			  startAuto();
-			  toggleBtn.textContent = 'Pause';
-			  toggleBtn.setAttribute('aria-pressed', 'false');
-			}
-		  });
-		}
-
-		// Initialize first slide and start auto-play
-		showSlide(0);
-		startAuto();
-	  });
 	</script>
 
 
