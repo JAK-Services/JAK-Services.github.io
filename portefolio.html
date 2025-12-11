@@ -103,11 +103,12 @@
 
 			<div class="carousel-slide">
 			  <div class="carousel-caption">
-				Changed from trace 0 to trace 389
+				Real-Time Automated Hydrographical Seabed Survey Processing with JK and Eiva
 			  </div>
 			  <div class="carousel-image-wrapper">
-				<img src="images/portfolio/Sbp/SBP_Edit_02.png" alt="Changed from trace 0 to trace 389" />
+				<img src="images/portfolio/RealTimeProcessing/RealTimeWithEiva.png" alt="Real-Time Automated Hydrographical Seabed Survey Processing with JK and Eiva" />
 			  </div>
+			</div>
 			</div>
 		</div>
 		<button class="carousel-btn prev" type="button" aria-label="Previous image">&#10094;</button>
@@ -224,10 +225,10 @@
 
 			<div class="carousel-slide">
 			  <div class="carousel-caption">
-				Real-Time Automated Hydrographical Seabed Survey Processing with JK and Eiva
+				Side Scanning Sonar Decimated Track
 			  </div>
 			  <div class="carousel-image-wrapper">
-				<img src="images/portfolio/RealTimeProcessing/RealTimeWithEiva.png" alt="Real-Time Automated Hydrographical Seabed Survey Processing with JK and Eiva" />
+				<img src="images/portfolio/Sss/SSS_Track_Decimated.png" alt="SSS Coverage Polygon" />
 			  </div>
 			</div>
 			</div>
@@ -263,11 +264,11 @@
 		  <br><br>
 		  The pipeline illustrated in the image below featured:
 		  <ul>
-			<li>Real-time payload streaming with automated file rotation at defined intervals and end-of-line saving to EIVA’s .SBD format. For MBES data, this component was only used when EIVA NaviScan was not used for logging.</li>
+			<li>Real-time payload streaming with automated file rotation at defined intervals and end-of-line, saving to EIVA’s .SBD format. For MBES data, this component was only used when EIVA NaviScan was not used for logging.</li>
 			<li>Automated processing of ancillary data such as SVP and navigation (for navigation generated via post-processing APIs, the system continuously produced navigation files with run-in/out extensions for each new SBD).</li>
 		  </ul>
 		  Once generated—and after any corresponding ancillary data was processed—the SBD files were continuously sorted 
-		  according to active site and area names, then automatically imported into EIVA WorkFlow Manager (WFM) for 
+		  according to active site and area names, then automatically imported and organized into EIVA WorkFlow Manager (WFM) for 
 		  linking with ancillary data, cleaning, and exporting as point-cloud files.
 		  <br><br>
 		  These point-cloud files were then processed by the JAK Services–developed orchestration application, which executed 
@@ -302,11 +303,11 @@
 		  <br><br>
 		  Le pipeline, illustré ci-dessous, inclut :
 		  <ul>
-			<li>La réception en temps réel des données, avec rotation automatique des fichiers et sauvegarde au format .SBD d’EIVA. Pour les données MBES, cette fonctionnalité n’était utilisée que lorsque NaviScan n’assurait pas l’acquisition.</li>
+			<li>La réception en temps réel des données, avec rotation automatique des fichiers, et sauvegarde au format .SBD d’EIVA. Pour les données MBES, cette fonctionnalité n’était utilisée que lorsque NaviScan n’assurait pas l’acquisition.</li>
 			<li>Le traitement automatisé des données auxiliaires (SVP, navigation). Lorsque la navigation provenait de systèmes disposant d’API de post-traitement, elle était générée en continu avec gestion des phases d’entrée et de sortie pour chaque fichier SBD.</li>
 		  </ul>
 		  Une fois générés et corrélés avec les données auxiliaires, les fichiers SBD étaient classés automatiquement par 
-		  site et zone avant d’être importés dans EIVA WFM pour association des données, nettoyage et export en nuages de points.
+		  site et zone avant d’être importés et organisés dans EIVA WFM pour association des données, nettoyage et export en nuages de points.
 		  <br><br>
 		  Ces nuages de points étaient ensuite traités par l’application d’orchestration développée par JAK Services, 
 		  exécutant divers outils en ligne de commande pour :
