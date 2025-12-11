@@ -224,10 +224,10 @@
 
 			<div class="carousel-slide">
 			  <div class="carousel-caption">
-				Side Scanning Sonar Decimated Track
+				Real-Time Automated Hydrographical Seabed Survey Processing with JK and Eiva
 			  </div>
 			  <div class="carousel-image-wrapper">
-				<img src="images/portfolio/Sss/SSS_Track_Decimated.png" alt="SSS Coverage Polygon" />
+				<img src="images/portfolio/RealTimeProcessing/RealTimeWithEiva.png" alt="Real-Time Automated Hydrographical Seabed Survey Processing with JK and Eiva" />
 			  </div>
 			</div>
 			</div>
@@ -247,33 +247,104 @@
 		</div>
       </article>
 	
-      <article class="card" id="hydro-survey">
-        <div class="i18n i18n-en">
-          <h2>Real-Time Automated Hydrographical Seabed Survey Processing</h2>
-          <p>
-		    To meet the needs of a client running large-scale hydrographical survey projects, JAK Services designed and developed
-			an automated onboard hydrographic data-processing pipeline 
-			featuring real-time payload streaming and preliminary processing, comprising processing and linking 
-			of ancillary data, with the generation of go/no-go traffic-light matrices based on processed 
-			quality-control results, and with low-volume GIS outputs for transfer to a web portal for 
-			visualization and download. All components integrating seamlessly with existing workflows.
-		  </p>
-          <p class="meta">Technologies: Python, C#, C++, GIS, AI</p>
-        </div>
-        <div class="i18n i18n-fr">
-			<h2>Traitement Automatisé en Temps Réel des Données Hydrographiques de Levés</h2>
-			<p>
-			  Afin de répondre aux besoins d’un client menant des projets de survey hydrographiques à grande échelle
-			  , JAK Services a conçu et développé une chaîne de traitement hydrographique embarquée automatisée, 
-			  intégrant la réception en temps réel des données instruments ainsi que les traitements préliminaires, 
-			  comprenant le traitement et la corrélation des données auxiliaires.
-			  Le système génère également des matrices d’indicateurs go/no-go basées sur les résultats du contrôle qualité
-			  , ainsi que des sorties SIG allégées destinées à un portail web pour la visualisation et le téléchargement. 
-			  L’ensemble des composants s’intègre de manière fluide aux workflows existants.
-			</p>
-			<p class="meta">Technologies : Python, C#, C++, SIG, IA</p>
-        </div>
-      </article>
+	<article class="card" id="hydro-survey">
+	  <div class="i18n i18n-en">
+		<h2>Real-Time Automated Hydrographical Seabed Survey Processing</h2>
+		<p>
+		  To support a client conducting large-scale hydrographical survey operations, 
+		  JAK Services designed and developed a component-based automated onboard hydrographic 
+		  data-processing pipeline. Its purpose was to automatically and continuously generate 
+		  a preliminary dataset closely approximating the final processed data, enabling rapid 
+		  detection of areas requiring re-survey before the vessel had moved too far from the site.
+		  <br><br>
+		  The pipeline was fully orchestrable and integrated seamlessly with—while complementing—existing workflows, 
+		  such as <a href="https://www.eiva.com">EIVA’s Workflow Manager (WFM)</a> for Multi Beam Echo Sounder (MBES) data. The orchestration application 
+		  was designed to be payload-agnostic and could also be used with Side-Scan Sonar (SSS) and other sensor types.
+		  <br><br>
+		  The pipeline illustrated in the image below featured:
+		  <ul>
+			<li>Real-time payload streaming with automated file rotation at defined intervals and end-of-line saving to EIVA’s .SBD format. For MBES data, this component was only used when EIVA NaviScan was not used for logging.</li>
+			<li>Automated processing of ancillary data such as SVP and navigation (for navigation generated via post-processing APIs, the system continuously produced navigation files with run-in/out extensions for each new SBD).</li>
+		  </ul>
+		  Once generated—and after any corresponding ancillary data was processed—the SBD files were continuously sorted 
+		  according to active site and area names, then automatically imported into EIVA WorkFlow Manager (WFM) for 
+		  linking with ancillary data, cleaning, and exporting as point-cloud files.
+		  <br><br>
+		  These point-cloud files were then processed by the JAK Services–developed orchestration application, which executed 
+		  command-line tools to:
+		  <ul>
+			<li>Perform gridding</li>
+			<li>Generate QC products such as density maps, gap polygons, and sizing metrics</li>
+			<li>Produce go/no-go traffic-light matrices aligned with WFM conventions</li>
+		  </ul>
+		  The orchestration application then generated low-volume GIS deliverables—including DTM, grayscale and color 
+		  shaded reliefs, track plots, slope maps, red/green density charts, coverage layers, gap polygons, and more—ready 
+		  for transfer to a web portal for visualization and download.
+		  <br><br>
+		  Finally, the same applications were used to export the final merged deliverables once the data had been 
+		  quality-checked by an operator.
+		</p>
+		<p class="meta">Technologies: Python, C#, C++, GIS, AI</p>
+	  </div>
+
+	  <div class="i18n i18n-fr">
+		<h2>Traitement Automatisé en Temps Réel des Données Hydrographiques</h2>
+		<p>
+		  Pour accompagner un client réalisant des opérations de levés hydrographiques à grande échelle, 
+		  JAK Services a conçu et développé une chaîne de traitement hydrographique embarquée, modulaire et automatisée. 
+		  L’objectif principal était de produire en continu un jeu de données préliminaire très proche du résultat final, 
+		  permettant d’identifier rapidement les zones nécessitant un nouveau passage avant que le navire ne s’en éloigne.
+		  <br><br>
+		  Cette chaîne de traitement s’intègre harmonieusement aux workflows existants, notamment EIVA Workflow Manager (WFM) 
+		  pour les données Multi Beam Echo Sounder (MBES). L’application d’orchestration a été pensée comme indépendante du 
+		  type de capteur et peut ainsi être utilisée également avec des systèmes tels que le Side-Scan Sonar (SSS) ou 
+		  d’autres instruments.
+		  <br><br>
+		  Le pipeline, illustré ci-dessous, inclut :
+		  <ul>
+			<li>La réception en temps réel des données, avec rotation automatique des fichiers et sauvegarde au format .SBD d’EIVA. Pour les données MBES, cette fonctionnalité n’était utilisée que lorsque NaviScan n’assurait pas l’acquisition.</li>
+			<li>Le traitement automatisé des données auxiliaires (SVP, navigation). Lorsque la navigation provenait de systèmes disposant d’API de post-traitement, elle était générée en continu avec gestion des phases d’entrée et de sortie pour chaque fichier SBD.</li>
+		  </ul>
+		  Une fois générés et corrélés avec les données auxiliaires, les fichiers SBD étaient classés automatiquement par 
+		  site et zone avant d’être importés dans EIVA WFM pour association des données, nettoyage et export en nuages de points.
+		  <br><br>
+		  Ces nuages de points étaient ensuite traités par l’application d’orchestration développée par JAK Services, 
+		  exécutant divers outils en ligne de commande pour :
+		  <ul>
+			<li>Effectuer le gridding</li>
+			<li>Générer des produits de contrôle qualité (carte de densité, polygones de lacunes, métriques de dimensionnement)</li>
+			<li>Produire des matrices d’indicateurs go/no-go conformes aux pratiques WFM</li>
+		  </ul>
+		  L’application produisait ensuite des livrables SIG légers — DTM, ombrages (niveaux de gris et couleurs), 
+		  traces de navigation, cartes de pente, densité rouge/vert, couches de couverture, polygones de lacunes, 
+		  etc. — destinés à un portail web pour la visualisation et le téléchargement.
+		  <br><br>
+		  Enfin, les mêmes outils étaient utilisés pour exporter les jeux de données finaux fusionnés 
+		  après validation qualité par un opérateur.
+		</p>
+		<p class="meta">Technologies : Python, C#, C++, SIG, IA</p>
+	  </div>
+		<div class="carousel" aria-label="AI project images">
+			<div class="carousel-track">
+			<div class="carousel-slide active">
+			  <div class="carousel-caption">
+				Real-Time Automated Hydrographical Seabed Survey Processing.
+			  </div>
+			  <div class="carousel-image-wrapper">
+				<img src="images/portfolio/RealTimeProcessing/RealTimeWithEiva.png" alt="Real-Time Automated Hydrographical Seabed Survey Processing with JK and Eiva" />
+			  </div>
+			</div>
+			
+			<!--
+			<button class="carousel-btn prev" type="button" aria-label="Previous image">&#10094;</button>
+			<button class="carousel-btn next" type="button" aria-label="Next image">&#10095;</button>
+			<button class="carousel-toggle" type="button" aria-pressed="false" title="Pause or resume the slideshow">Pause</button>
+			<div class="carousel-dots">
+			  <button type="button" class="dot active" data-index="0" aria-label="Side Scan Sonar XTF file converted to normalized, bottom tracked and georeferenced tif file." title="Side Scan Sonar XTF file converted to normalized, bottom tracked and georeferenced tif file."></button>
+			</div>
+			-->
+		</div>
+	</article>
 
       <article class="card" id="data-portal">
         <div class="i18n i18n-en">
