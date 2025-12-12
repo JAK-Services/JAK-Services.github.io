@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JAK Services</title>
+  <meta name="robots" content="noindex,follow" />
+
+  <link rel="alternate" hreflang="en" href="https://jak-services.github.io/en/index.html" />
+  <link rel="alternate" hreflang="fr" href="https://jak-services.github.io/fr/index.html" />
+  <link rel="alternate" hreflang="x-default" href="https://jak-services.github.io/index.html" />
+
+  <script>
+    (function () {
+      var langs = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage || 'en'];
+
+      var prefersFr = langs.some(function (l) { return (l || '').toLowerCase().startsWith('fr'); });
+      var target = prefersFr ? '/fr/index.html' : '/en/index.html';
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <noscript>
+    <p>Please choose your language:</p>
+    <p><a href="/en/index.html">English</a> · <a href="/fr/index.html">Français</a></p>
+  </noscript>
+</body>
+</html>
