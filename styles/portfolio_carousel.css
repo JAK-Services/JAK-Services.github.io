@@ -40,6 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  aspect-ratio: 16 / 9;
 }
 
 /* Images scale to the carousel width, keep aspect ratio, no cropping */
