@@ -306,3 +306,9 @@ body.lang-fr .i18n-fr.inline {
 .form-status.error {
   color: #b91c1c; /* red */
 }
+
+.client-logo {
+  width: min(320px, 100%);
+  height: auto;
+  margin-bottom: 1.5rem;
+}
