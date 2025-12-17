@@ -308,8 +308,9 @@ body.lang-fr .i18n-fr.inline {
 }
 
 .client-logo {
-  width: min(100px, 100%);
-  height: auto;
-  margin-bottom: 1.5rem;
+	height: 320px;
+	max-height: 320px;
+	width: auto;
+	margin-bottom: 1.5rem;
 }
 
