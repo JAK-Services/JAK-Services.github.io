@@ -314,4 +314,46 @@ body.lang-fr .i18n-fr.inline {
 	margin-bottom: 1.5rem;
 }
 
+.tutorial-meta { 
+	font-size: 0.95rem; 
+	color: 
+	rgba(0,0,0,0.65); 
+	margin-top:0.25rem; 
+}
 
+.toc a {
+	text-decoration:none; 
+}
+
+.toc a:hover { 
+	text-decoration:underline; 
+}
+
+.code-block { 
+	background:#0b1020; 
+	color:#e7ecff; 
+	padding:1rem; 
+	border-radius:12px; 
+	overflow:auto; 
+	font-size:0.92rem; 
+	line-height:1.45; 
+}
+
+.code-block code { 
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; 
+}
+
+.callout { 
+	border:1px solid rgba(0,79,158,0.18); 
+	background:#f7faff; 
+	border-radius:12px; 
+	padding:1rem 1.2rem; 
+}
+
+.kbd { 
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	background:#f0f4fb; 
+	border:1px solid rgba(0,79,158,0.25); 
+	padding:0.08rem 0.45rem; 
+	border-radius:8px; 
+}
