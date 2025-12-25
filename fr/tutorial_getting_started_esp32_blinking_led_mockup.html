@@ -153,19 +153,28 @@
 				📋
 			  </button>
 
-			  <pre class="code-block"><code id="blink-script">from machine import Pin
+			  <pre class="code-block"><code id="blink-script"># Import the Pin class so we can control ESP32 GPIO pins (turn pins on/off, read inputs, etc.)
+from machine import Pin
+
+# Import time so we can pause between LED on/off states (create the “blink” timing)
 import time
 
-# LED on GPIO 16 (adjust if you use a different pin)
+# Create a Pin object for the LED.
+# Pin.OUT means we will drive the pin as an output (HIGH or LOW).
 led = Pin(16, Pin.OUT)
 
+# Run forever (this loop never ends unless you reset the board or stop the program)
 while True:
+    # Set the pin HIGH (3.3V) -> typically turns the LED ON
     led.value(1)
     print("1")
+    # Wait 0.5 seconds with the LED in its current state
     time.sleep(0.5)
 
+    # Set the pin LOW (0V) -> typically turns the LED OFF
     led.value(0)
     print("0")
+    # Wait another 0.5 seconds before repeating the loop
     time.sleep(0.5)
 			</code></pre>
 			</div>
