@@ -148,21 +148,27 @@
 		  <section id="code" class="card">
 			<h2>4) The blinking script</h2>
 			<p>Paste the following script into Thonny:</p>
-			<pre class="code-block"><code>from machine import Pin
-		import time
+			<div class="code-wrapper">
+			  <button class="copy-btn" data-target="blink-script" aria-label="Copy code">
+				📋
+			  </button>
 
-		# LED on GPIO 16 (adjust if you use a different pin)
-		led = Pin(16, Pin.OUT)
+			  <pre class="code-block"><code id="blink-script">from machine import Pin
+import time
 
-		while True:
-			led.value(1)
-			print("1")
-			time.sleep(0.5)
+# LED on GPIO 16 (adjust if you use a different pin)
+led = Pin(16, Pin.OUT)
 
-			led.value(0)
-			print("0")
-			time.sleep(0.5)
-		</code></pre>
+while True:
+    led.value(1)
+    print("1")
+    time.sleep(0.5)
+
+    led.value(0)
+    print("0")
+    time.sleep(0.5)
+			</code></pre>
+			</div>
 		  </section>
 
 		  <section id="run" class="card">
@@ -174,6 +180,7 @@
 		  <section id="resources" class="card">
 			<h2>Resources</h2>
 			<ul>
+			  <li>ESP32 NodeMCU Module WLAN WiFi Dev Kit C Development Board with CP2102: <a href="https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG?ref_=ast_sto_dp&th=1" target="_blank" rel="noopener">https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG?ref_=ast_sto_dp&th=1</a></li>
 			  <li>Espressif documentation: <a href="https://documentation.espressif.com" target="_blank" rel="noopener">https://documentation.espressif.com</a></li>
 			  <li>MicroPython docs: <a href="https://docs.micropython.org/en/latest/" target="_blank" rel="noopener">https://docs.micropython.org/en/latest/</a></li>
 			  <li>Thonny IDE: <a href="https://thonny.org" target="_blank" rel="noopener">https://thonny.org</a></li>
@@ -193,5 +200,6 @@
 		</footer>
 
 		<script src="../js/main.js"></script>
+		<script src="../js/tutorials.js"></script>
 	</body>
 </html>
