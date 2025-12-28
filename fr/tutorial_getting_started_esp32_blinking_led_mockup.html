@@ -61,7 +61,7 @@
 			<p class="tutorial-meta">Carte : ESP32 DevKitC (Wroom-32) • Langage : MicroPython • IDE : Thonny</p>
 			<div class="hero-actions">
 			  <a class="btn secondary" href="tutorials.html">← Retour aux tutoriels</a>
-			  <a class="btn primary" href="https://youtu.be/Zajg2sDIkXw">Voir la vidéo</a>
+			  <a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA">Voir la vidéo</a>
 			</div>
 		  </section>
 
@@ -75,6 +75,7 @@
 				  <li><a href="#wiring">Câblage de la LED</a></li>
 				  <li><a href="#code">Le script de clignotement</a></li>
 				  <li><a href="#run">Exécuter et valider</a></li>
+				  <li><a href="#startup">Exécuter le programme automatiquement au démarrage</a></li>				  
 				  <li><a href="#resources">Ressources</a></li>
 				</ul>
 			  </nav>
@@ -84,7 +85,7 @@
 			<h2>Tutoriel YouTube</h2>
 			<p>Vous préférez suivre en vidéo ? Voici la version YouTube du tutoriel.</p>
 			<p class="callout">
-			  <a class="btn primary" href="https://youtu.be/Zajg2sDIkXw" target="_blank" rel="noopener">Ouvrir la vidéo YouTube</a>
+			  <a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA" target="_blank" rel="noopener">Ouvrir la vidéo YouTube</a>
 			</p>
 		  </section>
 
@@ -186,6 +187,34 @@ while True:
 			<p>Si tout est correctement configuré, la LED sur GPIO16 clignotera toutes les 0,5 s, confirmant le bon fonctionnement de la maquette.</p>
 		  </section>
 
+		<section id="startup" class="card">
+		  <h2>6) Exécuter le programme automatiquement au démarrage</h2>
+		  <p>
+			Maintenant que le code fonctionne, nous pouvons le flasher dans le MCU pour qu’il s’exécute automatiquement lorsque l’ESP32 est mis sous tension.
+			Connectez la carte à votre ordinateur, ouvrez Thonny, puis choisissez <strong>Fichier → Enregistrer sous… → MicroPython device</strong>,
+			ensuite enregistrez le script sous le nom <strong>main.py</strong> afin qu’il s’exécute au démarrage. Après cela, appuyez sur le bouton reset
+			(ou débranchez et rebranchez la carte), et la LED devrait commencer à clignoter.
+		  </p>
+
+		  <p>
+			Dans le script, nous avons ajouté deux instructions Python <code>print</code> pour le débogage à l’intérieur de la boucle de clignotement : l’une affiche “1”
+			lorsque la LED est réglée à 1, et l’autre affiche “0” lorsque la LED est réglée à 0. Ces messages sont envoyés via l’USB, donc si vous lancez Thonny
+			après que la carte est déjà alimentée et en train de clignoter, les valeurs imprimées apparaîtront dans la fenêtre Shell de Thonny.
+		  </p>
+
+		  <p>
+			Nous pouvons également utiliser d’autres applications de port série, telles que PuTTY ou
+			<a href="https://sourceforge.net/projects/tera-term/" target="_blank" rel="noopener">Tera Term</a>, pour afficher les valeurs imprimées envoyées par le script flashé ;
+			n’oubliez simplement pas qu’un seul programme peut utiliser le port série USB à la fois.
+		  </p>
+
+		  <p>
+			Si vous souhaitez remplacer le programme de démarrage existant sur l’ESP32, enregistrez votre nouveau script sur l’appareil sous le nom
+			<strong>main.py</strong> et écrasez le fichier existant. Après l’enregistrement, appuyez sur reset (ou débranchez et rebranchez la carte),
+			et le nouveau script s’exécutera au démarrage. Il arrive parfois que vous deviez réinstaller MicroPython via les options de Thonny pour que cela fonctionne — dans ce cas, pensez à maintenir le bouton <strong>BOOT</strong> pendant l’installation.
+		  </p>
+		</section>
+
 		  <section id="resources" class="card">
 			<h2>Ressources</h2>
 			<ul>
@@ -194,6 +223,7 @@ while True:
 			  <li>MicroPython docs: <a href="https://docs.micropython.org/en/latest/" target="_blank" rel="noopener">https://docs.micropython.org/en/latest/</a></li>
 			  <li>Thonny IDE: <a href="https://thonny.org" target="_blank" rel="noopener">https://thonny.org</a></li>
 			  <li>CP210x VCP driver: <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads" target="_blank" rel="noopener">Silicon Labs download page</a></li>
+			  <li>Tera Term: <a href="https://sourceforge.net/projects/tera-term/" target="_blank" rel="noopener">Tera Term download page</a></li>
 			</ul>
 		  </section>
 		</main>
