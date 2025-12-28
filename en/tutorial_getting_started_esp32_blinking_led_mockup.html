@@ -61,7 +61,7 @@
 			<p class="tutorial-meta">Board: ESP32 DevKitC (Wroom-32) • Language: MicroPython • IDE: Thonny</p>
 			<div class="hero-actions">
 			  <a class="btn secondary" href="tutorials.html">← Back to tutorials</a>
-			  <a class="btn primary" href="https://youtu.be/Zajg2sDIkXw">Watch the video</a>
+			  <a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA">Watch the video</a>
 			</div>
 		  </section>
 
@@ -75,6 +75,7 @@
 				  <li><a href="#wiring">Wiring the LED</a></li>
 				  <li><a href="#code">The blinking script</a></li>
 				  <li><a href="#run">Run and validate</a></li>
+				  <li><a href="#startup">Run the program automatically at startup</a></li>				  
 				  <li><a href="#resources">Resources</a></li>
 				</ul>
 			  </nav>
@@ -84,7 +85,7 @@
 			<h2>YouTube tutorial</h2>
 			<p>Prefer to follow along in video form? Here’s the tutorial version.</p>
 			<p class="callout">
-			  <a class="btn primary" href="https://youtu.be/Zajg2sDIkXw" target="_blank" rel="noopener">Open the YouTube video</a>
+			  <a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA" target="_blank" rel="noopener">Open the YouTube video</a>
 			</p>
 		  </section>
 
@@ -186,6 +187,35 @@ while True:
 			<p>If everything is set up correctly, the LED on GPIO16 will blink every 0.5 seconds, confirming the mockup is working.</p>
 		  </section>
 
+		  <section id="startup" class="card">
+			<h2>6) Run the program automatically at startup</h2>
+			<p>
+			  Now that the code works, we can flash it to the MCU so it runs automatically when the ESP32 powers up.
+			  Connect the board to your computer, open Thonny, and choose <strong>File → Save As… → MicroPython device</strong>,
+			  then save the script as <strong>main.py</strong> so it runs at startup. After that, press the reset button
+			  (or unplug and reconnect the board), and the LED should begin blinking.
+			</p>
+
+			<p>
+			  In the script, we added two Python <code>print</code> debugging statements inside the blinking loop: one prints “1” when the LED
+			  is set to 1, and the other prints “0” when the LED is set to 0. These messages are sent over USB, so if you start Thonny
+			  after the board is powered up and already blinking, the printed values will appear in the Thonny Shell window.
+			</p>
+
+			<p>
+			  We can also use other serial-port applications, such as PuTTY or <a href="https://sourceforge.net/projects/tera-term/" target="_blank" rel="noopener">Tera Term</a>, to view the print values sent by the flashed script;
+			  just remember that only one program can use the USB serial port at a time.
+			</p>
+
+			<p>
+			  If you want to replace the existing startup program on the ESP32, save your new script to the device as
+			  <strong>main.py</strong> and overwrite the existing file. After saving, press reset (or unplug and reconnect the board),
+			  and the new script will run at startup. Occasionally, you may find that you need to reinstall MicroPython from the
+			  Thonny options to make this work — if so, remember to hold the <strong>BOOT</strong> button during installation.
+			</p>
+		  </section>
+
+
 		  <section id="resources" class="card">
 			<h2>Resources</h2>
 			<ul>
@@ -194,6 +224,7 @@ while True:
 			  <li>MicroPython docs: <a href="https://docs.micropython.org/en/latest/" target="_blank" rel="noopener">https://docs.micropython.org/en/latest/</a></li>
 			  <li>Thonny IDE: <a href="https://thonny.org" target="_blank" rel="noopener">https://thonny.org</a></li>
 			  <li>CP210x VCP driver: <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads" target="_blank" rel="noopener">Silicon Labs download page</a></li>
+			  <li>Tera Term: <a href="https://sourceforge.net/projects/tera-term/" target="_blank" rel="noopener">Tera Term download page</a></li>
 			</ul>
 		  </section>
 		</main>
