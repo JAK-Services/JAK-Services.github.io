@@ -372,3 +372,32 @@ body.lang-fr .i18n-fr.inline {
   font-size: 1rem;
 }
 
+/* Clickable list items */
+.toggle-list .has-detail {
+	cursor: pointer;
+	list-style-position: outside;
+}
+
+.toggle-list .item-label {
+	display: inline-block;
+}
+
+/* Extra text (hidden by default) */
+.toggle-list .item-detail {
+	display: none;
+	margin-top: 0.35rem;
+	margin-left: 1.5rem; /* indentation */
+	font-size: 0.95em;
+	opacity: 0.9;
+}
+
+/* When open, show details */
+.toggle-list .has-detail.open .item-detail {
+	display: block;
+}
+
+/* Optional: subtle visual feedback on hover */
+.toggle-list .has-detail:hover .item-label {
+	text-decoration: underline;
+}
+
