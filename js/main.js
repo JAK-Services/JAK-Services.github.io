@@ -44,4 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
+
+  // 4) Expandable list items
+  const items = document.querySelectorAll('.toggle-list .has-detail');
+
+  items.forEach(item => {
+    const label = item.querySelector('.item-label');
+    if (!label) return;
+
+    label.addEventListener('click', event => {
+      event.preventDefault();
+      item.classList.toggle('open');
+    });
+  });
 });
