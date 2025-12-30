@@ -56,203 +56,207 @@
 		</header>
 
 		
-<main class="container">
-  <section class="hero">
-    <h1>PCB Design — Practical Rules of Thumb & Lookup Guide</h1>
-    <p class="lead">A practical, experience‑based checklist for designing low‑noise, reliable and manufacturable printed circuit boards.</p>
-  </section>
+		<main class="container">
+		  <section class="hero">
+			<h1>PCB Design — Practical Rules of Thumb & Lookup Guide</h1>
+			<p class="lead">A practical, experience‑based checklist for designing low‑noise, reliable and manufacturable printed circuit boards.</p>
+		  </section>
 
-  <section>
-    <h2>Schematics</h2>
-    <ul>
-      <li>Group circuits by function</li>
-      <li>Use clear signal path (left → right)</li>
-      <li>Use standard symbols</li>
-      <li>Label nets clearly</li>
-      <li>Annotate and document</li>
-      <li>Mark polarity &amp; pin‑1 clearly</li>
-      <li>Label connectors meaningfully</li>
-      <li>Include board name, revision, and date</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Schematics</h2>
+			<ul>
+			  <li>Group circuits by function</li>
+			  <li>Use clear signal path (left → right)</li>
+			  <li>Use standard symbols</li>
+			  <li>Label nets clearly</li>
+			  <li>Annotate and document</li>
+			  <li>Mark polarity &amp; pin‑1 clearly</li>
+			  <li>Label connectors meaningfully</li>
+			  <li>Include board name, revision, and date</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>PCB Layout — Physical constraints</h2>
-    <ul>
-      <li>Board outline</li>
-      <li>Mounting holes</li>
-      <li>Connectors</li>
-      <li>Large components</li>
-      <li>Critical components</li>
-      <li>DFMA – Design for manufacturability &amp; assembly: know the PCB manufacturer’s capabilities &amp; constraints</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>PCB Layout — Physical constraints</h2>
+			<ul>
+			  <li>Board outline</li>
+			  <li>Mounting holes</li>
+			  <li>Connectors</li>
+			  <li>Large components</li>
+			  <li>Critical components</li>
+			  <li>DFMA – Design for manufacturability &amp; assembly: know the PCB manufacturer’s capabilities &amp; constraints</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Stack‑up &amp; planes</h2>
-    <ul>
-      <li>Decide stack‑up early</li>
-      <li>Prioritize a solid ground plane first, then power plane, keeping the two planes directly above each other to minimize loop area</li>
-      <li>On 2‑layer boards, use copper pours for power and ground and stitch top/bottom pours with plenty of vias</li>
-      <li>Avoid split planes where possible</li>
-      <li>Prefer star / single‑point power distribution over daisy‑chaining, especially for noisy or sensitive loads</li>
-      <li>Never route high‑speed signals across plane splits</li>
-      <li>Prefer routing high‑speed signals adjacent to a ground plane</li>
-      <li>Use board zoning: separate analog, digital, and power sections — keep sensitive analog furthest from noisy digital and power circuitry</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Stack‑up &amp; planes</h2>
+			<ul>
+			  <li>Decide stack‑up early</li>
+			  <li>Prioritize a solid ground plane first, then power plane, keeping the two planes directly above each other to minimize loop area</li>
+			  <li>On 2‑layer boards, use copper pours for power and ground and stitch top/bottom pours with plenty of vias</li>
+			  <li>Avoid split planes where possible</li>
+			  <li>Prefer star / single‑point power distribution over daisy‑chaining, especially for noisy or sensitive loads</li>
+			  <li>Never route high‑speed signals across plane splits</li>
+			  <li>Prefer routing high‑speed signals adjacent to a ground plane</li>
+			  <li>Use board zoning: separate analog, digital, and power sections — keep sensitive analog furthest from noisy digital and power circuitry</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Signal integrity &amp; routing</h2>
-    <ul>
-      <li>Signals always return under their trace in the nearest plane</li>
-      <li>Minimize trace lengths and loop area</li>
-      <li>Add ground stitching vias near layer transitions</li>
-      <li>Keep clocks short and isolated from sensitive nets</li>
-      <li>Use 45° angles instead of 90° (cleaner routing &amp; RF‑friendly)</li>
-      <li>Above 80&nbsp;MHz, avoid through‑hole components where possible to reduce parasitic inductances. Traces longer than 10&nbsp;cm can be a problem for FM‑band noise</li>
-      <li>To reduce crosstalk, avoid long parallel runs; if unavoidable, keep ≥ 3× trace‑width spacing</li>
-      <li>Avoid routing noisy traces near board edges</li>
-      <li>No unrelated components should be closer than 2.5&nbsp;cm to the crystal</li>
-      <li>Give unused inputs a defined logic state per the datasheet (pull‑up or pull‑down)</li>
-      <li>Where pertinent, use small source‑series resistors on MCU GPIO to slow edges and add RC low‑pass filtering only on slow, non‑critical signals</li>
-      <li>Differential pairs: keep equal length, constant spacing, matched impedance</li>
-      <li>Length‑match only when timing or protocol requires it</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Signal integrity &amp; routing</h2>
+			<ul>
+			  <li>Signals always return under their trace in the nearest plane</li>
+			  <li>Minimize trace lengths and loop area</li>
+			  <li>Add ground stitching vias near layer transitions</li>
+			  <li>Keep clocks short and isolated from sensitive nets</li>
+			  <li>Use 45° angles instead of 90° (cleaner routing &amp; RF‑friendly)</li>
+			  <li>Above 80&nbsp;MHz, avoid through‑hole components where possible to reduce parasitic inductances. Traces longer than 10&nbsp;cm can be a problem for FM‑band noise</li>
+			  <li>To reduce crosstalk, avoid long parallel runs; if unavoidable, keep ≥ 3× trace‑width spacing</li>
+			  <li>Avoid routing noisy traces near board edges</li>
+			  <li>No unrelated components should be closer than 2.5&nbsp;cm to the crystal</li>
+			  <li>Give unused inputs a defined logic state per the datasheet (pull‑up or pull‑down)</li>
+			  <li>Where pertinent, use small source‑series resistors on MCU GPIO to slow edges and add RC low‑pass filtering only on slow, non‑critical signals</li>
+			  <li>Differential pairs: keep equal length, constant spacing, matched impedance</li>
+			  <li>Length‑match only when timing or protocol requires it</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Decoupling &amp; power integrity</h2>
-    <ul>
-      <li>Use decoupling capacitors</li>
-      <li>Place 0.1&nbsp;µF MLCC close to each IC power pin</li>
-      <li>Keep the loop between cap–VCC–GND as short as possible</li>
-      <li>Add bulk capacitors per rail/region (1–10&nbsp;µF typical)</li>
-      <li>Use planes or wide traces for power</li>
-      <li>Avoid narrow neck‑downs on power paths</li>
-      <li>Star‑route sensitive analog supplies where possible</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Decoupling &amp; power integrity</h2>
+			<ul>
+			  <li>Use decoupling capacitors</li>
+			  <li>Place 0.1&nbsp;µF MLCC close to each IC power pin</li>
+			  <li>Keep the loop between cap–VCC–GND as short as possible</li>
+			  <li>Add bulk capacitors per rail/region (1–10&nbsp;µF typical)</li>
+			  <li>Use planes or wide traces for power</li>
+			  <li>Avoid narrow neck‑downs on power paths</li>
+			  <li>Star‑route sensitive analog supplies where possible</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Vias</h2>
-    <ul>
-      <li>Avoid vias on high‑speed nets where possible</li>
-      <li>Keep differential pair vias symmetrical</li>
-      <li>Use stitching vias around RF/analog areas</li>
-      <li>Avoid via‑in‑pad unless they are filled &amp; plated (VIPPO)</li>
-      <li>Use thermal relief spokes on vias to planes for solderability</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Vias</h2>
+			<ul>
+			  <li>Avoid vias on high‑speed nets where possible</li>
+			  <li>Keep differential pair vias symmetrical</li>
+			  <li>Use stitching vias around RF/analog areas</li>
+			  <li>Avoid via‑in‑pad unless they are filled &amp; plated (VIPPO)</li>
+			  <li>Use thermal relief spokes on vias to planes for solderability</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Voltage transients &amp; ESD protection</h2>
-    <ul>
-      <li>Protect all external I/O at connectors against ESD / surge</li>
-      <li>Use TVS diodes close to connectors, with a short, wide path to ground (or chassis)</li>
-      <li>Choose low‑capacitance TVS for high‑speed data lines (USB, HDMI, etc.)</li>
-      <li>Where protocol allows, add series resistors or small RC filters on long or noisy lines to limit surge current and ringing</li>
-      <li>For power inputs, consider reverse‑polarity protection (diode or ideal FET), input TVS (and possibly a fuse or resettable fuse), and an LC/π filter to keep conducted noise out/in</li>
-      <li>Keep the ESD current return path local: don’t force ESD currents to run through sensitive circuit grounds</li>
-      <li>Use common‑mode chokes on long cables if emissions or susceptibility are a problem</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Voltage transients &amp; ESD protection</h2>
+			<ul>
+			  <li>Protect all external I/O at connectors against ESD / surge</li>
+			  <li>Use TVS diodes close to connectors, with a short, wide path to ground (or chassis)</li>
+			  <li>Choose low‑capacitance TVS for high‑speed data lines (USB, HDMI, etc.)</li>
+			  <li>Where protocol allows, add series resistors or small RC filters on long or noisy lines to limit surge current and ringing</li>
+			  <li>For power inputs, consider reverse‑polarity protection (diode or ideal FET), input TVS (and possibly a fuse or resettable fuse), and an LC/π filter to keep conducted noise out/in</li>
+			  <li>Keep the ESD current return path local: don’t force ESD currents to run through sensitive circuit grounds</li>
+			  <li>Use common‑mode chokes on long cables if emissions or susceptibility are a problem</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Creepage &amp; clearance (important for &gt;30&nbsp;V)</h2>
-    <ul>
-      <li>Follow IPC‑2221 or applicable safety standards</li>
-      <li>Increase spacing in humid/dirty environments</li>
-      <li>Slots can increase creepage where needed</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Creepage &amp; clearance (important for &gt;30&nbsp;V)</h2>
+			<ul>
+			  <li>Follow IPC‑2221 or applicable safety standards</li>
+			  <li>Increase spacing in humid/dirty environments</li>
+			  <li>Slots can increase creepage where needed</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>High current &amp; temperature</h2>
-    <ul>
-      <li>Know current &amp; temperature ranges</li>
-      <li>Design traces using calculators</li>
-      <li>Use special widening / copper weight for high‑current paths — 
-        <a href="https://jlcpcb.com/blog/track-width-vs-current-capacity-pcb-layout-tips">link</a>
-      </li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>High current &amp; temperature</h2>
+			<ul>
+			  <li>Know current &amp; temperature ranges</li>
+			  <li>Design traces using calculators</li>
+			  <li>Use special widening / copper weight for high‑current paths — 
+				<a href="https://jlcpcb.com/blog/track-width-vs-current-capacity-pcb-layout-tips">link</a>
+			  </li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Manufacturability (DFMA)</h2>
-    <ul>
-      <li>Where possible, keep SMD components on one side</li>
-      <li>Component spacing appropriate for assembly</li>
-      <li>Accurate footprints (IPC‑7351 recommended)</li>
-      <li>Provide fiducial marks for pick‑and‑place</li>
-      <li>Arrange consistent orientation where possible</li>
-      <li>Consider panelization early if going to volume</li>
-      <li>Know the PCB fab limits (trace width, spacing, via size, mask expansion)</li>
-    </ul>
-    <p>DFMA tools: <a href="https://jlcdfm.com/">https://jlcdfm.com/</a></p>
-  </section>
+		  <section class="card">
+			<h2>Manufacturability (DFMA)</h2>
+			<ul>
+			  <li>Where possible, keep SMD components on one side</li>
+			  <li>Component spacing appropriate for assembly</li>
+			  <li>Accurate footprints (IPC‑7351 recommended)</li>
+			  <li>Provide fiducial marks for pick‑and‑place</li>
+			  <li>Arrange consistent orientation where possible</li>
+			  <li>Consider panelization early if going to volume</li>
+			  <li>Know the PCB fab limits (trace width, spacing, via size, mask expansion)</li>
+			</ul>
+			<p>DFMA tools: <a href="https://jlcdfm.com/">https://jlcdfm.com/</a></p>
+		  </section>
 
-  <section>
-    <h2>Design Rule Check</h2>
-    <ul>
-      <li>Configure the ECAD DRC before layout begins — <a href="https://jlcpcb.com/blog/how-to-run-design-rule-check">guide</a></li>
-    </ul>
-    <p><strong>Recommended baseline limits (check fab docs first):</strong></p>
-    <ul>
-      <li>Min trace width: ~6&nbsp;mil typical</li>
-      <li>Clearance: ~6&nbsp;mil typical</li>
-      <li>Via drill: ≥0.3&nbsp;mm typical</li>
-      <li>Mask expansion: 3–5&nbsp;mil</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Design Rule Check</h2>
+			<ul>
+			  <li>Configure the ECAD DRC before layout begins — <a href="https://jlcpcb.com/blog/how-to-run-design-rule-check">guide</a></li>
+			</ul>
+			<p><strong>Recommended baseline limits (check fab docs first):</strong></p>
+			<ul>
+			  <li>Min trace width: ~6&nbsp;mil typical</li>
+			  <li>Clearance: ~6&nbsp;mil typical</li>
+			  <li>Via drill: ≥0.3&nbsp;mm typical</li>
+			  <li>Mask expansion: 3–5&nbsp;mil</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Design for Test (DFT)</h2>
-    <ul>
-      <li>Add test points to key nets (GND, 3V3, 5V, reset, debug, UART, etc.)</li>
-      <li>Ensure probe access space</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Design for Test (DFT)</h2>
+			<ul>
+			  <li>Add test points to key nets (GND, 3V3, 5V, reset, debug, UART, etc.)</li>
+			  <li>Ensure probe access space</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Resources</h2>
-    <ul>
-      <li><a href="https://www.ti.com/lit/an/szza009/szza009.pdf">TI — PCB Design Guidelines For Reduced EMI</a></li>
-      <li><a href="https://jlcpcb.com/blog/pcb-design-rules-best-practices">JLCPCB — PCB Design Rules &amp; Best Practices</a></li>
-      <li><a href="https://resources.altium.com/fr/p/pcb-layout-guidelines">Altium — PCB Layout Guidelines</a></li>
-      <li><a href="https://www.wonderfulpcb.com/blog/common-pcb-design-rules-for-reliable-manufacturable-boards/">WonderfulPCB — Common PCB Design Rules</a></li>
-      <li><a href="https://shop.electronics.org/">Global Electronics Association / IPC standards</a></li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Resources</h2>
+			<ul>
+			  <li><a href="https://www.ti.com/lit/an/szza009/szza009.pdf">TI — PCB Design Guidelines For Reduced EMI</a></li>
+			  <li><a href="https://jlcpcb.com/blog/pcb-design-rules-best-practices">JLCPCB — PCB Design Rules &amp; Best Practices</a></li>
+			  <li><a href="https://resources.altium.com/fr/p/pcb-layout-guidelines">Altium — PCB Layout Guidelines</a></li>
+			  <li><a href="https://www.wonderfulpcb.com/blog/common-pcb-design-rules-for-reliable-manufacturable-boards/">WonderfulPCB — Common PCB Design Rules</a></li>
+			  <li><a href="https://shop.electronics.org/">Global Electronics Association / IPC standards</a></li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Calculators</h2>
-    <ul>
-      <li><a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width">Digi‑Key PCB Trace Width Calculator</a></li>
-      <li>Use impedance calculators for differential/high‑speed design</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Calculators</h2>
+			<ul>
+			  <li><a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width">Digi‑Key PCB Trace Width Calculator</a></li>
+			  <li>Use impedance calculators for differential/high‑speed design</li>
+			</ul>
+		  </section>
 
-  <section>
-    <h2>Pertinent standards (commercially available from Global Electronics Association / IPC)</h2>
-    <ul>
-      <li>IPC‑2221 — Generic PCB design rules: layout, spacing, materials, reliability.</li>
-      <li>IPC‑2222 — Design requirements specific to rigid printed circuit boards.</li>
-      <li>IPC‑6012 — Performance and qualification rules for rigid printed circuit boards.</li>
-      <li>IPC‑A‑600 — Visual acceptability criteria for finished bare printed circuit boards.</li>
-      <li>IPC‑7351 — Standard footprint (land‑pattern) design rules for SMT components.</li>
-      <li>IPC‑4101 — Specifications for laminate and prepreg materials for rigid PCBs.</li>
-      <li>IPC‑2615 — Standard formats for PCB manufacturing and fabrication data exchange.</li>
-      <li>IPC‑6013 — Performance and qualification rules for flexible and flex‑rigid PCBs.</li>
-    </ul>
-  </section>
+		  <section class="card">
+			<h2>Pertinent standards (commercially available from Global Electronics Association / IPC)</h2>
+			<ul>
+			  <li>IPC‑2221 — Generic PCB design rules: layout, spacing, materials, reliability.</li>
+			  <li>IPC‑2222 — Design requirements specific to rigid printed circuit boards.</li>
+			  <li>IPC‑6012 — Performance and qualification rules for rigid printed circuit boards.</li>
+			  <li>IPC‑A‑600 — Visual acceptability criteria for finished bare printed circuit boards.</li>
+			  <li>IPC‑7351 — Standard footprint (land‑pattern) design rules for SMT components.</li>
+			  <li>IPC‑4101 — Specifications for laminate and prepreg materials for rigid PCBs.</li>
+			  <li>IPC‑2615 — Standard formats for PCB manufacturing and fabrication data exchange.</li>
+			  <li>IPC‑6013 — Performance and qualification rules for flexible and flex‑rigid PCBs.</li>
+			</ul>
+		  </section>
 
-</main>
+		</main>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>&copy; JAK Services</p>
-  </div>
-</footer>
-</body>
+		<footer class="site-footer">
+		  <div class="container footer-inner">
+			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
+			<p>
+			  <a class="footer-link" href="legal.html">Legal mentions</a>
+			  <a class="footer-link" href="privacy.html">Privacy policy</a>
+			</p>
+		  </div>
+		</footer>
+	</body>
 </html>
