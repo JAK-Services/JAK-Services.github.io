@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title>JAK Services – PCB Design — Practical Rules of Thumb & Lookup Guide</title>
+		<title>JAK Services – PCB Design — Design Rules / Lookup Guide / Checklist</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport"/>
 		<meta content="Practical PCB design rules of thumb and reference guidance for reliable, low‑noise electronics." name="description"/>
 		<link rel="stylesheet" href="../styles/styles.css" />
@@ -64,8 +64,14 @@
 
 		  <section class="card">
 			<h2>Schematics</h2>
-			<ul>
-			  <li>Group circuits by function</li>
+			<ul class="toggle-list">
+				<li class="has-detail">
+					<span class="item-label">Group circuits by function</span>
+					<div class="item-detail">
+						Keep related parts (e.g., power supply, MCU, RF front-end) grouped together so the schematic is easy to read 
+						and the PCB layout naturally follows these functional blocks.
+					</div>
+				</li>
 			  <li>Use clear signal path (left → right)</li>
 			  <li>Use standard symbols</li>
 			  <li>Label nets clearly</li>
