@@ -2,22 +2,22 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8"/>
-		<title>JAK Services – Conception PCB — Guide pratique et aide‑mémoire</title>
+		<title>JAK Services – Conception PCB — Règles de conception / Guide de référence / Checklist</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport"/>
-		<meta content="Règles pratiques de conception PCB et guide de référence pour des électroniques fiables et à faible bruit." name="description"/>
+		<meta content="Règles pratiques de conception de PCB, bonnes pratiques et checklist pour des électroniques fiables et à faible bruit." name="description"/>
 		<link rel="stylesheet" href="../styles/styles.css" />
 		<link rel="stylesheet" href="../styles/portfolio_carousel.css" />
 		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-		<link href="https://jak-services.github.io/fr/tutorials.html" rel="canonical"/>
+		<link href="https://jak-services.github.io/en/tutorials.html" rel="canonical"/>
 		<link href="https://jak-services.github.io/en/tutorials.html" hreflang="en" rel="alternate"/>
 		<link href="https://jak-services.github.io/fr/tutorials.html" hreflang="fr" rel="alternate"/>
 		<link href="https://jak-services.github.io/en/tutorials.html" hreflang="x-default" rel="alternate"/>
 		<meta content="website" property="og:type"/><meta content="JAK Services – Tutoriels" property="og:title"/>
-		<meta content="Tutoriels pratiques en électronique, logiciel et prototypage par JAK Services." property="og:description"/>
-		<meta content="https://jak-services.github.io/fr/tutorials.html" property="og:url"/>
+		<meta content="Guides pratiques, règles de conception et checklists en électronique, logiciel et prototypage par JAK Services." property="og:description"/>
+		<meta content="https://jak-services.github.io/en/tutorials.html" property="og:url"/>
 		<meta content="https://jak-services.github.io/images/jak-logo.svg" property="og:image"/>
 		<meta content="summary" name="twitter:card"/><meta content="JAK Services – Tutoriels" name="twitter:title"/>
-		<meta content="Tutoriels pratiques en électronique, logiciel et prototypage par JAK Services." name="twitter:description"/>
+		<meta content="Guides pratiques, règles de conception et checklists en électronique, logiciel et prototypage par JAK Services." name="twitter:description"/>
 		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
 		<script type="application/ld+json">
 			{"@context": "https://schema.org"
@@ -36,7 +36,7 @@
 			  <img alt="Logo JAK Services" class="logo" src="../images/jak-logo.svg"/>
 			  <div class="brand-text">
 				<span class="brand-name">JAK Services</span>
-				<span class="brand-tagline">Solutions d'ingénierie logicielle et électronique</span>
+				<span class="brand-tagline">Solutions d’ingénierie Logiciel et Électronique</span>
 			  </div>
 			</a>
 			<nav class="main-nav">
@@ -44,207 +44,822 @@
 			  <a href="services.html">Services</a>
 			  <a href="portefolio.html">Portefolio</a>
 			  <a href="tutorials.html">Tutoriels</a>
-			  <a href="guides.html">Guides</a>
+			  <a href="guides.html" aria-current="page">Guides</a>
 			  <a href="clients.html">Clients</a>
 			  <a href="contact.html">Contact</a>
 			</nav>
 			<div class="lang-switch" aria-label="Sélecteur de langue">
-			  <a class="lang-btn active" aria-current="true" href="../fr/tutorials.html">FR</a>
-			  <a class="lang-btn" href="../en/tutorials.html">EN</a>
+			  <a class="lang-btn" href="../fr/tutorials.html">FR</a>
+			  <a class="lang-btn active" aria-current="true" href="../en/tutorials.html">EN</a>
 			</div>
 		  </div>
 		</header>
+
 		
 		<main class="container">
-			  <section class="hero">
-				<h1>Conception PCB — Guide pratique et aide‑mémoire</h1>
-				<p class="lead">Une checklist pratique, basée sur l'expérience, pour concevoir des cartes électroniques fiables, manufacturables et à faible bruit.</p>
-			  </section>
+			<section class="hero">
+				<h1>Conception PCB — Règles de conception / Guide de référence / Checklist</h1>
+				<p class="lead">Une checklist pratique, basée sur l’expérience, pour concevoir des circuits imprimés à faible bruit, fiables et facilement fabricables.</p>
+			</section>
 
-			  <section class="card">
+			<section class="card">
 				<h2>Schémas</h2>
-				<ul>
-				  <li>Grouper les circuits par fonction</li>
-				  <li>Utiliser un chemin de signal clair (de gauche → droite)</li>
-				  <li>Utiliser des symboles normalisés</li>
-				  <li>Nommer clairement les nets</li>
-				  <li>Annoter et documenter</li>
-				  <li>Marquer clairement la polarité &amp; la broche-1</li>
-				  <li>Nommer les connecteurs de manière explicite</li>
-				  <li>Inclure le nom de la carte, la révision et la date</li>
-				</ul>
-			  </section>
+				<ul class="toggle-list">
+				
+					<li class="has-detail">
+						<span class="item-label">Regrouper les circuits par fonction</span>
+						<div class="item-detail">
+							Regroupez les composants liés (par ex. alimentation, MCU, frontal RF) dans des pages hiérarchiques afin que le schéma soit plus lisible. 
+							Cela aide aussi à ce que le routage PCB suive naturellement ces blocs fonctionnels.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Utiliser un chemin de signal clair (gauche → droite)</span>
+						<div class="item-detail">
+							Organisez le schéma de façon à ce que les signaux circulent globalement de gauche à droite. 
+							Cela rend le chemin logique plus facile à suivre et simplifie le débogage et les revues.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Utiliser des symboles standard</span>
+						<div class="item-detail">
+							Utilisez des symboles de schéma reconnus et standardisés pour tous les composants. 
+							Cela garde le design non ambigu et plus facile à lire, à relire et à maintenir par d’autres. 
+							Aligner vos symboles sur des bibliothèques PCB de confiance et sur les empreintes approuvées par les fabricants aide également à éviter les confusions plus tard dans le processus de production.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Nommer les nets clairement</span>
+						<div class="item-detail">
+							Nommez les nets de manière claire et cohérente. De bons noms rendent le schéma plus facile à suivre, réduisent les erreurs de câblage et aident lors du routage et du débogage. 
+							Évitez les étiquettes génériques lorsqu’il existe plusieurs rails ou signaux — par exemple, au lieu d’appeler tout VCC, utilisez des noms spécifiques comme 3V3_RF, 5V_USB ou 1V2_CORE.
+							Des noms clairs et uniques rendent l’intention évidente et réduisent les erreurs pendant le routage et le débogage.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Annoter et documenter</span>
+						<div class="item-detail">
+							Annotez et documentez le schéma pour que l’intention de conception soit claire. 
+							Ajoutez de courtes notes pour tout ce qui n’est pas immédiatement évident — par exemple : choix de valeurs de résistances de tirage, contraintes de temporisation, 
+							exigences de routage (« garder court / longueurs appariées »), ou options de composants alternatives.
+							Annoter complètement tous les composants avec des désignateurs de référence stables avant de commencer le routage PCB permet de garder le BoM, 
+							l’implantation, les tests et le débogage cohérents tout au long du projet. 
+							Une bonne documentation réduit l’ambiguïté et fait gagner du temps pendant le routage, les tests et la fabrication.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+					  <span class="item-label">Éviter les broches d’alim cachées et les nets globaux involontaires</span>
+					  <div class="item-detail">
+						Certaines bibliothèques de schémas connectent automatiquement les broches d’alimentation ou traitent certains noms de nets comme « globaux », de sorte qu’ils sont reliés à travers tout le design même si aucun fil n’est dessiné. 
+						Cela peut faire croire que le schéma est correct alors que les composants sont en réalité alimentés (ou connectés) à un mauvais net.
+						Préférez des connexions d’alimentation et de nets explicites et visibles, afin que le schéma reflète toujours le câblage réel. 
+						Cela réduit fortement le risque de liaisons de nets accidentelles et d’erreurs difficiles à trouver pendant la mise en route et le débogage.
+					  </div>
+					</li>		
+					
+					<li class="has-detail">
+						<span class="item-label">Marquer clairement polarité, broche 1 et orientation</span>
+						<div class="item-detail">
+							Indiquez clairement la polarité, la broche 1 et l’orientation à la fois sur le schéma et sur l’empreinte PCB. 
+							Assurez-vous que les diodes, condensateurs électrolytiques, connecteurs, circuits intégrés et LEDs ont des marquages d’orientation non ambigus qui correspondent à la sérigraphie et aux dessins d’assemblage. 
+							Des indicateurs clairs de polarité et de broche 1 réduisent fortement les erreurs de placement lors de l’assemblage et évitent des retouches coûteuses ou des dommages à la carte.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Nommer les connecteurs de façon parlante</span>
+						<div class="item-detail">
+							Attribuez aux connecteurs des noms significatifs, pas seulement J1, J2, etc. 
+							Utilisez des noms décrivant la fonction ou l’interface — comme PWR_IN, BAT_CONN, ETHERNET ou UART_DEBUG. 
+							Étiquetez aussi les broches clés (par ex. TX, RX, 5V, GND). 
+							Une bonne nomination des connecteurs évite les erreurs de câblage et facilite l’installation et le dépannage.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+					  <span class="item-label">Vérifier les limites thermiques des connecteurs et composants</span>
+					  <div class="item-detail">
+						Assurez-vous que les éléments véhiculant du courant, tels que connecteurs, interrupteurs, résistances shunt et MOSFET, sont spécifiés pour le courant attendu et la température ambiante visée. 
+						De nombreuses défaillances apparaissent sur les composants et les connecteurs avant que les pistes de PCB n’atteignent leurs limites.
+					  </div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Lancer l’ERC et corriger les avertissements</span>
+						<div class="item-detail">
+							Utilisez la vérification des règles électriques (ERC) de votre outil et traitez les avertissements au lieu de les ignorer. 
+							L’ERC détecte de nombreuses erreurs réelles tôt — comme des broches non connectées, des conflits sortie–sortie, et des alimentations manquantes.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+					  <span class="item-label">Inclure nom de carte, révision et date</span>
+					  <div class="item-detail">
+						Indiquez clairement le nom de la carte, la révision matérielle et la date de build à la fois sur le schéma et sur le PCB. 
+						Assurez-vous que chaque feuille de schéma possède également un cartouche cohérent avec le nom du projet, le titre de la feuille, le numéro de feuille et les informations de révision. 
+						Une identification claire et cohérente permet de s’assurer que tout le monde travaille sur la même version lors du routage, des tests et de la production, et facilite fortement le support terrain et la traçabilité.
+					  </div>
+					</li>
+					
+					<li class="has-detail">
+					  <span class="item-label">Protéger toutes les E/S externes au niveau des connecteurs contre l’ESD et les surtensions</span>
+					  <div class="item-detail">
+						Tout signal ou câble sortant de la carte peut injecter de l’énergie d’ESD (ElectroStatic Discharge) ou de surtension dans votre système. 
+						Prévoyez une protection directement au niveau du connecteur pour éviter le stress ou les dommages sur les circuits en aval.
+					  </div>
+					</li>
 
-			  <section class="card">
-				<h2>Routage PCB — Contraintes physiques</h2>
-				<ul>
-				  <li>Contour de la carte</li>
-				  <li>Trous de fixation</li>
-				  <li>Connecteurs</li>
-				  <li>Gros composants</li>
-				  <li>Composants critiques</li>
-				  <li>DFMA – Conception pour la fabricabilité &amp; l’assemblage : connaître les capacités et contraintes du fabricant de PCB</li>
-				</ul>
-			  </section>
+					<li class="has-detail">
+					  <span class="item-label">Utiliser des TVS à faible capacité pour les lignes de données rapides</span>
+					  <div class="item-detail">
+						Les interfaces rapides telles que USB, HDMI, PCIe et MIPI sont sensibles à la capacité ajoutée. 
+						Choisissez des composants ESD spécifiquement conçus pour les signaux différentiels haut débit afin de ne pas dégrader l’intégrité du signal.
+					  </div>
+					</li>
 
-			  <section class="card">
-				<h2>Empilage &amp; plans</h2>
-				<ul>
-				  <li>Définir l’empilage le plus tôt possible</li>
-				  <li>Donner la priorité à un plan de masse solide, puis au plan d’alimentation, en gardant les deux plans directement l’un au-dessus de l’autre afin de minimiser la surface de boucle</li>
-				  <li>Sur les cartes 2 couches, utiliser des plans de cuivre pour l’alimentation et la masse et relier les plans supérieur/inférieur avec de nombreux vias</li>
-				  <li>Éviter les plans découpés lorsque c’est possible</li>
-				  <li>Préférer une distribution d’alimentation en étoile / point unique plutôt qu’en chaîne, surtout pour les charges bruyantes ou sensibles</li>
-				  <li>Ne jamais router des signaux haut-débit au-dessus de découpes de plan</li>
-				  <li>Privilégier le routage des signaux haut-débit à proximité d’un plan de masse</li>
-				  <li>Utiliser le zonage de la carte : séparer les sections analogiques, numériques et puissance — garder l’analogique sensible le plus éloigné possible des circuits numériques et de puissance bruyants</li>
-				</ul>
-			  </section>
+					<li class="has-detail">
+					  <span class="item-label">Protéger les alimentations d’entrée contre les abus et le bruit conduit</span>
+					  <div class="item-detail">
+						Pour les alimentations externes, envisagez une protection contre l’inversion de polarité (diode ou MOSFET idéal), une TVS d’entrée, 
+						et un fusible ou fusible réarmable pour la protection contre les défauts. 
+						Un filtre LC ou π peut aider à maintenir le bruit conduit à la fois hors de votre système et à l’intérieur de celui-ci.
+					  </div>
+					</li>
 
-			  <section class="card">
-				<h2>Intégrité du signal &amp; routage</h2>
-				<ul>
-				  <li>Les signaux retournent toujours sous leur piste dans le plan le plus proche</li>
-				  <li>Minimiser la longueur des pistes et la surface de boucle</li>
-				  <li>Ajouter des vias de masse de couture près des transitions de couche</li>
-				  <li>Garder les horloges courtes et isolées des nets sensibles</li>
-				  <li>Utiliser des angles de 45° au lieu de 90° (routage plus propre &amp; compatible RF)</li>
-				  <li>Au-dessus de 80&nbsp;MHz, éviter les composants traversants lorsque c’est possible pour réduire les inductances parasites. Les pistes de plus de 10&nbsp;cm peuvent poser problème en bande FM</li>
-				  <li>Pour réduire la diaphonie, éviter les longues sections en parallèle ; si inévitable, garder un espacement ≥ 3× la largeur de piste</li>
-				  <li>Éviter de router des pistes bruyantes près des bords de la carte</li>
-				  <li>Aucun composant non lié ne doit être à moins de 2.5&nbsp;cm du quartz</li>
-				  <li>Donner un état logique défini aux entrées inutilisées conformément au datasheet (pull-up ou pull-down)</li>
-				  <li>Le cas échéant, utiliser de petites résistances série côté source sur les GPIO MCU pour ralentir les fronts, et n’ajouter des filtres RC passe-bas que sur les signaux lents et non critiques</li>
-				  <li>Paires différentielles : garder une longueur égale, un espacement constant et une impédance adaptée</li>
-				  <li>Faire l’égalisation des longueurs uniquement lorsque le timing ou le protocole l’exige</li>
+					<li class="has-detail">
+					  <span class="item-label">Utiliser des selfs de mode commun sur les longs câbles si les émissions ou la susceptibilité posent problème</span>
+					  <div class="item-detail">
+						Les selfs de mode commun peuvent réduire à la fois les émissions rayonnées et la susceptibilité RF sur les longs câbles en bloquant les courants de mode commun indésirables 
+						tout en préservant le signal différentiel utile.
+					  </div>
+					</li>
+					
 				</ul>
-			  </section>
+			</section>
 
-			  <section class="card">
-				<h2>Découplage &amp; intégrité de l’alimentation</h2>
-				<ul>
-				  <li>Utiliser des condensateurs de découplage</li>
-				  <li>Placer un MLCC de 0.1&nbsp;µF près de chaque broche d’alimentation d’un CI</li>
-				  <li>Garder la boucle entre condo–VCC–GND aussi courte que possible</li>
-				  <li>Ajouter des condensateurs de capacité globale par rail/région (1–10&nbsp;µF typ.)</li>
-				  <li>Utiliser des plans ou pistes larges pour l’alimentation</li>
-				  <li>Éviter les rétrécissements étroits sur les pistes d’alimentation</li>
-				  <li>Réaliser un routage en étoile pour les alimentations analogiques sensibles lorsque c’est possible</li>
+			<section class="card">
+			  <h2>Design Rule Check (DRC)</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail">
+				  <span class="item-label">Configurer les règles DRC avant de commencer le routage</span>
+				  <div class="item-detail">
+					Réglez dans votre outil ECAD les limites de fabrication (espacements, largeur de piste, taille de vias, vernis, etc.) avant tout placement ou routage. 
+					Cela empêche de créer des entités non fabricables et réduit les retouches tardives de conception.
+					Référence utile :
+					<a href="https://jlcpcb.com/blog/how-to-run-design-rule-check" target="_blank" rel="noopener">how to run DRC</a>.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Baser les limites DRC sur les capacités de votre fabricant PCB</span>
+				  <div class="item-detail">
+					Confirmez toujours les limites de procédé de votre fab (capacité standard vs avancée, poids de cuivre, nombre de couches, etc.) 
+					et définissez des règles conservatrices qu’il peut fabriquer de manière fiable avec un bon rendement — pas seulement les minimums théoriques.
+				  </div>
+				</li>
+
+			  </ul>
+
+			  <p><strong>Valeurs de base typiques (à vérifier avec votre fab) :</strong></p>
+			  <ul>
+				<li>Largeur minimale de piste : ~6&nbsp;mil typique</li>
+				<li>Espacement (clearance) : ~6&nbsp;mil typique</li>
+				<li>Diamètre de perçage de via : ≥0,30&nbsp;mm typique</li>
+				<li>Ouverture de vernis épargne (solder mask expansion) : 3–5&nbsp;mil</li>
+			  </ul>
+			</section>
+
+			<section class="card">
+			  <h2>Fabricabilité (DFMA)</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail">
+				  <span class="item-label">Garder les composants CMS d’un seul côté si possible</span>
+				  <div class="item-detail">
+					Un assemblage simple face est moins cher et plus simple qu’un assemblage double face, ce qui réduit le temps de placement, le nombre de refusions et le risque sur le rendement. 
+					Ne placez sur la seconde face que les composants réellement nécessaires.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Maintenir des espacements suffisants entre composants pour l’assemblage</span>
+				  <div class="item-detail">
+					Laissez du dégagement pour les tolérances de pick-and-place, l’inspection et la retouche. 
+					Un espacement trop serré augmente le taux de défauts et complique la réparation — suivez les recommandations d’espacement de votre assembleur.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Utiliser des empreintes précises basées sur les normes</span>
+				  <div class="item-detail">
+					Créez les empreintes à partir des datasheets et vérifiez tailles de pastilles, keep-out et zones de courtyards. 
+					Les empreintes basées sur IPC-7351 sont recommandées pour garantir la fabricabilité et la soudabilité chez divers fournisseurs.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Fournir des repères fiduciaires pour l’alignement pick-and-place</span>
+				  <div class="item-detail">
+					Ajoutez des fiduciaires globaux de carte (et des fiduciaires locaux pour les boîtiers à pas fin) afin que les machines d’assemblage puissent s’aligner correctement. 
+					Gardez les fiduciaires à l’écart des ouvertures de vernis et de la sérigraphie.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Utiliser une orientation cohérente des composants autant que possible</span>
+				  <div class="item-detail">
+					Alignez de manière cohérente les composants polarisés et l’orientation de la broche 1 des circuits intégrés sur toute la carte. 
+					Cela simplifie l’inspection, réduit les erreurs d’assemblage et accélère la production.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Planifier la panélisation tôt pour la production en volume</span>
+				  <div class="item-detail">
+					Travaillez avec votre assembleur pour définir la taille de panneau, les rails de maintien, les fiduciaires, les ponts de rupture et les prédécoupes (mouse-bites ou rainures en V). 
+					Une bonne panélisation améliore le débit et réduit les dommages liés à la manipulation.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Connaître les limites de votre fab PCB et régler les règles en conséquence</span>
+				  <div class="item-detail">
+					Confirmez les largeurs / espacements, tailles de vias, anneaux annulaires, expansions de vernis, poids de cuivre et stack-up avant le routage. 
+					Alignez les règles de votre ECAD sur ce que votre fabricant peut produire de manière fiable, avec un bon rendement et un coût raisonnable.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Utiliser des outils DFMA (Design For Manufacturing and Assembly)</span>
+				  <div class="item-detail">
+					Utilisez régulièrement des outils <a href="https://jlcdfm.com/" target="_blank" rel="noopener">DFMA/DRC</a> pendant le routage pour vérifier que le design final reste dans les limites fabricables.
+				  </div>
+				</li>
+			  </ul>
+			</section>
+
+			<section class="card">
+				<h2>PCB Layout — Contraintes physiques</h2>
+				<ul class="toggle-list">
+				
+					<li class="has-detail">
+					  <span class="item-label">Contour de carte</span>
+					  <div class="item-detail">
+						Définissez le contour du PCB tôt, en fonction des contraintes mécaniques réalistes — dimensions globales, forme, angles, découpes. 
+						Intégrez les limites de hauteur et les zones d’exclusion mécaniques, et assurez-vous que le design reste dans les dimensions mini / maxi et les contraintes de panélisation de votre fabricant PCB.
+					  </div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Trous de fixation</span>
+						<div class="item-detail">
+							Ajoutez les trous de fixation tôt avec des espacements, dimensions de pastilles et dégagements cohérents, et verrouillez leur position, 
+							afin que les supports mécaniques et le boîtier puissent être conçus en confiance.
+							Réservez autour des trous de fixation des zones d’exclusion de cuivre pour les rondelles, entretoises, et pour éviter des connexions châssis non intentionnelles.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Connecteurs</span>
+						<div class="item-detail">
+							Fixez la position et l’orientation des connecteurs tôt, et alignez-les de manière cohérente au bord de carte pour que les câbles, façades et futurs boîtiers puissent être conçus pour s’y connecter de manière fiable.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Gros composants</span>
+						<div class="item-detail">
+							Placez tôt les composants hauts ou volumineux (par ex. transformateurs, dissipateurs, gros condensateurs, batteries) et verrouillez leurs positions, car ils influencent fortement le routage, les flux d’air et la conception du boîtier.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+						<span class="item-label">Composants critiques</span>
+						<div class="item-detail">
+							Identifiez et placez tôt les composants électriquement sensibles ou critiques en temps (par ex. oscillateurs, éléments RF, références de précision) afin que le routage et le plan de masse puissent être optimisés autour d’eux.
+						</div>
+					</li>
+					
+					<li class="has-detail">
+					  <span class="item-label">DFMA — Conception pour la fabricabilité &amp; l’assemblage : adapter votre design aux capacités de votre fabricant</span>
+					  <div class="item-detail">
+						Vérifiez tôt les contraintes PCB et assemblage (largeur / espace minimum, tailles de vias, tolérances, panélisation, espacement et hauteur des composants, limites de vernis / sérigraphie et tolérances de perçage) 
+						pour vous assurer que le design peut être produit de manière constante et à coût raisonnable. 
+						Configurez les règles de conception de votre ECAD pour qu’elles correspondent aux capacités de votre fabricant, afin que les violations soient détectées automatiquement plutôt qu’au moment de la fabrication. 
+						Utilisez régulièrement des outils <a href="https://jlcdfm.com/" target="_blank" rel="noopener">DFMA/DRC</a> pendant le routage pour vérifier que le design final reste dans les limites fabricables.
+					  </div>
+					</li>
+					
 				</ul>
-			  </section>
+			</section>
 
-			  <section class="card">
+			<section class="card">
+			  <h2>Stack-up &amp; plans</h2>
+			  <ul class="toggle-list">
+			  
+				<li class="has-detail">
+				  <span class="item-label">Définir le stack-up tôt</span>
+				  <div class="item-detail">
+					Validez la pile de couches (stack-up) au début du routage — y compris matériaux, poids de cuivre, épaisseurs diélectriques, 
+					et éventuelles couches à impédance contrôlée — pour que la stratégie de routage, la maîtrise EMI et la fabricabilité reposent sur une structure stable. 
+					Choisissez des matériaux adaptés à l’environnement et à la production (par ex. température de fonctionnement, profils de refusion, exigences de fiabilité), 
+					et confirmez que le stack-up est supporté par votre fabricant PCB au coût et au niveau de capacité nécessaires. 
+					Assurez-vous aussi que les matériaux et distances retenus respectent les normes et réglementations pertinentes (par ex. classe IPC, indice d’inflammabilité UL, RoHS/REACH et exigences locales de conformité).
+				  </div>
+				</li>
+				
+				<li class="has-detail">
+				  <span class="item-label">Donner la priorité à un plan de masse solide</span>
+				  <div class="item-detail">
+					Utilisez un plan de masse continu et non fragmenté autant que possible. Placez le plan d’alimentation principal sur la couche adjacente afin que le couple masse–alimentation 
+					forme un condensateur serré, réduisant la surface de boucle et améliorant l’immunité au bruit.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Cartes 2 couches : utiliser des plans de cuivre pour l’alim et la masse</span>
+				  <div class="item-detail">
+					Sur les designs 2 couches, utilisez de larges zones de cuivre pour la masse et l’alimentation plutôt que des pistes fines, et cousez 
+					libéralement les zones de top et de bottom avec des vias pour abaisser l’impédance et améliorer la continuité du chemin de retour.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Éviter les plans découpés autant que possible</span>
+				  <div class="item-detail">
+					Les plans découpés ou fragmentés obligent les courants de retour à contourner les fentes, ce qui augmente le bruit et le risque EMI. 
+					Gardez les plans solides sauf si une séparation est absolument nécessaire — et si vous devez découper, contrôlez les endroits où les signaux traversent.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Préférer une distribution d’alimentation en étoile / point unique</span>
+				  <div class="item-detail">
+					Alimentez les charges principales ou les circuits sensibles à partir d’un point de distribution unique et bien défini plutôt que de chaîner les composants les uns après les autres. 
+					Cela aide à éviter que des courants de retour partagés ne modulent d’autres circuits et réduit les rebonds de masse (ground bounce).
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Ne jamais router de signaux rapides / à fronts raides au-dessus de coupures de plan</span>
+				  <div class="item-detail">
+					Un signal rapide renvoie son courant sous sa piste via le plan de référence le plus proche. 
+					Si la piste traverse une fente de plan, le courant de retour doit faire un détour — ce qui augmente la surface de boucle, ajoute de l’EMI 
+					et dégrade l’intégrité du signal. Gardez toujours les pistes rapides au-dessus d’un plan de référence continu.
+					<br><br>
+					Cela s’applique aux signaux à fronts rapides tels que :
+					<ul>
+					  <li>horloges</li>
+					  <li>USB / Ethernet / HDMI / SERDES</li>
+					  <li>bus mémoire DDR</li>
+					  <li>SPI sur MCU rapides</li>
+					  <li>et de manière générale tout ce dont le temps de montée est plus rapide que ~5–10&nbsp;ns</li>
+					</ul>
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Router les signaux rapides à proximité d’un plan de masse</span>
+				  <div class="item-detail">
+					Conservez autant que possible les signaux à fronts rapides directement au-dessus d’un plan de masse continu. 
+					Cela fournit une impédance définie, un chemin de retour court, des émissions plus faibles et moins de diaphonie — particulièrement pour les horloges, SERDES, USB, HDMI et bus MCU rapides.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Zoner la carte pour l’analogique, le numérique et la puissance</span>
+				  <div class="item-detail">
+					Séparez physiquement les sections analogiques, numériques et de puissance afin que les courants de retour bruyants ne circulent pas dans les chemins de masse sensibles analogiques. 
+					Placez les circuits analogiques les plus sensibles le plus loin possible des régulateurs à découpage, horloges et fronts digitaux rapides.
+				  </div>
+				</li>
+
+			  </ul>
+			</section>
+
+			<section class="card">
+			  <h2>Intégrité du signal &amp; routage</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail">
+				  <span class="item-label">Contrôler le chemin de retour et minimiser la surface de boucle</span>
+				  <div class="item-detail">
+					Les signaux rapides et à fronts raides forment une boucle avec leur courant de retour, qui doit circuler directement sous la piste dans le plan de référence solide le plus proche. 
+					Maintenez un plan continu sous le routage critique pour que le courant de retour n’ait pas à contourner des coupures — les ruptures du chemin de retour augmentent la surface de boucle, le bruit et l’EMI. 
+					Des pistes plus courtes et des paires aller/retour étroitement couplées réduisent encore l’inductance et améliorent l’intégrité du signal.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Ajouter des vias de masse de couture près des transitions de couche</span>
+				  <div class="item-detail">
+					Lorsqu’un signal rapide change de couche, le courant de retour doit aussi changer de plan. 
+					Placez un via de masse de couture près du via de signal pour fournir un chemin de retour court et contrôlé et réduire l’inductance de boucle.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Garder les horloges courtes et isolées</span>
+				  <div class="item-detail">
+					Les nets d’horloge commutent en permanence et rayonnent de l’énergie. 
+					Routez-les aussi courts que possible, au-dessus d’un plan de référence solide, et gardez-les éloignés des nœuds analogiques sensibles ou à haute impédance.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Préférer les coudes à 45° aux coudes à 90°</span>
+				  <div class="item-detail">
+					Les angles à 45° (ou courbes douces) offrent un routage plus propre, maintiennent une impédance plus constante, réduisent la concentration de courant 
+					et évitent de créer des stubs inutiles — particulièrement utile en RF et pour les fronts rapides.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Éviter les longues pistes et les composants traversants en RF / fronts rapides</span>
+				  <div class="item-detail">
+					À haute fréquence (en gros au-delà de 80&nbsp;MHz et pour la logique à fronts rapides), les broches traversantes et longues pistes ajoutent une inductance significative et se comportent comme de petites antennes. 
+					Préférez les composants CMS et gardez les pistes aussi courtes que possible. 
+					Évitez les stubs ou segments de piste inutilisés — par exemple des pastilles de test ou des branches de vias formant des « pendeloques » — car ils créent des réflexions et des points de rayonnement. 
+					Notez que même ~10&nbsp;cm de piste peuvent agir comme antenne efficace dans la bande FM.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Réduire la diaphonie en espaçant les pistes parallèles (≥ 3× la largeur de piste)</span>
+				  <div class="item-detail">
+					Les longues pistes parallèles et proches se couplent par capacité et inductance. 
+					Évitez de faire courir des signaux en parallèle sur de longues distances — et si c’est inévitable, gardez un espacement d’au moins trois fois la largeur de piste ou routez au-dessus d’un plan de référence solide avec un bon contrôle du chemin de retour.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Éviter de router des signaux bruyants près des bords de carte</span>
+				  <div class="item-detail">
+					Des signaux rapides et bruyants proches du bord de PCB rayonnent plus facilement et sont plus sensibles aux interférences. 
+					Gardez autant que possible les nets de commutation et à haute vitesse éloignés du périmètre.
+				  </div>
+				</li>
+				
+				<li class="has-detail">
+				  <span class="item-label">Éloigner les composants et routages du quartz / oscillateur</span>
+				  <div class="item-detail">
+					Les quartz et oscillateurs sont sensibles au bruit et aux capacités parasites. 
+					Évitez de placer des composants non liés près du quartz et ne routez pas d’autres signaux directement sous ou autour du réseau de l’oscillateur. 
+					Laisser quelques centimètres de dégagement aide à maintenir la stabilité en fréquence, à minimiser le couplage dans le chemin de retour de l’oscillateur et à préserver la marge de démarrage.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Donner aux entrées non utilisées un état logique défini</span>
+				  <div class="item-detail">
+					Les entrées flottantes peuvent osciller, injecter du bruit ou augmenter la consommation. 
+					Suivez la datasheet et utilisez des résistances de tirage (pull-up/down) comme recommandé afin que chaque entrée non utilisée ait un niveau logique propre et défini.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Utiliser des résistances série ou de petits réseaux RC pour contrôler les fronts et le ringing (si le protocole le permet)</span>
+				  <div class="item-detail">
+					L’ajout d’une petite résistance série (typiquement 10–100&nbsp;Ω), et dans certains cas d’un petit réseau RC, peut ralentir des fronts très 
+					rapides et amortir le ringing et les interférences électromagnétiques (EMI) sur des pistes ou câbles longs ou bruyants. 
+					Cela réduit les émissions rayonnées, améliore l’intégrité du signal et peut également limiter le courant de surtension dans les composants. 
+					Appliquez cette technique uniquement lorsque les exigences de temporisation et de vitesse de transition du protocole sont toujours respectées et que le délai supplémentaire est acceptable.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Paires différentielles : garder longueurs égales, espacement constant et impédance adaptée</span>
+				  <div class="item-detail">
+					Routez les paires différentielles ensemble avec un espacement et une largeur constants pour maintenir une impédance équilibrée. 
+					Évitez les stubs et les branches sur la paire — vias, pastilles de test ou segments de piste inutilisés formant des « pendeloques » introduisent des réflexions et du déséquilibre. 
+					Minimisez le skew et faites de l’appariement de longueur seulement si l’interface l’exige.					
+					<br><br>
+					Exemples courants de paires différentielles :
+					<ul>
+					  <li>USB&nbsp;2.0 (D+ / D-) et les lignes USB&nbsp;3.x</li>
+					  <li>Ethernet (TX+/TX-, RX+/RX-)</li>
+					  <li>Liaisons LVDS et interfaces caméra / affichage</li>
+					  <li>Lignes PCIe</li>
+					  <li>Lignes HDMI / DisplayPort</li>
+					  <li>Groupes d’adresses / commandes ou de données DDR lorsque spécifié par le fabricant de mémoire</li>
+					</ul>
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">N’apparier les longueurs que lorsque la temporisation ou le protocole l’exige</span>
+				  <div class="item-detail">
+					L’appariement de longueurs ajoute de la complexité et des méandres supplémentaires, ce qui peut augmenter la diaphonie et les pertes. 
+					N’appariez les longueurs que lorsque l’interface requiert une temporisation contrôlée (par ex. DDR, certains bus SERDES) — sinon, gardez le routage simple et direct.
+				  </div>
+				</li>
+
+			  </ul>
+			</section>
+
+			<section class="card">
+			  <h2>Découplage &amp; intégrité d’alimentation</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail">
+				  <span class="item-label">Placer un condensateur de découplage local sur chaque broche d’alimentation d’IC</span>
+				  <div class="item-detail">
+					Chaque broche d’alimentation (VCC, VDD, etc.) d’un circuit intégré doit avoir son propre condensateur de découplage local pour fournir un réservoir d’énergie à faible impédance au niveau du composant et maintenir 
+					le rail stable lors des transitoires de courant rapides. 
+					Un condensateur MLCC (Multilayer Ceramic Capacitor) de 0,1&nbsp;µF est un bon découpleur haute fréquence généraliste — 
+					placez-le aussi près que physiquement possible de la broche d’alimentation de l’IC et de son retour vers 
+					la masse, avec des pistes très courtes et un minimum de vias.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Minimiser la surface de boucle cond–VCC–GND</span>
+				  <div class="item-detail">
+					Le condensateur de découplage, la broche d’alimentation et le retour à la masse forment une boucle. 
+					Gardez cette boucle extrêmement petite (connexions courtes et larges, via direct vers le plan de masse) pour réduire l’inductance et améliorer la réponse transitoire ainsi que les performances EMI.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Ajouter des condensateurs de réserve (« bulk ») par rail ou par zone</span>
+				  <div class="item-detail">
+					Placez de la capacité de réserve (typiquement 1–10&nbsp;µF ou plus selon besoin) près des charges importantes ou là où l’alimentation entre sur la carte ou un sous-ensemble.
+					Ces condensateurs supportent la demande de courant basse fréquence et stabilisent les régulateurs et les longues lignes de distribution d’alimentation.
+					<small>Remarque : vérifiez dans les datasheets de chaque régulateur déjà conçu les plages de capacité de sortie et d’ESR (Equivalent Series Resistance) autorisées, 
+					car une capacité excessive ou une ESR très faible peuvent affecter la stabilité ou le comportement au démarrage.</small>
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Utiliser des plans ou des pistes larges pour l’alimentation</span>
+				  <div class="item-detail">
+					Les rails d’alimentation doivent avoir une faible résistance et une faible inductance pour minimiser la chute de tension et améliorer la réponse transitoire. 
+					Utilisez des plans d’alimentation ou des pistes de cuivre larges, et évitez les étranglements brusques qui créent un échauffement local et des baisses de tension lors des pics de courant. 
+					Gardez les pistes d’alimentation uniformément larges, en particulier près des régulateurs et des dispositifs à fort courant. 
+					Utilisez des <a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width" target="_blank" rel="noopener">calculateurs</a> pour garantir une section de cuivre suffisante.
+
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Routage en étoile des alimentations analogiques sensibles lorsque possible</span>
+				  <div class="item-detail">
+					Les circuits analogiques sensibles ne doivent pas partager leurs chemins d’alimentation ou de retour avec des charges numériques bruyantes.
+					Utilisez un routage de type étoile ou des zones d’alimentation séparées, plutôt que du chaînage, pour que les courants de commutation à fort courant ne modulent pas les références analogiques de précision ou les entrées d’ADC.
+					<small>
+					  Assurez-vous que le point d’étoile est un nœud de référence bien défini, car les chutes de tension dans les retours partagés peuvent sinon créer des erreurs de biais dans les mesures analogiques.
+					  Ce point d’étoile est souvent placé près de :
+					  <ul>
+						<li>la broche de référence de l’ADC</li>
+						<li>la sortie ou la broche sense du régulateur</li>
+						<li>le point d’étoile de masse système ou la connexion châssis</li>
+					  </ul>
+					</small>
+				  </div>
+				</li>
+
+			  </ul>
+			</section>
+
+			<section class="card">
 				<h2>Vias</h2>
-				<ul>
-				  <li>Éviter les vias sur les nets haut-débit lorsque c’est possible</li>
-				  <li>Garder les vias des paires différentielles symétriques</li>
-				  <li>Utiliser des vias de couture autour des zones RF/analogiques</li>
-				  <li>Éviter les vias-dans-les-pads sauf s’ils sont remplis &amp; métallisés (VIPPO)</li>
-				  <li>Utiliser des pastilles thermiques sur les vias connectés aux plans pour faciliter la soudure</li>
-				</ul>
-			  </section>
+				<ul class="toggle-list">
 
-			  <section class="card">
-				<h2>Surtensions &amp; protection ESD</h2>
-				<ul>
-				  <li>Protéger toutes les E/S externes au niveau des connecteurs contre l’ESD / les surtensions</li>
-				  <li>Utiliser des diodes TVS près des connecteurs, avec une liaison vers la masse (ou le châssis) courte et large</li>
-				  <li>Choisir des TVS à faible capacité pour les lignes haut-débit (USB, HDMI, etc.)</li>
-				  <li>Lorsque le protocole le permet, ajouter des résistances série ou de petits filtres RC sur les lignes longues ou bruyantes pour limiter le courant de surtension et l’oscillation</li>
-				  <li>Pour les entrées d’alimentation, envisager une protection contre l’inversion de polarité (diode ou MOSFET idéal), une TVS d’entrée (et éventuellement un fusible ou PTC), ainsi qu’un filtre LC/π pour limiter le bruit conduit</li>
-				  <li>Garder le chemin de retour du courant ESD local : ne pas forcer ce courant à traverser les masses de circuits sensibles</li>
-				  <li>Utiliser des selfs de mode commun sur les câbles longs si les émissions ou la susceptibilité posent problème</li>
-				</ul>
-			  </section>
+					<li class="has-detail">
+					  <span class="item-label">Minimiser les vias sur les signaux rapides et très rapides</span>
+					  <div class="item-detail">
+						Les vias introduisent des discontinuités d’impédance et ajoutent de l’inductance, ce qui peut dégrader les signaux rapides ou critiques en temporisation. 
+						Évitez les changements de couche non nécessaires autant que possible.
+						Sur les interfaces très rapides, la partie inutilisée du fût de via se comporte aussi comme un stub et peut provoquer des réflexions. 
+						Gardez ces stubs de via courts en choisissant des transitions de couche adaptées, ou en utilisant des microvias borgnes / enterrés ou le backdrilling lorsque l’interface le nécessite.
+					  </div>
+					</li>
 
-			  <section class="card">
-				<h2>Cheminement &amp; isolement (important au-delà de &gt;30&nbsp;V)</h2>
-				<ul>
-				  <li>Suivre l’IPC-2221 ou les normes de sécurité applicables</li>
-				  <li>Augmenter les distances dans les environnements humides/sales</li>
-				  <li>Des fentes peuvent augmenter le cheminement si nécessaire</li>
-				</ul>
-			  </section>
+					<li class="has-detail">
+						<span class="item-label">Garder les vias de paires différentielles symétriques</span>
+						<div class="item-detail">
+						  Si des vias sont nécessaires sur des paires différentielles, routez les deux signaux avec des structures de vias identiques
+						  pour maintenir une longueur électrique égale et minimiser le skew ou la conversion de mode (différentiel ↔ mode commun).
+						</div>
+					</li>
 
-			  <section class="card">
-				<h2>Courants élevés &amp; température</h2>
-				<ul>
-				  <li>Connaître les plages de courant &amp; de température</li>
-				  <li>Dimensionner les pistes à l’aide de calculateurs</li>
-				  <li>Utiliser des élargissements spéciaux / une épaisseur de cuivre accrue pour les pistes à fort courant — 
-					<a href="https://jlcpcb.com/blog/track-width-vs-current-capacity-pcb-layout-tips">lien</a>
-				  </li>
-				</ul>
-			  </section>
+					<li class="has-detail">
+						<span class="item-label">Utiliser des vias de couture autour des zones RF et analogiques sensibles</span>
+						<div class="item-detail">
+						  Ajoutez des vias de masse de couture autour des sections RF, zones blindées et nœuds analogiques critiques 
+						  pour fournir un chemin de retour court, contenir les champs et réduire le couplage vers les circuits adjacents.
+						</div>
+					</li>
 
-			  <section class="card">
-				<h2>Fabricabilité (DFMA)</h2>
-				<ul>
-				  <li>Si possible, garder les composants CMS d’un seul côté</li>
-				  <li>Espacement des composants adapté à l’assemblage</li>
-				  <li>Empreintes précises (IPC-7351 recommandé)</li>
-				  <li>Prévoir des repères d’alignement pour le pick-and-place</li>
-				  <li>Utiliser autant que possible une orientation cohérente</li>
-				  <li>Prévoir la panélisation dès le début en cas de production en volume</li>
-				  <li>Connaître les limites de fabrication du PCB (largeur de piste, espacement, taille des vias, ouverture du vernis, etc.)</li>
-				</ul>
-				<p>Outils DFMA : <a href="https://jlcdfm.com/">https://jlcdfm.com/</a></p>
-			  </section>
+					<li class="has-detail">
+					  <span class="item-label">Éviter les vias dans pastille sauf s’ils sont remplis et métallisés (VIPPO)</span>
+					  <div class="item-detail">
+						Des vias ouverts dans les pastilles (sans remplissage ni métallisation de surface) peuvent aspirer la soudure pendant l’assemblage, entraînant un mauvais mouillage 
+						(la capacité de l’alliage en fusion à s’étaler et à adhérer à la surface métallique) ou un « tombstoning » (une extrémité d’un composant CMS se relève pendant la refusion et le composant se retrouve vertical). 
+						Si des vias dans pastille sont nécessaires pour les performances, utilisez des vias remplis et recouverts (VIPPO – Via-In-Pad Plated-Over) afin que la surface de la pastille reste plane et soudable.
+					  </div>
+					</li>
 
-			  <section class="card">
-				<h2>Design Rule Check</h2>
-				<ul>
-				  <li>Configurer les règles DRC dans l’ECAD avant de commencer le routage — <a href="https://jlcpcb.com/blog/how-to-run-design-rule-check">guide</a></li>
-				</ul>
-				<p><strong>Limites de base recommandées (vérifier d’abord la doc du fabricant) :</strong></p>
-				<ul>
-				  <li>Largeur de piste min. : ~6&nbsp;mil typique</li>
-				  <li>Espacement min. : ~6&nbsp;mil typique</li>
-				  <li>Perçage de via : ≥0.3&nbsp;mm typique</li>
-				  <li>Ouverture de vernis : 3–5&nbsp;mil</li>
-				</ul>
-			  </section>
+					<li class="has-detail">
+						<span class="item-label">Utiliser des pastilles thermiques (thermal relief) vers les plans</span>
+						<div class="item-detail">
+						  Relier directement des vias ou des pastilles à de grandes zones de cuivre rend la soudure difficile à cause de l’effet de dissipation thermique (heat-sinking).
+						  Les pastilles thermiques améliorent la soudabilité tout en assurant une bonne connexion électrique.
+						</div>
+					</li>
 
-			  <section class="card">
-				<h2>Design for Test (DFT)</h2>
-				<ul>
-				  <li>Ajouter des points de test sur les nets importants (GND, 3V3, 5V, reset, debug, UART, etc.)</li>
-				  <li>Assurer un espace d’accès suffisant pour les sondes</li>
-				</ul>
-			  </section>
+					<li class="has-detail">
+						<span class="item-label">Prendre en compte la capacité en courant d’une via</span>
+						<div class="item-detail">
+						  Chaque via a une capacité de courant limitée, dépendant de son diamètre, de l’épaisseur de métallisation et de l’élévation de température acceptable. 
+						  Utilisez plusieurs vias en parallèle pour les chemins à fort courant (par ex. distribution d’alimentation, sorties de régulateurs, drivers de moteurs), 
+						  et placez-les près de la pastille du composant ou de la transition de plan pour minimiser l’inductance de boucle.
+						</div>
+					</li>
 
-			  <section class="card">
-				<h2>Ressources</h2>
-				<ul>
-				  <li><a href="https://www.ti.com/lit/an/szza009/szza009.pdf">TI — PCB Design Guidelines For Reduced EMI</a></li>
-				  <li><a href="https://jlcpcb.com/blog/pcb-design-rules-best-practices">JLCPCB — PCB Design Rules &amp; Best Practices</a></li>
-				  <li><a href="https://resources.altium.com/fr/p/pcb-layout-guidelines">Altium — PCB Layout Guidelines</a></li>
-				  <li><a href="https://www.wonderfulpcb.com/blog/common-pcb-design-rules-for-reliable-manufacturable-boards/">WonderfulPCB — Common PCB Design Rules</a></li>
-				  <li><a href="https://shop.electronics.org/">Global Electronics Association / normes IPC</a></li>
+					<li class="has-detail">
+						<span class="item-label">Rester dans les capacités de via de votre fabricant</span>
+						<div class="item-detail">
+						  Vérifiez les capacités de votre fabricant PCB en termes de diamètre de perçage minimum, rapport d’aspect, anneau annulaire et options de remplissage / métallisation avant de finaliser la géométrie des vias. 
+						  Les microvias, VIPPO (Via-In-Pad Plated-Over) et vias empilés ne font pas forcément partie des procédés standards et peuvent impacter le rendement et le coût. 
+						  Alignez vos règles de conception sur ce que votre fabricant préféré peut produire de manière fiable.
+						</div>
+					</li>
 				</ul>
-			  </section>
+			</section>
 
-			  <section class="card">
-				<h2>Calculatrices</h2>
-				<ul>
-				  <li><a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width">Digi-Key — Calculateur de largeur de piste PCB</a></li>
-				  <li>Utiliser des calculateurs d’impédance pour les conceptions différentielles/haut-débit</li>
-				</ul>
-			  </section>
+			<section class="card">
+			  <h2>Transitoires de tension &amp; protection ESD</h2>
+			  <ul class="toggle-list">
 
-			  <section class="card">
-				<h2>Normes pertinentes (disponibles commercialement auprès de Global Electronics Association / IPC)</h2>
-				<ul>
-				  <li>IPC-2221 — Règles génériques de conception PCB : routage, espacements, matériaux, fiabilité.</li>
-				  <li>IPC-2222 — Exigences de conception spécifiques aux cartes rigides.</li>
-				  <li>IPC-6012 — Règles de performance et de qualification pour les cartes rigides.</li>
-				  <li>IPC-A-600 — Critères d’acceptabilité visuelle des PCB nus.</li>
-				  <li>IPC-7351 — Règles de conception des empreintes CMS (land-pattern).</li>
-				  <li>IPC-4101 — Spécifications des laminés et prépregs pour PCB rigides.</li>
-				  <li>IPC-2615 — Formats standards pour les données de fabrication PCB.</li>
-				  <li>IPC-6013 — Règles de performance et de qualification pour les PCB flex et flex-rigides.</li>
-				</ul>
-			  </section>
+				<li class="has-detail">
+				  <span class="item-label">Placer les diodes TVS près du connecteur avec un chemin de retour court</span>
+				  <div class="item-detail">
+					Les diodes TVS (Transient Voltage Suppressor) doivent être placées aussi près que possible du point d’entrée du transitoire, 
+					avec un cuivre court et large vers la référence ESD choisie (masse ou châssis) afin de minimiser l’inductance et de « pincer » l’évènement localement.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Garder les courants de retour ESD locaux</span>
+				  <div class="item-detail">
+					Le courant ESD doit revenir vers la masse ou le châssis à proximité du point d’injection. 
+					Évitez les layouts qui forcent les courants ESD à traverser des régions de masse analogiques ou numériques sensibles avant de rejoindre leur référence.
+				  </div>
+				</li>
+
+			  </ul>
+			</section>
+
+			<section class="card">
+			  <h2>Creepage &amp; clearance (important au-delà de &gt;30&nbsp;V)</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail">
+				  <span class="item-label">Suivre IPC-2221 ou la norme de sécurité applicable</span>
+				  <div class="item-detail">
+					Les distances minimales de creepage (le long de la surface du PCB) et de clearance (dans l’air) dépendent de la tension de service, du degré de pollution, de la classe d’isolation et du groupe de matériau. 
+					Utilisez <a href="#Electronic_Standards" target="_blank" rel="noopener">IPC-2221</a> comme guide général, mais suivez la norme de sécurité produit pertinente (par ex. IEC/UL 61010, 60950/62368, 60335, médical, automobile) dès qu’elle impose des distances spécifiques.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Augmenter les distances en environnements humides, poussiéreux ou contaminés</span>
+				  <div class="item-detail">
+					L’humidité et les contaminants réduisent la rigidité diélectrique de l’air et augmentent la conductivité de surface, abaissant la tension à laquelle se produisent amorçage ou tracking. 
+					Considérez les environnements extérieurs, industriels ou très humides comme ayant un degré de pollution plus élevé et prévoyez des marges supplémentaires de creepage et de clearance.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Utiliser des fentes ou barrières pour augmenter la distance de creepage</span>
+				  <div class="item-detail">
+					Lorsque l’espace sur la carte est restreint, des fentes fraisées, gorges ou barrières isolantes peuvent augmenter le chemin de surface (creepage) entre des nœuds haute tension. 
+					Assurez-vous que les bords sont propres et métallisés correctement (ou non métallisés, selon les exigences du design).
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Tenir compte des revêtements et isolations supplémentaires</span>
+				  <div class="item-detail">
+					Les vernis de tropicalisation, le potting ou les barrières physiques peuvent modifier les distances de creepage et de clearance requises dans certaines normes. 
+					Si vous vous appuyez sur ces éléments pour la sécurité, assurez-vous que les matériaux choisis, leur épaisseur et le procédé d’application sont explicitement autorisés par la norme pertinente et qualifiés en conséquence.
+				  </div>
+				</li>
+				
+			  </ul>
+			</section>
+
+			<section class="card">
+			  <h2>Fort courant &amp; température</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail">
+				  <span class="item-label">Connaître vos limites de courant et de température</span>
+				  <div class="item-detail">
+					Estimez les courants max. continus et de pic, la plage complète de température ambiante et l’élévation de température admissible pour chaque chemin d’alimentation. 
+					Rappelez-vous que les connecteurs, vias, plans et composants contribuent tous à la résistance et à l’échauffement — pas seulement les pistes. 
+					Confirmez également les capacités de votre fabricant PCB (par ex. poids de cuivre, épaisseur de métallisation et rapport d’aspect des vias), car elles impactent directement la capacité en courant et la fiabilité.
+				  </div>
+				</li>
+
+
+				<li class="has-detail">
+				  <span class="item-label">Dimensionner les pistes de cuivre à l’aide de calculateurs ou des normes</span>
+				  <div class="item-detail">
+					Utilisez des <a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width" target="_blank" rel="noopener">calculateurs de largeur de piste PCB</a> et les lignes directrices IPC pour choisir une largeur et une épaisseur de cuivre adaptées au courant attendu et à l’élévation de température permise. 
+					Tenez compte à la fois des couches externes et internes, car les pistes enterrées chauffent davantage pour un même courant.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Élargir ou renforcer les chemins de fort courant</span>
+				  <div class="item-detail">
+					Utilisez un cuivre plus large, un cuivre plus épais, des zones de cuivre (pours) ou plusieurs pistes parallèles pour le routage des forts courants. 
+					Ajoutez plusieurs vias entre couches pour partager le courant et réduire les échauffements locaux. 
+					Guide pratique :
+					<a href="https://jlcpcb.com/blog/track-width-vs-current-capacity-pcb-layout-tips" target="_blank" rel="noopener">track width vs current capacity</a>.
+				  </div>
+				</li>
+
+			  </ul>
+			</section>
+
+			<section class="card">
+			  <h2>Conception pour le test (DFT)</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail">
+				  <span class="item-label">Ajouter des points de test sur les nets clés</span>
+				  <div class="item-detail">
+					Prévoyez des pastilles ou vias de test accessibles sur les signaux importants tels que GND, rails d’alimentation (par ex. 3V3, 5V), reset, horloges, interfaces de débogage, UART et autres nœuds de contrôle ou de mesure critiques. 
+					Cela simplifie la mise en route, le diagnostic de pannes et les tests de production.
+					<small>
+					  Remarque : évitez de placer des pastilles de test directement sur les nets rapides ou à impédance contrôlée, car le stub ajouté peut provoquer des réflexions et dégrader le signal. 
+					  Si une mesure est nécessaire, envisagez des sondes à haute impédance, des pastilles de test appariées (adaptées) ou une mesure sur un nœud bufferisé 
+					  (copie du signal prélevée en sortie d’un buffer ou d’un dispositif d’isolement), afin que la mesure ne perturbe pas le signal original. 
+					</small>
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Assurer l’accès physique des sondes</span>
+				  <div class="item-detail">
+					Laissez suffisamment de dégagement autour des points de test pour les sondes d’oscilloscope ou de multimètre, ou pour les « bed-of-nails » ou supports à pogo-pins en production. 
+					Évitez de placer des points de test sous des composants hauts ou des dissipateurs, sauf si des outillages dédiés sont prévus.
+				  </div>
+				</li>
+
+				<li class="has-detail">
+				  <span class="item-label">Regrouper et étiqueter les points de test de manière cohérente</span>
+				  <div class="item-detail">
+					Un regroupement logique et un marquage sérigraphique clair réduisent les erreurs de câblage et accélèrent le débogage. 
+					Dans la mesure du possible, alignez les points de test sur une grille pour faciliter l’utilisation de gabarits ou outillages automatisés / semi-automatisés.
+				  </div>
+				</li>
+
+			  </ul>
+			</section>
+
+
+		  <section class="card">
+			<h2>Ressources</h2>
+			<ul>
+			  <li><a href="https://www.ti.com/lit/an/szza009/szza009.pdf" target="_blank" rel="noopener">TI — PCB Design Guidelines For Reduced EMI</a></li>
+			  <li><a href="https://jlcpcb.com/blog/pcb-design-rules-best-practices" target="_blank" rel="noopener">JLCPCB — PCB Design Rules &amp; Best Practices</a></li>
+			  <li><a href="https://resources.altium.com/fr/p/pcb-layout-guidelines" target="_blank" rel="noopener">Altium — PCB Layout Guidelines</a></li>
+			  <li><a href="https://www.wonderfulpcb.com/blog/common-pcb-design-rules-for-reliable-manufacturable-boards/" target="_blank" rel="noopener">WonderfulPCB — Common PCB Design Rules</a></li>
+			  <li><a href="https://shop.electronics.org/" target="_blank" rel="noopener">Global Electronics Association / normes IPC</a></li>
+			</ul>
+		  </section>
+
+		  <section class="card">
+			<h2>Calculateurs</h2>
+			<ul>
+			  <li><a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width" target="_blank" rel="noopener">Digi-Key — Calculateur de largeur de piste PCB</a></li>
+			  <li><a href="https://www.pcbway.com/pcb_prototype/impedance_calculator.html?utm_source=chatgpt.com" target="_blank" rel="noopener">PCBWay — Calculateur d’impédance de piste</a></li>
+			</ul>
+		  </section>
+
+		  <section class="card" id="Electronic_Standards">
+			<h2>Normes pertinentes (disponibles commercialement auprès de <a href="https://shop.electronics.org/" target="_blank" rel="noopener">Global Electronics Association / IPC</a>)</h2>
+			<ul>
+			  <li>IPC-2221 — Règles génériques de conception PCB : routage, espacements, matériaux, fiabilité.</li>
+			  <li>IPC-2222 — Exigences de conception spécifiques aux cartes rigides.</li>
+			  <li>IPC-6012 — Règles de performance et de qualification pour les cartes rigides.</li>
+			  <li>IPC-A-600 — Critères d’acceptabilité visuelle pour les circuits imprimés nus.</li>
+			  <li>IPC-7351 — Règles standard de conception d’empreintes (land-patterns) pour composants CMS.</li>
+			  <li>IPC-4101 — Spécifications des matériaux laminés et prépregs pour cartes rigides.</li>
+			  <li>IPC-2615 — Formats standard pour les données de fabrication des PCB.</li>
+			  <li>IPC-6013 — Règles de performance et de qualification pour les cartes flexibles et flex-rigides.</li>
+			</ul>
+		  </section>
 
 		</main>
 
@@ -252,10 +867,12 @@
 		  <div class="container footer-inner">
 			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
 			<p>
-			  <a class="footer-link" href="legal.html">Legal mentions</a>
-			  <a class="footer-link" href="privacy.html">Privacy policy</a>
+			  <a class="footer-link" href="legal.html">Mentions légales</a>
+			  <a class="footer-link" href="privacy.html">Politique de confidentialité</a>
 			</p>
 		  </div>
 		</footer>
+
+		<script src="../js/main.js"></script>
 	</body>
 </html>
