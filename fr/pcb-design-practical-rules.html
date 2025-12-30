@@ -54,208 +54,208 @@
 			</div>
 		  </div>
 		</header>
-
 		
+		<main class="container">
+			  <section class="hero">
+				<h1>Conception PCB — Guide pratique et aide‑mémoire</h1>
+				<p class="lead">Une checklist pratique, basée sur l'expérience, pour concevoir des cartes électroniques fiables, manufacturables et à faible bruit.</p>
+			  </section>
 
+			  <section class="card">
+				<h2>Schémas</h2>
+				<ul>
+				  <li>Grouper les circuits par fonction</li>
+				  <li>Utiliser un chemin de signal clair (de gauche → droite)</li>
+				  <li>Utiliser des symboles normalisés</li>
+				  <li>Nommer clairement les nets</li>
+				  <li>Annoter et documenter</li>
+				  <li>Marquer clairement la polarité &amp; la broche-1</li>
+				  <li>Nommer les connecteurs de manière explicite</li>
+				  <li>Inclure le nom de la carte, la révision et la date</li>
+				</ul>
+			  </section>
 
-		
-<main class="container">
-  <section class="hero">
-    <h1>Conception PCB — Guide pratique et aide‑mémoire</h1>
-    <p class="lead">Une checklist pratique, basée sur l'expérience, pour concevoir des cartes électroniques fiables, manufacturables et à faible bruit.</p>
-  </section>
+			  <section class="card">
+				<h2>Routage PCB — Contraintes physiques</h2>
+				<ul>
+				  <li>Contour de la carte</li>
+				  <li>Trous de fixation</li>
+				  <li>Connecteurs</li>
+				  <li>Gros composants</li>
+				  <li>Composants critiques</li>
+				  <li>DFMA – Conception pour la fabricabilité &amp; l’assemblage : connaître les capacités et contraintes du fabricant de PCB</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Schémas</h2>
-    <ul>
-      <li>Grouper les circuits par fonction</li>
-      <li>Utiliser un chemin de signal clair (de gauche → droite)</li>
-      <li>Utiliser des symboles normalisés</li>
-      <li>Nommer clairement les nets</li>
-      <li>Annoter et documenter</li>
-      <li>Marquer clairement la polarité &amp; la broche-1</li>
-      <li>Nommer les connecteurs de manière explicite</li>
-      <li>Inclure le nom de la carte, la révision et la date</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Empilage &amp; plans</h2>
+				<ul>
+				  <li>Définir l’empilage le plus tôt possible</li>
+				  <li>Donner la priorité à un plan de masse solide, puis au plan d’alimentation, en gardant les deux plans directement l’un au-dessus de l’autre afin de minimiser la surface de boucle</li>
+				  <li>Sur les cartes 2 couches, utiliser des plans de cuivre pour l’alimentation et la masse et relier les plans supérieur/inférieur avec de nombreux vias</li>
+				  <li>Éviter les plans découpés lorsque c’est possible</li>
+				  <li>Préférer une distribution d’alimentation en étoile / point unique plutôt qu’en chaîne, surtout pour les charges bruyantes ou sensibles</li>
+				  <li>Ne jamais router des signaux haut-débit au-dessus de découpes de plan</li>
+				  <li>Privilégier le routage des signaux haut-débit à proximité d’un plan de masse</li>
+				  <li>Utiliser le zonage de la carte : séparer les sections analogiques, numériques et puissance — garder l’analogique sensible le plus éloigné possible des circuits numériques et de puissance bruyants</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Routage PCB — Contraintes physiques</h2>
-    <ul>
-      <li>Contour de la carte</li>
-      <li>Trous de fixation</li>
-      <li>Connecteurs</li>
-      <li>Gros composants</li>
-      <li>Composants critiques</li>
-      <li>DFMA – Conception pour la fabricabilité &amp; l’assemblage : connaître les capacités et contraintes du fabricant de PCB</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Intégrité du signal &amp; routage</h2>
+				<ul>
+				  <li>Les signaux retournent toujours sous leur piste dans le plan le plus proche</li>
+				  <li>Minimiser la longueur des pistes et la surface de boucle</li>
+				  <li>Ajouter des vias de masse de couture près des transitions de couche</li>
+				  <li>Garder les horloges courtes et isolées des nets sensibles</li>
+				  <li>Utiliser des angles de 45° au lieu de 90° (routage plus propre &amp; compatible RF)</li>
+				  <li>Au-dessus de 80&nbsp;MHz, éviter les composants traversants lorsque c’est possible pour réduire les inductances parasites. Les pistes de plus de 10&nbsp;cm peuvent poser problème en bande FM</li>
+				  <li>Pour réduire la diaphonie, éviter les longues sections en parallèle ; si inévitable, garder un espacement ≥ 3× la largeur de piste</li>
+				  <li>Éviter de router des pistes bruyantes près des bords de la carte</li>
+				  <li>Aucun composant non lié ne doit être à moins de 2.5&nbsp;cm du quartz</li>
+				  <li>Donner un état logique défini aux entrées inutilisées conformément au datasheet (pull-up ou pull-down)</li>
+				  <li>Le cas échéant, utiliser de petites résistances série côté source sur les GPIO MCU pour ralentir les fronts, et n’ajouter des filtres RC passe-bas que sur les signaux lents et non critiques</li>
+				  <li>Paires différentielles : garder une longueur égale, un espacement constant et une impédance adaptée</li>
+				  <li>Faire l’égalisation des longueurs uniquement lorsque le timing ou le protocole l’exige</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Empilage &amp; plans</h2>
-    <ul>
-      <li>Définir l’empilage le plus tôt possible</li>
-      <li>Donner la priorité à un plan de masse solide, puis au plan d’alimentation, en gardant les deux plans directement l’un au-dessus de l’autre afin de minimiser la surface de boucle</li>
-      <li>Sur les cartes 2 couches, utiliser des plans de cuivre pour l’alimentation et la masse et relier les plans supérieur/inférieur avec de nombreux vias</li>
-      <li>Éviter les plans découpés lorsque c’est possible</li>
-      <li>Préférer une distribution d’alimentation en étoile / point unique plutôt qu’en chaîne, surtout pour les charges bruyantes ou sensibles</li>
-      <li>Ne jamais router des signaux haut-débit au-dessus de découpes de plan</li>
-      <li>Privilégier le routage des signaux haut-débit à proximité d’un plan de masse</li>
-      <li>Utiliser le zonage de la carte : séparer les sections analogiques, numériques et puissance — garder l’analogique sensible le plus éloigné possible des circuits numériques et de puissance bruyants</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Découplage &amp; intégrité de l’alimentation</h2>
+				<ul>
+				  <li>Utiliser des condensateurs de découplage</li>
+				  <li>Placer un MLCC de 0.1&nbsp;µF près de chaque broche d’alimentation d’un CI</li>
+				  <li>Garder la boucle entre condo–VCC–GND aussi courte que possible</li>
+				  <li>Ajouter des condensateurs de capacité globale par rail/région (1–10&nbsp;µF typ.)</li>
+				  <li>Utiliser des plans ou pistes larges pour l’alimentation</li>
+				  <li>Éviter les rétrécissements étroits sur les pistes d’alimentation</li>
+				  <li>Réaliser un routage en étoile pour les alimentations analogiques sensibles lorsque c’est possible</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Intégrité du signal &amp; routage</h2>
-    <ul>
-      <li>Les signaux retournent toujours sous leur piste dans le plan le plus proche</li>
-      <li>Minimiser la longueur des pistes et la surface de boucle</li>
-      <li>Ajouter des vias de masse de couture près des transitions de couche</li>
-      <li>Garder les horloges courtes et isolées des nets sensibles</li>
-      <li>Utiliser des angles de 45° au lieu de 90° (routage plus propre &amp; compatible RF)</li>
-      <li>Au-dessus de 80&nbsp;MHz, éviter les composants traversants lorsque c’est possible pour réduire les inductances parasites. Les pistes de plus de 10&nbsp;cm peuvent poser problème en bande FM</li>
-      <li>Pour réduire la diaphonie, éviter les longues sections en parallèle ; si inévitable, garder un espacement ≥ 3× la largeur de piste</li>
-      <li>Éviter de router des pistes bruyantes près des bords de la carte</li>
-      <li>Aucun composant non lié ne doit être à moins de 2.5&nbsp;cm du quartz</li>
-      <li>Donner un état logique défini aux entrées inutilisées conformément au datasheet (pull-up ou pull-down)</li>
-      <li>Le cas échéant, utiliser de petites résistances série côté source sur les GPIO MCU pour ralentir les fronts, et n’ajouter des filtres RC passe-bas que sur les signaux lents et non critiques</li>
-      <li>Paires différentielles : garder une longueur égale, un espacement constant et une impédance adaptée</li>
-      <li>Faire l’égalisation des longueurs uniquement lorsque le timing ou le protocole l’exige</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Vias</h2>
+				<ul>
+				  <li>Éviter les vias sur les nets haut-débit lorsque c’est possible</li>
+				  <li>Garder les vias des paires différentielles symétriques</li>
+				  <li>Utiliser des vias de couture autour des zones RF/analogiques</li>
+				  <li>Éviter les vias-dans-les-pads sauf s’ils sont remplis &amp; métallisés (VIPPO)</li>
+				  <li>Utiliser des pastilles thermiques sur les vias connectés aux plans pour faciliter la soudure</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Découplage &amp; intégrité de l’alimentation</h2>
-    <ul>
-      <li>Utiliser des condensateurs de découplage</li>
-      <li>Placer un MLCC de 0.1&nbsp;µF près de chaque broche d’alimentation d’un CI</li>
-      <li>Garder la boucle entre condo–VCC–GND aussi courte que possible</li>
-      <li>Ajouter des condensateurs de capacité globale par rail/région (1–10&nbsp;µF typ.)</li>
-      <li>Utiliser des plans ou pistes larges pour l’alimentation</li>
-      <li>Éviter les rétrécissements étroits sur les pistes d’alimentation</li>
-      <li>Réaliser un routage en étoile pour les alimentations analogiques sensibles lorsque c’est possible</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Surtensions &amp; protection ESD</h2>
+				<ul>
+				  <li>Protéger toutes les E/S externes au niveau des connecteurs contre l’ESD / les surtensions</li>
+				  <li>Utiliser des diodes TVS près des connecteurs, avec une liaison vers la masse (ou le châssis) courte et large</li>
+				  <li>Choisir des TVS à faible capacité pour les lignes haut-débit (USB, HDMI, etc.)</li>
+				  <li>Lorsque le protocole le permet, ajouter des résistances série ou de petits filtres RC sur les lignes longues ou bruyantes pour limiter le courant de surtension et l’oscillation</li>
+				  <li>Pour les entrées d’alimentation, envisager une protection contre l’inversion de polarité (diode ou MOSFET idéal), une TVS d’entrée (et éventuellement un fusible ou PTC), ainsi qu’un filtre LC/π pour limiter le bruit conduit</li>
+				  <li>Garder le chemin de retour du courant ESD local : ne pas forcer ce courant à traverser les masses de circuits sensibles</li>
+				  <li>Utiliser des selfs de mode commun sur les câbles longs si les émissions ou la susceptibilité posent problème</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Vias</h2>
-    <ul>
-      <li>Éviter les vias sur les nets haut-débit lorsque c’est possible</li>
-      <li>Garder les vias des paires différentielles symétriques</li>
-      <li>Utiliser des vias de couture autour des zones RF/analogiques</li>
-      <li>Éviter les vias-dans-les-pads sauf s’ils sont remplis &amp; métallisés (VIPPO)</li>
-      <li>Utiliser des pastilles thermiques sur les vias connectés aux plans pour faciliter la soudure</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Cheminement &amp; isolement (important au-delà de &gt;30&nbsp;V)</h2>
+				<ul>
+				  <li>Suivre l’IPC-2221 ou les normes de sécurité applicables</li>
+				  <li>Augmenter les distances dans les environnements humides/sales</li>
+				  <li>Des fentes peuvent augmenter le cheminement si nécessaire</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Surtensions &amp; protection ESD</h2>
-    <ul>
-      <li>Protéger toutes les E/S externes au niveau des connecteurs contre l’ESD / les surtensions</li>
-      <li>Utiliser des diodes TVS près des connecteurs, avec une liaison vers la masse (ou le châssis) courte et large</li>
-      <li>Choisir des TVS à faible capacité pour les lignes haut-débit (USB, HDMI, etc.)</li>
-      <li>Lorsque le protocole le permet, ajouter des résistances série ou de petits filtres RC sur les lignes longues ou bruyantes pour limiter le courant de surtension et l’oscillation</li>
-      <li>Pour les entrées d’alimentation, envisager une protection contre l’inversion de polarité (diode ou MOSFET idéal), une TVS d’entrée (et éventuellement un fusible ou PTC), ainsi qu’un filtre LC/π pour limiter le bruit conduit</li>
-      <li>Garder le chemin de retour du courant ESD local : ne pas forcer ce courant à traverser les masses de circuits sensibles</li>
-      <li>Utiliser des selfs de mode commun sur les câbles longs si les émissions ou la susceptibilité posent problème</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Courants élevés &amp; température</h2>
+				<ul>
+				  <li>Connaître les plages de courant &amp; de température</li>
+				  <li>Dimensionner les pistes à l’aide de calculateurs</li>
+				  <li>Utiliser des élargissements spéciaux / une épaisseur de cuivre accrue pour les pistes à fort courant — 
+					<a href="https://jlcpcb.com/blog/track-width-vs-current-capacity-pcb-layout-tips">lien</a>
+				  </li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Cheminement &amp; isolement (important au-delà de &gt;30&nbsp;V)</h2>
-    <ul>
-      <li>Suivre l’IPC-2221 ou les normes de sécurité applicables</li>
-      <li>Augmenter les distances dans les environnements humides/sales</li>
-      <li>Des fentes peuvent augmenter le cheminement si nécessaire</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Fabricabilité (DFMA)</h2>
+				<ul>
+				  <li>Si possible, garder les composants CMS d’un seul côté</li>
+				  <li>Espacement des composants adapté à l’assemblage</li>
+				  <li>Empreintes précises (IPC-7351 recommandé)</li>
+				  <li>Prévoir des repères d’alignement pour le pick-and-place</li>
+				  <li>Utiliser autant que possible une orientation cohérente</li>
+				  <li>Prévoir la panélisation dès le début en cas de production en volume</li>
+				  <li>Connaître les limites de fabrication du PCB (largeur de piste, espacement, taille des vias, ouverture du vernis, etc.)</li>
+				</ul>
+				<p>Outils DFMA : <a href="https://jlcdfm.com/">https://jlcdfm.com/</a></p>
+			  </section>
 
-  <section>
-    <h2>Courants élevés &amp; température</h2>
-    <ul>
-      <li>Connaître les plages de courant &amp; de température</li>
-      <li>Dimensionner les pistes à l’aide de calculateurs</li>
-      <li>Utiliser des élargissements spéciaux / une épaisseur de cuivre accrue pour les pistes à fort courant — 
-        <a href="https://jlcpcb.com/blog/track-width-vs-current-capacity-pcb-layout-tips">lien</a>
-      </li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Design Rule Check</h2>
+				<ul>
+				  <li>Configurer les règles DRC dans l’ECAD avant de commencer le routage — <a href="https://jlcpcb.com/blog/how-to-run-design-rule-check">guide</a></li>
+				</ul>
+				<p><strong>Limites de base recommandées (vérifier d’abord la doc du fabricant) :</strong></p>
+				<ul>
+				  <li>Largeur de piste min. : ~6&nbsp;mil typique</li>
+				  <li>Espacement min. : ~6&nbsp;mil typique</li>
+				  <li>Perçage de via : ≥0.3&nbsp;mm typique</li>
+				  <li>Ouverture de vernis : 3–5&nbsp;mil</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Fabricabilité (DFMA)</h2>
-    <ul>
-      <li>Si possible, garder les composants CMS d’un seul côté</li>
-      <li>Espacement des composants adapté à l’assemblage</li>
-      <li>Empreintes précises (IPC-7351 recommandé)</li>
-      <li>Prévoir des repères d’alignement pour le pick-and-place</li>
-      <li>Utiliser autant que possible une orientation cohérente</li>
-      <li>Prévoir la panélisation dès le début en cas de production en volume</li>
-      <li>Connaître les limites de fabrication du PCB (largeur de piste, espacement, taille des vias, ouverture du vernis, etc.)</li>
-    </ul>
-    <p>Outils DFMA : <a href="https://jlcdfm.com/">https://jlcdfm.com/</a></p>
-  </section>
+			  <section class="card">
+				<h2>Design for Test (DFT)</h2>
+				<ul>
+				  <li>Ajouter des points de test sur les nets importants (GND, 3V3, 5V, reset, debug, UART, etc.)</li>
+				  <li>Assurer un espace d’accès suffisant pour les sondes</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Design Rule Check</h2>
-    <ul>
-      <li>Configurer les règles DRC dans l’ECAD avant de commencer le routage — <a href="https://jlcpcb.com/blog/how-to-run-design-rule-check">guide</a></li>
-    </ul>
-    <p><strong>Limites de base recommandées (vérifier d’abord la doc du fabricant) :</strong></p>
-    <ul>
-      <li>Largeur de piste min. : ~6&nbsp;mil typique</li>
-      <li>Espacement min. : ~6&nbsp;mil typique</li>
-      <li>Perçage de via : ≥0.3&nbsp;mm typique</li>
-      <li>Ouverture de vernis : 3–5&nbsp;mil</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Ressources</h2>
+				<ul>
+				  <li><a href="https://www.ti.com/lit/an/szza009/szza009.pdf">TI — PCB Design Guidelines For Reduced EMI</a></li>
+				  <li><a href="https://jlcpcb.com/blog/pcb-design-rules-best-practices">JLCPCB — PCB Design Rules &amp; Best Practices</a></li>
+				  <li><a href="https://resources.altium.com/fr/p/pcb-layout-guidelines">Altium — PCB Layout Guidelines</a></li>
+				  <li><a href="https://www.wonderfulpcb.com/blog/common-pcb-design-rules-for-reliable-manufacturable-boards/">WonderfulPCB — Common PCB Design Rules</a></li>
+				  <li><a href="https://shop.electronics.org/">Global Electronics Association / normes IPC</a></li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Design for Test (DFT)</h2>
-    <ul>
-      <li>Ajouter des points de test sur les nets importants (GND, 3V3, 5V, reset, debug, UART, etc.)</li>
-      <li>Assurer un espace d’accès suffisant pour les sondes</li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Calculatrices</h2>
+				<ul>
+				  <li><a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width">Digi-Key — Calculateur de largeur de piste PCB</a></li>
+				  <li>Utiliser des calculateurs d’impédance pour les conceptions différentielles/haut-débit</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Ressources</h2>
-    <ul>
-      <li><a href="https://www.ti.com/lit/an/szza009/szza009.pdf">TI — PCB Design Guidelines For Reduced EMI</a></li>
-      <li><a href="https://jlcpcb.com/blog/pcb-design-rules-best-practices">JLCPCB — PCB Design Rules &amp; Best Practices</a></li>
-      <li><a href="https://resources.altium.com/fr/p/pcb-layout-guidelines">Altium — PCB Layout Guidelines</a></li>
-      <li><a href="https://www.wonderfulpcb.com/blog/common-pcb-design-rules-for-reliable-manufacturable-boards/">WonderfulPCB — Common PCB Design Rules</a></li>
-      <li><a href="https://shop.electronics.org/">Global Electronics Association / normes IPC</a></li>
-    </ul>
-  </section>
+			  <section class="card">
+				<h2>Normes pertinentes (disponibles commercialement auprès de Global Electronics Association / IPC)</h2>
+				<ul>
+				  <li>IPC-2221 — Règles génériques de conception PCB : routage, espacements, matériaux, fiabilité.</li>
+				  <li>IPC-2222 — Exigences de conception spécifiques aux cartes rigides.</li>
+				  <li>IPC-6012 — Règles de performance et de qualification pour les cartes rigides.</li>
+				  <li>IPC-A-600 — Critères d’acceptabilité visuelle des PCB nus.</li>
+				  <li>IPC-7351 — Règles de conception des empreintes CMS (land-pattern).</li>
+				  <li>IPC-4101 — Spécifications des laminés et prépregs pour PCB rigides.</li>
+				  <li>IPC-2615 — Formats standards pour les données de fabrication PCB.</li>
+				  <li>IPC-6013 — Règles de performance et de qualification pour les PCB flex et flex-rigides.</li>
+				</ul>
+			  </section>
 
-  <section>
-    <h2>Calculatrices</h2>
-    <ul>
-      <li><a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width">Digi-Key — Calculateur de largeur de piste PCB</a></li>
-      <li>Utiliser des calculateurs d’impédance pour les conceptions différentielles/haut-débit</li>
-    </ul>
-  </section>
+		</main>
 
-  <section>
-    <h2>Normes pertinentes (disponibles commercialement auprès de Global Electronics Association / IPC)</h2>
-    <ul>
-      <li>IPC-2221 — Règles génériques de conception PCB : routage, espacements, matériaux, fiabilité.</li>
-      <li>IPC-2222 — Exigences de conception spécifiques aux cartes rigides.</li>
-      <li>IPC-6012 — Règles de performance et de qualification pour les cartes rigides.</li>
-      <li>IPC-A-600 — Critères d’acceptabilité visuelle des PCB nus.</li>
-      <li>IPC-7351 — Règles de conception des empreintes CMS (land-pattern).</li>
-      <li>IPC-4101 — Spécifications des laminés et prépregs pour PCB rigides.</li>
-      <li>IPC-2615 — Formats standards pour les données de fabrication PCB.</li>
-      <li>IPC-6013 — Règles de performance et de qualification pour les PCB flex et flex-rigides.</li>
-    </ul>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <p>&copy; JAK Services</p>
-  </div>
-</footer>
-</body>
+		<footer class="site-footer">
+		  <div class="container footer-inner">
+			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
+			<p>
+			  <a class="footer-link" href="legal.html">Legal mentions</a>
+			  <a class="footer-link" href="privacy.html">Privacy policy</a>
+			</p>
+		  </div>
+		</footer>
+	</body>
 </html>
