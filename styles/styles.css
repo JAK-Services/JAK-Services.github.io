@@ -384,11 +384,15 @@ body.lang-fr .i18n-fr.inline {
 
 /* Extra text (hidden by default) */
 .toggle-list .item-detail {
-	display: none;
-	margin-top: 0.35rem;
-	margin-left: 1.5rem; /* indentation */
-	font-size: 0.95em;
-	opacity: 0.9;
+  display: none;
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;        /* indentation */
+  padding: 0.6rem 0.9rem;     /* give it some breathing room */
+  font-size: 0.9rem;          /* slightly smaller than main text */
+  color: #374151;             /* softer gray, still high contrast */
+  background: #f0f5ff;        /* light blue-ish, matches #004f9e brand */
+  border-left: 3px solid #004f9e;  /* same blue as your buttons/lang-toggle */
+  border-radius: 8px;
 }
 
 /* When open, show details */
@@ -400,4 +404,5 @@ body.lang-fr .i18n-fr.inline {
 .toggle-list .has-detail:hover .item-label {
 	text-decoration: underline;
 }
+
 
