@@ -406,3 +406,15 @@ body.lang-fr .i18n-fr.inline {
 }
 
 
+/* Custom marker for expandable list items */
+.toggle-list .has-detail::marker {
+  content: "\25B8 ";        /* ▸ right-pointing triangle */
+  color: #004f9e;
+  font-size: 0.95em;
+}
+
+/* When open, swap the marker */
+.toggle-list .has-detail.open::marker {
+  content: "\25BE ";        /* ▾ down-pointing triangle */
+}
+
