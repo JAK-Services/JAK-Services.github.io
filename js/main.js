@@ -45,16 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
     yearSpan.textContent = new Date().getFullYear();
   }
 
-  // 4) Expandable list items
-  const items = document.querySelectorAll('.toggle-list .has-detail');
 
-  items.forEach(item => {
-    const label = item.querySelector('.item-label');
-    if (!label) return;
+	// 4) Expandable list items
+	const items = document.querySelectorAll('.toggle-list .has-detail');
 
-    label.addEventListener('click', event => {
-      event.preventDefault();
-      item.classList.toggle('open');
-    });
-  });
+	items.forEach(item => {
+	  item.addEventListener('click', event => {
+		// Don't toggle when clicking inside the expanded detail content
+		if (event.target.closest('.item-detail')) return;
+
+		event.preventDefault();
+		item.classList.toggle('open');
+	  });
+	});
 });
+
