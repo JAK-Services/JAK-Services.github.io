@@ -62,7 +62,29 @@
 				<p class="lead">A practical, experience‑based checklist for designing low‑noise, reliable and manufacturable printed circuit boards.</p>
 			</section>
 
-			<section class="card">
+			<section class="card toc">
+			  <h2>Contents</h2>
+			  <nav aria-label="PCB Design Rules - Contents">
+				<ul class="toc-list">
+				  <li><a href="#pcb_design_rules_schematics">Schematics</a></li>
+				  <li><a href="#pcb_design_rules_manufacturability_dfma">Manufacturability (DFMA)</a></li>
+				  <li><a href="#pcb_design_rules_layout_physical_constraints">PCB Layout — Physical Constraints</a></li>
+				  <li><a href="#pcb_design_rules_stack_up_and_planes">Stack-Up &amp; Planes</a></li>
+				  <li><a href="#pcb_design_rules_signal_integrity_and_routing">Signal Integrity &amp; Routing</a></li>
+				  <li><a href="#pcb_design_rules_decoupling_and_power_integrity">Decoupling &amp; Power Integrity</a></li>				  
+				  <li><a href="#pcb_design_rules_vias">Vias</a></li>
+				  <li><a href="#pcb_design_rules_voltage_transients_and_esd_protection">Voltage Transients &amp; ESD Protection</a></li>
+				  <li><a href="#pcb_design_rules_creepage_and_clearance">Creepage &amp; Clearance (important for &gt;30&nbsp;V)</a></li>
+				  <li><a href="#pcb_design_rules_high_current_and_temperature">High Current &amp; Temperature</a></li>
+				  <li><a href="#pcb_design_rules_design_test_dft">Design for Test (DFT)</a></li>
+				  <li><a href="#pcb_design_rules_calculators">Calculators</a></li>
+				  <li><a href="#Electronic_Standards">Pertinent Electronic Standards</a></li>
+				  <li><a href="#pcb_design_rules_resources">Resources</a></li>
+				</ul>
+			  </nav>
+			</section>
+
+			<section class="card" id="pcb_design_rules_schematics">
 				<h2>Schematics</h2>
 				<ul class="toggle-list">
 				
@@ -202,41 +224,30 @@
 				</ul>
 			</section>
 
-			<section class="card">
-			  <h2>Design Rule Check (DRC)</h2>
+			<section class="card" id="pcb_design_rules_manufacturability_dfma">
+			  <h2>Manufacturability (DFMA)</h2>
 			  <ul class="toggle-list">
 
-				<li class="has-detail" title="Set your ECAD tool’s clearance, trace width, via size, mask, and other manufacturing limits before placing or routing anything. This prevents unmanufacturable features from ever being created and reduces late design rework. Useful reference: how to run DRC .">
-				  <span class="item-label">Configure DRC rules before layout begins</span>
+				<li class="has-detail"
+				  title="Confirm your manufacturer’s real process limits, then configure your ECAD tool’s clearance, trace width, via size, annular ring, solder-mask, and other manufacturing rules to match — before you place or route anything. This prevents unmanufacturable features being created and improves yield and cost. Verify compliance during layout using DFMA/DRC tools.">
+				  <span class="item-label">Design Rule Check (DRC)</span>
 				  <div class="item-detail">
-					Set your ECAD tool’s clearance, trace width, via size, mask, and other manufacturing limits before placing or routing anything. 
-					This prevents unmanufacturable features from ever being created and reduces late design rework.
-					Useful reference:
-					<a href="https://jlcpcb.com/blog/how-to-run-design-rule-check" target="_blank" rel="noopener">how to run DRC</a>.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Always confirm your fab’s process limits (standard vs. advanced capability, copper weight, layer count, etc.) and set conservative rules that they can reliably build with good yield — not just the theoretical minimums.">
-				  <span class="item-label">Base DRC limits on your PCB manufacturer’s capabilities</span>
-				  <div class="item-detail">
-					Always confirm your fab’s process limits (standard vs. advanced capability, copper weight, layer count, etc.) 
-					and set conservative rules that they can reliably build with good yield — not just the theoretical minimums.
-					<p><strong>Typical baseline limits (verify with your fab first):</strong></p>
+					Confirm your PCB manufacturer’s real process limits (standard vs. advanced capability, trace width/spacing, via size, annular ring, solder-mask expansion, copper weight, layer count, stack-up etc.) 
+					and configure your ECAD tool’s design rules to match these conservatively — <strong>before you place or route anything</strong>. 
+					This ensures the design is buildable with good yield and cost from the start, prevents unmanufacturable features being created, and avoids costly late-stage rework.
+					<br><br>
+					Align your ECAD DRC limits with what your fab and assembler can reliably produce, and verify compliance during layout using 
+					<a href="https://jlcpcb.com/blog/how-to-run-design-rule-check" target="_blank" rel="noopener">DRC</a> and 
+					<a href="https://jlcdfm.com/" target="_blank" rel="noopener">DFMA tools</a>.
+					<p><strong>Typical baseline limits (always verify with your fab first):</strong></p>
 					<ul>
 					  <li>Minimum trace width: ~6&nbsp;mil typical</li>
 					  <li>Clearance (spacing): ~6&nbsp;mil typical</li>
 					  <li>Via drill size: ≥0.30&nbsp;mm typical</li>
 					  <li>Solder mask expansion: 3–5&nbsp;mil</li>
-					</ul>					
+					</ul>
 				  </div>
 				</li>
-
-			  </ul>
-			</section>
-
-			<section class="card">
-			  <h2>Manufacturability (DFMA)</h2>
-			  <ul class="toggle-list">
 
 				<li class="has-detail" title="Single-sided assembly is cheaper and simpler than double-sided, reducing pick-and-place time, reflow steps, and yield risk. Place only truly necessary parts on the second side.">
 				  <span class="item-label">Keep SMD components on one side where possible</span>
@@ -285,26 +296,11 @@
 					Good panelization improves throughput and reduces handling damage.
 				  </div>
 				</li>
-
-				<li class="has-detail" title="Confirm minimum trace width/spacing, via size, annular ring, solder mask expansion, copper weight, and stack-up before layout. Align your ECAD design rules with what your manufacturer can reliably produce at good yield and cost.">
-				  <span class="item-label">Know your PCB fab limits and set rules accordingly</span>
-				  <div class="item-detail">
-					Confirm minimum trace width/spacing, via size, annular ring, solder mask expansion, copper weight, and stack-up before layout. 
-					Align your ECAD design rules with what your manufacturer can reliably produce at good yield and cost.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Use DFMA/DRC tools regularly during layout to verify that the finished design remains within buildable limits.">
-				  <span class="item-label">Use Design For Manufacturing and Assembly (DFMA) Tools</span>
-				  <div class="item-detail">
-					Use <a href="https://jlcdfm.com/" target="_blank" rel="noopener">DFMA/DRC tools</a> regularly during layout to verify that the finished design remains within buildable limits.
-				  </div>
-				</li>
 			  </ul>
 			</section>
 
-			<section class="card">
-				<h2>PCB Layout — Physical constraints</h2>
+			<section class="card" id="pcb_design_rules_layout_physical_constraints">
+				<h2>PCB Layout — Physical Constraints</h2>
 				<ul class="toggle-list">
 				
 					<li class="has-detail" title="Define the PCB outline early based on realistic mechanical constraints — overall size, shape, corners, and cut-outs. Include height limits and mechanical keep-outs, and ensure the design stays within your PCB manufacturer’s minimum/maximum size and panelisation constraints.">
@@ -358,8 +354,8 @@
 				</ul>
 			</section>
 
-			<section class="card">
-			  <h2>Stack-up &amp; planes</h2>
+			<section class="card" id="pcb_design_rules_stack_up_and_planes">
+			  <h2>Stack-Up &amp; Planes</h2>
 			  <ul class="toggle-list">
 			  
 				<li class="has-detail" title="Agree the layer stack-up at the start of layout — including materials, copper weights, dielectric thickness, and any impedance-controlled layers — so routing strategy, EMI control, and manufacturability decisions are based on a stable structure. Choose materials that match environmental and production needs (e.g., operating temperature, reflow profile, reliability requirements), and confirm the stack-up is supported by your PCB manufacturer at the required cost and capability. Make sure the chosen materials and clearances also meet relevant standards and regulations (e.g., IPC class, UL flammability rating, RoHS/REACH, and local compliance requirements).">
@@ -442,8 +438,8 @@
 			  </ul>
 			</section>
 
-			<section class="card">
-			  <h2>Signal integrity &amp; routing</h2>
+			<section class="card" id="pcb_design_rules_signal_integrity_and_routing">
+			  <h2>Signal Integrity &amp; Routing</h2>
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="High-speed and fast-edge signals form a loop with their return current which should be flowing directly beneath the trace in the nearest solid reference plane. Keep a continuous plane under critical routing so the return current does not have to detour — breaks in the return path increase loop area, noise, and EMI. Shorter traces and closely-coupled outgoing/return paths further reduce inductance and improve signal integrity.">
@@ -562,8 +558,8 @@
 			  </ul>
 			</section>
 
-			<section class="card">
-			  <h2>Decoupling &amp; power integrity</h2>
+			<section class="card" id="pcb_design_rules_decoupling_and_power_integrity">
+			  <h2>Decoupling &amp; Power Integrity</h2>
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="Each IC (Integrated Circuit) supply pin should have its own local decoupling capacitor to provide a low-impedance energy reservoir at the device and keep the rail stable during fast current transients. A 0.1 µF MLCC (Multilayer Ceramic Capacitor) is a good general-purpose high-frequency decoupler — place it as close as physically possible to the IC power pin and its return to ground, with very short tracks and minimal vias.">
@@ -626,7 +622,7 @@
 			  </ul>
 			</section>
 
-			<section class="card">
+			<section class="card" id="pcb_design_rules_vias">
 				<h2>Vias</h2>
 				<ul class="toggle-list">
 
@@ -692,8 +688,8 @@
 				</ul>
 			</section>
 
-			<section class="card">
-			  <h2>Voltage transients &amp; ESD protection</h2>
+			<section class="card" id="pcb_design_rules_voltage_transients_and_esd_protection">
+			  <h2>Voltage Transients &amp; ESD Protection</h2>
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="TVS (Transient Voltage Suppressor) diodes should be located as close as possible to the entry point of the transient, with short, wide copper back to the chosen ESD reference (ground or chassis) to minimise inductance and clamp the event locally.">
@@ -715,8 +711,8 @@
 			  </ul>
 			</section>
 
-			<section class="card">
-			  <h2>Creepage &amp; clearance (important for &gt;30&nbsp;V)</h2>
+			<section class="card" id="pcb_design_rules_creepage_and_clearance">
+			  <h2>Creepage &amp; Clearance (important for &gt;30&nbsp;V)</h2>
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="Minimum creepage (along the board surface) and clearance (through air) distances depend on working voltage, pollution degree, insulation class, and material group. Use IPC-2221 as a general guide, but follow relevant product safety standard (e.g., IEC/UL 61010, 60950/62368, 60335, medical, automotive) wherever it gives specific spacing requirements.">
@@ -754,8 +750,8 @@
 			  </ul>
 			</section>
 
-			<section class="card">
-			  <h2>High current &amp; temperature</h2>
+			<section class="card" id="pcb_design_rules_high_current_and_temperature">
+			  <h2>High Current &amp; Temperature</h2>
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="Estimate the maximum continuous and peak currents, the full ambient temperature range, and the allowable temperature rise for each power path. Remember that connectors, vias, planes, and components all contribute resistance and heating — not just traces. Also confirm your PCB manufacturer’s capabilities (e.g., copper weight, plating thickness, and via aspect ratio), as these directly affect current-carrying capacity and reliability.">
@@ -789,7 +785,7 @@
 			  </ul>
 			</section>
 
-			<section class="card">
+			<section class="card" id="pcb_design_rules_design_test_dft">
 			  <h2>Design for Test (DFT)</h2>
 			  <ul class="toggle-list">
 
@@ -825,18 +821,7 @@
 			  </ul>
 			</section>
 
-			<section class="card">
-				<h2>Resources</h2>
-				<ul>
-				  <li><a href="https://www.ti.com/lit/an/szza009/szza009.pdf" target="_blank" rel="noopener">TI — PCB Design Guidelines For Reduced EMI</a></li>
-				  <li><a href="https://jlcpcb.com/blog/pcb-design-rules-best-practices" target="_blank" rel="noopener">JLCPCB — PCB Design Rules &amp; Best Practices</a></li>
-				  <li><a href="https://resources.altium.com/fr/p/pcb-layout-guidelines" target="_blank" rel="noopener">Altium — PCB Layout Guidelines</a></li>
-				  <li><a href="https://www.wonderfulpcb.com/blog/common-pcb-design-rules-for-reliable-manufacturable-boards/" target="_blank" rel="noopener">WonderfulPCB — Common PCB Design Rules</a></li>
-				  <li><a href="https://shop.electronics.org/" target="_blank" rel="noopener">Global Electronics Association / IPC standards</a></li>
-				</ul>
-			</section>
-
-			<section class="card">
+			<section class="card" id="pcb_design_rules_calculators">
 			  <h2>Calculators</h2>
 			  <p>
 				ECAD packages such as KiCad usually include a rich and powerful selection of calculators for PCB design.
@@ -848,19 +833,30 @@
 			  </ul>
 			</section>
 
-		  <section class="card" id="Electronic_Standards">
-			<h2>Pertinent standards (commercially available from <a href="https://shop.electronics.org/" target="_blank" rel="noopener">Global Electronics Association / IPC</a>)</h2>
-			<ul>
-			  <li>IPC‑2221 — Generic PCB design rules: layout, spacing, materials, reliability.</li>
-			  <li>IPC‑2222 — Design requirements specific to rigid printed circuit boards.</li>
-			  <li>IPC‑6012 — Performance and qualification rules for rigid printed circuit boards.</li>
-			  <li>IPC‑A‑600 — Visual acceptability criteria for finished bare printed circuit boards.</li>
-			  <li>IPC‑7351 — Standard footprint (land‑pattern) design rules for SMT components.</li>
-			  <li>IPC‑4101 — Specifications for laminate and prepreg materials for rigid PCBs.</li>
-			  <li>IPC‑2615 — Standard formats for PCB manufacturing and fabrication data exchange.</li>
-			  <li>IPC‑6013 — Performance and qualification rules for flexible and flex‑rigid PCBs.</li>
-			</ul>
-		  </section>
+			<section class="card" id="Electronic_Standards">
+				<h2>Pertinent Electronic Standards (commercially available from <a href="https://shop.electronics.org/" target="_blank" rel="noopener">Global Electronics Association / IPC</a>)</h2>
+				<ul>
+				  <li>IPC‑2221 — Generic PCB design rules: layout, spacing, materials, reliability.</li>
+				  <li>IPC‑2222 — Design requirements specific to rigid printed circuit boards.</li>
+				  <li>IPC‑6012 — Performance and qualification rules for rigid printed circuit boards.</li>
+				  <li>IPC‑A‑600 — Visual acceptability criteria for finished bare printed circuit boards.</li>
+				  <li>IPC‑7351 — Standard footprint (land‑pattern) design rules for SMT components.</li>
+				  <li>IPC‑4101 — Specifications for laminate and prepreg materials for rigid PCBs.</li>
+				  <li>IPC‑2615 — Standard formats for PCB manufacturing and fabrication data exchange.</li>
+				  <li>IPC‑6013 — Performance and qualification rules for flexible and flex‑rigid PCBs.</li>
+				</ul>
+			</section>
+
+			<section class="card" id="pcb_design_rules_resources">
+				<h2>Resources</h2>
+				<ul>
+				  <li><a href="https://www.ti.com/lit/an/szza009/szza009.pdf" target="_blank" rel="noopener">TI — PCB Design Guidelines For Reduced EMI</a></li>
+				  <li><a href="https://jlcpcb.com/blog/pcb-design-rules-best-practices" target="_blank" rel="noopener">JLCPCB — PCB Design Rules &amp; Best Practices</a></li>
+				  <li><a href="https://resources.altium.com/fr/p/pcb-layout-guidelines" target="_blank" rel="noopener">Altium — PCB Layout Guidelines</a></li>
+				  <li><a href="https://www.wonderfulpcb.com/blog/common-pcb-design-rules-for-reliable-manufacturable-boards/" target="_blank" rel="noopener">WonderfulPCB — Common PCB Design Rules</a></li>
+				  <li><a href="https://shop.electronics.org/" target="_blank" rel="noopener">Global Electronics Association / IPC standards</a></li>
+				</ul>
+			</section>
 
 		</main>
 
