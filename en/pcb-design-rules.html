@@ -179,12 +179,12 @@
 						</div>
 					</li>
 					
-					<li class="has-detail" title="Include the board name, hardware revision, and build date clearly on both the schematic and PCB. Make sure each schematic sheet also has a consistent title block with the project name, sheet title, sheet number, and revision information. Clear and consistent identification helps ensure everyone is working from the same version during layout, testing, and production, and makes field support and traceability far easier.">
+					<li class="has-detail" title="Include the board name, hardware revision, and build date clearly on both the schematic and PCB. Make sure each schematic sheet also has a consistent title block with the project name, sheet title, sheet number, and revision information. <br>Clear and consistent identification helps ensure everyone is working from the same version during layout, testing, and production, and makes field support and traceability far easier.">
 					  <span class="item-label">Include board name, revision, and date</span>
 					  <div class="item-detail">
 						Include the board name, hardware revision, and build date clearly on both the schematic and PCB. 
 						Make sure each schematic sheet also has a consistent title block with the project name, sheet title, sheet number, and revision information. 
-						Clear and consistent identification helps ensure everyone is working from the same version during layout, testing, and production, and makes field support and traceability far easier.
+						<br>Clear and consistent identification helps ensure everyone is working from the same version during layout, testing, and production, and makes field support and traceability far easier.
 					  </div>
 					</li>
 					
@@ -586,7 +586,7 @@
 				  <div class="item-detail">
 					Use bulk capacitance (typically 1–10&nbsp;µF or higher as needed) near major loads or where power enters the board or a subsystem.
 					These support lower-frequency current demand and stabilise regulators and long power distribution paths.
-					<small>Note: Verify any already designed regulator's datasheets for allowable output capacitance and ESR (Equivalent Series Resistance) ranges, 
+					<br><small>Note: Verify any already designed regulator's datasheets for allowable output capacitance and ESR (Equivalent Series Resistance) ranges, 
 					as excessive or very low-ESR capacitance can affect stability or startup behaviour.</small>
 				  </div>
 				</li>
@@ -602,13 +602,13 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Sensitive analog circuits should not share supply or return paths with noisy digital loads. Use star-style routing or separate power regions, rather than daisy chaining, so high-current switching noise does not modulate precision analog references or ADC inputs. Ensure the star point is a well-defined reference node, as voltage drops in shared returns can otherwise create bias errors in analog measurements. Often this star point is placed near: the ADC reference pin the regulator output or sense point the system ground star or chassis connection">
+				<li class="has-detail" title="Sensitive analog circuits should not share supply or return paths with noisy digital loads. Use star-style routing or separate power regions, rather than daisy chaining, so high-current switching noise does not modulate precision analog references or ADC inputs.<br>Ensure the star point is a well-defined reference node, as voltage drops in shared returns can otherwise create bias errors in analog measurements. Often this star point is placed near: the ADC reference pin the regulator output or sense point the system ground star or chassis connection">
 				  <span class="item-label">Star-route sensitive analog supplies where possible</span>
 				  <div class="item-detail">
 					Sensitive analog circuits should not share supply or return paths with noisy digital loads.
 					Use star-style routing or separate power regions, rather than daisy chaining, so high-current switching noise does not modulate precision analog references or ADC inputs.
 					<small>
-					  Ensure the star point is a well-defined reference node, as voltage drops in shared returns can otherwise create bias errors in analog measurements.
+					  <br>Ensure the star point is a well-defined reference node, as voltage drops in shared returns can otherwise create bias errors in analog measurements.
 					  Often this star point is placed near:
 					  <ul>
 						<li>the ADC reference pin</li>
@@ -789,13 +789,13 @@
 			  <h2>Design for Test (DFT)</h2>
 			  <ul class="toggle-list">
 
-				<li class="has-detail" title="Provide accessible test pads or vias on important signals such as GND, supply rails (e.g., 3V3, 5V), reset, clock, debug interfaces, UART, and other critical control or measurement nodes. This simplifies bring-up, fault-finding, and production test. Note: Avoid placing test pads directly on high-speed or impedance-controlled nets, as the added stub can cause reflections and signal degradation. If probing is required, consider high-impedance probes, matched probe pads, or test at a buffered node (a copy of the signal taken from the output of a buffer or isolation device) instead, so probing it does not disturb the original signal.">
+				<li class="has-detail" title="Provide accessible test pads or vias on important signals such as GND, supply rails (e.g., 3V3, 5V), reset, clock, debug interfaces, UART, and other critical control or measurement nodes. This simplifies bring-up, fault-finding, and production test.<br>Note: Avoid placing test pads directly on high-speed or impedance-controlled nets, as the added stub can cause reflections and signal degradation. If probing is required, consider high-impedance probes, matched probe pads, or test at a buffered node (a copy of the signal taken from the output of a buffer or isolation device) instead, so probing it does not disturb the original signal.">
 				  <span class="item-label">Add test points to key nets</span>
 				  <div class="item-detail">
 					Provide accessible test pads or vias on important signals such as GND, supply rails (e.g., 3V3, 5V), reset, clock, debug interfaces, UART, and other critical control or measurement nodes. 
 					This simplifies bring-up, fault-finding, and production test.
 					<small>
-					  Note: Avoid placing test pads directly on high-speed or impedance-controlled nets, as the added stub can cause reflections and signal degradation. 
+					  <br>Note: Avoid placing test pads directly on high-speed or impedance-controlled nets, as the added stub can cause reflections and signal degradation. 
 					  If probing is required, consider high-impedance probes, matched probe pads, or test at a buffered node 
 					  (a copy of the signal taken from the output of a buffer or isolation device) instead, so probing it does not disturb the original signal. 
 					</small>
@@ -873,3 +873,4 @@
 		<script src="../js/main.js"></script>
 	</body>
 </html>
+	
