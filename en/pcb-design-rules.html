@@ -69,9 +69,9 @@
 				  <li><a href="#pcb_design_rules_schematics">Schematics</a></li>
 				  <li><a href="#pcb_design_rules_manufacturability_dfma">Manufacturability (DFMA)</a></li>
 				  <li><a href="#pcb_design_rules_layout_physical_constraints">PCB Layout — Physical Constraints</a></li>
-				  <li><a href="#pcb_design_rules_stack_up_and_planes">Stack-Up &amp; Planes</a></li>
-				  <li><a href="#pcb_design_rules_signal_integrity_and_routing">Signal Integrity &amp; Routing</a></li>
-				  <li><a href="#pcb_design_rules_decoupling_and_power_integrity">Decoupling &amp; Power Integrity</a></li>				  
+				  <li><a href="#pcb_design_rules_stack_up_and_planes">Stack-Up &amp; Planes &amp; EMI Control</a></li>
+				  <li><a href="#pcb_design_rules_signal_integrity_and_routing">Signal Integrity, EMI &amp; Routing</a></li>
+				  <li><a href="#pcb_design_rules_decoupling_and_power_integrity">Decoupling, Power Integrity &amp; EMI</a></li>				  
 				  <li><a href="#pcb_design_rules_vias">Vias</a></li>
 				  <li><a href="#pcb_design_rules_voltage_transients_and_esd_protection">Voltage Transients &amp; ESD Protection</a></li>
 				  <li><a href="#pcb_design_rules_creepage_and_clearance">Creepage &amp; Clearance (important for &gt;30&nbsp;V)</a></li>
@@ -355,7 +355,7 @@
 			</section>
 
 			<section class="card" id="pcb_design_rules_stack_up_and_planes">
-			  <h2>Stack-Up &amp; Planes</h2>
+			  <h2>Stack-Up &amp; Planes &amp; EMI Control</h2>
 			  <ul class="toggle-list">
 			  
 				<li class="has-detail" title="Agree the layer stack-up at the start of layout — including materials, copper weights, dielectric thickness, and any impedance-controlled layers — so routing strategy, EMI control, and manufacturability decisions are based on a stable structure. Choose materials that match environmental and production needs (e.g., operating temperature, reflow profile, reliability requirements), and confirm the stack-up is supported by your PCB manufacturer at the required cost and capability. Make sure the chosen materials and clearances also meet relevant standards and regulations (e.g., IPC class, UL flammability rating, RoHS/REACH, and local compliance requirements).">
@@ -439,7 +439,7 @@
 			</section>
 
 			<section class="card" id="pcb_design_rules_signal_integrity_and_routing">
-			  <h2>Signal Integrity &amp; Routing</h2>
+			  <h2>Signal Integrity, EMI &amp; Routing</h2>
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="High-speed and fast-edge signals form a loop with their return current which should be flowing directly beneath the trace in the nearest solid reference plane. Keep a continuous plane under critical routing so the return current does not have to detour — breaks in the return path increase loop area, noise, and EMI. Shorter traces and closely-coupled outgoing/return paths further reduce inductance and improve signal integrity.">
@@ -559,7 +559,7 @@
 			</section>
 
 			<section class="card" id="pcb_design_rules_decoupling_and_power_integrity">
-			  <h2>Decoupling &amp; Power Integrity</h2>
+			  <h2>Decoupling, Power Integrity &amp; EMI</h2>
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="Each IC (Integrated Circuit) supply pin should have its own local decoupling capacitor to provide a low-impedance energy reservoir at the device and keep the rail stable during fast current transients. A 0.1 µF MLCC (Multilayer Ceramic Capacitor) is a good general-purpose high-frequency decoupler — place it as close as physically possible to the IC power pin and its return to ground, with very short tracks and minimal vias.">
@@ -873,4 +873,3 @@
 		<script src="../js/main.js"></script>
 	</body>
 </html>
-	
