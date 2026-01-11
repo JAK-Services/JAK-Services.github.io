@@ -340,6 +340,22 @@
 							Identify and place electrically sensitive or timing-critical parts early (e.g., oscillators, RF parts, precision references) so routing and grounding can be optimised around them.
 						</div>
 					</li>
+
+					<li class="has-detail"
+						title="Define the board outline on Edge.Cuts as a single closed contour (no gaps). Keep silkscreen off pads and out of solder-mask openings to avoid clipped text and assembly issues.">
+						<span class="item-label">Edge.Cuts board outline + silkscreen keepouts (no text on pads)</span>
+						<div class="item-detail">
+							<strong>Board outline:</strong> Define the PCB shape using a <em>single, continuous, closed</em> outline on the <strong>Edge.Cuts</strong> layer
+							(lines/arcs only, no gaps). This is the geometry your PCB manufacturer uses to route / cut the board and any internal cut-outs.
+							<br><br>
+							<strong>Keep copper & graphics away from the edge:</strong> Respect your fab’s minimum copper-to-edge clearance and keep silkscreen away from the
+							board edge so markings don’t get routed off.
+							<br><br>
+							<strong>No silkscreen on pads:</strong> Do not place reference/value text or component outlines on copper pads or within solder-mask openings.
+							Silkscreen printed over pads is commonly clipped by the fab (or can contaminate solder joints), causing unreadable markings and potential
+							assembly defects. Use your ECAD DRC rules for <em>silkscreen-to-solder-mask</em> clearance and fix violations before generating Gerbers.
+						</div>
+					</li>
 					
 					<li class="has-detail" title="Check PCB and assembly constraints early (minimum trace/space, via sizes, tolerances, panelisation, component spacing and heights, solder mask / silkscreen limits, and drill tolerances) to ensure the design can be produced consistently and at reasonable cost. Configure your ECAD design rules to match your chosen manufacturer’s capabilities so violations are caught automatically rather than at fabrication time. Use DFMA/DRC tools regularly during layout to verify that the finished design remains within buildable limits.">
 					  <span class="item-label">DFMA — Design for manufacturability &amp; assembly: match your design to your manufacturer’s capabilities</span>
