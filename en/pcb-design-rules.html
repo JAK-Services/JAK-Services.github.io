@@ -302,12 +302,26 @@
 			<section class="card" id="pcb_design_rules_layout_physical_constraints">
 				<h2>PCB Layout — Physical Constraints</h2>
 				<ul class="toggle-list">
-				
-					<li class="has-detail" title="Define the PCB outline early based on realistic mechanical constraints — overall size, shape, corners, and cut-outs. Include height limits and mechanical keep-outs, and ensure the design stays within your PCB manufacturer’s minimum/maximum size and panelisation constraints.">
+					
+					<li class="has-detail"
+						title="Define the PCB outline early (mechanical constraints) and implement it correctly on Edge.Cuts. Keep silkscreen off pads/solder-mask openings and observe copper/graphics-to-edge clearances.">
 					  <span class="item-label">Board outline</span>
 					  <div class="item-detail">
-						Define the PCB outline early based on realistic mechanical constraints — overall size, shape, corners, and cut-outs. 
+						<strong>Start with mechanical reality:</strong> Define the PCB outline early based on overall size, shape, corners, and any cut-outs.
 						Include height limits and mechanical keep-outs, and ensure the design stays within your PCB manufacturer’s minimum/maximum size and panelisation constraints.
+						<br><br>
+
+						<strong>Edge.Cuts implementation:</strong> Draw the PCB shape as a <em>single, continuous, closed</em> contour on the <strong>Edge.Cuts</strong> layer
+						(lines/arcs only, no gaps). This is what the manufacturer uses to cut the board and any internal cut-outs.
+						<br><br>
+
+						<strong>Edge clearances:</strong> Respect your fab’s minimum copper-to-edge clearance. Also keep silkscreen away from the board edge
+						so markings don’t get cut off.
+						<br><br>
+
+						<strong>No silkscreen on pads:</strong> Don’t place reference/value text or outlines on copper pads or inside solder-mask openings.
+						Fabs often clip silkscreen over exposed copper (and it can interfere with soldering), leading to unreadable markings and possible assembly defects.
+						Use DRC rules for <em>silkscreen-to-solder-mask</em> clearance and fix violations before generating Gerbers.
 					  </div>
 					</li>
 					
@@ -338,22 +352,6 @@
 						<span class="item-label">Critical components</span>
 						<div class="item-detail">
 							Identify and place electrically sensitive or timing-critical parts early (e.g., oscillators, RF parts, precision references) so routing and grounding can be optimised around them.
-						</div>
-					</li>
-
-					<li class="has-detail"
-						title="Define the board outline on Edge.Cuts as a single closed contour (no gaps). Keep silkscreen off pads and out of solder-mask openings to avoid clipped text and assembly issues.">
-						<span class="item-label">Edge.Cuts board outline + silkscreen keepouts (no text on pads)</span>
-						<div class="item-detail">
-							<strong>Board outline:</strong> Define the PCB shape using a <em>single, continuous, closed</em> outline on the <strong>Edge.Cuts</strong> layer
-							(lines/arcs only, no gaps). This is the geometry your PCB manufacturer uses to route / cut the board and any internal cut-outs.
-							<br><br>
-							<strong>Keep copper & graphics away from the edge:</strong> Respect your fab’s minimum copper-to-edge clearance and keep silkscreen away from the
-							board edge so markings don’t get routed off.
-							<br><br>
-							<strong>No silkscreen on pads:</strong> Do not place reference/value text or component outlines on copper pads or within solder-mask openings.
-							Silkscreen printed over pads is commonly clipped by the fab (or can contaminate solder joints), causing unreadable markings and potential
-							assembly defects. Use your ECAD DRC rules for <em>silkscreen-to-solder-mask</em> clearance and fix violations before generating Gerbers.
 						</div>
 					</li>
 					
