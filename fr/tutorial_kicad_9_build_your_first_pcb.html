@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8"/>
+		<title>KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services</title>
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+		<meta content="Un tutoriel complet de conception de PCB avec KiCad 9 : création du projet, saisie du schéma, association des empreintes, génération de la nomenclature (BOM), routage du PCB, vérifications (ERC/DRC), checklist de règles de conception et exports Gerber pour la fabrication." name="description"/>
+		<link rel="stylesheet" href="../styles/styles.css" />
+		<link rel="stylesheet" href="../styles/portfolio_carousel.css" />
+		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+		        <link href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" rel="canonical"/>
+		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="en" rel="alternate"/>
+		        <link href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" hreflang="fr" rel="alternate"/>
+		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="x-default" rel="alternate"/>
+		<meta content="website" property="og:type"/><meta content="KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services" property="og:title"/>
+		<meta content="Un tutoriel complet de conception de PCB avec KiCad 9 : création du projet, schéma, empreintes, BOM, routage, vérifications (ERC/DRC), checklist de règles de conception et fichiers Gerber pour la fabrication." property="og:description"/>
+		<meta content="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" property="og:url"/>
+		<meta content="https://jak-services.github.io/images/jak-logo.svg" property="og:image"/>
+		<meta content="summary" name="twitter:card"/><meta content="KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services" name="twitter:title"/>
+		<meta content="Un tutoriel complet de conception de PCB avec KiCad 9 : création du projet, schéma, empreintes, BOM, routage, vérifications (ERC/DRC), checklist de règles de conception et fichiers Gerber pour la fabrication." name="twitter:description"/>
+		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
+		<script type="application/ld+json">
+			{"@context": "https://schema.org"
+				, "@type": "Organization"
+				, "name": "JAK Services"
+				, "url": "https://jak-services.github.io"
+				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
+			}
+		</script>
+	</head>
+
+	<body>
+		<header class="site-header">
+		  <div class="container header-inner">
+			<a class="brand" href="index.html">
+			  <img alt="Logo JAK Services" class="logo" src="../images/jak-logo.svg"/>
+			  <div class="brand-text">
+				<span class="brand-name">JAK Services</span>
+				<span class="brand-tagline">Solutions d’ingénierie logicielle et électronique</span>
+			  </div>
+			</a>
+			<nav class="main-nav">
+			  <a href="index.html">Accueil / À propos</a>
+			  <a href="services.html">Services</a>
+			  <a href="portefolio.html">Portfolio</a>
+			  <a href="tutorials.html" aria-current="page">Tutoriels</a>
+			  <a href="guides.html">Guides</a>
+			  <a href="clients.html">Clients</a>
+			  <a href="contact.html">Contact</a>
+			</nav>
+			<div class="lang-switch" aria-label="Sélecteur de langue">
+			  <a class="lang-btn active" aria-current="true" href="../fr/tutorial_kicad_9_build_your_first_pcb.html">FR</a>
+			  <a class="lang-btn" href="../en/tutorial_kicad_9_build_your_first_pcb.html">EN</a>
+			</div>
+		  </div>
+		</header>
+
+		<main class="container">
+		  <section class="hero">
+			<h1>KiCad 9.0 – Réaliser votre premier PCB</h1>
+			<p class="lead">Un tutoriel complet pour passer d’un projet vierge à un PCB routé dans KiCad 9, jusqu’aux fichiers Gerber de fabrication.</p>
+			<div class="hero-actions">
+			  <a class="btn secondary" href="tutorials.html">← Retour aux tutoriels</a>
+			  <a class="btn primary" href="https://youtu.be/CPZjK39ETZU" target="_blank" rel="noopener">Voir la vidéo</a>
+			</div>
+		  </section>
+
+		  <section class="card">
+			<h2>Aperçu</h2>
+			<p>Cette vidéo de JAK Services montre comment créer votre premier PCB avec KiCad 9.</p>
+		  </section>
+
+		  <section class="card">
+			<h2>Ressources</h2>
+			<ul>
+			  <li>KiCad : <a href="https://www.kicad.org" target="_blank" rel="noopener">https://www.kicad.org</a></li>
+			  <li>SnapEDA (symboles/empreintes) : <a href="https://www.snapeda.com" target="_blank" rel="noopener">https://www.snapeda.com</a></li>
+			</ul>
+		  </section>
+
+		  <section class="card" id="sections">
+			<h2>Principales sections abordées dans la vidéo</h2>
+			<ul>
+			  <li><strong>Création du projet</strong> – créer un nouveau projet KiCad, configurer les sauvegardes et les paramètres de cartouche.</li>
+			  <li><strong>Schéma</strong> – définir les classes de nets, placer les symboles (y compris des bibliothèques externes), câbler le circuit et lancer l’ERC.</li>
+			  <li><strong>Gestion des empreintes</strong> – associer les empreintes, les inspecter, et créer/modifier une empreinte personnalisée si nécessaire.</li>
+			  <li><strong>Nomenclature (BOM)</strong> – générer et exporter la nomenclature.</li>
+			  <li><strong>Placement & routage</strong> – importer depuis le schéma, régler les règles carte/couches, placer les composants et router les pistes.</li>
+			  <li><strong>Plans, mécanique et sérigraphie</strong> – créer un plan de masse, ajouter des trous de fixation, insérer un logo et tracer le contour de carte (Edge.Cuts).</li>
+			  <li><strong>Visualisation 3D</strong> – associer des modèles 3D et inspecter l’assemblage dans la visionneuse 3D.</li>
+			  <li><strong>Vérification</strong> – lancer le DRC et corriger les derniers problèmes.</li>
+			  <li><strong>Fichiers de fabrication</strong> – générer les Gerbers et les fichiers de perçage, puis les vérifier dans la visionneuse Gerber.</li>
+			  <li><strong>Bonnes pratiques</strong> – passer en revue les pièges courants et utiliser une checklist de règles de conception avant fabrication.</li>
+			</ul>
+		  </section>
+
+		</main>
+
+		<footer class="site-footer">
+		  <div class="container footer-inner">
+			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
+			<p>
+			  <a class="footer-link" href="legal.html">Mentions légales</a>
+			  <a class="footer-link" href="privacy.html">Politique de confidentialité</a>
+			</p>
+		  </div>
+		</footer>
+
+		<script src="../js/main.js"></script>
+		<script src="../js/tutorials.js"></script>
+	</body>
+</html>
