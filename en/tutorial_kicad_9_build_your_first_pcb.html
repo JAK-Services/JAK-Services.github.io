@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services</title>
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+		<meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." name="description"/>
+		<link rel="stylesheet" href="../styles/styles.css" />
+		<link rel="stylesheet" href="../styles/portfolio_carousel.css" />
+		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" rel="canonical"/>
+		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="en" rel="alternate"/>
+		        <link href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" hreflang="fr" rel="alternate"/>
+		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="x-default" rel="alternate"/>
+		<meta content="website" property="og:type"/><meta content="KiCad 9.0 – Build Your First PCB | JAK Services" property="og:title"/>
+		<meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." property="og:description"/>
+		<meta content="https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html" property="og:url"/>
+		<meta content="https://jak-services.github.io/images/jak-logo.svg" property="og:image"/>
+		<meta content="summary" name="twitter:card"/><meta content="Getting Started with KiCad – Your First PCB in KiCad 9 — From Schematic to Gerbers | JAK Services" name="twitter:title"/>
+		<meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." name="twitter:description"/>
+		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
+		<script type="application/ld+json">
+			{"@context": "https://schema.org"
+				, "@type": "Organization"
+				, "name": "JAK Services"
+				, "url": "https://jak-services.github.io"
+				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
+			}
+		</script>
+	</head>
+
+	<body>
+		<header class="site-header">
+		  <div class="container header-inner">
+			<a class="brand" href="index.html">
+			  <img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
+			  <div class="brand-text">
+				<span class="brand-name">JAK Services</span>
+				<span class="brand-tagline">Software and Electronics Engineering Solutions</span>
+			  </div>
+			</a>
+			<nav class="main-nav">
+			  <a href="index.html">Home / About</a>
+			  <a href="services.html">Services</a>
+			  <a href="portefolio.html">Portefolio</a>
+			  <a href="tutorials.html" aria-current="page">Tutorials</a>
+			  <a href="guides.html">Guides</a>
+			  <a href="clients.html">Clients</a>
+			  <a href="contact.html">Contact</a>
+			</nav>
+			<div class="lang-switch" aria-label="Language selector">
+			  <a class="lang-btn" href="../fr/tutorial_kicad_9_build_your_first_pcb.html">FR</a>
+			  <a class="lang-btn active" aria-current="true" href="../en/tutorial_kicad_9_build_your_first_pcb.html">EN</a>
+			</div>
+		  </div>
+		</header>
+
+		<main class="container">
+		  <section class="hero">
+			<h1>KiCad 9.0 – Build Your First PCB</h1>
+			<p class="lead">A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs.</p>
+			<div class="hero-actions">
+			  <a class="btn secondary" href="tutorials.html">← Back to tutorials</a>
+			  <a class="btn primary" href="https://youtu.be/CPZjK39ETZU" target="_blank" rel="noopener">Watch the video</a>
+			</div>
+		  </section>
+
+		  <section class="card">
+			<h2>Overview</h2>
+			<p>This video from JAK Services shows how to create your first PCB in KiCad 9.</p>
+		  </section>
+
+		  <section class="card">
+			<h2>Resources</h2>
+			<ul>
+			  <li>KiCad: <a href="https://www.kicad.org" target="_blank" rel="noopener">https://www.kicad.org</a></li>
+			  <li>SnapEDA (symbols/footprints): <a href="https://www.snapeda.com" target="_blank" rel="noopener">https://www.snapeda.com</a></li>
+			</ul>
+		  </section>
+
+		  <section class="card" id="sections">
+			<h2>Main sections covered in the video</h2>
+			<ul>
+			  <li><strong>Project setup</strong> – create a new KiCad project, configure backups and page settings.</li>
+			  <li><strong>Schematic design</strong> – set up net classes, place symbols (including external libraries), wire the circuit, and run ERC.</li>
+			  <li><strong>Footprint management</strong> – assign footprints, inspect them, and create/modify a custom footprint when needed.</li>
+			  <li><strong>Bill of Materials (BOM)</strong> – generate and export a BOM.</li>
+			  <li><strong>PCB layout</strong> – import from schematic, set board/layer rules, place parts, and route traces.</li>
+			  <li><strong>Planes, mechanics, and silkscreen</strong> – create a ground plane, add mounting holes, add a logo, and draw the board outline (edge cuts).</li>
+			  <li><strong>3D visualization</strong> – assign 3D models and inspect the assembled board in the 3D viewer.</li>
+			  <li><strong>Verification</strong> – run DRC and fix remaining issues.</li>
+			  <li><strong>Manufacturing outputs</strong> – generate Gerbers and drill files and inspect them with the Gerber viewer.</li>
+			  <li><strong>Best practices</strong> – review common PCB pitfalls and use a design-rule checklist before fabrication.</li>
+			</ul>
+		  </section>
+
+		</main>
+
+		<footer class="site-footer">
+		  <div class="container footer-inner">
+			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
+			<p>
+			  <a class="footer-link" href="legal.html">Legal mentions</a>
+			  <a class="footer-link" href="privacy.html">Privacy policy</a>
+			</p>
+		  </div>
+		</footer>
+
+		<script src="../js/main.js"></script>
+		<script src="../js/tutorials.js"></script>
+	</body>
+</html>
