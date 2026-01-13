@@ -187,11 +187,11 @@
 					<button aria-label="Trace décimée du sonar à balayage latéral (SSS)." class="dot" data-index="5" title="Trace décimée du sonar à balayage latéral (SSS)." type="button"></button>
 					<button aria-label="Éditeur Sub Bottom Profiler (SBP), composant d’une application de traitement SBP par lots, permettant l’édition des en-têtes textuels et des en-têtes de traces, ainsi que la visualisation et la navigation dans les graphiques de traces et leurs valeurs." class="dot" data-index="6" title="Éditeur Sub Bottom Profiler (SBP), composant d’une application de traitement SBP par lots, permettant l’édition des en-têtes textuels et des en-têtes de traces, ainsi que la visualisation et la navigation dans les graphiques de traces et leurs valeurs." type="button"></button>
 					<button aria-label="Traitement automatisé en temps réel des levés hydrographiques du fond marin avec JK et Eiva." class="dot" data-index="7" title="Traitement automatisé en temps réel des levés hydrographiques du fond marin avec JK et Eiva." type="button"></button>
-					<button aria-label="Portail de données – Visualiseur WMS – offrant une vue d’ensemble des projets accessibles à l’utilisateur." class="dot active" data-index="0" title="Portail de données – Visualiseur WMS – offrant une vue d’ensemble des projets accessibles à l’utilisateur." type="button"></button>
-					<button aria-label="Portail de données – Visualiseur WMS – avec arborescence de fichiers et menus contextuels pour la gestion des couches et le téléchargement des fichiers." class="dot" data-index="1" title="Portail de données – Visualiseur WMS – avec arborescence de fichiers et menus contextuels pour la gestion des couches et le téléchargement des fichiers." type="button"></button>
-					<button aria-label="Portail de données – Parcours des fichiers avec prise en charge du téléversement et du téléchargement, incluant des visualiseurs pour différents formats de fichiers." class="dot" data-index="2" title="Portail de données – Parcours des fichiers avec prise en charge du téléversement et du téléchargement, incluant des visualiseurs pour différents formats de fichiers." type="button"></button>
-					<button aria-label="Portail de données – Visualiseur de nuages de points." class="dot" data-index="3" title="Portail de données – Visualiseur de nuages de points." type="button"></button>
-					<button aria-label="Portail de données – Visualiseur de données de profileur sub-bottom (SBP) prenant en charge les fichiers SEG-Y, incluant la visualisation des traces, des sections sismiques, l’inspection des formes d’onde, ainsi que l’analyse détaillée des en-têtes textuels, binaires et de traces." class="dot" data-index="4" title="Portail de données – Visualiseur de données de profileur sub-bottom (SBP) prenant en charge les fichiers SEG-Y, incluant la visualisation des traces, des sections sismiques, l’inspection des formes d’onde, ainsi que l’analyse détaillée des en-têtes textuels, binaires et de traces." type="button"></button>
+					<button aria-label="Portail de données – Visualiseur WMS – offrant une vue d’ensemble des projets accessibles à l’utilisateur." class="dot" data-index="8" title="Portail de données – Visualiseur WMS – offrant une vue d’ensemble des projets accessibles à l’utilisateur." type="button"></button>
+					<button aria-label="Portail de données – Visualiseur WMS – avec arborescence de fichiers et menus contextuels pour la gestion des couches et le téléchargement des fichiers." class="dot" data-index="9" title="Portail de données – Visualiseur WMS – avec arborescence de fichiers et menus contextuels pour la gestion des couches et le téléchargement des fichiers." type="button"></button>
+					<button aria-label="Portail de données – Parcours des fichiers avec prise en charge du téléversement et du téléchargement, incluant des visualiseurs pour différents formats de fichiers." class="dot" data-index="10" title="Portail de données – Parcours des fichiers avec prise en charge du téléversement et du téléchargement, incluant des visualiseurs pour différents formats de fichiers." type="button"></button>
+					<button aria-label="Portail de données – Visualiseur de nuages de points." class="dot" data-index="11" title="Portail de données – Visualiseur de nuages de points." type="button"></button>
+					<button aria-label="Portail de données – Visualiseur de données de profileur sub-bottom (SBP) prenant en charge les fichiers SEG-Y, incluant la visualisation des traces, des sections sismiques, l’inspection des formes d’onde, ainsi que l’analyse détaillée des en-têtes textuels, binaires et de traces." class="dot" data-index="12" title="Portail de données – Visualiseur de données de profileur sub-bottom (SBP) prenant en charge les fichiers SEG-Y, incluant la visualisation des traces, des sections sismiques, l’inspection des formes d’onde, ainsi que l’analyse détaillée des en-têtes textuels, binaires et de traces." type="button"></button>
 					</div>
 				</div>
 			</section>
@@ -292,31 +292,39 @@
 						JAK Services a conçu et développé une chaîne de traitement hydrographique embarquée, modulaire et automatisée. 
 						L’objectif principal était de produire en continu un jeu de données préliminaire très proche du résultat final, 
 						permettant d’identifier rapidement les zones nécessitant un nouveau passage avant que le navire ne s’en éloigne.
-						<br/><br/>
+					</p>
+					<p>
 						Cette chaîne de traitement s’intègre harmonieusement aux workflows existants, notamment EIVA Workflow Manager (WFM) 
 						pour les données Multi Beam Echo Sounder (MBES). L’application d’orchestration a été pensée comme indépendante du 
 						type de capteur et peut ainsi être utilisée également avec des systèmes tels que le Side-Scan Sonar (SSS) ou 
 						d’autres instruments.
-						<br/><br/>
+					</p>
+					<p>
 						Le pipeline, illustré ci-dessous, inclut :
+					</p>
 						<ul>
 							<li>La réception en temps réel des données, avec rotation automatique des fichiers, et sauvegarde au format .SBD d’EIVA. Pour les données MBES, cette fonctionnalité n’était utilisée que lorsque NaviScan n’assurait pas l’acquisition.</li>
 							<li>Le traitement automatisé des données auxiliaires (SVP, navigation). Lorsque la navigation provenait de systèmes disposant d’API de post-traitement, elle était générée en continu avec gestion des phases d’entrée et de sortie pour chaque fichier SBD.</li>
 						</ul>
+					</p>
 						Une fois générés et corrélés avec les données auxiliaires, les fichiers SBD étaient classés automatiquement par 
 						site et zone avant d’être importés et organisés dans EIVA WFM pour association des données, nettoyage et export en nuages de points.
-						<br/><br/>
+					</p>
+					<p>
 						Ces nuages de points étaient ensuite traités par l’application d’orchestration développée par JAK Services, 
 						exécutant divers outils en ligne de commande pour :
+					</p>
 						<ul>
 							<li>Effectuer le gridding</li>
 							<li>Générer des produits de contrôle qualité (carte de densité, polygones de lacunes, métriques de dimensionnement)</li>
 							<li>Produire des matrices d’indicateurs go/no-go conformes aux pratiques WFM</li>
 						</ul>
+					<p>
 						L’application produisait ensuite des livrables SIG légers — DTM, ombrages (niveaux de gris et couleurs), 
 						traces de navigation, cartes de pente, densité rouge/vert, couches de couverture, polygones de lacunes, 
 						etc. — destinés à un portail web pour la visualisation et le téléchargement.
-						<br/><br/>
+					</p>
+					<p>
 						Enfin, les mêmes outils étaient utilisés pour exporter les jeux de données finaux fusionnés 
 						après validation qualité par un opérateur.
 					</p>
