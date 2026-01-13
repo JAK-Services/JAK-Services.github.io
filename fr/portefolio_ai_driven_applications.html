@@ -22,7 +22,7 @@
 		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
 		<script type="application/ld+json">
 			{"@context": "https://schema.org"
-				, "@type": "Organization"
+				, "@type": "SoftwareApplication"
 				, "name": "JAK Services"
 				, "url": "https://jak-services.github.io"
 				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
@@ -66,7 +66,7 @@
 			
 			<section class="grid">
 			
-				<article class="card" id="ai-sss">
+				<article class="card" id="ai-seismic-node">
 					<h2>Automatisation de rapports pour nœuds sismiques</h2>
 					<p>
 						Lors des déploiements de nœuds sismiques offshore, le reporting doit être rapide, cohérent et prêt pour l’audit. JAK Services a développé une application logicielle qui
@@ -74,20 +74,20 @@
 						de chaque nœud dans un format standardisé.
 					</p>
 
-					<h2>Fonctionnalités de l’application</h2>
+					<h3>Fonctionnalités de l’application</h3>
 					<ul>
 						<li><strong>Collecte &amp; validation des données :</strong> rassemble tous les champs requis (projet, déploiement, métriques QC) et les valide selon des tolérances.</li>
 						<li><strong>Flux en temps réel :</strong> ingère les données capteurs en direct pendant le déploiement/l’enregistrement du nœud afin de réduire la saisie manuelle et d’améliorer la traçabilité.</li>
 						<li><strong>Génération de rapport en un clic :</strong> produit un dossier de rapport complet (incluant graphiques, tableaux et images intégrées) pour chaque nœud.</li>
 					</ul>
 
-					<h2>Sélection, catégorisation et placement d’images pilotés par l’IA</h2>
+					<h3>Sélection, catégorisation et placement d’images pilotés par l’IA</h3>
 					<p>
 						Un module IA dédié sélectionne les images correspondant au bon nœud sismique grâce à un module de reconnaissance optique de caractères (OCR) basé sur l’IA,
 						les catégorise (gros plan série/QR ou vue de déploiement) via un module IA entraîné par JAK Services, puis les place au bon endroit dans le rapport en fonction de la catégorie.
 					</p>
 
-					<h2>Entraînement avec des données limitées</h2>
+					<h3>Entraînement avec des données limitées</h3>
 					<p>
 						Avec seulement un faible nombre d’images annotées, des techniques d’augmentation ont été utilisées pour améliorer la généralisation.
 						Cette approche a donné d’excellents résultats en pratique, y compris dans des conditions d’éclairage difficiles et sous l’eau.
@@ -120,15 +120,23 @@
 					<h2>Détection automatique de cibles en sonar à balayage latéral</h2>
 					<p>
 						Pour un client réalisant des opérations de levés hydrographiques à grande échelle, JAK Services a conçu et développé une application de détection de cibles
-						pilotée par l’IA pour le Side-Scan Sonar (SSS). Le système traite des fichiers XTF afin de produire des images TIFF normalisées (intensité égalisée),
-						bottom-tracked et géoréférencées. À partir de ces images, des cibles sont détectées automatiquement, dimensionnées et catégorisées par un modèle IA,
+						pilotée par l’IA pour le Side-Scan Sonar (SSS). 
+					</p>
+					<p>
+						Le système traite des fichiers XTF afin de produire des images TIFF normalisées (intensité égalisée),
+						bottom-tracked et géoréférencées. 
+					</p>
+					<p>
+						À partir de ces images, des cibles sont détectées automatiquement, dimensionnées et catégorisées par un modèle IA,
 						avec génération de listes de cibles au format ESRI Shapefile ainsi que de fichiers CSV compatibles avec, par exemple, <a href="https://www.mogasw.com/">Moga Software</a>.
-
+					</p>
+					<p>
 						L’application inclut une interface en ligne de commande ainsi qu’une interface graphique (GUI) avec traitement par lot. Elle génère également des données
 						de couverture SSS et des traces de levé. Intégrée dans une chaîne de traitement orchestrée quasi temps réel, elle fournit en continu des produits
 						de synthèse GIS — tels que des mosaïques SSS, des polygones de couverture totale avec détection des lacunes, des listes de cibles complètes et des
 						informations de trajectoire mises à jour — tout au long de l’avancement du levé hydrographique.
-
+					</p>
+					<p>
 						Le modèle IA sélectionné et entraîné par JAK Services, avec des techniques d’augmentation, est un modèle Nano capable d’OBB, optimisé pour un déploiement
 						sur poste de travail (par exemple systèmes embarqués sur navires autonomes ou stations bureau) équipés de GPU NVIDIA de gamme moyenne à modeste.		  
 					</p>
@@ -215,4 +223,3 @@
 		<script src="../js/carousel.js"></script>
 	</body>
 </html>
-
