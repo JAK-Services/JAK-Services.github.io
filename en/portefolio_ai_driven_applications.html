@@ -22,7 +22,7 @@
 		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
 		<script type="application/ld+json">
 			{"@context": "https://schema.org"
-				, "@type": "Organization"
+				, "@type": "SoftwareApplication"
 				, "name": "JAK Services"
 				, "url": "https://jak-services.github.io"
 				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
@@ -66,7 +66,7 @@
 			
 			<section class="grid">
 			
-				<article class="card" id="ai-sss">
+				<article class="card" id="ai-seismic-node">
 					<h2>Seismic Node Report Automation</h2>
 					<p>
 						For offshore seismic node deployments, reporting must be fast, consistent, and audit-ready. JAK Services built a software application that
@@ -74,20 +74,20 @@
 						node report in a standardized format.
 					</p>
 
-					<h2>What the application does</h2>
+					<h3>What the application does</h3>
 					<ul>
 						<li><strong>Data capture &amp; validation:</strong> gathers all required fields (project, deployment, QC metrics) and validates them against tolerances.</li>
 						<li><strong>Real-time streaming:</strong> ingests live sensor data while the node is being deployed/logged to reduce manual transcription and improve traceability.</li>
 						<li><strong>One-click report generation:</strong> produces a complete report package (including plots, tables, and embedded imagery) for each node.</li>
 					</ul>
 
-					<h2>AI-driven image picking, categorization, and placement</h2>
+					<h3>AI-driven image picking, categorization, and placement</h3>
 					<p>
 						A dedicated AI module selects the correct images corresponding to a given seismic node using an AI based Optical Character Recognition (OCR) module,
 						categorizes them (serial/QR close-up or deployment view) using an JAK Services trained AI module, and places them in the report in the right location based on the category.
 					</p>
 
-					<h2>Training with limited data</h2>
+					<h3>Training with limited data</h3>
 					<p>
 						Having only a small number of labeled images, augmentation techniques were used to improve generalization.
 						This approach yielded very strong results in practice, even under challenging lighting and underwater conditions.
@@ -120,16 +120,28 @@
 					<h2>Side Scanning Sonar Target Picking</h2>
 					<p>
 						For a client conducting large-scale hydrographical survey operations, JAK Services designed and developed an 
-						AI-driven Side-Scan Sonar (SSS) target-detection application. The system processes XTF files to generate 
-						normalized (intensity-equalized), bottom-tracked, and georeferenced TIFF images. From these, targets are 
+						AI-driven Side-Scan Sonar (SSS) target-detection application. 
+					</p>
+					<p>
+						The system processes XTF files to generate 
+						normalized (intensity-equalized), bottom-tracked, and georeferenced TIFF images. 
+					</p>
+					<p>
+						From these, targets are 
 						automatically detected, sized, and categorized by an AI model, producing target lists in ESRI Shapefile format 
 						as well as CSV files compatible with such as the <a href="https://www.mogasw.com/">Moga Software</a>.
-
+					</p>
+					<p>
 						The application includes both a command-line interface and a batch-enabled GUI, and it additionally generates 
-						SSS coverage data and survey tracks. When integrated into an orchestrated near–real-time data pipeline, it 
+						SSS coverage data and survey tracks. 
+					</p>
+					<p>
+						When integrated into an orchestrated near–real-time data pipeline, it 
 						provides continuously updated GIS overview products—such as SSS mosaics, total coverage polygons with gap 
 						detection, comprehensive target lists, and ongoing track information—throughout the progress of the 
 						hydrographical survey.
+					</p>
+					<p>
 
 						The AI model selected and trained by JAK Services, using augmentation techniques, is a Nano-class OBB-capable 
 						model optimized for desktop deployment (such as autonomous vessel mounted systems or office 
@@ -218,4 +230,3 @@
 		<script src="../js/carousel.js"></script>
 	</body>
 </html>
-
