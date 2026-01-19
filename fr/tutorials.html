@@ -2,105 +2,241 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8"/>
-		<title>JAK Services – Tutoriels</title>
-		<meta content="width=device-width, initial-scale=1" name="viewport"/>
-		<meta content="Tutoriels pratiques en électronique, logiciel et prototypage par JAK Services." name="description"/>
-		<link rel="stylesheet" href="../styles/styles.css" />
-		<link rel="stylesheet" href="../styles/portfolio_carousel.css" />
-		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-		<link href="https://jak-services.github.io/en/tutorials.html" rel="canonical"/>
-		<link href="https://jak-services.github.io/en/tutorials.html" hreflang="en" rel="alternate"/>
-		<link href="https://jak-services.github.io/fr/tutorials.html" hreflang="fr" rel="alternate"/>
-		<link href="https://jak-services.github.io/en/tutorials.html" hreflang="x-default" rel="alternate"/>
-		<meta content="website" property="og:type"/><meta content="JAK Services – Tutoriels d'ingénierie" property="og:title"/>
-		<meta content="Selected projects and examples of work delivered by JAK Services." property="og:description"/>
-		<meta content="https://jak-services.github.io/fr/tutorials.html" property="og:url"/>
-		<meta content="https://jak-services.github.io/images/jak-logo.svg" property="og:image"/>
-		<meta content="summary" name="twitter:card"/><meta content="JAK Services – Tutoriels d'ingénierie" name="twitter:title"/>
-		<meta content="Tutoriels pratiques en électronique, logiciel et prototypage par JAK Services." name="twitter:description"/>
-		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
+		<title>Tutoriels | JAK Services – Ingénierie électronique & logicielle</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="description" content="Tutoriels pas à pas pour ESP32, MicroPython, KiCad et le prototypage rapide : mise en place de la chaîne de développement, câblage, conception de PCB et fichiers prêts pour la fabrication."/>
+
+		<link rel="stylesheet" href="../styles/styles.css"/>
+		<link rel="stylesheet" href="../styles/portfolio_carousel.css"/>
+		<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+		<link rel="canonical" href="https://jak-services.github.io/fr/tutorials.html"/>
+		<link rel="alternate" hreflang="fr" href="https://jak-services.github.io/fr/tutorials.html"/>
+		<link rel="alternate" hreflang="en" href="https://jak-services.github.io/en/tutorials.html"/>
+		<link rel="alternate" hreflang="x-default" href="https://jak-services.github.io/en/tutorials.html"/>
+
+		<meta property="og:type" content="website"/>
+		<meta property="og:title" content="Tutoriels | JAK Services – Ingénierie électronique & logicielle"/>
+		<meta property="og:description" content="Guides pratiques pour ESP32, MicroPython et KiCad : démarrage rapide, conception PCB et livrables prêts pour la fabrication."/>
+		<meta property="og:url" content="https://jak-services.github.io/fr/tutorials.html"/>
+		<meta property="og:image" content="https://jak-services.github.io/images/tutorials/Getting_Started_With_ESP32.webp"/>
+
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:title" content="Tutoriels | JAK Services"/>
+		<meta name="twitter:description" content="Tutoriels pas à pas pour ESP32, MicroPython et KiCad : prototypage matériel et logiciel."/>
+		<meta name="twitter:image" content="https://jak-services.github.io/images/tutorials/Getting_Started_With_ESP32.webp"/>
+
+		<!-- Organization -->
 		<script type="application/ld+json">
-			{"@context": "https://schema.org"
-				, "@type": "Organization"
-				, "name": "JAK Services"
-				, "url": "https://jak-services.github.io"
-				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
-			}
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "JAK Services",
+			"url": "https://jak-services.github.io",
+			"logo": "https://jak-services.github.io/images/jak-logo.svg"
+		}
 		</script>
-	    <script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+		<!-- Breadcrumbs -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Accueil",
+					"item": "https://jak-services.github.io/fr/index.html"
+				},
+				{
+					"@type": "ListItem",
+					"position": 2,
+					"name": "Tutoriels",
+					"item": "https://jak-services.github.io/fr/tutorials.html"
+				}
+			]
+		}
+		</script>
+
+		<!-- ItemList -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "Tutoriels JAK Services",
+			"itemListOrder": "https://schema.org/ItemListOrderAscending",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"url": "https://jak-services.github.io/fr/tutorial_getting_started_esp32_blinking_led_mockup.html",
+					"name": "ESP32 MicroPython – LED clignotante"
+				},
+				{
+					"@type": "ListItem",
+					"position": 2,
+					"url": "https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html",
+					"name": "KiCad 9 – Réaliser votre premier PCB"
+				}
+			]
+		}
+		</script>
+
+		<script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 	</head>
 
 	<body>
 		<header class="site-header">
-		  <div class="container header-inner">
-			<a class="brand" href="index.html">
-			  <img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
-			  <div class="brand-text">
-				<span class="brand-name">JAK Services</span>
-				<span class="brand-tagline">Solutions en ingénierie logicielle et électronique</span>
-			  </div>
-			</a>
-			<nav class="main-nav">
-			  <a href="index.html">Accueil / À propos</a>
-			  <a href="services.html">Services</a>
-			  <a href="portefolio.html">Portefolio</a>
-			  <a href="tutorials.html" aria-current="page">Tutoriels</a>
-			  <a href="guides.html">Guides</a>
-			  <a href="clients.html">Clients</a>
-			  <a href="contact.html">Contact</a>
-			</nav>
-			<div class="lang-switch" aria-label="Sélecteur de langue">
-			  <a class="lang-btn active" aria-current="true" href="../fr/tutorials.html">FR</a>
-			  <a class="lang-btn" href="../en/tutorials.html">EN</a>
+			<div class="container header-inner">
+				<a class="brand" href="index.html">
+					<img class="logo" src="../images/jak-logo.svg" alt="Logo JAK Services"/>
+					<div class="brand-text">
+						<span class="brand-name">JAK Services</span>
+						<span class="brand-tagline">Solutions d’ingénierie logicielle et électronique</span>
+					</div>
+				</a>
+
+				<nav class="main-nav">
+					<a href="index.html">Accueil / À propos</a>
+					<a href="services.html">Services</a>
+					<a href="portefolio.html">Portfolio</a>
+					<a href="tutorials.html" aria-current="page">Tutoriels</a>
+					<a href="guides.html">Guides</a>
+					<a href="clients.html">Clients</a>
+					<a href="contact.html">Contact</a>
+				</nav>
+
+				<div class="lang-switch" aria-label="Sélecteur de langue">
+					<a class="lang-btn active" aria-current="true" href="../fr/tutorials.html">FR</a>
+					<a class="lang-btn" href="../en/tutorials.html">EN</a>
+				</div>
 			</div>
-		  </div>
 		</header>
 
 		<main class="container">
-		  <section class="hero">
-			<h1>Tutoriels</h1>
-			<p class="lead">Des guides pratiques pour vous aider à mettre en place et faire fonctionner vos prototypes matériels et logiciels.</p>
-			<div class="hero-actions">
-			  <a class="btn secondary" href="contact.html">Besoin d’aide pour votre projet ?</a>
-			</div>
-		  </section>
+			<section class="hero">
+				<h1>Tutoriels</h1>
+				<p class="lead">
+					Guides pratiques pour démarrer rapidement vos prototypes matériels et logiciels :
+					ESP32, MicroPython, conception PCB avec KiCad et livrables prêts pour la fabrication.
+				</p>
+				<div class="hero-actions">
+					<a class="btn secondary" href="contact.html">Besoin d’aide sur votre projet&nbsp;?</a>
+				</div>
 
-		  <section class="grid">
-			<article class="card">
-			  <h2>Bien démarrer avec l’ESP32 – Maquette LED clignotante</h2>
-			  <p class="tutorial-meta">MicroPython • Thonny IDE • ESP32 DevKitC (Wroom-32)</p>
-			  <p>Installez le pilote USB‑UART, flashez MicroPython, câblez une LED, puis exécutez un petit script qui clignote toutes les 0,5 s.</p>
-			  <p><a class="btn primary" href="tutorial_getting_started_esp32_blinking_led_mockup.html">Ouvrir le tutoriel</a></p>
-			  <p><a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA" target="_blank" rel="noopener">Voir sur YouTube</a></p>			  
-			</article>
+				<!-- Carousel des tutoriels -->
+				<div class="carousel" aria-label="Aperçu des tutoriels">
+					<div class="carousel-track">
+						<div class="carousel-slide active">
+							<p class="carousel-caption">
+								<strong>KiCad 9 :</strong> du schéma au routage PCB et génération des fichiers Gerber.
+							</p>
+							<div class="carousel-image-wrapper">
+								<a href="tutorial_kicad_9_build_your_first_pcb.html">
+									<img src="/images/tutorials/kicad_9_your_first_pcb.webp"
+									     alt="Rendu 3D d’un PCB conçu avec KiCad 9"
+									     loading="lazy"
+									     decoding="async"/>
+								</a>
+							</div>
+						</div>
 
-			<article class="card">
-			  <h2>KiCad 9.0 – Réaliser votre premier PCB</h2>
-			  <p class="tutorial-meta">KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers</p>
-			  <p>Un tutoriel complet de conception de PCB avec KiCad 9, couvrant la création du projet, le schéma, l’association des empreintes, la génération de la nomenclature (BOM), le routage du PCB, les vérifications, le contrôle des règles de conception et la génération des fichiers Gerber pour la fabrication.</p>
-			  <p><a class="btn primary" href="tutorial_kicad_9_build_your_first_pcb.html">Ouvrir le tutoriel</a></p>
-			  <p><a class="btn primary" href="https://youtu.be/TsGVEaLyYrU" target="_blank" rel="noopener">Voir sur YouTube</a></p>
-			  <p><a class="btn primary" href="pcb-design-rules.html">Règles de conception du PCB — Checklist</a></p>
-			</article>
+						<div class="carousel-slide">
+							<p class="carousel-caption">
+								<strong>ESP32 MicroPython :</strong> pilote CP210x, installation de MicroPython et LED clignotante sur GPIO16.
+							</p>
+							<div class="carousel-image-wrapper">
+								<a href="tutorial_getting_started_esp32_blinking_led_mockup.html">
+									<img src="/images/tutorials/Getting_Started_With_ESP32.webp"
+									     alt="ESP32 DevKitC connecté à une breadboard avec une LED en MicroPython"
+									     loading="eager"
+									     decoding="async"/>
+								</a>
+							</div>
+						</div>
+					</div>
 
-			<article class="card">
-			  <h2>D’autres tutoriels arrivent bientôt</h2>
-			  <p>Nous ajoutons régulièrement de nouveaux guides. Si vous souhaitez un sujet en particulier, dites‑nous ce que vous construisez.</p>
-			  <p><a class="btn secondary" href="contact.html">Suggérer un tutoriel</a></p>
-			</article>
-		  </section>
+					<button class="carousel-btn prev" type="button" aria-label="Diapositive précédente">‹</button>
+					<button class="carousel-btn next" type="button" aria-label="Diapositive suivante">›</button>
+
+					<div class="carousel-dots" role="tablist" aria-label="Navigation du carrousel">
+						<button class="dot active" type="button" aria-current="true" aria-label="Diapositive 1"></button>
+						<button class="dot" type="button" aria-label="Diapositive 2"></button>
+					</div>
+				</div>
+			</section>
+
+			<section class="grid">
+				<article class="card">
+					<h2>ESP32 MicroPython – LED clignotante</h2>
+					<p class="tutorial-meta">MicroPython • IDE Thonny • ESP32 DevKitC (Wroom-32)</p>
+					<p>
+						Installer le pilote USB-UART, flasher MicroPython, câbler une LED simple
+						et exécuter un script qui la fait clignoter toutes les 0,5 secondes.
+					</p>
+					<p>
+						<a class="btn primary" href="tutorial_getting_started_esp32_blinking_led_mockup.html">
+							Ouvrir le tutoriel
+						</a>
+					</p>
+					<p>
+						<a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA" target="_blank" rel="noopener">
+							Regarder sur YouTube
+						</a>
+					</p>
+				</article>
+
+				<article class="card">
+					<h2>KiCad 9 – Réaliser votre premier PCB</h2>
+					<p class="tutorial-meta">KiCad 9 • Schéma → Routage • Fichiers Gerber</p>
+					<p>
+						Tutoriel complet de conception PCB avec KiCad 9 : création du projet,
+						schéma, empreintes, nomenclature, routage, vérifications et fichiers
+						prêts pour la fabrication.
+					</p>
+					<p>
+						<a class="btn primary" href="tutorial_kicad_9_build_your_first_pcb.html">
+							Ouvrir le tutoriel
+						</a>
+					</p>
+					<p>
+						<a class="btn primary" href="https://youtu.be/TsGVEaLyYrU" target="_blank" rel="noopener">
+							Regarder sur YouTube
+						</a>
+					</p>
+					<p>
+						<a class="btn primary" href="pcb-design-rules.html">
+							Règles de conception PCB — Checklist
+						</a>
+					</p>
+				</article>
+
+				<article class="card">
+					<h2>D’autres tutoriels à venir</h2>
+					<p>
+						De nouveaux guides sont ajoutés régulièrement.
+						Si vous avez un sujet en tête, dites-nous ce que vous développez.
+					</p>
+					<p>
+						<a class="btn secondary" href="contact.html">Suggérer un tutoriel</a>
+					</p>
+				</article>
+			</section>
 		</main>
 
 		<footer class="site-footer">
-		  <div class="container footer-inner">
-			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
-			<p>
-			  <a class="footer-link" href="legal.html">Mentions légales</a>
-			  <a class="footer-link" href="privacy.html">Politique de confidentialité</a>
-			</p>
-		  </div>
+			<div class="container footer-inner">
+				<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
+				<p>
+					<a class="footer-link" href="legal.html">Mentions légales</a>
+					<a class="footer-link" href="privacy.html">Politique de confidentialité</a>
+				</p>
+			</div>
 		</footer>
 
 		<script src="../js/main.js"></script>
+		<script src="../js/carousel.js"></script>
 	</body>
 </html>
