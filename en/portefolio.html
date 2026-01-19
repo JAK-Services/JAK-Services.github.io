@@ -3,32 +3,90 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title>JAK Services – Portfolio</title>
+		<title>Portfolio | JAK Services – Software &amp; Electronics Engineering Projects</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport"/>
-		<meta content="Selected projects and examples of work delivered by JAK Services." name="description"/>
-		<link rel="stylesheet" href="../styles/styles.css" />
-		<link rel="stylesheet" href="../styles/portfolio_carousel.css" />
+		<meta content="Portfolio of projects delivered by JAK Services: AI-driven applications, real-time hydrographic data processing, secure web portals, and electronics engineering (ESP32, MicroPython, PCB design with KiCad)." name="description"/>
+		<link href="../styles/styles.css" rel="stylesheet"/>
+		<link href="../styles/portfolio_carousel.css" rel="stylesheet"/>
 		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 		<link href="https://jak-services.github.io/en/portefolio.html" rel="canonical"/>
 		<link href="https://jak-services.github.io/en/portefolio.html" hreflang="en" rel="alternate"/>
 		<link href="https://jak-services.github.io/fr/portefolio.html" hreflang="fr" rel="alternate"/>
 		<link href="https://jak-services.github.io/en/portefolio.html" hreflang="x-default" rel="alternate"/>
-		<meta content="website" property="og:type"/><meta content="JAK Services – Portfolio" property="og:title"/>
-		<meta content="Selected projects and examples of work delivered by JAK Services." property="og:description"/>
+		<meta content="website" property="og:type"/>
+		<meta content="Portfolio | JAK Services – Software &amp; Electronics Engineering Projects" property="og:title"/>
+		<meta content="Portfolio of projects delivered by JAK Services: AI-driven applications, real-time hydrographic data processing, secure web portals, and electronics engineering (ESP32, MicroPython, PCB design with KiCad)." property="og:description"/>
 		<meta content="https://jak-services.github.io/en/portefolio.html" property="og:url"/>
-		<meta content="https://jak-services.github.io/images/jak-logo.svg" property="og:image"/>
-		<meta content="summary" name="twitter:card"/><meta content="JAK Services – Portfolio" name="twitter:title"/>
-		<meta content="Selected projects and examples of work delivered by JAK Services." name="twitter:description"/>
-		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
+		<meta content="https://jak-services.github.io/images/portfolio/Sss/SSS_Normalized.webp" property="og:image"/>
+		<meta content="summary_large_image" name="twitter:card"/>
+		<meta content="Portfolio | JAK Services – Software &amp; Electronics Engineering Projects" name="twitter:title"/>
+		<meta content="Portfolio of projects delivered by JAK Services: AI-driven applications, real-time hydrographic data processing, secure web portals, and electronics engineering (ESP32, MicroPython, PCB design with KiCad)." name="twitter:description"/>
+		<meta content="https://jak-services.github.io/images/portfolio/Sss/SSS_Normalized.webp" name="twitter:image"/>
 		<script type="application/ld+json">
-			{"@context": "https://schema.org"
-				, "@type": "Organization"
-				, "name": "JAK Services"
-				, "url": "https://jak-services.github.io"
-				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
-			}
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "JAK Services",
+			"url": "https://jak-services.github.io",
+			"logo": "https://jak-services.github.io/images/jak-logo.svg"
+		}
 		</script>
-	    <script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Home",
+					"item": "https://jak-services.github.io/en/index.html"
+				},
+				{
+					"@type": "ListItem",
+					"position": 2,
+					"name": "Portfolio",
+					"item": "https://jak-services.github.io/en/portefolio.html"
+				}
+			]
+		}
+		</script>
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "Portfolio Projects – JAK Services",
+			"itemListOrder": "https://schema.org/ItemListOrderAscending",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"url": "https://jak-services.github.io/en/portefolio.html#ai-systems",
+					"name": "AI‑Driven Applications"
+				},
+				{
+					"@type": "ListItem",
+					"position": 2,
+					"url": "https://jak-services.github.io/en/portefolio.html#hydro-survey",
+					"name": "Real‑Time Hydrographic Data Processing"
+				},
+				{
+					"@type": "ListItem",
+					"position": 3,
+					"url": "https://jak-services.github.io/en/portefolio.html#data-portal",
+					"name": "Secure Project Data Portal"
+				},
+				{
+					"@type": "ListItem",
+					"position": 4,
+					"url": "https://jak-services.github.io/en/portefolio.html#electronics",
+					"name": "Electronics Engineering – ESP32 & PCB Design"
+				}
+			]
+		}
+		</script>
+		<script async data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js">
+		</script>
 	</head>
 	<body>
 		<header class="site-header">
@@ -50,8 +108,8 @@
 					<a href="contact.html">Contact</a>
 				</nav>
 				<div aria-label="Language selector" class="lang-switch">
-					<a class="lang-btn" href="../fr/index.html">FR</a>
-					<a aria-current="true" class="lang-btn active" href="../en/index.html">EN</a>
+					<a class="lang-btn" href="../fr/portefolio.html">FR</a>
+					<a aria-current="true" class="lang-btn active" href="../en/portefolio.html">EN</a>
 				</div>
 			</div>
 		</header>
@@ -173,6 +231,28 @@
 								<img alt="Data Portal - Sub-Bottom Profiler (SBP) data viewer supporting SEG-Y files, including trace visualization, seismic sections, waveform inspection, and detailed text, binary, and trace header analysis." decoding="async" loading="lazy" src="../images/portfolio/web_server/SBP_Viewer.webp"/>
 							</div>
 						</div>
+					<div class="carousel-slide">
+						<div class="carousel-caption">
+							PCB design with KiCad 9: from schematic to layout, ERC/DRC checks, and Gerber exports.
+						</div>
+						<div class="carousel-image-wrapper">
+							<a href="tutorial_kicad_9_build_your_first_pcb.html">
+								<img alt="3D render of a PCB designed with KiCad 9"decoding="async" loading="lazy" src="/images/tutorials/kicad_9_your_first_pcb.webp"/>
+							</a>
+						</div>
+					</div>
+
+					<div class="carousel-slide">
+						<div class="carousel-caption">
+							ESP32 + MicroPython bring-up: CP210x driver, Thonny setup, wiring, and a blinking LED on GPIO16.
+						</div>
+						<div class="carousel-image-wrapper">
+							<a href="tutorial_getting_started_esp32_blinking_led_mockup.html">
+								<img alt="ESP32 DevKitC connected to a breadboard with an LED using MicroPython" decoding="async" loading="lazy" src="/images/tutorials/Getting_Started_With_ESP32.webp"/>
+							</a>
+						</div>
+					</div>
+						
 					</div>
 					<button aria-label="Previous image" class="carousel-btn prev" type="button">❮</button>
 					<button aria-label="Next image" class="carousel-btn next" type="button">❯</button>
@@ -191,7 +271,8 @@
 						<button aria-label="Data Portal - File browsing with upload and download support, including viewers for various file formats." class="dot" data-index="10" title="Data Portal - File browsing with upload and download support, including viewers for various file formats." type="button"></button>
 						<button aria-label="Data Portal - Point Cloud Viewer." class="dot" data-index="11" title="Data Portal - Point Cloud Viewer." type="button"></button>
 						<button aria-label="Data Portal - Sub-Bottom Profiler (SBP) data viewer supporting SEG-Y files, including trace visualization, seismic sections, waveform inspection, and detailed text, binary, and trace header analysis." class="dot" data-index="12" title="Data Portal - Sub-Bottom Profiler (SBP) data viewer supporting SEG-Y files, including trace visualization, seismic sections, waveform inspection, and detailed text, binary, and trace header analysis." type="button"></button>
-
+						<button class="dot" type="button" data-index="13" title="KiCad 9 – First PCB" aria-label="KiCad 9 – First PCB"></button>
+						<button class="dot active" type="button" data-index="14" title="ESP32 MicroPython – Blinking LED" aria-label="ESP32 MicroPython – Blinking LED"></button>
 					</div>
 				</div>
 			</section>
@@ -421,6 +502,72 @@
 						</div>
 					</div>
 					<p class="meta">Technologies: Flask, Python, JavaScript, WMS, PostGIS</p>
+				</article>
+				<article class="card" id="electronics">
+					<h2>Electronics Engineering – ESP32 &amp; PCB Design</h2>
+					<p>
+						Some electronics projects covering ESP32 bring-up, rapid prototyping
+						with MicroPython, and PCB design using KiCad, from schematic capture to
+						manufacturing-ready Gerber files. The full workflow is documented through
+						step-by-step tutorials and practical <a href="../en/pcb-design-rules.html">PCB design rules</a>.
+					</p>
+
+					<p class="tutorial-meta">ESP32 • MicroPython • KiCad • <a href="../en/pcb-design-rules.html">PCB design rules</a></p>
+
+					<div class="carousel" aria-label="Electronics tutorials preview">
+						<div class="carousel-track">
+							<div class="carousel-slide active">
+								<div class="carousel-caption">
+									PCB design with KiCad 9: from schematic to layout,
+									ERC/DRC checks, and Gerber exports.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="tutorial_kicad_9_build_your_first_pcb.html">
+										<img src="/images/tutorials/kicad_9_your_first_pcb.webp" alt="3D render of a PCB designed with KiCad 9" loading="lazy" decoding="async"/>
+									</a>
+								</div>
+							</div>
+
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+									ESP32 + MicroPython bring-up: CP210x driver, Thonny setup,
+									wiring, and a blinking LED on GPIO16.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="tutorial_getting_started_esp32_blinking_led_mockup.html">
+										<img src="/images/tutorials/Getting_Started_With_ESP32.webp" alt="ESP32 DevKitC connected to a breadboard LED using MicroPython" loading="lazy" decoding="async"/>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<button class="carousel-btn prev" type="button" aria-label="Previous image">
+							❮
+						</button>
+						<button class="carousel-btn next" type="button" aria-label="Next image">
+							❯
+						</button>
+						<button
+							class="carousel-toggle"
+							type="button"
+							title="Pause or resume slideshow"
+							aria-pressed="false">
+							Pause
+						</button>
+
+						<div class="carousel-dots">
+							<button class="dot" type="button" data-index="0" title="KiCad 9 – First PCB" aria-label="KiCad 9 – First PCB"></button>
+							<button class="dot active" type="button" data-index="1" title="ESP32 MicroPython – Blinking LED" aria-label="ESP32 MicroPython – Blinking LED"></button>
+						</div>
+					</div>
+					<p>
+						<a class="btn primary" href="tutorials.html">
+							View tutorials
+						</a>
+						<a class="btn primary" href="guides.html">
+							View guides
+						</a>
+					</p>
 				</article>
 				
 			</section>
