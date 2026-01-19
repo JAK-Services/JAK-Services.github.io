@@ -1,33 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8"/>
-		<title>KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services</title>
-		<meta content="width=device-width, initial-scale=1" name="viewport"/>
-		<meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." name="description"/>
-		<link rel="stylesheet" href="../styles/styles.css" />
-		<link rel="stylesheet" href="../styles/portfolio_carousel.css" />
-		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" rel="canonical"/>
-		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="en" rel="alternate"/>
-		        <link href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" hreflang="fr" rel="alternate"/>
-		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="x-default" rel="alternate"/>
-		<meta content="website" property="og:type"/><meta content="KiCad 9.0 – Build Your First PCB | JAK Services" property="og:title"/>
-		<meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." property="og:description"/>
-		<meta content="https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html" property="og:url"/>
-		<meta content="https://jak-services.github.io/images/jak-logo.svg" property="og:image"/>
-		<meta content="summary" name="twitter:card"/><meta content="Getting Started with KiCad – Your First PCB in KiCad 9 — From Schematic to Gerbers | JAK Services" name="twitter:title"/>
-		<meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." name="twitter:description"/>
-		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
-		<script type="application/ld+json">
-			{"@context": "https://schema.org"
-				, "@type": "Organization"
-				, "name": "JAK Services"
-				, "url": "https://jak-services.github.io"
-				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
-			}
-		</script>
-	    <script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+	  <meta charset="utf-8"/>
+	  <title>KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services</title>
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	  <meta name="description" content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs."/>
+
+	  <!-- Styles -->
+	  <link rel="stylesheet" href="../styles/styles.css"/>
+	  <link rel="stylesheet" href="../styles/portfolio_carousel.css"/>
+
+	  <!-- Icons -->
+	  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+	  <!-- Canonical + hreflang -->
+	  <link rel="canonical" href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
+	  <link rel="alternate" hreflang="en" href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
+	  <link rel="alternate" hreflang="fr" href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html"/>
+	  <link rel="alternate" hreflang="x-default" href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
+
+	  <!-- Open Graph -->
+	  <meta property="og:type" content="article"/>
+	  <meta property="og:title" content="KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services"/>
+	  <meta property="og:description" content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs."/>
+	  <meta property="og:url" content="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
+	  <meta property="og:image" content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"/>
+
+	  <!-- Twitter -->
+	  <meta name="twitter:card" content="summary_large_image"/>
+	  <meta name="twitter:title" content="KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services"/>
+	  <meta name="twitter:description" content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs."/>
+	  <meta name="twitter:image" content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"/>
+
+	  <!-- Structured data -->
+	  <script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "Organization",
+		  "name": "JAK Services",
+		  "url": "https://jak-services.github.io",
+		  "logo": "https://jak-services.github.io/images/jak-logo.svg"
+		}
+	  </script>
+
+	  <script type="application/ld+json">
+		{
+		  "@context":"https://schema.org",
+		  "@type":"BreadcrumbList",
+		  "itemListElement":[
+			{"@type":"ListItem","position":1,"name":"Home","item":"https://jak-services.github.io/en/index.html"},
+			{"@type":"ListItem","position":2,"name":"Tutorials","item":"https://jak-services.github.io/en/tutorials.html"},
+			{"@type":"ListItem","position":3,"name":"KiCad 9.0 – Build Your First PCB","item":"https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"}
+		  ]
+		}
+	  </script>
+
+	  <script type="application/ld+json">
+		{
+		  "@context":"https://schema.org",
+		  "@type":"HowTo",
+		  "name":"KiCad 9.0 – Build Your First PCB (From Schematic to Gerbers)",
+		  "description":"A complete PCB design walkthrough in KiCad 9: project setup, schematic capture, footprint assignment, BOM generation, PCB layout, DRC, and Gerber/drill outputs.",
+		  "tool":[{"@type":"HowToTool","name":"KiCad 9"}],
+		  "step":[
+			{"@type":"HowToStep","name":"Project setup","text":"Create a new KiCad project, configure backups and page settings."},
+			{"@type":"HowToStep","name":"Schematic design","text":"Set net classes, place symbols (including external libraries), wire the circuit, and run ERC."},
+			{"@type":"HowToStep","name":"Footprint management","text":"Assign and inspect footprints; create/modify a custom footprint when needed."},
+			{"@type":"HowToStep","name":"BOM generation","text":"Generate and export a bill of materials (BOM)."},
+			{"@type":"HowToStep","name":"PCB layout","text":"Import from schematic, set rules, place parts, and route traces."},
+			{"@type":"HowToStep","name":"Planes and mechanics","text":"Create a ground plane, add mounting holes, logo, and edge cuts."},
+			{"@type":"HowToStep","name":"3D visualization","text":"Assign 3D models and inspect in the 3D viewer."},
+			{"@type":"HowToStep","name":"Verification","text":"Run DRC and fix remaining issues."},
+			{"@type":"HowToStep","name":"Manufacturing outputs","text":"Generate Gerbers and drill files and inspect them in the Gerber viewer."},
+			{"@type":"HowToStep","name":"Best practices","text":"Review common PCB pitfalls and use a design-rule checklist before fabrication."}
+		  ]
+		}
+	  </script>
+
+	  <!-- Analytics -->
+	  <script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 	</head>
 
 	<body>
@@ -60,6 +112,7 @@
 		  <section class="hero">
 			<h1>KiCad 9.0 – Build Your First PCB</h1>
 			<p class="lead">A complete PCB design walkthrough in KiCad 9, covering project setup, schematic, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs.</p>
+			<img class="hero-media" src="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp" alt="3D render of a PCB designed with KiCad 9" width="1200" height="675" loading="eager" decoding="async"/>
 			<div class="hero-actions">
 			  <a class="btn secondary" href="tutorials.html">← Back to tutorials</a>
 			  <a class="btn primary" href="https://youtu.be/TsGVEaLyYrU" target="_blank" rel="noopener">Watch the video</a>
@@ -87,7 +140,7 @@
 			<ul>
 			  <li>KiCad: <a href="https://www.kicad.org" target="_blank" rel="noopener">https://www.kicad.org</a></li>
 			  <li>SnapEDA (symbols/footprints): <a href="https://www.snapeda.com" target="_blank" rel="noopener">https://www.snapeda.com</a></li>
-			  <li><a href="../en/pcb-design-rules.html" target="_blank" rel="noopener">PCB Design Rules - Checklist</a></li>
+			  <li><a href="../en/pcb-design-rules.html" rel="noopener">PCB Design Rules - Checklist</a></li>
 			</ul>
 		  </section>
 
