@@ -1,33 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="utf-8"/>
-		<title>KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services</title>
-		<meta content="width=device-width, initial-scale=1" name="viewport"/>
-		<meta content="Un tutoriel complet de conception de PCB avec KiCad 9 : création du projet, schéma, association des empreintes, génération de la nomenclature (BOM), routage du PCB, vérifications (ERC/DRC), checklist de règles de conception et exports Gerber pour la fabrication." name="description"/>
-		<link rel="stylesheet" href="../styles/styles.css" />
-		<link rel="stylesheet" href="../styles/portfolio_carousel.css" />
-		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-		        <link href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" rel="canonical"/>
-		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="en" rel="alternate"/>
-		        <link href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" hreflang="fr" rel="alternate"/>
-		        <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="x-default" rel="alternate"/>
-		<meta content="website" property="og:type"/><meta content="KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services" property="og:title"/>
-		<meta content="Un tutoriel complet de conception de PCB avec KiCad 9 : création du projet, schéma, empreintes, BOM, routage, vérifications (ERC/DRC), checklist de règles de conception et fichiers Gerber pour la fabrication." property="og:description"/>
-		<meta content="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" property="og:url"/>
-		<meta content="https://jak-services.github.io/images/jak-logo.svg" property="og:image"/>
-		<meta content="summary" name="twitter:card"/><meta content="KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services" name="twitter:title"/>
-		<meta content="Un tutoriel complet de conception de PCB avec KiCad 9 : création du projet, schéma, empreintes, BOM, routage, vérifications (ERC/DRC), checklist de règles de conception et fichiers Gerber pour la fabrication." name="twitter:description"/>
-		<meta content="https://jak-services.github.io/images/jak-logo.svg" name="twitter:image"/>
-		<script type="application/ld+json">
-			{"@context": "https://schema.org"
-				, "@type": "Organization"
-				, "name": "JAK Services"
-				, "url": "https://jak-services.github.io"
-				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
-			}
-		</script>
-	    <script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+	  <meta charset="utf-8"/>
+	  <title>KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services</title>
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	  <meta name="description" content="Un tutoriel complet de conception de PCB avec KiCad 9 : création du projet, schéma, association des empreintes, génération de la nomenclature (BOM), routage du PCB, vérifications ERC/DRC et export des fichiers Gerber pour la fabrication."/>
+
+	  <!-- Styles -->
+	  <link rel="stylesheet" href="../styles/styles.css"/>
+	  <link rel="stylesheet" href="../styles/portfolio_carousel.css"/>
+
+	  <!-- Icon -->
+	  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+	  <!-- Canonical + hreflang -->
+	  <link rel="canonical" href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html"/>
+	  <link rel="alternate" hreflang="fr" href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html"/>
+	  <link rel="alternate" hreflang="en" href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
+	  <link rel="alternate" hreflang="x-default" href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
+
+	  <!-- Open Graph -->
+	  <meta property="og:type" content="article"/>
+	  <meta property="og:title" content="KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services"/>
+	  <meta property="og:description" content="Tutoriel pas à pas pour concevoir un PCB avec KiCad 9 : schéma, empreintes, routage, vérifications ERC/DRC et fichiers Gerber prêts pour la fabrication."/>
+	  <meta property="og:url" content="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html"/>
+	  <meta property="og:image" content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"/>
+
+	  <!-- Twitter -->
+	  <meta name="twitter:card" content="summary_large_image"/>
+	  <meta name="twitter:title" content="KiCad 9.0 – Réaliser votre premier PCB — Du schéma aux Gerbers | JAK Services"/>
+	  <meta name="twitter:description" content="Tutoriel complet KiCad 9 pour concevoir votre premier PCB : schéma, empreintes, BOM, routage, vérifications et Gerbers."/>
+	  <meta name="twitter:image" content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"/>
+
+	  <!-- Structured data : Organization -->
+	  <script type="application/ld+json">
+	  {
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": "JAK Services",
+		"url": "https://jak-services.github.io",
+		"logo": "https://jak-services.github.io/images/jak-logo.svg"
+	  }
+	  </script>
+
+	  <!-- Structured data : Breadcrumbs -->
+	  <script type="application/ld+json">
+	  {
+		"@context":"https://schema.org",
+		"@type":"BreadcrumbList",
+		"itemListElement":[
+		  {
+			"@type":"ListItem",
+			"position":1,
+			"name":"Accueil",
+			"item":"https://jak-services.github.io/fr/index.html"
+		  },
+		  {
+			"@type":"ListItem",
+			"position":2,
+			"name":"Tutoriels",
+			"item":"https://jak-services.github.io/fr/tutorials.html"
+		  },
+		  {
+			"@type":"ListItem",
+			"position":3,
+			"name":"KiCad 9.0 – Réaliser votre premier PCB",
+			"item":"https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html"
+		  }
+		]
+	  }
+	  </script>
+
+	  <!-- Structured data : HowTo -->
+	  <script type="application/ld+json">
+	  {
+		"@context":"https://schema.org",
+		"@type":"HowTo",
+		"name":"KiCad 9.0 – Réaliser votre premier PCB",
+		"description":"Tutoriel complet pour concevoir un PCB avec KiCad 9, du schéma jusqu’aux fichiers Gerber prêts pour la fabrication.",
+		"tool":[
+		  {
+			"@type":"HowToTool",
+			"name":"KiCad 9"
+		  }
+		],
+		"step":[
+		  {"@type":"HowToStep","name":"Création du projet","text":"Créer un nouveau projet KiCad et configurer les paramètres de sauvegarde et de page."},
+		  {"@type":"HowToStep","name":"Conception du schéma","text":"Définir les classes de nets, placer les symboles, câbler le schéma et exécuter l’ERC."},
+		  {"@type":"HowToStep","name":"Association des empreintes","text":"Associer et vérifier les empreintes, et créer une empreinte personnalisée si nécessaire."},
+		  {"@type":"HowToStep","name":"Génération de la nomenclature (BOM)","text":"Générer et exporter la nomenclature des composants."},
+		  {"@type":"HowToStep","name":"Routage du PCB","text":"Importer le schéma, définir les règles, placer les composants et router les pistes."},
+		  {"@type":"HowToStep","name":"Plans et mécanique","text":"Créer un plan de masse, ajouter les perçages, le contour du PCB et les éléments graphiques."},
+		  {"@type":"HowToStep","name":"Visualisation 3D","text":"Associer les modèles 3D et vérifier l’assemblage dans le visualiseur 3D."},
+		  {"@type":"HowToStep","name":"Vérifications","text":"Lancer le DRC et corriger les erreurs restantes."},
+		  {"@type":"HowToStep","name":"Fichiers de fabrication","text":"Générer les fichiers Gerber et de perçage et les vérifier avant envoi au fabricant."}
+		]
+	  }
+	  </script>
+
+	  <!-- Analytics -->
+	  <script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 	</head>
 
 	<body>
@@ -60,6 +133,7 @@
 		  <section class="hero">
 			<h1>KiCad 9.0 – Réaliser votre premier PCB</h1>
 			<p class="lead">Un tutoriel complet pour passer d’un projet vierge à un PCB routé dans KiCad 9, jusqu’aux fichiers Gerber de fabrication.</p>
+			<img class="hero-media" src="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp" alt="Rendu 3D d’un PCB conçu avec KiCad 9" width="1200" height="675" loading="eager" decoding="async"/>
 			<div class="hero-actions">
 			  <a class="btn secondary" href="tutorials.html">← Retour aux tutoriels</a>
 			  <a class="btn primary" href="https://youtu.be/TsGVEaLyYrU" target="_blank" rel="noopener">Voir la vidéo</a>
