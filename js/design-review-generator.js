@@ -195,6 +195,7 @@
 	</head>
 	<body>
 		<h1>PCB Design Review Checklist</h1>
+		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">For details on any check item, expand its corresponding node on <a href="https://jak-services.github.io/en/pcb-design-rules.html" target="_blank" rel="noopener noreferrer">this JAK Services page</a>.</p>
 
 		<div class="actions">
 			<button class="primary" onclick="window.print()">Print / Save as PDF</button>
