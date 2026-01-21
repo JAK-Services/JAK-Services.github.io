@@ -263,4 +263,11 @@
 
 	document.getElementById("print-design-review")
 		?.addEventListener("click", handlePrint);
+
+	document.getElementById("download-design-review-link")
+	  ?.addEventListener("click", (e) => {
+		e.preventDefault();
+		handleDownload();
+	  });
+		
 })();
