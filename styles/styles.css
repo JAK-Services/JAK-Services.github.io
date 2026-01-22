@@ -334,9 +334,14 @@ body.lang-fr .i18n-fr.inline {
 	color:#e7ecff; 
 	padding:1rem; 
 	border-radius:12px; 
-	overflow:auto; 
+    display: block;
+    max-height: 60em;              /* ≈ 100 lines (0.6em–0.65em per line typical) */
+    overflow-y: auto;              /* vertical scroll */
+    overflow-x: auto;              /* horizontal scroll */
 	font-size:0.92rem; 
 	line-height:1.45; 
+    white-space: pre;
+    font-family: "Fira Code", Consolas, monospace;
 }
 
 .code-block code { 
@@ -360,6 +365,7 @@ body.lang-fr .i18n-fr.inline {
 
 .code-wrapper {
   position: relative;
+  overflow: hidden;
 }
 
 .copy-btn {
@@ -405,7 +411,6 @@ body.lang-fr .i18n-fr.inline {
 	text-decoration: underline;
 }
 
-
 /* Custom marker for expandable list items */
 .toggle-list .has-detail::marker {
   content: "\25B8 ";        /* ▸ right-pointing triangle */
@@ -417,4 +422,3 @@ body.lang-fr .i18n-fr.inline {
 .toggle-list .has-detail.open::marker {
   content: "\25BE ";        /* ▾ down-pointing triangle */
 }
-
