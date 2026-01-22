@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			ESP32 &ndash; Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code) | JAK Services
+		</title>
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+		<meta content="Sample two analog inputs on an ESP32 DevKitC, stream CSV over USB, and visualize both channels in Telemetry Viewer." name="description"/>
+		<link href="../styles/styles.css" rel="stylesheet"/>
+		<link href="../styles/portfolio_carousel.css" rel="stylesheet"/>
+		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+		<link href="https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html" rel="canonical"/>
+		<link href="https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html" hreflang="en" rel="alternate"/>
+		<link href="https://jak-services.github.io/fr/tutorial_esp32_dual_adc_serial_oscilloscope.html" hreflang="fr" rel="alternate"/>
+		<link href="https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html" hreflang="x-default" rel="alternate"/>
+		<meta content="article" property="og:type"/>
+		<meta content="ESP32 &ndash; Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code) | JAK Services" property="og:title"/>
+		<meta content="Sample two analog inputs on an ESP32 DevKitC, stream CSV over USB, and visualize both channels in Telemetry Viewer." property="og:description"/>
+		<meta content="https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html" property="og:url"/>
+		<meta content="https://jak-services.github.io/images/tutorials/esp32_adc.webp" property="og:image"/>
+		<meta content="summary_large_image" name="twitter:card"/>
+		<meta content="ESP32 &ndash; Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code) | JAK Services" name="twitter:title"/>
+		<meta content="Sample two analog inputs on an ESP32 DevKitC, stream CSV over USB, and visualize both channels in Telemetry Viewer." name="twitter:description"/>
+		<meta content="https://jak-services.github.io/images/tutorials/esp32_adc.webp" name="twitter:image"/>
+		<script type="application/ld+json">
+			{"@context": "https://schema.org"
+				, "@type": "Organization"
+				, "name": "JAK Services"
+				, "url": "https://jak-services.github.io"
+				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
+			}
+		</script>
+		<script type="application/ld+json">
+			{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+				{
+						"@type": "ListItem",
+						"position": 1,
+						"name": "Home",
+						"item": "https://jak-services.github.io/en/index.html"
+				},
+				{
+						"@type": "ListItem",
+						"position": 2,
+						"name": "Tutorials",
+						"item": "https://jak-services.github.io/en/tutorials.html"
+				},
+				{
+						"@type": "ListItem",
+						"position": 3,
+						"name": "ESP32 Dual ADC Serial Oscilloscope",
+						"item": "https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html"
+				}
+		]
+}
+		</script>
+		<script type="application/ld+json">
+			{
+		"@context": "https://schema.org",
+		"@type": "TechArticle",
+		"headline": "ESP32 – Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code) | JAK Services",
+		"description": "Sample two analog inputs on an ESP32 DevKitC, stream CSV over USB, and visualize both channels in Telemetry Viewer.",
+		"image": "https://jak-services.github.io/images/tutorials/esp32_adc.webp",
+		"author": {
+				"@type": "Organization",
+				"name": "JAK Services"
+		},
+		"publisher": {
+				"@type": "Organization",
+				"name": "JAK Services",
+				"logo": {
+						"@type": "ImageObject",
+						"url": "https://jak-services.github.io/images/jak-logo.svg"
+				}
+		},
+		"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": "https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html"
+		}
+}
+		</script>
+		<script async="" data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js">
+		</script>
+	</head>
+	<body>
+		<header class="site-header">
+		  <div class="container header-inner">
+			<a class="brand" href="index.html">
+			  <img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
+			  <div class="brand-text">
+				<span class="brand-name">JAK Services</span>
+				<span class="brand-tagline">Software and Electronics Engineering Solutions</span>
+			  </div>
+			</a>
+			<nav class="main-nav">
+			  <a href="index.html">Home / About</a>
+			  <a href="services.html">Services</a>
+			  <a href="portefolio.html">Portefolio</a>
+			  <a href="tutorials.html" aria-current="page">Tutorials</a>
+			  <a href="guides.html">Guides</a>
+			  <a href="clients.html">Clients</a>
+			  <a href="contact.html">Contact</a>
+			</nav>
+			<div class="lang-switch" aria-label="Language selector">
+			  <a class="lang-btn" href="../fr/tutorial_esp32_dual_adc_serial_oscilloscope.html">FR</a>
+			  <a class="lang-btn active" aria-current="true" href="../en/tutorial_esp32_dual_adc_serial_oscilloscope.html">EN</a>
+			</div>
+		  </div>
+		</header>
+
+		<main class="container">
+		  <section class="hero">
+			<h1>ESP32 &ndash; Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code)</h1>
+				<p class="lead">
+					Sample two analog signals simultaneously, stream them as CSV over USB, and plot both channels in real time.
+				</p>
+				<img alt="ESP32 dual ADC serial oscilloscope tutorial with Telemetry Viewer" class="hero-media" decoding="async" height="675" loading="eager" src="/images/tutorials/esp32_adc.webp" width="1200"/>
+				<p class="tutorial-meta">
+					Board: ESP32 DevKitC (ESP32‑WROOM‑32) &bull; Language: C (ESP‑IDF) &bull; IDE: Visual Studio Code &bull; Plotter: Telemetry Viewer
+				</p>
+				<div class="hero-actions">
+					<a class="btn secondary" href="tutorials.html">
+						&larr; Back to tutorials
+					</a>
+				</div>
+		  </section>
+
+			<section class="card toc">
+			  <h2>Contents</h2>
+			  <nav aria-label="Tutorial contents">
+				<ul class="toc-list">
+				  <li><a href="#what-you-need">What you need</a></li>
+				  <li><a href="#wiring">Wiring (GPIO34 / GPIO35)</a></li>
+				  <li><a href="#vscode">VS Code + ESP-IDF setup</a></li>
+				  <li><a href="#project">Create the project</a></li>
+				  <li><a href="#code">Firmware: capture → process → stream</a></li>
+				  <li><a href="#flash">Build, flash, monitor, debug</a></li>
+				  <li><a href="#plot">Serial oscilloscope (PlotJuggler)</a></li>
+				  <li><a href="#tips">Tips and troubleshooting</a></li>
+				  <li><a href="#resources">Resources</a></li>
+				</ul>
+			  </nav>
+			</section>
+
+		  <section id="what-you-need" class="card">
+			<h2>What you need</h2>
+			<ul>
+			  <li>ESP32 DevKitC V2 (ESP32‑WROOM‑32)</li>
+			  <li>Two 50 Hz analog signals (0–3.3 V recommended)</li>
+			  <li>Common ground between signal source and ESP32 GND</li>
+			  <li>Micro‑USB cable (data capable)</li>
+			  <li>Windows PC (recommended for easiest COM port access)</li>
+			</ul>
+			<p class="callout">
+			  <strong>Important:</strong> ESP32 ADC pins are not 5 V tolerant. Keep inputs within 0–3.3 V.
+			</p>
+		  </section>
+
+		  <section id="wiring" class="card">
+			<h2>Wiring (GPIO34 / GPIO35)</h2>
+			<p>On ESP32 DevKitC V2, we use two ADC1 channels:</p>
+			<ul>
+			  <li><strong>GPIO34</strong> → ADC1_CH6 (Channel A)</li>
+			  <li><strong>GPIO35</strong> → ADC1_CH7 (Channel B)</li>
+			</ul>
+			<p>Connect both signal grounds to an ESP32 <strong>GND</strong> pin.</p>
+			<p class="callout">
+			  <strong>Tip:</strong> If your source can drive lower impedance, add a small series resistor (e.g. 1–4.7 kΩ) for protection.
+			</p>
+		  </section>
+
+		  <section id="vscode" class="card">
+			<h2>VS Code + ESP-IDF setup</h2>
+			<p>
+			  For ESP‑IDF on Windows, it’s usually easiest to run VS Code natively on Windows (not inside WSL),
+			  because the serial port (COM) is already available there.
+			</p>
+			<ol>
+			  <li>Install VS Code (Windows build).</li>
+			  <li>Install the extension: <strong>Espressif IDF</strong>.</li>
+			  <li>Run: <strong>ESP-IDF: Configure ESP-IDF extension</strong> and choose <strong>Express</strong>.</li>
+			  <li>When asked, let it install the tools into your user directory (default location is fine).</li>
+			</ol>
+			<p class="callout">
+			  If you already have Python via ESP‑IDF Tools, you do not need a separate Python installation.
+			  VS Code’s Python extension is optional (useful for editing scripts, not required to build C code).
+			</p>
+		  </section>
+
+		  <section id="project" class="card">
+			<h2>Create the project</h2>
+			<p>Create a new ESP‑IDF project using the “hello_world” template and then replace the main file:</p>
+			<ol>
+			  <li>In VS Code: <strong>ESP-IDF: New Project</strong>.</li>
+			  <li>Select target: <strong>esp32</strong>.</li>
+			  <li>Choose template: <strong>hello_world</strong>.</li>
+			  <li>Open the generated folder in VS Code.</li>
+			  <li>Replace <code>main/hello_world_main.c</code> with the code in the next section.</li>
+			</ol>
+		  </section>
+
+		  <section id="code" class="card">
+			<h2>Firmware: capture → process → stream</h2>
+			<p>
+			  The firmware does the following in an infinite loop:
+			  capture 3 periods of 50 Hz, remove DC component per channel, apply a light smoothing filter,
+			  compute phase shift (degrees), then stream CSV lines over USB.
+			</p>
+
+			<p class="callout">
+			  This tutorial uses the ADC continuous driver in scan mode. Samples are paired into rows (A,B) and only
+			  emitted once both are present.
+			</p>
+
+			<div class="code-wrapper">
+			  <button class="copy-btn" data-target="adc-code" aria-label="Copy code">
+				📋
+			  </button>
+
+			  <pre class="code-block"><code id="adc-code">#include &lt;inttypes.h&gt;
+#include &lt;limits.h&gt;
+#include &lt;stdbool.h&gt;
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_err.h"
+#include "esp_log.h"
+#include "esp_timer.h"
+#include "esp_adc/adc_oneshot.h"
+#include "esp_rom_sys.h"
+
+// ======================== Logging / diagnostics ========================
+static const char *gTag = "ADC_MEAS";   // Log tag for ADC measurement output
+
+// ======================== Hardware mapping (ADC channels / GPIO) ========================
+// CH_A on ADC1
+#define iChA_AdcChannel     ADC_CHANNEL_6   // GPIO34 = ADC1_CH6
+// CH_B on ADC2
+#define iChB_AdcChannel     ADC_CHANNEL_8   // GPIO25 = ADC2_CH8
+
+// ======================== Signal &amp; acquisition configuration ========================
+// Expected input signal characteristics (used to size capture window)
+#define SIGNAL_HZ                   50
+#define PERIODS_TO_CAPTURE          3
+#define CAPTURE_MS                  (1000 * PERIODS_TO_CAPTURE / SIGNAL_HZ)   // 60 ms
+
+// Sampling configuration
+#define PER_CH_SAMPLE_RATE_HZ       10000
+#define SAMPLES_PER_CH              ((PER_CH_SAMPLE_RATE_HZ * CAPTURE_MS) / 1000) // 600
+
+// ======================== ADC scaling / auto-ranging thresholds ========================
+#define ADC_FULL_SCALE_COUNTS       4095    // Max ADC code for configured resolution
+
+// ======================== Data structures (raw statistics bookkeeping) ========================
+// Raw ADC statistics for one channel at one attenuation
+typedef struct {
+	int  iMin;
+	int  iMax;
+	int  iZeroCount;
+	int  iFullScaleCount;
+	bool bValid;
+} sRawStats_t;
+
+// Raw ADC statistics for both channels at one attenuation
+typedef struct {
+	sRawStats_t sChA;
+	sRawStats_t sChB;
+} sRawStatsPerAtten_t;
+
+// ======================== Runtime state (collected stats, driver handles) ========================
+// Stats per attenuation level (index corresponds to attenuation levels you test)
+static sRawStatsPerAtten_t gsRawStatsByAtten[4] = { 0 };
+
+// ADC oneshot driver handles (hardware resources)
+static adc_oneshot_unit_handle_t gAdcHandleUnit1 = NULL;
+static adc_oneshot_unit_handle_t gAdcHandleUnit2 = NULL;
+
+// ======================== Filtering configuration ========================
+#define FILTER_TAP_COUNT            5
+																	  
+
+static void Clear_Raw_Stats_By_Atten(void)
+{
+	// Clears the stored raw statistics collected during the auto-ranging process
+	// Ensures no stale stats from previous frames appear in the next stats printout
+	// Keeps only attenuation levels actually tried in the current auto-range cycle
+
+	// Reset all stored entries
+	for (int iIndex = 0; iIndex &lt; 4; iIndex++) {
+		gsRawStatsByAtten[iIndex].sChA.bValid = false;
+		gsRawStatsByAtten[iIndex].sChB.bValid = false;
+		gsRawStatsByAtten[iIndex].sChA.iMin = 0;
+		gsRawStatsByAtten[iIndex].sChA.iMax = 0;
+		gsRawStatsByAtten[iIndex].sChA.iZeroCount = 0;
+		gsRawStatsByAtten[iIndex].sChA.iFullScaleCount = 0;
+		gsRawStatsByAtten[iIndex].sChB.iMin = 0;
+		gsRawStatsByAtten[iIndex].sChB.iMax = 0;
+		gsRawStatsByAtten[iIndex].sChB.iZeroCount = 0;
+		gsRawStatsByAtten[iIndex].sChB.iFullScaleCount = 0;
+	}
+}
+
+
+static void Record_Raw_Stats_For_Atten(adc_atten_t eAttenChA, adc_atten_t eAttenChB,
+{
+	// Records the latest raw min/max and saturation counters for attenuation levels tried
+	// Updates only the attenuation entries that were actually used on this capture attempt
+	// Allows later printing of all tried levels to assess whether the chosen attenuation is optimal
+
+	// Store channel A stats under its attenuation index
+	int iAttenIndexA = (int)eAttenChA;
+	if (iAttenIndexA &gt;= 0 &amp;&amp; iAttenIndexA &lt; 4) {
+		gsRawStatsByAtten[iAttenIndexA].sChA.iMin = iMinRawA;
+		gsRawStatsByAtten[iAttenIndexA].sChA.iMax = iMaxRawA;
+		gsRawStatsByAtten[iAttenIndexA].sChA.iZeroCount = iZeroCountA;
+		gsRawStatsByAtten[iAttenIndexA].sChA.iFullScaleCount = iFullScaleHitsA;
+		gsRawStatsByAtten[iAttenIndexA].sChA.bValid = true;
+	}
+
+	// Store channel B stats under its attenuation index
+	int iAttenIndexB = (int)eAttenChB;
+	if (iAttenIndexB &gt;= 0 &amp;&amp; iAttenIndexB &lt; 4) {
+		gsRawStatsByAtten[iAttenIndexB].sChB.iMin = iMinRawB;
+		gsRawStatsByAtten[iAttenIndexB].sChB.iMax = iMaxRawB;
+		gsRawStatsByAtten[iAttenIndexB].sChB.iZeroCount = iZeroCountB;
+		gsRawStatsByAtten[iAttenIndexB].sChB.iFullScaleCount = iFullScaleHitsB;
+		gsRawStatsByAtten[iAttenIndexB].sChB.bValid = true;
+	}
+}
+
+
+static void Adc_Deinitialize(void)
+{
+	// Stops all ADC activity and releases ADC unit handles
+	// Ensures ADC2 is fully released before other activity is started
+	// Leaves the system in a clean state for the next cycle
+
+	// Deinit ADC1 oneshot unit
+	if (gAdcHandleUnit1 != NULL) {
+		(void)adc_oneshot_del_unit(gAdcHandleUnit1);
+		gAdcHandleUnit1 = NULL;
+	}
+
+	// Deinit ADC2 oneshot unit
+	if (gAdcHandleUnit2 != NULL) {
+		(void)adc_oneshot_del_unit(gAdcHandleUnit2);
+		gAdcHandleUnit2 = NULL;
+	}
+}
+
+
+static void Adc_Initialize(adc_atten_t eAttenChA, adc_atten_t eAttenChB)
+{
+	// Creates ADC1 and ADC2 one-shot units and configures two channels
+	// Applies independent attenuation per channel on its own ADC unit
+	// Leaves units ready for timed sampling in the capture loop
+
+	// Create ADC1 unit
+	adc_oneshot_unit_init_cfg_t sUnit1Cfg = {
+		.unit_id = ADC_UNIT_1,
+		.ulp_mode = ADC_ULP_MODE_DISABLE,
+	};
+	ESP_ERROR_CHECK(adc_oneshot_new_unit(&amp;sUnit1Cfg, &amp;gAdcHandleUnit1));
+
+	// Create ADC2 unit
+	adc_oneshot_unit_init_cfg_t sUnit2Cfg = {
+		.unit_id = ADC_UNIT_2,
+		.ulp_mode = ADC_ULP_MODE_DISABLE,
+	};
+	ESP_ERROR_CHECK(adc_oneshot_new_unit(&amp;sUnit2Cfg, &amp;gAdcHandleUnit2));
+
+	// Configure CH_A on ADC1
+	adc_oneshot_chan_cfg_t sChanCfgA = {
+		.atten = eAttenChA,
+		.bitwidth = ADC_BITWIDTH_12,
+	};
+	ESP_ERROR_CHECK(adc_oneshot_config_channel(gAdcHandleUnit1, iChA_AdcChannel, &amp;sChanCfgA));
+
+	// Configure CH_B on ADC2
+	adc_oneshot_chan_cfg_t sChanCfgB = {
+		.atten = eAttenChB,
+		.bitwidth = ADC_BITWIDTH_12,
+	};
+	ESP_ERROR_CHECK(adc_oneshot_config_channel(gAdcHandleUnit2, iChB_AdcChannel, &amp;sChanCfgB));
+}
+
+
+static void Adc_Reconfigure(adc_atten_t eAttenAdc1, adc_atten_t eAttenAdc2)
+{
+	// Reinitializes ADC continuous mode with new attenuation settings
+	// Fully deinitializes first to avoid invalid state during config changes
+	// Leaves ADC running with the new configuration
+
+	// Restart ADC engine with new settings
+	Adc_Deinitialize();
+	Adc_Initialize(eAttenAdc1, eAttenAdc2);
+}
+
+
+static void Dc_Remove(const uint16_t *puInput, int32_t *piOutput, int iCount)
+{
+	// Removes DC component from a channel by subtracting the mean
+	// Produces signed, zero-centered samples for filtering
+	// Keeps scaling in ADC counts for deterministic thresholds
+
+	// Compute mean value
+	int64_t liSum = 0;
+	for (int iIndex = 0; iIndex &lt; iCount; iIndex++) {
+		liSum += puInput[iIndex];
+	}
+	float fMean = (float)liSum / (float)iCount;
+
+	// Subtract mean from every sample
+	for (int iIndex = 0; iIndex &lt; iCount; iIndex++) {
+		piOutput[iIndex] = (int32_t)((float)puInput[iIndex] - fMean);
+	}
+}
+
+
+static void Moving_Average_Filter(const uint16_t *puInput, uint16_t *puOutput, int iCount)
+{
+	// Applies a small moving-average filter for basic noise reduction
+	// Preserves sample count by clamping indices at the edges
+	// Keeps output in ADC counts for thresholding and printing
+
+	// Set half window for symmetric averaging
+	int iTapHalf = FILTER_TAP_COUNT / 2;
+
+	// Filter each sample with a clamped moving window
+	for (int iIndex = 0; iIndex &lt; iCount; iIndex++) {
+		uint32_t uiAccumulator = 0;
+		for (int iTap = -iTapHalf; iTap &lt;= iTapHalf; iTap++) {
+			int iSource = iIndex + iTap;
+			if (iSource &lt; 0) iSource = 0;
+			if (iSource &gt;= iCount) iSource = iCount - 1;
+			uiAccumulator += puInput[iSource];
+		}
+		puOutput[iIndex] = (uint16_t)(uiAccumulator / FILTER_TAP_COUNT);
+	}
+}
+
+
+static float Adc_Counts_To_Volts(adc_atten_t eAttenChannel, int32_t iCounts)
+{
+	// Converts signed ADC counts to volts using the channel attenuation selection
+	// Uses a simple full-scale approximation per ESP32 attenuation option
+	// Provides AC-relative volts when used on DC-removed buffers
+
+	// Select full-scale voltage based on attenuation setting
+	float fFullScaleVolts = 1.1f;
+	switch (eAttenChannel) {
+		case ADC_ATTEN_DB_0:
+			fFullScaleVolts = 1.1f;
+			break;
+		case ADC_ATTEN_DB_2_5:
+			fFullScaleVolts = 1.5f;
+			break;
+		case ADC_ATTEN_DB_6:
+			fFullScaleVolts = 2.2f;
+			break;
+		case ADC_ATTEN_DB_11:
+		default:
+			fFullScaleVolts = 3.9f;
+			break;
+	}
+
+	// Convert ADC counts to volts using the selected full-scale range
+	float fVolts = ((float)iCounts * fFullScaleVolts) / (float)ADC_FULL_SCALE_COUNTS;
+	return fVolts;
+}
+
+
+static bool Capture_Paired_Samples(uint16_t *puChA, uint16_t *puChB)
+{
+	// Compute sample interval in microseconds
+	const int64_t liSamplePeriodUs = (1000000LL / (int64_t)PER_CH_SAMPLE_RATE_HZ);
+
+	int iSampleIdx = 0;
+	int64_t liNextSampleTimeUs = esp_timer_get_time();
+
+	while (iSampleIdx &lt; SAMPLES_PER_CH) {
+
+		// Wait until the next scheduled sample time
+		int64_t liNowUs = esp_timer_get_time();
+		if (liNowUs &lt; liNextSampleTimeUs) {
+			esp_rom_delay_us((uint32_t)(liNextSampleTimeUs - liNowUs));
+		}
+
+		// Read CH_A from ADC1
+		int iRawA = 0;
+		esp_err_t eErrA = adc_oneshot_read(gAdcHandleUnit1, iChA_AdcChannel, &amp;iRawA);
+		if (eErrA != ESP_OK) {
+			ESP_LOGE(gTag, "adc_oneshot_read ADC1 failed: %s", esp_err_to_name(eErrA));
+			return false;
+		}
+
+		// Read CH_B from ADC2
+		int iRawB = 0;
+		esp_err_t eErrB = adc_oneshot_read(gAdcHandleUnit2, iChB_AdcChannel, &amp;iRawB);
+		if (eErrB != ESP_OK) {
+			ESP_LOGE(gTag, "adc_oneshot_read ADC2 failed: %s", esp_err_to_name(eErrB));
+			return false;
+		}
+
+		// Store paired samples
+		puChA[iSampleIdx] = (uint16_t)iRawA;
+		puChB[iSampleIdx] = (uint16_t)iRawB;
+
+		// Advance to the next index and time slot
+		iSampleIdx++;
+		liNextSampleTimeUs += liSamplePeriodUs;
+	}
+
+	return true;
+}
+
+
+static adc_atten_t Step_Attenuation_More_Sensitive(adc_atten_t eCurrent)
+{
+	// Steps attenuation one level toward more sensitivity
+	// Uses the ESP32 attenuation ordering from lowest range to highest range
+	// Returns current value if already at the most sensitive setting
+
+	// Define ordered attenuation levels
+	const adc_atten_t aeLevels[] = { ADC_ATTEN_DB_0, ADC_ATTEN_DB_2_5, ADC_ATTEN_DB_6, ADC_ATTEN_DB_11 };
+	const int iLevelCount = (int)(sizeof(aeLevels) / sizeof(aeLevels[0]));
+
+	// Find current index and step down if possible
+	for (int iIndex = 0; iIndex &lt; iLevelCount; iIndex++) {
+		if (aeLevels[iIndex] == eCurrent) {
+			if (iIndex &gt; 0) {
+				return aeLevels[iIndex - 1];
+			}
+			return eCurrent;
+		}
+	}
+
+	return eCurrent;
+}
+
+
+static void Auto_Range_Attenuations(adc_atten_t *peAttenAdc1, adc_atten_t *peAttenAdc2)
+{
+	// Auto-range each channel independently to the most sensitive attenuation that
+	// does *not* saturate.
+	//
+	// Behavior:
+	//  - Start both channels at least sensitive (11 dB).
+	//  - Keep increasing sensitivity (11-&gt;6-&gt;2.5-&gt;0) per channel until that
+	//    channel saturates, then step back one level for that channel.
+	//  - Do not stop optimizing one channel just because the other channel is
+	//    finished; finished channels stay fixed while the other continues.
+	//  - Record stats for every attenuation actually tried, per channel, and dump
+	//    them all together at the end (one line per channel per attenuation).
+
+	// Start fresh each time so the dump reflects *this* optimization run.
+	Clear_Raw_Stats_By_Atten();
+
+	adc_atten_t eAttenA = ADC_ATTEN_DB_11;
+	adc_atten_t eAttenB = ADC_ATTEN_DB_11;
+
+	adc_atten_t ePrevA = eAttenA;
+	adc_atten_t ePrevB = eAttenB;
+
+	bool bDoneA = false;
+	bool bDoneB = false;
+
+	// Guard against infinite loops (4 attenuation levels + a little slack).
+	for (int iAttempt = 0; iAttempt &lt; 12 &amp;&amp; !(bDoneA &amp;&amp; bDoneB); iAttempt++) {
+
+		// Apply current attenuation settings
+		Adc_Reconfigure(eAttenA, eAttenB);
+
+		// Capture one analysis frame
+		static uint16_t auRawChA[SAMPLES_PER_CH];
+		static uint16_t auRawChB[SAMPLES_PER_CH];
+		if (!Capture_Paired_Samples(auRawChA, auRawChB)) {
+			break;
+		}
+		static uint16_t auFiltChA[SAMPLES_PER_CH];
+		static uint16_t auFiltChB[SAMPLES_PER_CH];
+
+		Moving_Average_Filter(auRawChA, auFiltChA, SAMPLES_PER_CH);
+		Moving_Average_Filter(auRawChB, auFiltChB, SAMPLES_PER_CH);
+
+		// Compute raw stats per channel for saturation detection
+		int iMinRawA = INT_MAX;
+		int iMaxRawA = INT_MIN;
+		int iMinRawB = INT_MAX;
+		int iMaxRawB = INT_MIN;
+		int iFullScaleHitsA = 0;
+		int iFullScaleHitsB = 0;
+		int iZeroCountA = 0;
+		int iZeroCountB = 0;
+
+		for (int iIndex = 0; iIndex &lt; SAMPLES_PER_CH; iIndex++) {
+			int iValueA = (int)auFiltChA[iIndex];
+			int iValueB = (int)auFiltChB[iIndex];
+
+			if (iValueA &lt; iMinRawA) iMinRawA = iValueA;
+			if (iValueA &gt; iMaxRawA) iMaxRawA = iValueA;
+			if (iValueB &lt; iMinRawB) iMinRawB = iValueB;
+			if (iValueB &gt; iMaxRawB) iMaxRawB = iValueB;
+
+			if (iValueA &gt;= ADC_FULL_SCALE_COUNTS) iFullScaleHitsA++;
+			if (iValueB &gt;= ADC_FULL_SCALE_COUNTS) iFullScaleHitsB++;
+			if (iValueA == 0) iZeroCountA++;
+			if (iValueB == 0) iZeroCountB++;
+		}
+
+		// Record stats for the attenuation levels actually used on this attempt
+		Record_Raw_Stats_For_Atten(eAttenA, eAttenB,
+								iMinRawA, iMaxRawA, iZeroCountA, iFullScaleHitsA,
+								iMinRawB, iMaxRawB, iZeroCountB, iFullScaleHitsB);
+
+		bool bSaturatedA = (iFullScaleHitsA &gt; 0);
+		bool bSaturatedB = (iFullScaleHitsB &gt; 0);
+
+		// Channel A: keep stepping more sensitive until saturation, then back off
+		if (!bDoneA) {
+			if (bSaturatedA) {
+				eAttenA = ePrevA;
+				bDoneA = true;
+			} else if (eAttenA == ADC_ATTEN_DB_0) {
+				bDoneA = true;
+			} else {
+				ePrevA = eAttenA;
+				eAttenA = Step_Attenuation_More_Sensitive(eAttenA);
+			}
+		}
+
+		// Channel B: keep stepping more sensitive until saturation, then back off
+		if (!bDoneB) {
+			if (bSaturatedB) {
+				eAttenB = ePrevB;
+				bDoneB = true;
+			} else if (eAttenB == ADC_ATTEN_DB_0) {
+				bDoneB = true;
+			} else {
+				ePrevB = eAttenB;
+				eAttenB = Step_Attenuation_More_Sensitive(eAttenB);
+			}
+		}
+	}
+
+	*peAttenAdc1 = eAttenA;
+	*peAttenAdc2 = eAttenB;
+}
+
+
+void app_main(void)
+{
+	// Continuously samples two ADC channels and prints their filtered values
+	// Applies auto-ranging, DC removal and a moving average filter per frame
+	// Prints CSV rows containing only channel A and channel B values
+
+	while (1) {
+
+		// Start ADC units for the measurement window
+		Adc_Initialize(ADC_ATTEN_DB_11, ADC_ATTEN_DB_11);
+
+		// Continuously capture and print frames while ADC is enabled
+		while (1) {
+
+			// Auto-range per channel before printing any samples
+			adc_atten_t eChosenAttenChA = ADC_ATTEN_DB_11;
+			adc_atten_t eChosenAttenChB = ADC_ATTEN_DB_11;
+			Auto_Range_Attenuations(&amp;eChosenAttenChA, &amp;eChosenAttenChB);
+
+			// Re-init ADC units with chosen attenuations
+			Adc_Deinitialize();
+			Adc_Initialize(eChosenAttenChA, eChosenAttenChB);
+
+			// Capture one output frame
+			static uint16_t auRawChA[SAMPLES_PER_CH];
+			static uint16_t auRawChB[SAMPLES_PER_CH];
+			if (!Capture_Paired_Samples(auRawChA, auRawChB)) {
+				break;
+			}
+
+			static uint16_t auFiltChA[SAMPLES_PER_CH];
+			static uint16_t auFiltChB[SAMPLES_PER_CH];
+			Moving_Average_Filter(auRawChA, auFiltChA, SAMPLES_PER_CH);
+			Moving_Average_Filter(auRawChB, auFiltChB, SAMPLES_PER_CH);
+
+			// Remove DC component per channel
+			static int32_t aiChA_Ac[SAMPLES_PER_CH];
+			static int32_t aiChB_Ac[SAMPLES_PER_CH];
+			Dc_Remove(auFiltChA, aiChA_Ac, SAMPLES_PER_CH);
+			Dc_Remove(auFiltChB, aiChB_Ac, SAMPLES_PER_CH);
+
+			// Print CSV rows: chA, chB
+			for (int iIdx = 0; iIdx &lt; SAMPLES_PER_CH; iIdx++) {
+				float fVoltChA = Adc_Counts_To_Volts(eChosenAttenChA, aiChA_Ac[iIdx]);
+				float fVoltChB = Adc_Counts_To_Volts(eChosenAttenChB, aiChB_Ac[iIdx]);
+				printf("%.6f,%.6f\n", fVoltChA, fVoltChB);
+			}
+
+			// Short pause for PC plotter responsiveness
+			vTaskDelay(pdMS_TO_TICKS(50));
+		}
+
+		// Stop ADC units if the capture loop ever exits unexpectedly
+		Adc_Deinitialize();
+	}
+}
+				</code></pre>
+			</div>
+
+			<p>
+			  The CSV output format is:
+			  <code>chA, chB, phase_deg</code>.
+			  Plotters can ignore comment lines starting with <code>#</code>.
+			</p>
+		  </section>
+
+		  <section id="flash" class="card">
+			<h2>Build, flash, monitor, debug</h2>
+			<h3>Set COM port</h3>
+			<ol>
+			  <li>Plug in the ESP32 board.</li>
+			  <li>In VS Code: <strong>ESP-IDF: Select Port</strong> and pick the correct COM port.</li>
+			  <li>Run: <strong>ESP-IDF: Set Target</strong> → <strong>esp32</strong> (only needed once).</li>
+			</ol>
+
+			<h3>Build + Flash</h3>
+			<ol>
+			  <li>Run: <strong>ESP-IDF: Build</strong>.</li>
+			  <li>Run: <strong>ESP-IDF: Flash</strong> (or <strong>Build, Flash and Start a Monitor</strong>).</li>
+			</ol>
+
+			<p class="callout">
+			  Most DevKitC boards auto-enter bootloader. If flashing hangs at “Connecting…”, hold <strong>BOOT</strong>,
+			  click flash, then release BOOT when you see “Writing at …”.
+			</p>
+
+			<h3>Serial Monitor</h3>
+			<p>Use <strong>ESP-IDF: Monitor</strong> to confirm the CSV stream is running.</p>
+
+			<h3>Debug (optional)</h3>
+			<p>
+			  Basic serial debug (logs + prints) is often enough for this tutorial. For on‑chip debugging,
+			  you’ll need an external debugger (JTAG) and the ESP‑IDF debug setup.
+			</p>
+		  </section>
+
+		  <section id="plot" class="card">
+			<h2>Serial oscilloscope (PlotJuggler)</h2>
+			<p>
+			  For a free, non‑GPL, feature‑rich plotter that supports multiple channels and live streaming,
+			  we recommend <strong>PlotJuggler</strong> (license: MPL‑2.0).
+			</p>
+
+			<h3>Quick setup</h3>
+			<ol>
+			  <li>Install PlotJuggler.</li>
+			  <li>Add a “Data Source” that can read serial/streamed CSV (plugin dependent).</li>
+			  <li>Map CSV columns to signals: <strong>chA</strong>, <strong>chB</strong>, and <strong>phase_deg</strong>.</li>
+			  <li>Plot chA and chB on the same time axis; plot phase_deg as a third trace or a numeric display.</li>
+			</ol>
+
+			<p class="callout">
+			  Only one program can open the COM port at a time. Close the ESP‑IDF monitor before opening PlotJuggler.
+			</p>
+		  </section>
+
+		  <section id="tips" class="card">
+			<h2>Tips and troubleshooting</h2>
+			<ul>
+			  <li><strong>0,0 readings:</strong> verify common ground and that the signal is within 0–3.3 V.</li>
+			  <li><strong>Flat line near mid-scale:</strong> your signal may be centered or too small; check amplitude at the source.</li>
+			  <li><strong>Noisy signal:</strong> shorten wires, add a small RC (e.g. 1 kΩ + 10 nF), or increase averaging.</li>
+			  <li><strong>Wrong channel mapping:</strong> confirm GPIO34 is ADC1_CH6 and GPIO35 is ADC1_CH7.</li>
+			</ul>
+		  </section>
+
+		  <section id="resources" class="card">
+			<h2>Resources</h2>
+			<ul>
+			  <li>Espressif documentation: <a href="https://documentation.espressif.com" target="_blank" rel="noopener">documentation.espressif.com</a></li>
+			  <li>ESP-IDF programming guide: <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/" target="_blank" rel="noopener">ESP-IDF (esp32)</a></li>
+			  <li>PlotJuggler: <a href="https://plotjuggler.io/" target="_blank" rel="noopener">plotjuggler.io</a></li>
+			</ul>
+		  </section>
+		</main>
+
+		<footer class="site-footer">
+		  <div class="container footer-inner">
+			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
+			<p>
+			  <a class="footer-link" href="legal.html">Legal mentions</a>
+			  <a class="footer-link" href="privacy.html">Privacy policy</a>
+			</p>
+		  </div>
+		</footer>
+
+		<script src="../js/main.js"></script>
+		<script src="../js/tutorials.js"></script>
+	</body>
+</html>
