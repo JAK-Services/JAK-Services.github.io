@@ -134,13 +134,11 @@
 			  <nav aria-label="Tutorial contents">
 				<ul class="toc-list">
 				  <li><a href="#what-you-need">What you need</a></li>
-				  <li><a href="#wiring">Wiring (GPIO34 / GPIO35)</a></li>
+				  <li><a href="#wiring">Wiring (GPIO34 / GPIO25)</a></li>
 				  <li><a href="#vscode">VS Code + ESP-IDF setup</a></li>
-				  <li><a href="#project">Create the project</a></li>
 				  <li><a href="#code">Firmware: capture → process → stream</a></li>
 				  <li><a href="#flash">Build, flash, monitor, debug</a></li>
-				  <li><a href="#plot">Serial oscilloscope (PlotJuggler)</a></li>
-				  <li><a href="#tips">Tips and troubleshooting</a></li>
+				  <li><a href="#plot">Serial oscilloscope (Telemetry Viewer)</a></li>
 				  <li><a href="#resources">Resources</a></li>
 				</ul>
 			  </nav>
@@ -150,10 +148,10 @@
 			<h2>What you need</h2>
 			<ul>
 			  <li>ESP32 DevKitC V2 (ESP32‑WROOM‑32)</li>
-			  <li>Two 50 Hz analog signals (0–3.3 V recommended)</li>
-			  <li>Common ground between signal source and ESP32 GND</li>
+			  <li>Two 50 Hz analog signals</li>
+			  <li>Analog front end on breadboard or PCB</li>
 			  <li>Micro‑USB cable (data capable)</li>
-			  <li>Windows PC (recommended for easiest COM port access)</li>
+			  <li>Windows PC</li>
 			</ul>
 			<p class="callout">
 			  <strong>Important:</strong> ESP32 ADC pins are not 5 V tolerant. Keep inputs within 0–3.3 V.
@@ -165,30 +163,18 @@
 			<p>On ESP32 DevKitC V2, we use two ADC1 channels:</p>
 			<ul>
 			  <li><strong>GPIO34</strong> → ADC1_CH6 (Channel A)</li>
-			  <li><strong>GPIO35</strong> → ADC1_CH7 (Channel B)</li>
+			  <li><strong>GPIO25</strong> → ADC2_CH8 (Channel B)</li>
 			</ul>
-			<p>Connect both signal grounds to an ESP32 <strong>GND</strong> pin.</p>
-			<p class="callout">
-			  <strong>Tip:</strong> If your source can drive lower impedance, add a small series resistor (e.g. 1–4.7 kΩ) for protection.
-			</p>
 		  </section>
 
 		  <section id="vscode" class="card">
 			<h2>VS Code + ESP-IDF setup</h2>
-			<p>
-			  For ESP‑IDF on Windows, it’s usually easiest to run VS Code natively on Windows (not inside WSL),
-			  because the serial port (COM) is already available there.
-			</p>
 			<ol>
 			  <li>Install VS Code (Windows build).</li>
 			  <li>Install the extension: <strong>Espressif IDF</strong>.</li>
 			  <li>Run: <strong>ESP-IDF: Configure ESP-IDF extension</strong> and choose <strong>Express</strong>.</li>
-			  <li>When asked, let it install the tools into your user directory (default location is fine).</li>
+			  <li>When asked, let it install the tools.</li>
 			</ol>
-			<p class="callout">
-			  If you already have Python via ESP‑IDF Tools, you do not need a separate Python installation.
-			  VS Code’s Python extension is optional (useful for editing scripts, not required to build C code).
-			</p>
 		  </section>
 
 		  <section id="project" class="card">
@@ -212,8 +198,7 @@
 			</p>
 
 			<p class="callout">
-			  This tutorial uses the ADC continuous driver in scan mode. Samples are paired into rows (A,B) and only
-			  emitted once both are present.
+			  This tutorial uses the ADC one shot driver. Samples are paired into rows (A,B) emitted on the serial port.
 			</p>
 
 			<div class="code-wrapper">
@@ -712,7 +697,7 @@ void app_main(void)
 
 			<p>
 			  The CSV output format is:
-			  <code>chA, chB, phase_deg</code>.
+			  <code>chA, chB</code>.
 			  Plotters can ignore comment lines starting with <code>#</code>.
 			</p>
 		  </section>
@@ -722,14 +707,15 @@ void app_main(void)
 			<h3>Set COM port</h3>
 			<ol>
 			  <li>Plug in the ESP32 board.</li>
-			  <li>In VS Code: <strong>ESP-IDF: Select Port</strong> and pick the correct COM port.</li>
-			  <li>Run: <strong>ESP-IDF: Set Target</strong> → <strong>esp32</strong> (only needed once).</li>
+			  <li>In VS Code: (CTRL + SHIFT + P) <strong>ESP-IDF: Select Port</strong> and pick the correct COM port.</li>
+			  <li>Run (CTRL + SHIFT + P): <strong>ESP-IDF: Set Target</strong> → <strong>esp32</strong> (only needed once).</li>
+			  <li>If you have issues connecting to the board, see this <a href="tutorial_getting_started_esp32_blinking_led_mockup.html">tutorial</a></li>
 			</ol>
 
 			<h3>Build + Flash</h3>
 			<ol>
-			  <li>Run: <strong>ESP-IDF: Build</strong>.</li>
-			  <li>Run: <strong>ESP-IDF: Flash</strong> (or <strong>Build, Flash and Start a Monitor</strong>).</li>
+			  <li>Run (CTRL + SHIFT + P): <strong>ESP-IDF: Full Clean Project</strong>.</li>
+			  <li>Run (CTRL + SHIFT + P): <strong>ESP-IDF: Build, Flash and Start a Monitor on Your Device</strong>).</li>
 			</ol>
 
 			<p class="callout">
@@ -738,43 +724,29 @@ void app_main(void)
 			</p>
 
 			<h3>Serial Monitor</h3>
-			<p>Use <strong>ESP-IDF: Monitor</strong> to confirm the CSV stream is running.</p>
-
-			<h3>Debug (optional)</h3>
-			<p>
-			  Basic serial debug (logs + prints) is often enough for this tutorial. For on‑chip debugging,
-			  you’ll need an external debugger (JTAG) and the ESP‑IDF debug setup.
-			</p>
+			<p>Use (CTRL + SHIFT + P) <strong>ESP-IDF: Monitor</strong> to confirm the CSV stream is running.</p>
 		  </section>
 
 		  <section id="plot" class="card">
-			<h2>Serial oscilloscope (PlotJuggler)</h2>
+			<h2>Serial oscilloscope (Telemetry Viewer)</h2>
 			<p>
 			  For a free, non‑GPL, feature‑rich plotter that supports multiple channels and live streaming,
-			  we recommend <strong>PlotJuggler</strong> (license: MPL‑2.0).
+			  we recommend <strong>Telemetry Viewer</strong>.
 			</p>
 
 			<h3>Quick setup</h3>
 			<ol>
-			  <li>Install PlotJuggler.</li>
-			  <li>Add a “Data Source” that can read serial/streamed CSV (plugin dependent).</li>
-			  <li>Map CSV columns to signals: <strong>chA</strong>, <strong>chB</strong>, and <strong>phase_deg</strong>.</li>
-			  <li>Plot chA and chB on the same time axis; plot phase_deg as a third trace or a numeric display.</li>
+			  <li>Install Telemetry Viewer.</li>
+			  <li>Connect the board via USB.</li>
+			  <li>Select CSV Mode, set the baud rate to 115200, and select the appropriate UART COM port for your ESP32, then click Connect.</li>
+			  <li>In the CSV Data Structure panel, enter a name for the first channel, choose a color, and specify the unit and any scaling if needed, then click Add. Repeat this process for each column in the CSV data being sent over the USB port, and when finished, click Done.</li>
+			  <li>In the next window, drag to select all of the rectangles to display the oscilloscope view.</li>
+			  <li>In the Data section, enable the channels you want to display, and they will appear in the plot window. To zoom in on the time domain, reduce the number of samples shown, and to capture a single triggered waveform, click the Single button in the Trigger section.</li>
 			</ol>
 
 			<p class="callout">
-			  Only one program can open the COM port at a time. Close the ESP‑IDF monitor before opening PlotJuggler.
+			  Only one program can open the COM port at a time. Close the ESP‑IDF monitor (CTRL + T then CTRL + X) before opening Telemetry Viewer.
 			</p>
-		  </section>
-
-		  <section id="tips" class="card">
-			<h2>Tips and troubleshooting</h2>
-			<ul>
-			  <li><strong>0,0 readings:</strong> verify common ground and that the signal is within 0–3.3 V.</li>
-			  <li><strong>Flat line near mid-scale:</strong> your signal may be centered or too small; check amplitude at the source.</li>
-			  <li><strong>Noisy signal:</strong> shorten wires, add a small RC (e.g. 1 kΩ + 10 nF), or increase averaging.</li>
-			  <li><strong>Wrong channel mapping:</strong> confirm GPIO34 is ADC1_CH6 and GPIO35 is ADC1_CH7.</li>
-			</ul>
 		  </section>
 
 		  <section id="resources" class="card">
@@ -782,7 +754,8 @@ void app_main(void)
 			<ul>
 			  <li>Espressif documentation: <a href="https://documentation.espressif.com" target="_blank" rel="noopener">documentation.espressif.com</a></li>
 			  <li>ESP-IDF programming guide: <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/" target="_blank" rel="noopener">ESP-IDF (esp32)</a></li>
-			  <li>PlotJuggler: <a href="https://plotjuggler.io/" target="_blank" rel="noopener">plotjuggler.io</a></li>
+			  <li>Visual Studio Code: <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">Visual Studio Code Download</a></li>
+			  <li>Telemetry Viewer: <a href="http://www.farrellf.com/TelemetryViewer/" target="_blank" rel="noopener">Telemetry Viewer Download</a></li>
 			</ul>
 		  </section>
 		</main>
