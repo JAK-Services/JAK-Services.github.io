@@ -93,7 +93,7 @@
 							</select>
 						</td>
 						<td class="notes">
-							<input type="text" placeholder="Notes / action items"/>
+							<textarea class="notes-field" rows="2" placeholder="Notes / action items"></textarea>
 						</td>
 					</tr>
 				`;
@@ -129,6 +129,14 @@
 			body {
 				font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 				margin: 24px;
+			}
+			table {
+				/* Prevent long text from overflowing cells */
+				table-layout: fixed;
+			}
+			th, td {
+				overflow-wrap: anywhere;
+				word-break: break-word;
 			}
 			h1 {
 				margin: 0 0 8px;
@@ -183,11 +191,22 @@
 				width: 35%;
 			}
 			select,
-			input[type="text"] {
+			input[type="text"],
+			textarea {
 				width: 100%;
 				padding: 6px;
 				border: 1px solid #ccc;
 				border-radius: 8px;
+			}
+			textarea.notes-field {
+				min-height: 2.6em;
+				resize: vertical;
+				white-space: pre-wrap;
+				overflow-wrap: anywhere;
+				word-break: break-word;
+				/* Auto-grow script uses scrollHeight; keep scrollbars hidden. */
+				overflow: hidden;
+				box-sizing: border-box;
 			}
 			.actions {
 				display: flex;
@@ -217,8 +236,13 @@
 					margin: 12mm;
 				}
 				select,
-				input[type="text"] {
+				input[type="text"],
+				textarea {
 					border: 1px solid #999;
+				}
+				textarea.notes-field {
+					/* Ensure all text is visible in the PDF */
+					overflow: visible;
 				}
 			}
 		</style>
@@ -226,8 +250,7 @@
 	<body>
 		<h1>PCB Design Review Checklist</h1>
 		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">
-			Detailed explanations for each check item below can be found by expanding the corresponding arrow node on
-			<a href="https://jak-services.github.io/en/pcb-design-rules.html" target="_blank" rel="noopener noreferrer">this JAK Services page</a>.
+			Click the check items for detailed explanations.
 		</p>
 
 		<div class="actions">
@@ -256,6 +279,25 @@
 		${rows}
 
 		<p class="small">Generated from: ${escapeHtml(location.href)}</p>
+
+		<script>
+			(function () {
+				"use strict";
+				function autosize(el) {
+					if (!el) return;
+					el.style.height = "auto";
+					// Add a couple of pixels to avoid clipping descenders in some print engines.
+					el.style.height = (el.scrollHeight + 2) + "px";
+				}
+				const areas = Array.from(document.querySelectorAll("textarea.notes-field"));
+				areas.forEach((ta) => {
+					autosize(ta);
+					ta.addEventListener("input", () => autosize(ta));
+				});
+				// Recalculate right before printing so PDFs capture full height.
+				window.addEventListener("beforeprint", () => areas.forEach(autosize));
+			})();
+		</script>
 	</body>
 </html>`;
 	}
