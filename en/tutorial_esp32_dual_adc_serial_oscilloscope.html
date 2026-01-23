@@ -207,10 +207,11 @@
 				<ul class="toc-list">
 				  <li><a href="#what-you-need">What you need</a></li>
 				  <li><a href="#wiring">Wiring (GPIO34 / GPIO25)</a></li>
-				  <li><a href="#vscode">VS Code + ESP-IDF setup</a></li>
-				  <li><a href="#code">Firmware: capture → process → stream</a></li>
-				  <li><a href="#flash">Build, flash, monitor, debug</a></li>
-				  <li><a href="#plot">Serial oscilloscope (Telemetry Viewer)</a></li>
+				  <li><a href="#vscode">VS Code + ESP-IDF Setup</a></li>
+				  <li><a href="#project">Create the Project</a></li>
+				  <li><a href="#code">Firmware: Capture → Process → Stream</a></li>
+				  <li><a href="#flash">Build, Flash, Monitor, Debug</a></li>
+				  <li><a href="#plot">Serial Oscilloscope (Telemetry Viewer)</a></li>
 				  <li><a href="#resources">Resources</a></li>
 				</ul>
 			  </nav>
@@ -240,7 +241,7 @@
 		  </section>
 
 		  <section id="vscode" class="card">
-			<h2>VS Code + ESP-IDF setup</h2>
+			<h2>VS Code + ESP-IDF Setup</h2>
 			<ol>
 			  <li>Install VS Code (Windows build).</li>
 			  <li>Install the extension: <strong>Espressif IDF</strong>.</li>
@@ -250,7 +251,7 @@
 		  </section>
 
 		  <section id="project" class="card">
-			<h2>Create the project</h2>
+			<h2>Create the Project</h2>
 			<p>Create a new ESP‑IDF project using the “hello_world” template and then replace the main file:</p>
 			<ol>
 			  <li>In VS Code: <strong>ESP-IDF: New Project</strong>.</li>
@@ -262,7 +263,7 @@
 		  </section>
 
 		  <section id="code" class="card">
-			<h2>Firmware: capture → process → stream</h2>
+			<h2>Firmware: Capture → Process → Stream</h2>
 			<p>
 			  The firmware does the following in an infinite loop:
 			  capture 3 periods of 50 Hz, remove DC component per channel, apply a light smoothing filter,
@@ -775,7 +776,7 @@ void app_main(void)
 		  </section>
 
 		  <section id="flash" class="card">
-			<h2>Build, flash, monitor, debug</h2>
+			<h2>Build, Flash, Monitor, Debug</h2>
 			<h3>Set COM port</h3>
 			<ol>
 			  <li>Plug in the ESP32 board.</li>
@@ -800,7 +801,7 @@ void app_main(void)
 		  </section>
 
 		  <section id="plot" class="card">
-			<h2>Serial oscilloscope (Telemetry Viewer)</h2>
+			<h2>Serial Oscilloscope (Telemetry Viewer)</h2>
 			<p>
 			  For a free, non‑GPL, feature‑rich plotter that supports multiple channels and live streaming,
 			  we recommend <strong>Telemetry Viewer</strong>.
