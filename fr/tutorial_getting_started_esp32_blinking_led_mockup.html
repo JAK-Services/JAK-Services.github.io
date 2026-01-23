@@ -164,10 +164,7 @@
 			  <li>Un ordinateur (instructions pour Windows ci-dessous ; les autres OS sont similaires)</li>
 			</ul>
 			<p class="callout">
-			  La documentation ESP32 est fournie par Espressif sur
-			  <a href="https://documentation.espressif.com" rel="noopener" target="_blank">
-				documentation.espressif.com
-			  </a>.
+			  La documentation ESP32 est fournie par Espressif sur <a href="https://documentation.espressif.com" rel="noopener" target="_blank"> documentation.espressif.com</a>.
 			</p>
 		  </section>
 
@@ -238,56 +235,89 @@
 		  <section class="card" id="code">
 			<h2>4) Script de clignotement</h2>
 			<p>Copiez le script suivant dans Thonny :</p>
-			<!-- code block unchanged -->
+				<div class="code-wrapper">
+					<button aria-label="Copy code" class="copy-btn" data-target="blink-script">
+				⧉
+				    </button>
+					<pre class="code-block"><code id="blink-script"># Import the Pin class so we can control ESP32 GPIO pins (turn pins on/off, read inputs, etc.)
+from machine import Pin
+
+# Import time so we can pause between LED on/off states (create the “blink” timing)
+import time
+
+# Create a Pin object for the LED.
+# Pin.OUT means we will drive the pin as an output (HIGH or LOW).
+led = Pin(16, Pin.OUT)
+
+# Run forever (this loop never ends unless you reset the board or stop the program)
+while True:
+	# Set the pin HIGH (3.3V) -&gt; typically turns the LED ON
+	led.value(1)
+	print("1")
+	# Wait 0.5 seconds with the LED in its current state
+	time.sleep(0.5)
+
+	# Set the pin LOW (0V) -&gt; typically turns the LED OFF
+	led.value(0)
+	print("0")
+	# Wait another 0.5 seconds before repeating the loop
+	time.sleep(0.5)
+					</code></pre>
+				</div>
 		  </section>
 
-		  <section class="card" id="run">
-			<h2>5) Exécution et validation</h2>
-			<p>Cliquez sur le bouton <strong>Lecture</strong> dans Thonny pour exécuter le script depuis votre ordinateur.</p>
-			<p>
-			  Si tout est correctement configuré, la LED connectée au GPIO16 clignotera toutes
-			  les 0,5 secondes, confirmant que le montage fonctionne.
-			</p>
-		  </section>
+		<section class="card" id="run">
+		  <h2>5) Exécuter et valider</h2>
+		  <p>
+			Cliquez sur le bouton <strong>Play</strong> dans Thonny pour exécuter le script depuis votre ordinateur.
+		  </p>
+		  <p>
+			Si tout est correctement configuré, la LED connectée à GPIO16 clignotera toutes les 0,5 secondes,
+			confirmant que le mockup fonctionne correctement.
+		  </p>
+		</section>
 
-		  <section class="card" id="startup">
-			<h2>6) Exécution automatique au démarrage</h2>
-			<p>
-			  Une fois le code fonctionnel, nous pouvons l’enregistrer sur le microcontrôleur
-			  afin qu’il s’exécute automatiquement à la mise sous tension.
-			  Dans Thonny, choisissez <strong>Fichier → Enregistrer sous… → Appareil MicroPython</strong>,
-			  puis sauvegardez le script sous le nom <strong>main.py</strong>.
-			</p>
-			<p>
-			  Après un redémarrage (bouton reset ou débranchement/rebranchement),
-			  la LED devrait clignoter automatiquement.
-			</p>
-			<p>
-			  Les instructions <code>print</code> du script envoient des messages via l’USB ;
-			  ils apparaîtront dans la console Thonny même si le programme a démarré avant l’ouverture de l’IDE.
-			</p>
-		  </section>
+		<section class="card" id="startup">
+		  <h2>6) Exécuter le programme automatiquement au démarrage</h2>
+		  <p>
+			Maintenant que le code fonctionne, nous pouvons le flasher sur le microcontrôleur afin qu’il
+			s’exécute automatiquement à la mise sous tension de l’ESP32. Connectez la carte à votre ordinateur,
+			ouvrez Thonny et choisissez <strong>Fichier → Enregistrer sous… → Périphérique MicroPython</strong>,
+			puis enregistrez le script sous le nom <strong>main.py</strong> afin qu’il s’exécute au démarrage.
+			Ensuite, appuyez sur le bouton de réinitialisation (ou débranchez puis rebranchez la carte) ;
+			la LED devrait alors commencer à clignoter.
+		  </p>
+		  <p>
+			Dans le script, nous avons ajouté deux instructions de débogage Python <code>print</code> à
+			l’intérieur de la boucle de clignotement : l’une affiche « 1 » lorsque la LED est mise à 1,
+			et l’autre affiche « 0 » lorsque la LED est mise à 0. Ces messages sont envoyés via l’USB ;
+			ainsi, si vous démarrez Thonny après que la carte est déjà sous tension et en train de clignoter,
+			les valeurs affichées apparaîtront dans la fenêtre Shell de Thonny.
+		  </p>
+		  <p>
+			Il est également possible d’utiliser d’autres applications de port série, telles que PuTTY ou
+			<a href="https://sourceforge.net/projects/tera-term/" rel="noopener" target="_blank">Tera Term</a>,
+			pour visualiser les valeurs envoyées par le script flashé ; gardez simplement à l’esprit qu’un
+			seul programme peut utiliser le port série USB à la fois.
+		  </p>
+		  <p>
+			Si vous souhaitez remplacer le programme de démarrage existant sur l’ESP32, enregistrez votre
+			nouveau script sur l’appareil sous le nom <strong>main.py</strong> en écrasant le fichier existant.
+			Après l’enregistrement, appuyez sur reset (ou débranchez puis rebranchez la carte) et le nouveau
+			script s’exécutera au démarrage. Il peut arriver que vous deviez réinstaller MicroPython via les
+			options de Thonny pour que cela fonctionne ; dans ce cas, pensez à maintenir le bouton
+			<strong>BOOT</strong> enfoncé pendant l’installation.
+		  </p>
+		</section>
 
 		  <section class="card" id="resources">
 			<h2>Ressources</h2>
 			<ul>
-			  <li>Carte ESP32 DevKitC :
-				<a href="https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG?th=1"
-				   rel="noopener" target="_blank">Lien Amazon</a>
-			  </li>
-			  <li>Documentation Espressif :
-				<a href="https://documentation.espressif.com" rel="noopener" target="_blank">documentation.espressif.com</a>
-			  </li>
-			  <li>Documentation MicroPython :
-				<a href="https://docs.micropython.org/en/latest/" rel="noopener" target="_blank">docs.micropython.org</a>
-			  </li>
-			  <li>IDE Thonny :
-				<a href="https://thonny.org" rel="noopener" target="_blank">thonny.org</a>
-			  </li>
-			  <li>Pilote CP210x :
-				<a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads"
-				   rel="noopener" target="_blank">Silicon Labs</a>
-			  </li>
+			  <li>Carte ESP32 DevKitC : <a href="https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG?th=1" rel="noopener" target="_blank">Lien Amazon</a></li>
+			  <li>Documentation Espressif : <a href="https://documentation.espressif.com" rel="noopener" target="_blank">documentation.espressif.com</a></li>
+			  <li>Documentation MicroPython : <a href="https://docs.micropython.org/en/latest/" rel="noopener" target="_blank">docs.micropython.org</a></li>
+			  <li>IDE Thonny : <a href="https://thonny.org" rel="noopener" target="_blank">thonny.org</a></li>
+			  <li>Pilote CP210x : <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads" rel="noopener" target="_blank">Silicon Labs</a></li>
 			</ul>
 		  </section>
 		</main>
