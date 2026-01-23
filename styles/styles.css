@@ -341,11 +341,16 @@ body.lang-fr .i18n-fr.inline {
 	font-size:0.92rem; 
 	line-height:1.45; 
     white-space: pre;
+    tab-size: 4;
+    -moz-tab-size: 4;
     font-family: "Fira Code", Consolas, monospace;
 }
 
-.code-block code { 
+.code-block code {
+	tab-size: 4;
+	-moz-tab-size: 4; 
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; 
+	padding-top: 3rem; /* ensures space above code for the button */
 }
 
 .callout { 
@@ -370,13 +375,36 @@ body.lang-fr .i18n-fr.inline {
 
 .copy-btn {
   position: absolute;
-  top: 0.5rem;
+  top: 0.75rem;
   right: 0.75rem;
-  border: none;
-  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0.45rem 0.55rem;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, transform 0.1s ease;
 }
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.copy-btn:active {
+  transform: translateY(1px);
+}
+
+.copy-btn:focus-visible {
+  outline: 2px solid rgba(231, 236, 255, 0.55);
+  outline-offset: 2px;
+}
+
 
 /* Clickable list items */
 .toggle-list .has-detail {
@@ -422,5 +450,3 @@ body.lang-fr .i18n-fr.inline {
 .toggle-list .has-detail.open::marker {
   content: "\25BE ";        /* ▾ down-pointing triangle */
 }
-
-
