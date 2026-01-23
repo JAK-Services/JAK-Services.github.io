@@ -5,6 +5,17 @@
 (function () {
 	"use strict";
 
+	// Create stable, human-readable fragment IDs (used for deep links).
+	function slugify(s) {
+		return String(s)
+			.toLowerCase()
+			.normalize("NFKD")
+			.replace(/[\u0300-\u036f]/g, "") // strip accents
+			.replace(/[^a-z0-9]+/g, "-")
+			.replace(/^-+|-+$/g, "")
+			.replace(/-{2,}/g, "-");
+	}
+
 	function escapeHtml(s) {
 		return String(s)
 			.replaceAll("&", "&amp;")
@@ -24,8 +35,23 @@
 
 			if (!h2 || !list) return;
 
-			const items = Array.from(list.querySelectorAll("li .item-label"))
-				.map((el) => el.textContent.trim())
+			// Build a per-item anchor that can be used to deep-link to the exact
+			// rule on https://jak-services.github.io/en/pcb-design-rules.html
+			//
+			// IMPORTANT: The same ID algorithm must exist on the destination page
+			// (implemented in main.js) so hashes resolve and auto-expand.
+			const items = Array.from(list.querySelectorAll("li.has-detail"))
+				.map((li, idx) => {
+					const labelEl = li.querySelector(".item-label");
+					const label = labelEl ? labelEl.textContent.trim() : "";
+					if (!label) return null;
+
+					const anchorId = `${card.id}__${slugify(label)}`;
+					// Best effort: set ID on the live page too (useful for copy/paste sharing).
+					if (!li.id) li.id = anchorId;
+
+					return { label, anchorId, idx };
+				})
 				.filter(Boolean);
 
 			if (!items.length) return;
@@ -41,11 +67,13 @@
 
 	function buildHtmlDoc(sections) {
 		const today = new Date().toISOString().slice(0, 10);
+		const rulesBaseUrl = "https://jak-services.github.io/en/pcb-design-rules.html";
 
 		const rows = sections.map((sec) => {
-			const itemsHtml = sec.items.map((label, idx) => {
-				const safe = escapeHtml(label);
+			const itemsHtml = sec.items.map((item, idx) => {
+				const safe = escapeHtml(item.label);
 				const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
+				const href = `${rulesBaseUrl}#${encodeURIComponent(item.anchorId)}`;
 
 				return `
 					<tr>
@@ -53,7 +81,9 @@
 							<input type="checkbox" id="${id}"/>
 						</td>
 						<td class="rule">
-							<label for="${id}">${safe}</label>
+							<label for="${id}">
+								<a class="rule-link" href="${href}" target="_blank" rel="noopener noreferrer">${safe}</a>
+							</label>
 						</td>
 						<td class="status">
 							<select aria-label="Status for ${safe}">
