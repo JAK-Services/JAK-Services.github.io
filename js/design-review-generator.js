@@ -94,6 +94,7 @@
 						</td>
 						<td class="notes">
 							<textarea class="notes-field" rows="2" placeholder="Notes / action items"></textarea>
+							<div class="notes-print empty">Notes / action items</div>
 						</td>
 					</tr>
 				`;
@@ -208,6 +209,18 @@
 				overflow: hidden;
 				box-sizing: border-box;
 			}
+			div.notes-print {
+				display: none;
+				white-space: pre-wrap;
+				overflow-wrap: anywhere;
+				word-break: break-word;
+				box-sizing: border-box;
+			}
+			div.notes-print.empty {
+				opacity: 0.6;
+				font-style: italic;
+			}
+
 			.actions {
 				display: flex;
 				gap: 10px;
@@ -240,10 +253,9 @@
 				textarea {
 					border: 1px solid #999;
 				}
-				textarea.notes-field {
-					/* Ensure all text is visible in the PDF */
-					overflow: visible;
-				}
+				textarea.notes-field { display: none !important; }
+				div.notes-print { display: block; border: 1px solid #999; padding: 6px; border-radius: 8px; min-height: 2.6em; }
+				div.notes-print.empty { opacity: 0.6; font-style: italic; }
 			}
 		</style>
 	</head>
@@ -289,13 +301,33 @@
 					// Add a couple of pixels to avoid clipping descenders in some print engines.
 					el.style.height = (el.scrollHeight + 2) + "px";
 				}
+				function syncPrintMirror(el) {
+					if (!el) return;
+					const box = el.parentElement && el.parentElement.querySelector(".notes-print");
+					if (!box) return;
+					const val = (el.value || "");
+					if (val.trim().length) {
+						box.textContent = val;
+						box.classList.remove("empty");
+					} else {
+						box.textContent = el.getAttribute("placeholder") || "";
+						box.classList.add("empty");
+					}
+				}
 				const areas = Array.from(document.querySelectorAll("textarea.notes-field"));
 				areas.forEach((ta) => {
 					autosize(ta);
-					ta.addEventListener("input", () => autosize(ta));
+					syncPrintMirror(ta);
+					ta.addEventListener("input", () => {
+						autosize(ta);
+						syncPrintMirror(ta);
+					});
 				});
-				// Recalculate right before printing so PDFs capture full height.
-				window.addEventListener("beforeprint", () => areas.forEach(autosize));
+				// Ensure the print/PDF version has the latest content.
+				window.addEventListener("beforeprint", () => areas.forEach((ta) => {
+					autosize(ta);
+					syncPrintMirror(ta);
+				}));
 			})();
 		</script>
 	</body>
