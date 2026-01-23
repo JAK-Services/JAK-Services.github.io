@@ -118,19 +118,50 @@
 				<p class="lead">
 					Sample two analog signals simultaneously, stream them as CSV over USB, and plot both channels in real time.
 				</p>
-				<div class="carousel tutorial-carousel">
-
+				<div class="carousel carousel" aria-label="Tutorial highlights">
 					<div class="carousel-track">
 						<div class="carousel-slide active">
-							<img src="/images/tutorials/kicad_9_your_first_pcb.webp" alt="PCB">
+							<p class="carousel-caption">
+								The Schema
+							</p>
+							<div class="carousel-image-wrapper">
+								<a href="tutorial_kicad_9_build_your_first_pcb.html">
+									<img src="/images/tutorials/kicad_9_your_first_schema.webp" alt="The schematic of the PCB design" loading="eager" decoding="async"/>
+								</a>
+							</div>
 						</div>
 
 						<div class="carousel-slide">
-							<img src="/images/tutorials/kicad_9_your_first_schema.webp" alt="KiCad 9 – Your First Schematic">
+							<p class="carousel-caption">
+								The Serial Oscilloscope View
+							</p>
+							<div class="carousel-image-wrapper">
+								<a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">
+									<img src="/images/tutorials/esp32_adc_serial_oscilloscope.webp" alt="The serial oscilloscope view" loading="eager" decoding="async"/>
+								</a>
+							</div>
 						</div>
 
 						<div class="carousel-slide">
-							<img src="/images/tutorials/esp32_adc.png" alt="Dual ACD Reading Mockup">
+							<p class="carousel-caption">
+								The PCB
+							</p>
+							<div class="carousel-image-wrapper">
+								<a href="tutorial_kicad_9_build_your_first_pcb.html">
+									<img src="/images/tutorials/kicad_9_your_first_pcb.webp" alt="3D render of the PCB design" loading="lazy" decoding="async"/>
+								</a>
+							</div>
+						</div>
+
+						<div class="carousel-slide">
+							<p class="carousel-caption">
+								The Mockup
+							</p>
+							<div class="carousel-image-wrapper">
+								<a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">
+									<img src="/images/tutorials/esp32_adc.webp" alt="The design mockup" loading="eager" decoding="async"/>
+								</a>
+							</div>
 						</div>
 					</div>
 
@@ -227,8 +258,8 @@
 			</p>
 
 			<div class="code-wrapper">
-			  <button class="copy-btn" data-target="adc-code" aria-label="Copy code">
-				📋
+			  <button class="copy-btn" data-target="adc-code" aria-label="Copy code" title="Copy">
+				⧉
 			  </button>
 
 			  <pre class="code-block"><code id="adc-code">#include &lt;inttypes.h&gt;
