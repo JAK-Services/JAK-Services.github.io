@@ -332,7 +332,8 @@ body.lang-fr .i18n-fr.inline {
 .code-block { 
 	background:#0b1020; 
 	color:#e7ecff; 
-	padding:1rem; 
+    padding: 1.5rem 1rem 1rem 1rem;
+    padding-top: 3.25rem; /* space for copy button */
 	border-radius:12px; 
     display: block;
     max-height: 40em;              /* ≈ 100 lines (0.6em–0.65em per line typical) */
@@ -370,21 +371,21 @@ body.lang-fr .i18n-fr.inline {
 
 .code-wrapper {
   position: relative;
-  overflow: hidden;
 }
 
 .copy-btn {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.06);
-  color: #e5e7eb;
-  cursor: pointer;
+  top: 1rem;
+  right: 1rem;
   font-size: 0.9rem;
-  line-height: 1;
   padding: 0.45rem 0.55rem;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e5e7eb;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
