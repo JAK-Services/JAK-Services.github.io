@@ -1,0 +1,298 @@
+/* ==========================================================================
+   design-review.css
+   Stylesheet for the downloadable "PCB Design Review Checklist" HTML
+   Hosted at: https://jak-services.github.io/css/design-review.css
+   ========================================================================== */
+
+/* Base ------------------------------------------------------------------- */
+
+:root{
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --line-strong: #d1d5db;
+  --card: #f9fafb;
+  --focus: #2563eb;
+  --btn: #111827;
+  --btn-text: #ffffff;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  padding: 28px 28px 40px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  line-height: 1.45;
+}
+
+/* Typography -------------------------------------------------------------- */
+
+h1{
+  margin: 0 0 6px;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h2{
+  margin: 22px 0 10px;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+p{ margin: 10px 0; }
+
+.small{
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* Links ------------------------------------------------------------------ */
+
+a{
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+a:hover{
+  text-decoration-thickness: 2px;
+}
+
+/* Layout blocks ----------------------------------------------------------- */
+
+.actions{
+  margin: 12px 0 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.meta{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 14px 16px;
+  padding: 14px 14px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 0 0 18px;
+}
+
+@media (max-width: 860px){
+  body{ padding: 18px 16px 30px; }
+  .meta{ grid-template-columns: 1fr; }
+}
+
+.meta label{
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.meta input{
+  width: 100%;
+}
+
+/* Form controls ----------------------------------------------------------- */
+
+input[type="text"], select{
+  font: inherit;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+}
+
+input[type="text"]::placeholder{ color: #9ca3af; }
+
+input[type="text"]:focus, select:focus{
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--focus) 20%, transparent);
+}
+
+input[type="checkbox"]{
+  width: 16px;
+  height: 16px;
+}
+
+/* Buttons ---------------------------------------------------------------- */
+
+button{
+  font: inherit;
+}
+
+button.primary{
+  appearance: none;
+  border: 0;
+  background: var(--btn);
+  color: var(--btn-text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+button.primary:hover{
+  filter: brightness(0.96);
+}
+
+button.primary:active{
+  transform: translateY(1px);
+}
+
+button.primary:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--focus) 28%, transparent);
+}
+
+/* Checklist sections ------------------------------------------------------ */
+
+section.block{
+  margin: 18px 0 22px;
+  padding-top: 2px;
+}
+
+section.block + section.block{
+  border-top: 1px dashed var(--line);
+  padding-top: 18px;
+}
+
+/* Tables ----------------------------------------------------------------- */
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* IMPORTANT: deterministic column widths */
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+thead th{
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #374151;
+  background: #f3f4f6;
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+tbody td{
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+tbody tr:last-child td{
+  border-bottom: 0;
+}
+
+/* Column sizing: Done + Status smaller, Check + Notes larger -------------- */
+/* Generated HTML uses td classes: check, rule, status, notes */
+
+td.check, th:nth-child(1){
+  width: 4.5%;
+  text-align: center;
+}
+
+td.rule, th:nth-child(2){
+  width: 38%;
+}
+
+td.status, th:nth-child(3){
+  width: 12%;
+}
+
+td.notes, th:nth-child(4){
+  width: 45.5%;
+}
+
+/* Keep controls from forcing column expansion */
+td.status select{
+  width: 100%;
+  min-width: 0;
+}
+
+td.notes input[type="text"]{
+  width: 100%;
+  min-width: 0;
+}
+
+/* Rule label / link appearance ------------------------------------------- */
+
+td.rule label{
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+td.rule a{
+  font-weight: 600;
+}
+
+/* Zebra (subtle) ---------------------------------------------------------- */
+
+tbody tr:nth-child(even) td{
+  background: #fcfcfd;
+}
+
+/* Print ------------------------------------------------------------------ */
+
+@media print{
+  body{
+    padding: 0;
+    margin: 0;
+  }
+
+  .actions{
+    display: none !important;
+  }
+
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .meta{
+    border: 1px solid #000;
+    background: #fff;
+    border-radius: 0;
+  }
+
+  table{
+    border: 1px solid #000;
+    border-radius: 0;
+  }
+
+  thead th{
+    background: #eee !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Prevent awkward row splitting */
+  tr, td, th{
+    page-break-inside: avoid;
+  }
+
+  section.block{
+    break-inside: avoid;
+  }
+}
