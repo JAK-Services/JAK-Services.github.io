@@ -1,4 +1,4 @@
-/* design-review.css — clean consolidated version */
+/* design-review.css — clean consolidated version (v5) */
 
 :root{
   --bg:#fff;
@@ -6,8 +6,6 @@
   --muted:#6b7280;
   --line:#e5e7eb;
   --line-strong:#d1d5db;
-  --card:#f9fafb;
-  --focus:#2563eb;
 }
 
 *{ box-sizing:border-box; }
@@ -46,10 +44,7 @@ button.primary{
   table-layout:fixed;
   margin:8px 0 18px;
 }
-.meta-table td{
-  padding:6px 8px;
-  vertical-align:top;
-}
+.meta-table td{ padding:6px 8px; vertical-align:top; }
 .meta-table label{
   display:block;
   font-size:12px;
@@ -74,13 +69,9 @@ table.design-review-table{
   background:#fff;
 }
 
-/* Grid lines */
 table.design-review-table th,
-table.design-review-table td{
-  border:1px solid var(--line);
-}
+table.design-review-table td{ border:1px solid var(--line); }
 
-/* Header */
 table.design-review-table thead th{
   background:#f3f4f6;
   font-size:12px;
@@ -88,24 +79,18 @@ table.design-review-table thead th{
   padding:10px 10px;
 }
 
-/* Cells */
 table.design-review-table tbody td{
   padding:10px 10px;
   vertical-align:top;
 }
 
-/* Column proportions:
-   Done 4% | Check 30% | Status 6% | Notes 60%
-   (Check is never more than half of Notes) */
+/* Column proportions: Done 4% | Check 30% | Status 6% | Notes 60% */
 table.design-review-table th:nth-child(1),
 table.design-review-table td:nth-child(1){ width:4%; text-align:center; }
-
 table.design-review-table th:nth-child(2),
 table.design-review-table td:nth-child(2){ width:30%; }
-
 table.design-review-table th:nth-child(3),
 table.design-review-table td:nth-child(3){ width:6%; text-align:center; }
-
 table.design-review-table th:nth-child(4),
 table.design-review-table td:nth-child(4){ width:60%; }
 
@@ -115,46 +100,33 @@ td.rule{
   overflow-wrap:anywhere;
   word-break:break-word;
 }
-td.rule a{
-  display:block;
-  white-space:normal;
-  overflow-wrap:anywhere;
-  word-break:break-word;
-}
+td.rule a{ display:block; white-space:normal; overflow-wrap:anywhere; word-break:break-word; }
 
 /* Status tight */
-td.status{
-  padding:8px 6px;
-  text-align:center;
-}
+td.status{ padding:8px 6px; text-align:center; }
 td.status select{
   width:auto;
-  min-width:0;
   max-width:100%;
   font:inherit;
   font-size:13px;
   padding:2px 6px;
 }
 
-/* Notes: make textarea fill cell width with small padding */
-td.notes{
-  padding:6px;
-  vertical-align:top;
-}
+/* Notes: textarea fills cell width (strong) */
+td.notes{ padding:6px; }
 td.notes textarea,
 textarea.notes-field{
-  width:100%;
-  max-width:100%;
-  box-sizing:border-box;
-  display:block;
-  margin:0;
-  padding:6px 8px;
+  width:100% !important;
+  min-width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+  display:block !important;
+  margin:0 !important;
+  padding:6px 8px !important;
   border:1px solid var(--line-strong);
   border-radius:6px;
   font:inherit;
   font-size:13px;
-
-  /* Make it feel “in-cell” and large enough by default */
   min-height:3.2em;
   resize:vertical;
 }
