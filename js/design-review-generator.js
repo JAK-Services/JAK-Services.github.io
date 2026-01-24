@@ -31,6 +31,7 @@
 			if (!items.length) return;
 
 			sections.push({
+				id: card.id,
 				title: h2.textContent.trim(),
 				items
 			});
@@ -43,6 +44,7 @@
 		const today = new Date().toISOString().slice(0, 10);
 
 		const rows = sections.map((sec) => {
+			const secId = sec.id || slugify(sec.title);
 			const itemsHtml = sec.items.map((label, idx) => {
 				const safe = escapeHtml(label);
 				const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
@@ -53,7 +55,9 @@
 							<input type="checkbox" id="${id}"/>
 						</td>
 						<td class="rule">
-							<label for="${id}">${safe}</label>
+							<label for="${id}">
+								<a class="rule-link" href="https://jak-services.github.io/en/pcb-design-rules.html#${secId}__${slugify(label)}" target="_blank" rel="noopener">${safe}</a>
+							</label>
 						</td>
 						<td class="status">
 							<select aria-label="Status for ${safe}">
@@ -63,7 +67,7 @@
 							</select>
 						</td>
 						<td class="notes">
-							<input type="text" placeholder="Notes / action items"/>
+							<textarea rows="2" placeholder="Notes / actions"></textarea>
 						</td>
 					</tr>
 				`;
@@ -72,7 +76,7 @@
 			return `
 				<section class="block">
 					<h2>${escapeHtml(sec.title)}</h2>
-					<table>
+					<table class="design-review-table">
 						<thead>
 							<tr>
 								<th>Done</th>
