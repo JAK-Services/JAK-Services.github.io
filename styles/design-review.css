@@ -354,3 +354,64 @@ textarea.notes-field{
   width: 100%;
   min-width: 0;
 }
+
+
+/* --- Overrides / fixes: grid lines, consistent widths, wrapping --- */
+table.design-review-table{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid var(--line-strong);
+}
+
+table.design-review-table th,
+table.design-review-table td{
+  border: 1px solid var(--line);
+}
+
+/* Ensure all section tables align identically */
+section.block{ max-width: 100%; }
+section.block table.design-review-table{ margin: 0; }
+
+/* Wrap long check links so they never skew the table */
+td.rule,
+td.notes{
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+td.rule a{
+  display: block;
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* Two-row meta table */
+table.meta-table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+table.meta-table td{
+  padding: 12px 12px 10px;
+  border: 1px solid var(--line);
+}
+table.meta-table label{
+  display:block;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+table.meta-table input{
+  width: 100%;
+}
+
+/* Keep selects/textarea inside their cells */
+td.status select,
+td.notes textarea{
+  width: 100%;
+  min-width: 0;
+}
