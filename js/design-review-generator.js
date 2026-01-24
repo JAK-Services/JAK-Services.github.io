@@ -5,17 +5,6 @@
 (function () {
 	"use strict";
 
-	// Create stable, human-readable fragment IDs (used for deep links).
-	function slugify(s) {
-		return String(s)
-			.toLowerCase()
-			.normalize("NFKD")
-			.replace(/[\u0300-\u036f]/g, "") // strip accents
-			.replace(/[^a-z0-9]+/g, "-")
-			.replace(/^-+|-+$/g, "")
-			.replace(/-{2,}/g, "-");
-	}
-
 	function escapeHtml(s) {
 		return String(s)
 			.replaceAll("&", "&amp;")
@@ -35,23 +24,8 @@
 
 			if (!h2 || !list) return;
 
-			// Build a per-item anchor that can be used to deep-link to the exact
-			// rule on https://jak-services.github.io/en/pcb-design-rules.html
-			//
-			// IMPORTANT: The same ID algorithm must exist on the destination page
-			// (implemented in main.js) so hashes resolve and auto-expand.
-			const items = Array.from(list.querySelectorAll("li.has-detail"))
-				.map((li, idx) => {
-					const labelEl = li.querySelector(".item-label");
-					const label = labelEl ? labelEl.textContent.trim() : "";
-					if (!label) return null;
-
-					const anchorId = `${card.id}__${slugify(label)}`;
-					// Best effort: set ID on the live page too (useful for copy/paste sharing).
-					if (!li.id) li.id = anchorId;
-
-					return { label, anchorId, idx };
-				})
+			const items = Array.from(list.querySelectorAll("li .item-label"))
+				.map((el) => el.textContent.trim())
 				.filter(Boolean);
 
 			if (!items.length) return;
@@ -67,13 +41,11 @@
 
 	function buildHtmlDoc(sections) {
 		const today = new Date().toISOString().slice(0, 10);
-		const rulesBaseUrl = "https://jak-services.github.io/en/pcb-design-rules.html";
 
 		const rows = sections.map((sec) => {
-			const itemsHtml = sec.items.map((item, idx) => {
-				const safe = escapeHtml(item.label);
+			const itemsHtml = sec.items.map((label, idx) => {
+				const safe = escapeHtml(label);
 				const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
-				const href = `${rulesBaseUrl}#${encodeURIComponent(item.anchorId)}`;
 
 				return `
 					<tr>
@@ -81,9 +53,7 @@
 							<input type="checkbox" id="${id}"/>
 						</td>
 						<td class="rule">
-							<label for="${id}">
-								<a class="rule-link" href="${href}" target="_blank" rel="noopener noreferrer">${safe}</a>
-							</label>
+							<label for="${id}">${safe}</label>
 						</td>
 						<td class="status">
 							<select aria-label="Status for ${safe}">
@@ -93,8 +63,8 @@
 							</select>
 						</td>
 						<td class="notes">
-							<textarea class="notes-field" rows="2" placeholder="Notes / action items"></textarea>
-</td>
+							<input type="text" placeholder="Notes / action items"/>
+						</td>
 					</tr>
 				`;
 			}).join("");
@@ -102,13 +72,7 @@
 			return `
 				<section class="block">
 					<h2>${escapeHtml(sec.title)}</h2>
-					<table class="design-review-table" style="width:100%;table-layout:fixed;border-collapse:collapse;">
-						<colgroup>
-					<col style="width:4%"/>
-					<col style="width:30%"/>
-					<col style="width:6%"/>
-					<col style="width:60%"/>
-				</colgroup>
+					<table>
 						<thead>
 							<tr>
 								<th>Done</th>
@@ -132,73 +96,40 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>PCB Design Review Checklist</title>
 		<link rel="stylesheet" href="https://jak-services.github.io/css/design-review.css"/>
-	
-		<style>
-			/* Fallback essentials if external CSS fails to load */
-			table.design-review-table{width:100%;table-layout:fixed;border-collapse:collapse;}
-			table.design-review-table th, table.design-review-table td{border:1px solid #e5e7eb;vertical-align:top;padding:8px;}
-			table.meta-table{width:100%;border-collapse:collapse;margin:0 0 16px;}
-			table.meta-table td{padding:4px 8px;vertical-align:top;}
-			table.meta-table input{width:100%;}
-			td.rule a{display:block;white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
-		</style>
-</head>
+	</head>
 	<body>
 		<h1>PCB Design Review Checklist</h1>
 		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">
-			Click the check items for detailed explanations.
+			Detailed explanations for each check item below can be found by expanding the corresponding arrow node on
+			<a href="https://jak-services.github.io/en/pcb-design-rules.html" target="_blank" rel="noopener noreferrer">this JAK Services page</a>.
 		</p>
 
 		<div class="actions">
 			<button class="primary" onclick="window.print()">Print / Save as PDF</button>
 		</div>
 
-		<table class="meta-table" role="presentation">
-			<tr>
-				<td>
-					<label>Project / Board name</label>
-					<input type="text" placeholder="e.g., SensorHub Rev A"/>
-				</td>
-				<td>
-					<label>Hardware revision</label>
-					<input type="text" placeholder="e.g., A / B / C"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Reviewer</label>
-					<input type="text" placeholder="Name"/>
-				</td>
-				<td>
-					<label>Date</label>
-					<input type="text" value="${today}"/>
-				</td>
-			</tr>
-		</table>
+		<div class="meta">
+			<div>
+				<label>Project / Board name</label>
+				<input type="text" placeholder="e.g., SensorHub Rev A"/>
+			</div>
+			<div>
+				<label>Hardware revision</label>
+				<input type="text" placeholder="e.g., A / B / C"/>
+			</div>
+			<div>
+				<label>Reviewer</label>
+				<input type="text" placeholder="Name"/>
+			</div>
+			<div>
+				<label>Date</label>
+				<input type="text" value="${today}"/>
+			</div>
+		</div>
 
 		${rows}
 
 		<p class="small">Generated from: ${escapeHtml(location.href)}</p>
-
-		<script>
-			(function () {
-				"use strict";
-				function autosize(el) {
-					if (!el) return;
-					el.style.height = "auto";
-					// Add a couple of pixels to avoid clipping descenders in some print engines.
-					el.style.height = (el.scrollHeight + 2) + "px";
-				}
-				const areas = Array.from(document.querySelectorAll("textarea.notes-field"));
-				areas.forEach((ta) => {
-					autosize(ta);					ta.addEventListener("input", () => {
-						autosize(ta);					});
-				});
-				// Ensure the print/PDF version has the latest content.
-				window.addEventListener("beforeprint", () => areas.forEach((ta) => {
-					autosize(ta);				}));
-			})();
-		</script>
 	</body>
 </html>`;
 	}
