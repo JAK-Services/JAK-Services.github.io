@@ -253,6 +253,34 @@ tbody tr:nth-child(even) td{
   background: #fcfcfd;
 }
 
+
+/* Wrapping for Check + Notes cells --------------------------------------- */
+td.rule, td.notes{
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+td.notes textarea{
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  resize: vertical;
+}
+
+td.notes textarea:focus{
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--focus) 20%, transparent);
+}
+
+
 /* Print ------------------------------------------------------------------ */
 
 @media print{
