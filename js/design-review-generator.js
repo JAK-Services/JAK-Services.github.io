@@ -5,17 +5,6 @@
 (function () {
 	"use strict";
 
-	// Create stable, human-readable fragment IDs (used for deep links).
-	function slugify(s) {
-		return String(s)
-			.toLowerCase()
-			.normalize("NFKD")
-			.replace(/[\u0300-\u036f]/g, "") // strip accents
-			.replace(/[^a-z0-9]+/g, "-")
-			.replace(/^-+|-+$/g, "")
-			.replace(/-{2,}/g, "-");
-	}
-
 	function escapeHtml(s) {
 		return String(s)
 			.replaceAll("&", "&amp;")
@@ -35,23 +24,8 @@
 
 			if (!h2 || !list) return;
 
-			// Build a per-item anchor that can be used to deep-link to the exact
-			// rule on https://jak-services.github.io/en/pcb-design-rules.html
-			//
-			// IMPORTANT: The same ID algorithm must exist on the destination page
-			// (implemented in main.js) so hashes resolve and auto-expand.
-			const items = Array.from(list.querySelectorAll("li.has-detail"))
-				.map((li, idx) => {
-					const labelEl = li.querySelector(".item-label");
-					const label = labelEl ? labelEl.textContent.trim() : "";
-					if (!label) return null;
-
-					const anchorId = `${card.id}__${slugify(label)}`;
-					// Best effort: set ID on the live page too (useful for copy/paste sharing).
-					if (!li.id) li.id = anchorId;
-
-					return { label, anchorId, idx };
-				})
+			const items = Array.from(list.querySelectorAll("li .item-label"))
+				.map((el) => el.textContent.trim())
 				.filter(Boolean);
 
 			if (!items.length) return;
@@ -67,13 +41,11 @@
 
 	function buildHtmlDoc(sections) {
 		const today = new Date().toISOString().slice(0, 10);
-		const rulesBaseUrl = "https://jak-services.github.io/en/pcb-design-rules.html";
 
 		const rows = sections.map((sec) => {
-			const itemsHtml = sec.items.map((item, idx) => {
-				const safe = escapeHtml(item.label);
+			const itemsHtml = sec.items.map((label, idx) => {
+				const safe = escapeHtml(label);
 				const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
-				const href = `${rulesBaseUrl}#${encodeURIComponent(item.anchorId)}`;
 
 				return `
 					<tr>
@@ -81,9 +53,7 @@
 							<input type="checkbox" id="${id}"/>
 						</td>
 						<td class="rule">
-							<label for="${id}">
-								<a class="rule-link" href="${href}" target="_blank" rel="noopener noreferrer">${safe}</a>
-							</label>
+							<label for="${id}">${safe}</label>
 						</td>
 						<td class="status">
 							<select aria-label="Status for ${safe}">
@@ -93,8 +63,7 @@
 							</select>
 						</td>
 						<td class="notes">
-							<textarea class="notes-field" rows="2" placeholder="Notes / action items"></textarea>
-							<div class="notes-print empty">Notes / action items</div>
+							<input type="text" placeholder="Notes / action items"/>
 						</td>
 					</tr>
 				`;
@@ -126,143 +95,13 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>PCB Design Review Checklist</title>
-		<style>
-			body {
-				font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-				margin: 24px;
-			}
-			table {
-				/* Prevent long text from overflowing cells */
-				table-layout: fixed;
-			}
-			th, td {
-				overflow-wrap: anywhere;
-				word-break: break-word;
-			}
-			h1 {
-				margin: 0 0 8px;
-				font-size: 22px;
-			}
-			.meta {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 12px;
-				margin: 16px 0 24px;
-			}
-			.meta label {
-				display: block;
-				font-size: 12px;
-				opacity: 0.8;
-				margin-bottom: 4px;
-			}
-			.meta input {
-				width: 100%;
-				padding: 8px;
-				border: 1px solid #ccc;
-				border-radius: 10px;
-			}
-			.block {
-				margin: 22px 0;
-			}
-			.block h2 {
-				font-size: 16px;
-				margin: 0 0 10px;
-			}
-			table {
-				width: 100%;
-				border-collapse: collapse;
-			}
-			th, td {
-				border: 1px solid #ddd;
-				padding: 8px;
-				vertical-align: top;
-			}
-			th {
-				background: #f6f6f6;
-				text-align: left;
-			}
-			td.check {
-				width: 56px;
-				text-align: center;
-			}
-			td.status {
-				width: 120px;
-			}
-			td.notes {
-				width: 35%;
-			}
-			select,
-			input[type="text"],
-			textarea {
-				width: 100%;
-				padding: 6px;
-				border: 1px solid #ccc;
-				border-radius: 8px;
-			}
-			textarea.notes-field {
-				min-height: 2.6em;
-				resize: vertical;
-				white-space: pre-wrap;
-				overflow-wrap: anywhere;
-				word-break: break-word;
-				/* Auto-grow script uses scrollHeight; keep scrollbars hidden. */
-				overflow: hidden;
-				box-sizing: border-box;
-			}
-			div.notes-print {
-				display: none;
-				white-space: pre-wrap;
-				overflow-wrap: anywhere;
-				word-break: break-word;
-				box-sizing: border-box;
-			}
-			div.notes-print.empty {
-				opacity: 0.6;
-				font-style: italic;
-			}
-
-			.actions {
-				display: flex;
-				gap: 10px;
-				margin: 0 0 18px;
-			}
-			.actions button {
-				padding: 8px 12px;
-				border-radius: 10px;
-				border: 1px solid #ccc;
-				background: #fff;
-				cursor: pointer;
-			}
-			.actions button.primary {
-				border-color: #111;
-			}
-			.small {
-				font-size: 12px;
-				opacity: 0.8;
-				margin-top: 8px;
-			}
-			@media print {
-				.actions {
-					display: none;
-				}
-				body {
-					margin: 12mm;
-				}
-				select,
-				input[type="text"],
-				textarea {
-					border: 1px solid #999;
-				}
-				textarea.notes-field { display: none !important; }
-				div.notes-print { display: block; border: 1px solid #999; padding: 6px; border-radius: 8px; min-height: 2.6em; }
-				div.notes-print.empty { opacity: 0.6; font-style: italic; }
-			}
-		</style>
+		<link rel="stylesheet" href="https://jak-services.github.io/css/design-review.css"/>
 	</head>
 	<body>
 		<h1>PCB Design Review Checklist</h1>
 		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">
-			Click the check items for detailed explanations.
+			Detailed explanations for each check item below can be found by expanding the corresponding arrow node on
+			<a href="https://jak-services.github.io/en/pcb-design-rules.html" target="_blank" rel="noopener noreferrer">this JAK Services page</a>.
 		</p>
 
 		<div class="actions">
@@ -291,45 +130,6 @@
 		${rows}
 
 		<p class="small">Generated from: ${escapeHtml(location.href)}</p>
-
-		<script>
-			(function () {
-				"use strict";
-				function autosize(el) {
-					if (!el) return;
-					el.style.height = "auto";
-					// Add a couple of pixels to avoid clipping descenders in some print engines.
-					el.style.height = (el.scrollHeight + 2) + "px";
-				}
-				function syncPrintMirror(el) {
-					if (!el) return;
-					const box = el.parentElement && el.parentElement.querySelector(".notes-print");
-					if (!box) return;
-					const val = (el.value || "");
-					if (val.trim().length) {
-						box.textContent = val;
-						box.classList.remove("empty");
-					} else {
-						box.textContent = el.getAttribute("placeholder") || "";
-						box.classList.add("empty");
-					}
-				}
-				const areas = Array.from(document.querySelectorAll("textarea.notes-field"));
-				areas.forEach((ta) => {
-					autosize(ta);
-					syncPrintMirror(ta);
-					ta.addEventListener("input", () => {
-						autosize(ta);
-						syncPrintMirror(ta);
-					});
-				});
-				// Ensure the print/PDF version has the latest content.
-				window.addEventListener("beforeprint", () => areas.forEach((ta) => {
-					autosize(ta);
-					syncPrintMirror(ta);
-				}));
-			})();
-		</script>
 	</body>
 </html>`;
 	}
