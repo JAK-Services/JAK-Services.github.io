@@ -102,7 +102,7 @@
 			return `
 				<section class="block">
 					<h2>${escapeHtml(sec.title)}</h2>
-					<table class="design-review-table">
+					<table class="design-review-table" style="width:100%;table-layout:fixed;border-collapse:collapse;">
 						<colgroup>
 							<col style="width:4.5%;">
 							<col style="width:38%;">
@@ -132,7 +132,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>PCB Design Review Checklist</title>
 		<link rel="stylesheet" href="https://jak-services.github.io/css/design-review.css"/>
-	</head>
+	
+		<style>
+			/* Fallback essentials if external CSS fails to load */
+			table.design-review-table{width:100%;table-layout:fixed;border-collapse:collapse;}
+			table.design-review-table th, table.design-review-table td{border:1px solid #e5e7eb;vertical-align:top;padding:8px;}
+			table.meta-table{width:100%;border-collapse:collapse;margin:0 0 16px;}
+			table.meta-table td{padding:4px 8px;vertical-align:top;}
+			table.meta-table input{width:100%;}
+			td.rule a{display:block;white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+		</style>
+</head>
 	<body>
 		<h1>PCB Design Review Checklist</h1>
 		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">
@@ -143,24 +153,28 @@
 			<button class="primary" onclick="window.print()">Print / Save as PDF</button>
 		</div>
 
-		<div class="meta">
-			<div>
-				<label>Project / Board name</label>
-				<input type="text" placeholder="e.g., SensorHub Rev A"/>
-			</div>
-			<div>
-				<label>Hardware revision</label>
-				<input type="text" placeholder="e.g., A / B / C"/>
-			</div>
-			<div>
-				<label>Reviewer</label>
-				<input type="text" placeholder="Name"/>
-			</div>
-			<div>
-				<label>Date</label>
-				<input type="text" value="${today}"/>
-			</div>
-		</div>
+		<table class="meta-table" role="presentation">
+			<tr>
+				<td>
+					<label>Project / Board name</label>
+					<input type="text" placeholder="e.g., SensorHub Rev A"/>
+				</td>
+				<td>
+					<label>Hardware revision</label>
+					<input type="text" placeholder="e.g., A / B / C"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Reviewer</label>
+					<input type="text" placeholder="Name"/>
+				</td>
+				<td>
+					<label>Date</label>
+					<input type="text" value="${today}"/>
+				</td>
+			</tr>
+		</table>
 
 		${rows}
 
