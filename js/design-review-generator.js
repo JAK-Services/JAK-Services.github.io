@@ -104,11 +104,11 @@
 					<h2>${escapeHtml(sec.title)}</h2>
 					<table class="design-review-table" style="width:100%;table-layout:fixed;border-collapse:collapse;">
 						<colgroup>
-							<col style="width:4.5%;">
-							<col style="width:38%;">
-							<col style="width:12%;">
-							<col style="width:45.5%;">
-						</colgroup>
+					<col style="width:4%"/>
+					<col style="width:30%"/>
+					<col style="width:6%"/>
+					<col style="width:60%"/>
+				</colgroup>
 						<thead>
 							<tr>
 								<th>Done</th>
