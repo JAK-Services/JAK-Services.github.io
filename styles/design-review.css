@@ -324,3 +324,33 @@ td.notes textarea:focus{
     break-inside: avoid;
   }
 }
+
+
+/* Grid lines */
+.design-review-table, .design-review-table th, .design-review-table td{
+  border: 1px solid var(--line);
+}
+.design-review-table{
+  border-collapse: collapse;
+}
+
+/* Ensure consistent width across sections */
+section.block, .design-review-table{
+  width: 100%;
+}
+
+/* Wrap long check links and notes */
+td.rule, td.notes{
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+td.rule a{
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+textarea.notes-field{
+  width: 100%;
+  min-width: 0;
+}
