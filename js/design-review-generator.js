@@ -5,6 +5,17 @@
 (function () {
 	"use strict";
 
+	// Create stable, human-readable fragment IDs (used for deep links).
+	function slugify(s) {
+		return String(s)
+			.toLowerCase()
+			.normalize("NFKD")
+			.replace(/[\u0300-\u036f]/g, "") // strip accents
+			.replace(/[^a-z0-9]+/g, "-")
+			.replace(/^-+|-+$/g, "")
+			.replace(/-{2,}/g, "-");
+	}
+
 	function escapeHtml(s) {
 		return String(s)
 			.replaceAll("&", "&amp;")
@@ -24,14 +35,28 @@
 
 			if (!h2 || !list) return;
 
-			const items = Array.from(list.querySelectorAll("li .item-label"))
-				.map((el) => el.textContent.trim())
+			// Build a per-item anchor that can be used to deep-link to the exact
+			// rule on https://jak-services.github.io/en/pcb-design-rules.html
+			//
+			// IMPORTANT: The same ID algorithm must exist on the destination page
+			// (implemented in main.js) so hashes resolve and auto-expand.
+			const items = Array.from(list.querySelectorAll("li.has-detail"))
+				.map((li, idx) => {
+					const labelEl = li.querySelector(".item-label");
+					const label = labelEl ? labelEl.textContent.trim() : "";
+					if (!label) return null;
+
+					const anchorId = `${card.id}__${slugify(label)}`;
+					// Best effort: set ID on the live page too (useful for copy/paste sharing).
+					if (!li.id) li.id = anchorId;
+
+					return { label, anchorId, idx };
+				})
 				.filter(Boolean);
 
 			if (!items.length) return;
 
 			sections.push({
-				id: card.id,
 				title: h2.textContent.trim(),
 				items
 			});
@@ -42,12 +67,13 @@
 
 	function buildHtmlDoc(sections) {
 		const today = new Date().toISOString().slice(0, 10);
+		const rulesBaseUrl = "https://jak-services.github.io/en/pcb-design-rules.html";
 
 		const rows = sections.map((sec) => {
-			const secId = sec.id || slugify(sec.title);
-			const itemsHtml = sec.items.map((label, idx) => {
-				const safe = escapeHtml(label);
+			const itemsHtml = sec.items.map((item, idx) => {
+				const safe = escapeHtml(item.label);
 				const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
+				const href = `${rulesBaseUrl}#${encodeURIComponent(item.anchorId)}`;
 
 				return `
 					<tr>
@@ -56,7 +82,7 @@
 						</td>
 						<td class="rule">
 							<label for="${id}">
-								<a class="rule-link" href="https://jak-services.github.io/en/pcb-design-rules.html#${secId}__${slugify(label)}" target="_blank" rel="noopener">${safe}</a>
+								<a class="rule-link" href="${href}" target="_blank" rel="noopener noreferrer">${safe}</a>
 							</label>
 						</td>
 						<td class="status">
@@ -67,7 +93,8 @@
 							</select>
 						</td>
 						<td class="notes">
-							<textarea rows="2" placeholder="Notes / actions"></textarea>
+							<textarea class="notes-field" rows="2" placeholder="Notes / action items"></textarea>
+							<div class="notes-print empty">Notes / action items</div>
 						</td>
 					</tr>
 				`;
@@ -76,7 +103,7 @@
 			return `
 				<section class="block">
 					<h2>${escapeHtml(sec.title)}</h2>
-					<table class="design-review-table">
+					<table>
 						<thead>
 							<tr>
 								<th>Done</th>
@@ -104,8 +131,7 @@
 	<body>
 		<h1>PCB Design Review Checklist</h1>
 		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">
-			Detailed explanations for each check item below can be found by expanding the corresponding arrow node on
-			<a href="https://jak-services.github.io/en/pcb-design-rules.html" target="_blank" rel="noopener noreferrer">this JAK Services page</a>.
+			Click the check items for detailed explanations.
 		</p>
 
 		<div class="actions">
@@ -134,6 +160,45 @@
 		${rows}
 
 		<p class="small">Generated from: ${escapeHtml(location.href)}</p>
+
+		<script>
+			(function () {
+				"use strict";
+				function autosize(el) {
+					if (!el) return;
+					el.style.height = "auto";
+					// Add a couple of pixels to avoid clipping descenders in some print engines.
+					el.style.height = (el.scrollHeight + 2) + "px";
+				}
+				function syncPrintMirror(el) {
+					if (!el) return;
+					const box = el.parentElement && el.parentElement.querySelector(".notes-print");
+					if (!box) return;
+					const val = (el.value || "");
+					if (val.trim().length) {
+						box.textContent = val;
+						box.classList.remove("empty");
+					} else {
+						box.textContent = el.getAttribute("placeholder") || "";
+						box.classList.add("empty");
+					}
+				}
+				const areas = Array.from(document.querySelectorAll("textarea.notes-field"));
+				areas.forEach((ta) => {
+					autosize(ta);
+					syncPrintMirror(ta);
+					ta.addEventListener("input", () => {
+						autosize(ta);
+						syncPrintMirror(ta);
+					});
+				});
+				// Ensure the print/PDF version has the latest content.
+				window.addEventListener("beforeprint", () => areas.forEach((ta) => {
+					autosize(ta);
+					syncPrintMirror(ta);
+				}));
+			})();
+		</script>
 	</body>
 </html>`;
 	}
