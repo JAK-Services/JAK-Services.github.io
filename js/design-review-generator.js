@@ -94,8 +94,7 @@
 						</td>
 						<td class="notes">
 							<textarea class="notes-field" rows="2" placeholder="Notes / action items"></textarea>
-							<div class="notes-print empty">Notes / action items</div>
-						</td>
+</td>
 					</tr>
 				`;
 			}).join("");
@@ -103,7 +102,13 @@
 			return `
 				<section class="block">
 					<h2>${escapeHtml(sec.title)}</h2>
-					<table>
+					<table class="design-review-table">
+						<colgroup>
+							<col style="width:4.5%;">
+							<col style="width:38%;">
+							<col style="width:12%;">
+							<col style="width:45.5%;">
+						</colgroup>
 						<thead>
 							<tr>
 								<th>Done</th>
@@ -170,33 +175,14 @@
 					// Add a couple of pixels to avoid clipping descenders in some print engines.
 					el.style.height = (el.scrollHeight + 2) + "px";
 				}
-				function syncPrintMirror(el) {
-					if (!el) return;
-					const box = el.parentElement && el.parentElement.querySelector(".notes-print");
-					if (!box) return;
-					const val = (el.value || "");
-					if (val.trim().length) {
-						box.textContent = val;
-						box.classList.remove("empty");
-					} else {
-						box.textContent = el.getAttribute("placeholder") || "";
-						box.classList.add("empty");
-					}
-				}
 				const areas = Array.from(document.querySelectorAll("textarea.notes-field"));
 				areas.forEach((ta) => {
-					autosize(ta);
-					syncPrintMirror(ta);
-					ta.addEventListener("input", () => {
-						autosize(ta);
-						syncPrintMirror(ta);
-					});
+					autosize(ta);					ta.addEventListener("input", () => {
+						autosize(ta);					});
 				});
 				// Ensure the print/PDF version has the latest content.
 				window.addEventListener("beforeprint", () => areas.forEach((ta) => {
-					autosize(ta);
-					syncPrintMirror(ta);
-				}));
+					autosize(ta);				}));
 			})();
 		</script>
 	</body>
