@@ -1,38 +1,39 @@
 // design-rules.js
 // Page-specific enhancements for pcb-design-rules.html:
-// - Assign stable IDs to each expandable rule item (.has-detail)
+// - Assign stable IDs to each expandable rule item (.has-detail) using an index-based key
+//   (robust against browser auto-translation which can rewrite text nodes)
 // - Auto-expand a rule when arriving via a #hash deep link
 //
 // This file is intentionally standalone to avoid impacting other pages.
 
 (function () {
-  function slugify(text) {
-    return String(text || "")
-      .trim()
-      .toLowerCase()
-      // Replace accented characters fairly safely (basic normalize)
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      .replace(/&/g, " and ")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-      .replace(/-+/g, "-");
+  "use strict";
+
+  function getRuleItems() {
+    return Array.from(document.querySelectorAll(".toggle-list section[id]")).flatMap((section) => {
+      const items = Array.from(section.querySelectorAll(".has-detail"));
+      return items.map((item, idx) => ({ section, item, idx }));
+    });
+  }
+
+  // Stable, translation-proof key: <sectionId>__r<index>
+  // Example: pcb_design_rules_schematics__r03
+  function makeKey(sectionId, idx) {
+    const n = String(idx + 1).padStart(2, "0");
+    return `${sectionId}__r${n}`;
   }
 
   function ensureRuleIds() {
-    const items = document.querySelectorAll(".toggle-list .has-detail");
-    items.forEach((item) => {
-      if (item.id) return;
+    const sections = Array.from(document.querySelectorAll(".toggle-list section[id]"));
+    sections.forEach((section) => {
+      const sectionId = section.id || "pcb-design-rules";
+      const items = Array.from(section.querySelectorAll(".has-detail"));
 
-      const section = item.closest("section[id]");
-      const sectionId = section ? section.id : "pcb-design-rules";
-
-      // Use the visible label if present; fall back to title attribute
-      const labelEl = item.querySelector(".item-label");
-      const labelText = labelEl ? labelEl.textContent : (item.getAttribute("title") || "");
-      const labelSlug = slugify(labelText);
-
-      // Stable deterministic ID used by the checklist generator
-      item.id = `${sectionId}__${labelSlug}`;
+      items.forEach((item, idx) => {
+        const key = makeKey(sectionId, idx);
+        item.dataset.ruleKey = key;         // persists even if text changes
+        item.id = key;                      // anchor target
+      });
     });
   }
 
@@ -43,29 +44,34 @@
     const target = document.getElementById(hash);
     if (!target) return;
 
-    // If the hash points to a rule item, open it.
     if (target.classList && target.classList.contains("has-detail")) {
       target.classList.add("open");
 
-      // Scroll to the rule with a small offset for sticky headers (if any)
-      // Use requestAnimationFrame so the browser can apply the "open" class first.
       requestAnimationFrame(() => {
         const y = target.getBoundingClientRect().top + window.scrollY - 90;
         window.scrollTo({ top: y, behavior: "smooth" });
       });
-      return;
     }
+  }
 
-    // If the hash points to a section, do nothing special (native behavior already scrolls).
+  function observeDomChanges() {
+    // Chrome auto-translate can rewrite DOM nodes and drop ids/classes on replaced nodes.
+    // Re-apply ids and attempt to open the hash whenever the rules list mutates.
+    const root = document.querySelector(".toggle-list") || document.body;
+    const obs = new MutationObserver(() => {
+      ensureRuleIds();
+      openRuleFromHash();
+    });
+    obs.observe(root, { childList: true, subtree: true });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     ensureRuleIds();
     openRuleFromHash();
+    observeDomChanges();
   });
 
   window.addEventListener("hashchange", () => {
-    // Ensure IDs exist even if some content was injected after load
     ensureRuleIds();
     openRuleFromHash();
   });
