@@ -75,7 +75,7 @@
 				const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
 				const href = `${rulesBaseUrl}#${encodeURIComponent(item.anchorId)}`;
 
-				// return `
+				return `
 					<tr>
 						<td class="check">
 							<input type="checkbox" id="${id}"/>
@@ -83,7 +83,7 @@
 						<td class="rule">
 							<label for="${id}">
 								<a class="rule-link" href="${href}" target="_blank" rel="noopener noreferrer">${safe}</a>
-							// </label>
+							</label>
 						</td>
 						<td class="status">
 							<select aria-label="Status for ${safe}">
