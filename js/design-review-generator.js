@@ -142,6 +142,11 @@
 			table.meta-table td{padding:4px 8px;vertical-align:top;}
 			table.meta-table input{width:100%;}
 			td.rule a{display:block;white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+			body {margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #ffffff; color: #1e1e1e; line-height: 1.5;}
+			.btn { display: inline-block; padding: 0.55rem 1.2rem; border-radius: 999px; border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; text-decoration: none; background: transparent; }
+			.btn.primary { background: #004f9e; color: #ffffff; }
+			.btn.primary:hover { background: #003b75; }		
+			.container { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }			
 		</style>
 </head>
 	<body>
