@@ -2,39 +2,35 @@
 <html lang="en">
 	<head>
 	  <meta charset="utf-8"/>
-	  <title>KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services</title>
-
-	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	  <meta name="description" content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs."/>
-
+	  <title>
+	    KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services
+	  </title>
+	  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+	  <meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." name="description"/>
 	  <!-- Styles -->
-	  <link rel="stylesheet" href="../styles/styles.css"/>
-	  <link rel="stylesheet" href="../styles/portfolio_carousel.css"/>
-
+	  <link href="../styles/styles.css" rel="stylesheet"/>
+	  <link href="../styles/portfolio_carousel.css" rel="stylesheet"/>
 	  <!-- Icons -->
-	  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
-
+	  <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 	  <!-- Canonical + hreflang -->
-	  <link rel="canonical" href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
-	  <link rel="alternate" hreflang="en" href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
-	  <link rel="alternate" hreflang="fr" href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html"/>
-	  <link rel="alternate" hreflang="x-default" href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
-
+	  <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" rel="canonical"/>
+	  <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="en" rel="alternate"/>
+	  <link href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" hreflang="fr" rel="alternate"/>
+	  <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="x-default" rel="alternate"/>
 	  <!-- Open Graph -->
-	  <meta property="og:type" content="article"/>
-	  <meta property="og:title" content="KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services"/>
-	  <meta property="og:description" content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs."/>
-	  <meta property="og:url" content="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"/>
-	  <meta property="og:image" content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"/>
-
+	  <meta content="article" property="og:type"/>
+	  <meta content="KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services" property="og:title"/>
+	  <meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." property="og:description"/>
+	  <meta content="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" property="og:url"/>
+	  <meta content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp" property="og:image"/>
 	  <!-- Twitter -->
-	  <meta name="twitter:card" content="summary_large_image"/>
-	  <meta name="twitter:title" content="KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services"/>
-	  <meta name="twitter:description" content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs."/>
-	  <meta name="twitter:image" content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"/>
-
+	  <meta content="summary_large_image" name="twitter:card"/>
+	  <meta content="KiCad 9.0 – Build Your First PCB - From Schematic to Gerbers | JAK Services" name="twitter:title"/>
+	  <meta content="A complete PCB design walkthrough in KiCad 9, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." name="twitter:description"/>
+	  <meta content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp" name="twitter:image"/>
 	  <!-- Structured data -->
 	  <script type="application/ld+json">
+
 		{
 		  "@context": "https://schema.org",
 		  "@type": "Organization",
@@ -42,9 +38,10 @@
 		  "url": "https://jak-services.github.io",
 		  "logo": "https://jak-services.github.io/images/jak-logo.svg"
 		}
+	  
 	  </script>
-
 	  <script type="application/ld+json">
+
 		{
 		  "@context":"https://schema.org",
 		  "@type":"BreadcrumbList",
@@ -54,9 +51,10 @@
 			{"@type":"ListItem","position":3,"name":"KiCad 9.0 – Build Your First PCB","item":"https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"}
 		  ]
 		}
+	  
 	  </script>
-
 	  <script type="application/ld+json">
+
 		{
 		  "@context":"https://schema.org",
 		  "@type":"HowTo",
@@ -76,87 +74,849 @@
 			{"@type":"HowToStep","name":"Best practices","text":"Review common PCB pitfalls and use a design-rule checklist before fabrication."}
 		  ]
 		}
+	  
 	  </script>
-
 	  <!-- Analytics -->
-	  <script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+	  <script async="" data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js">
+	  </script>
+	  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "KiCad 9.0 – Build Your First PCB (From Schematic to Gerbers)",
+  "description": "A complete PCB design walkthrough in KiCad 9: project setup, schematic capture, net classes, footprint assignment, BOM export, PCB layout, DRC, and Gerber manufacturing outputs.",
+  "image": "https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp",
+  "author": {
+    "@type": "Organization",
+    "name": "JAK Services"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "JAK Services",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jak-services.github.io/images/jak-logo.svg"
+    }
+  },
+  "mainEntityOfPage": "https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"
+}
+	  </script>
+	  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "KiCad 9.0 – Build Your First PCB (From Schematic to Gerbers)",
+  "description": "Create your first PCB in KiCad 9: project setup, schematic capture, net classes, footprint assignment, PCB layout, DRC, and Gerber/drill outputs.",
+  "thumbnailUrl": [
+    "https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"
+  ],
+  "embedUrl": "https://www.youtube.com/embed/ScILHLxuSV8",
+  "contentUrl": "https://youtu.be/ScILHLxuSV8",
+  "publisher": {
+    "@type": "Organization",
+    "name": "JAK Services",
+    "url": "https://jak-services.github.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jak-services.github.io/images/jak-logo.svg"
+    }
+  }
+}
+	  </script>
+	  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does ERC complain about +5V and GND?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If power enters the board externally (e.g., screw terminal), KiCad may not detect a power output driving the net. Place PWR_FLAG on +5V and GND to indicate the nets are intentionally powered."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I always use a ground plane?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most MCU/digital boards, a solid ground plane reduces loop area, improves return paths, and helps EMI/noise. Validate clearances/keep-outs and confirm with DRC."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I inspect before ordering PCBs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inspect outline (Edge.Cuts), hole sizes, solder mask, silkscreen, clearances, thermal relief, and connectivity. Always open and review the plotted Gerbers/drills in a viewer before sending to a manufacturer."
+      }
+    }
+  ]
+}
+	  </script>
 	</head>
-
 	<body>
 		<header class="site-header">
-		  <div class="container header-inner">
-			<a class="brand" href="index.html">
-			  <img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
-			  <div class="brand-text">
-				<span class="brand-name">JAK Services</span>
-				<span class="brand-tagline">Software and Electronics Engineering Solutions</span>
-			  </div>
-			</a>
-			<nav class="main-nav">
-			  <a href="index.html">Home / About</a>
-			  <a href="services.html">Services</a>
-			  <a href="portefolio.html">Portefolio</a>
-			  <a href="tutorials.html" aria-current="page">Tutorials</a>
-			  <a href="guides.html">Guides</a>
-			  <a href="clients.html">Clients</a>
-			  <a href="contact.html">Contact</a>
-			</nav>
-			<div class="lang-switch" aria-label="Language selector">
-			  <a class="lang-btn" href="../fr/tutorial_kicad_9_build_your_first_pcb.html">FR</a>
-			  <a class="lang-btn active" aria-current="true" href="../en/tutorial_kicad_9_build_your_first_pcb.html">EN</a>
+			<div class="container header-inner">
+				<a class="brand" href="index.html">
+					<img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
+					<div class="brand-text">
+						<span class="brand-name">
+							JAK Services
+						</span>
+						<span class="brand-tagline">
+							Software and Electronics Engineering Solutions
+						</span>
+					</div>
+				</a>
+				<nav class="main-nav">
+					<a href="index.html">
+						Home / About
+					</a>
+					<a href="services.html">
+						Services
+					</a>
+					<a href="portefolio.html">
+						Portefolio
+					</a>
+					<a aria-current="page" href="tutorials.html">
+						Tutorials
+					</a>
+					<a href="guides.html">
+						Guides
+					</a>
+					<a href="clients.html">
+						Clients
+					</a>
+					<a href="contact.html">
+						Contact
+					</a>
+				</nav>
+				<div aria-label="Language selector" class="lang-switch">
+					<a class="lang-btn" href="../fr/tutorial_kicad_9_build_your_first_pcb.html">
+						FR
+					</a>
+					<a aria-current="true" class="lang-btn active" href="../en/tutorial_kicad_9_build_your_first_pcb.html">
+						EN
+					</a>
+				</div>
 			</div>
-		  </div>
 		</header>
-
 		<main class="container">
-		  <section class="hero">
-			<h1>KiCad 9.0 – Build Your First PCB</h1>
-			<p class="lead">A complete PCB design walkthrough in KiCad 9, covering project setup, schematic, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs.</p>
-			<img class="hero-media" src="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp" alt="3D render of a PCB designed with KiCad 9" width="1200" height="675" loading="eager" decoding="async"/>
-			<div class="hero-actions">
-			  <a class="btn secondary" href="tutorials.html">← Back to tutorials</a>
-			  <a class="btn primary" href="https://youtu.be/ScILHLxuSV8" target="_blank" rel="noopener">Watch the video</a>
-			</div>
-		  </section>
-
-		  <section class="card" id="sections">
-			<h2>Main sections covered in the video</h2>
-			<ul>
-			  <li><strong>Project setup</strong> – create a new KiCad project, configure backups and page settings.</li>
-			  <li><strong>Schematic design</strong> – set up net classes, place symbols (including external libraries), wire the circuit, and run ERC.</li>
-			  <li><strong>Footprint management</strong> – assign footprints, inspect them, and create/modify a custom footprint when needed.</li>
-			  <li><strong>Bill of Materials (BOM)</strong> – generate and export a BOM.</li>
-			  <li><strong>PCB layout</strong> – import from schematic, set board/layer rules, place parts, and route traces.</li>
-			  <li><strong>Planes, mechanics, and silkscreen</strong> – create a ground plane, add mounting holes, add a logo, and draw the board outline (edge cuts).</li>
-			  <li><strong>3D visualization</strong> – assign 3D models and inspect the assembled board in the 3D viewer.</li>
-			  <li><strong>Verification</strong> – run DRC and fix remaining issues.</li>
-			  <li><strong>Manufacturing outputs</strong> – generate Gerbers and drill files and inspect them with the Gerber viewer.</li>
-			  <li><strong>Best practices</strong> – review common PCB pitfalls and use a design-rule checklist before fabrication.</li>
-			</ul>
-		  </section>
-
-		  <section class="card">
-			<h2>Resources</h2>
-			<ul>
-			  <li>KiCad: <a href="https://www.kicad.org" target="_blank" rel="noopener">https://www.kicad.org</a></li>
-			  <li>SnapEDA (symbols/footprints): <a href="https://www.snapeda.com" target="_blank" rel="noopener">https://www.snapeda.com</a></li>
-			  <li><a href="../en/pcb-design-rules.html" rel="noopener">PCB Design Rules - Checklist</a></li>
-			</ul>
-		  </section>
-
+			<section class="hero">
+				<h1>
+					KiCad 9.0 – Build Your First PCB
+				</h1>
+				<p class="lead">
+					From blank project to manufacturing files: schematic → footprints → PCB layout → DRC → Gerbers/drills.
+				</p>
+				<p class="tutorial-meta">
+					Tool: KiCad 9 • Output: Gerbers + drill files • Example: ESP32 power + analog front‑end board
+				</p>
+				<img alt="3D render of a PCB designed with KiCad 9" class="hero-media" decoding="async" height="675" loading="eager" src="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp" width="1200"/>
+				<div class="hero-actions">
+					<a class="btn secondary" href="tutorials.html">
+						← Back to tutorials
+					</a>
+					<a class="btn primary" href="https://youtu.be/ScILHLxuSV8" rel="noopener" target="_blank">
+						Watch the video
+					</a>
+				</div>
+			</section>
+			<section class="card toc">
+				<h2>
+					Contents
+				</h2>
+				<nav aria-label="Tutorial contents">
+					<ul class="toc-list">
+						<li>
+							<a href="#what-youll-build">
+								What you’ll build
+							</a>
+						</li>
+						<li>
+							<a href="#what-you-need">
+								What you need
+							</a>
+						</li>
+						<li>
+							<a href="#video">
+								YouTube tutorial
+							</a>
+						</li>
+						<li>
+							<a href="#project-setup">
+								1) Create a KiCad project
+							</a>
+						</li>
+						<li>
+							<a href="#schematic-setup">
+								2) Schematic setup (page settings + net classes)
+							</a>
+						</li>
+						<li>
+							<a href="#symbols-libs">
+								3) Place symbols and add external libraries
+							</a>
+						</li>
+						<li>
+							<a href="#wiring-erc">
+								4) Wiring + ERC (and fixing PWR errors)
+							</a>
+						</li>
+						<li>
+							<a href="#footprints">
+								5) Assign footprints (and make a custom one)
+							</a>
+						</li>
+						<li>
+							<a href="#bom">
+								6) Generate a BOM
+							</a>
+						</li>
+						<li>
+							<a href="#pcb-layout">
+								7) PCB import + board setup + placement
+							</a>
+						</li>
+						<li>
+							<a href="#routing-planes">
+								8) Routing + ground plane + mechanics
+							</a>
+						</li>
+						<li>
+							<a href="#3d">
+								9) 3D viewer + models
+							</a>
+						</li>
+						<li>
+							<a href="#drc">
+								10) DRC (design‑rule check)
+							</a>
+						</li>
+						<li>
+							<a href="#gerbers">
+								11) Gerbers + drill files
+							</a>
+						</li>
+						<li>
+							<a href="#checklist">
+								12) Design‑review checklist
+							</a>
+						</li>
+						<li>
+							<a href="#resources">
+								Resources
+							</a>
+						</li>
+						<li>
+							<a href="#faq">
+								FAQ
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</section>
+			<section class="card" id="what-youll-build">
+				<h2>
+					What you’ll build
+				</h2>
+				<p>
+					In this tutorial we design a simple two‑layer PCB that provides
+					<strong>
+						power
+					</strong>
+					and an
+					<strong>
+						analog front end
+					</strong>
+					for an
+					ESP32 DevKitC board. The workflow is intentionally “end‑to‑end” so you can reuse it for your own designs.
+				</p>
+				<ul>
+					<li>
+						Create a clean, documented schematic (title block, revision, date).
+					</li>
+					<li>
+						Define net classes (signal vs. power vs. ground) using trace‑width calculations.
+					</li>
+					<li>
+						Assign footprints, including a custom footprint when no library part exists.
+					</li>
+					<li>
+						Place, route, pour a GND plane, then verify with ERC + DRC.
+					</li>
+					<li>
+						Generate and inspect manufacturing outputs (Gerbers + drills).
+					</li>
+				</ul>
+				<p class="callout">
+					<strong>
+						Tip:
+					</strong>
+					If you’re building your first PCB, keep it two layers and validate early with ERC/DRC at each milestone.
+				</p>
+			</section>
+			<section class="card" id="what-you-need">
+				<h2>
+					What you need
+				</h2>
+				<ul>
+					<li>
+						<strong>
+							KiCad 9
+						</strong>
+						installed (Schematic Editor + PCB Editor + Gerber Viewer).
+					</li>
+					<li>
+						An internet connection for vendor libraries/footprints (e.g., SnapEDA/SnapMagic).
+					</li>
+					<li>
+						(Optional) A logo image file if you want to add branding to the silkscreen.
+					</li>
+					<li>
+						(Recommended) A fabrication checklist for review before ordering boards.
+					</li>
+				</ul>
+			</section>
+			<section class="card" id="video">
+				<h2>
+					YouTube tutorial
+				</h2>
+				<p>
+					Prefer to follow along in video form? Use the video, and keep this page as a searchable checklist.
+				</p>
+				<p class="callout">
+					<a class="btn primary" href="https://youtu.be/ScILHLxuSV8" rel="noopener" target="_blank">
+						Open the YouTube video
+					</a>
+				</p>
+			</section>
+			<section class="card" id="project-setup">
+				<h2>
+					1) Create a KiCad project
+				</h2>
+				<ol>
+					<li>
+						Open
+						<strong>
+							KiCad
+						</strong>
+						→
+						<strong>
+							Project Manager
+						</strong>
+						→
+						<strong>
+							File → New Project
+						</strong>
+						.
+					</li>
+					<li>
+						Choose a project name and folder. KiCad creates:
+						<ul>
+							<li>
+								<code>
+.kicad_pro
+								</code>
+								(project)
+							</li>
+							<li>
+								<code>
+.kicad_sch
+								</code>
+								(schematic)
+							</li>
+							<li>
+								<code>
+.kicad_pcb
+								</code>
+								(PCB layout)
+							</li>
+						</ul>
+					</li>
+					<li>
+						(Optional) Configure backups:
+						<strong>
+							Preferences → Common Settings
+						</strong>
+						.
+					</li>
+				</ol>
+			</section>
+			<section class="card" id="schematic-setup">
+				<h2>
+					2) Schematic setup (page settings + net classes)
+				</h2>
+				<h3>
+					Update the title block
+				</h3>
+				<p>
+					Good documentation pays off later (traceability, revisions, manufacturing handoff).
+					In the Schematic Editor:
+					<strong>
+						File → Page Settings
+					</strong>
+					, then fill in title, company, author, version, date, and comments.
+				</p>
+				<h3>
+					Define net classes using trace‑width calculations
+				</h3>
+				<p>
+					Net classes define rules like track width and clearance. Before setting them, use
+					<strong>
+						Tools → Calculator Tools → Track Width
+					</strong>
+					to size your power net conservatively.
+					In the video example (0.5 A, 1 oz copper / 35 µm), the calculator suggests ~5 mil minimum; we round up to
+					<strong>
+						10 mil
+					</strong>
+					.
+				</p>
+				<p>
+					Then in the Schematic Editor:
+					<strong>
+						File → Schematic Setup → Net Classes
+					</strong>
+					. Keep the
+					<em>
+						Default
+					</em>
+					class for signals and add:
+				</p>
+				<ul>
+					<li>
+						<strong>
+							+5V
+						</strong>
+						(wider tracks, appropriate clearance)
+					</li>
+					<li>
+						<strong>
+							GND
+						</strong>
+						(plane/pour friendly settings)
+					</li>
+				</ul>
+			</section>
+			<section class="card" id="symbols-libs">
+				<h2>
+					3) Place symbols and add external libraries
+				</h2>
+				<p>
+					Use
+					<strong>
+						Place → Place Symbols
+					</strong>
+					to insert parts (connectors, TVS, resistors/caps, transformer, etc.).
+					If a symbol/footprint isn’t in the default library, install it as a library.
+				</p>
+				<h3>
+					Add an ESP32 DevKitC symbol + footprint
+				</h3>
+				<ol>
+					<li>
+						Download the part from SnapEDA/SnapMagic and unzip it.
+					</li>
+					<li>
+						Project Manager →
+						<strong>
+							Preferences → Manage Symbol Libraries
+						</strong>
+						→ add the
+						<code>
+.kicad_sym
+						</code>
+						.
+					</li>
+					<li>
+						Project Manager →
+						<strong>
+							Preferences → Manage Footprint Libraries
+						</strong>
+						→ add the same folder for footprints.
+					</li>
+				</ol>
+				<p class="callout">
+					<strong>
+						Tip:
+					</strong>
+					Prefer version‑controlled, project‑local libraries for tutorials and client work to keep builds reproducible.
+				</p>
+			</section>
+			<section class="card" id="wiring-erc">
+				<h2>
+					4) Wiring + ERC (and fixing PWR errors)
+				</h2>
+				<p>
+					Draw connections with
+					<strong>
+						Place → Draw Wires
+					</strong>
+					. Add power symbols via
+					<strong>
+						Place → Power Symbols
+					</strong>
+					.
+					Then assign nets to your net classes in
+					<strong>
+						Schematic Setup → Net Classes → Netclass Assignments
+					</strong>
+					.
+				</p>
+				<h3>
+					Run ERC
+				</h3>
+				<p>
+					Run
+					<strong>
+						Inspect → Electrical Rules Checker (ERC)
+					</strong>
+					. In the example, unused ESP32 pins flag errors (expected for a tutorial),
+					but
+					<strong>
+						+5V
+					</strong>
+					and
+					<strong>
+						GND
+					</strong>
+					can also error because KiCad doesn’t “see” a power source.
+				</p>
+				<p>
+					Fix that by placing
+					<strong>
+						PWR_FLAG
+					</strong>
+					symbols on the externally powered nets (+5V and GND).
+				</p>
+			</section>
+			<section class="card" id="footprints">
+				<h2>
+					5) Assign footprints (and make a custom one)
+				</h2>
+				<p>
+					Open
+					<strong>
+						Tools → Assign Footprints
+					</strong>
+					. Select a symbol in the center list, then double‑click a footprint on the right.
+					Use the search bar to quickly find footprints by name.
+				</p>
+				<h3>
+					Inspect footprints before committing
+				</h3>
+				<ul>
+					<li>
+						Right‑click a footprint →
+						<strong>
+							View Selected Footprint
+						</strong>
+						to open the Footprint Viewer.
+					</li>
+					<li>
+						Check pad sizes, drill sizes, and courtyard/clearances against your part datasheet.
+					</li>
+				</ul>
+				<h3>
+					Create a custom footprint (when no library part exists)
+				</h3>
+				<ol>
+					<li>
+						Open the
+						<strong>
+							Footprint Editor
+						</strong>
+						from the Project Manager or toolbar.
+					</li>
+					<li>
+						Copy a similar footprint: right‑click →
+						<strong>
+							Save As
+						</strong>
+						, then edit the copy.
+					</li>
+					<li>
+						Adjust pad/drill sizes and renumber pads to match the schematic pin numbers.
+					</li>
+				</ol>
+			</section>
+			<section class="card" id="bom">
+				<h2>
+					6) Generate a BOM
+				</h2>
+				<p>
+					KiCad’s BOM generator groups identical parts (value, part number, footprint) into single lines with quantities.
+					Use the
+					<strong>
+						Export
+					</strong>
+					tab to output CSV for spreadsheets.
+				</p>
+				<p class="callout">
+					<strong>
+						Tip:
+					</strong>
+					Add fields like manufacturer part number and datasheet URL early—future you (and your assembler) will thank you.
+				</p>
+			</section>
+			<section class="card" id="pcb-layout">
+				<h2>
+					7) PCB import + board setup + placement
+				</h2>
+				<ol>
+					<li>
+						Open the PCB Editor:
+						<strong>
+							Tools → Switch to PCB Editor
+						</strong>
+						.
+					</li>
+					<li>
+						Import changes:
+						<strong>
+							Tools → Update PCB from Schematic
+						</strong>
+						(defaults are fine).
+					</li>
+					<li>
+						Open
+						<strong>
+							File → Board Setup
+						</strong>
+						to configure layers, rules, and net classes (many transfer from the schematic).
+					</li>
+				</ol>
+				<p>
+					Turn on ratsnest visibility (right‑hand Appearance panel) to see required connections.
+					Place larger/mechanical parts first (connectors, transformer), then refine for shorter routes and better EMC.
+				</p>
+			</section>
+			<section class="card" id="routing-planes">
+				<h2>
+					8) Routing + ground plane + mechanics
+				</h2>
+				<h3>
+					Ground plane on the bottom layer
+				</h3>
+				<p>
+					To reduce loop area and improve EMC, pour a solid GND plane on the bottom layer:
+					<strong>
+						Draw Filled Zone
+					</strong>
+					→ select
+					<strong>
+						B.Cu
+					</strong>
+					and assign the zone to
+					<strong>
+						GND
+					</strong>
+					.
+					Close the polygon (right‑click → Close Polygon).
+				</p>
+				<h3>
+					Route on the top layer
+				</h3>
+				<p>
+					Route signals/power on the top layer and let the plane provide clean return paths.
+					Keep high‑current loops tight and sensitive analog sections away from antennas/RF.
+				</p>
+				<h3>
+					Mounting holes, silkscreen logo, and board outline
+				</h3>
+				<ul>
+					<li>
+						Add mounting holes:
+						<strong>
+							Place → Footprint
+						</strong>
+						(choose a Mounting Hole footprint).
+					</li>
+					<li>
+						Add a logo: use KiCad’s
+						<strong>
+							Image Converter
+						</strong>
+						to export a silkscreen footprint, then add its library folder and place it.
+					</li>
+					<li>
+						Define the board outline on
+						<strong>
+							Edge.Cuts
+						</strong>
+						with sensible clearance from copper (e.g., ≥ 0.5 mm).
+					</li>
+				</ul>
+			</section>
+			<section class="card" id="3d">
+				<h2>
+					9) 3D viewer + models
+				</h2>
+				<p>
+					Assign 3D models in
+					<strong>
+						Footprint Properties → 3D Models
+					</strong>
+					(scale/rotation/offset as needed),
+					then open
+					<strong>
+						View → 3D Viewer
+					</strong>
+					to inspect the assembled board.
+				</p>
+				<p class="callout">
+					<strong>
+						RF note:
+					</strong>
+					If you use an ESP32 dev board with an antenna section, keep it clear of copper/metal and away from noisy analog areas.
+				</p>
+			</section>
+			<section class="card" id="drc">
+				<h2>
+					10) DRC (design‑rule check)
+				</h2>
+				<p>
+					Before fabrication, run
+					<strong>
+						Inspect → Design Rules Checker (DRC)
+					</strong>
+					.
+					Fix issues like silkscreen overlap, clearance violations, and unconnected items.
+				</p>
+			</section>
+			<section class="card" id="gerbers">
+				<h2>
+					11) Gerbers + drill files
+				</h2>
+				<ol>
+					<li>
+						<strong>
+							File → Fabrication Outputs → Gerbers
+						</strong>
+						.
+					</li>
+					<li>
+						Select required layers (copper, mask, silkscreen, edge cuts), then click
+						<strong>
+							Plot
+						</strong>
+						.
+					</li>
+					<li>
+						Click
+						<strong>
+							Generate Drill Files
+						</strong>
+						and save into the same
+						<code>
+Gerbers/
+						</code>
+						folder.
+					</li>
+					<li>
+						Inspect outputs in
+						<strong>
+							Gerber Viewer
+						</strong>
+						before sending to your manufacturer.
+					</li>
+				</ol>
+			</section>
+			<section class="card" id="checklist">
+				<h2>
+					12) Design‑review checklist
+				</h2>
+				<p>
+					PCB issues often come from avoidable mistakes (EMI, poor return paths, clearance, manufacturability, thermal limits, test access).
+					Use a checklist before ordering boards to reduce surprises.
+				</p>
+				<p class="callout">
+					Recommended:
+					<a href="../en/pcb-design-rules.html">
+						PCB Design Rules – Checklist
+					</a>
+					(includes a downloadable review sheet).
+				</p>
+			</section>
+			<section class="card" id="resources">
+				<h2>
+					Resources
+				</h2>
+				<ul>
+					<li>
+						KiCad:
+						<a href="https://www.kicad.org" rel="noopener" target="_blank">
+							https://www.kicad.org
+						</a>
+					</li>
+					<li>
+						SnapEDA / SnapMagic (symbols &amp; footprints):
+						<a href="https://www.snapeda.com" rel="noopener" target="_blank">
+							https://www.snapeda.com
+						</a>
+					</li>
+					<li>
+						<a href="../en/pcb-design-rules.html">
+							PCB Design Rules – Checklist
+						</a>
+					</li>
+				</ul>
+			</section>
+			<section class="card" id="faq">
+				<h2>
+					FAQ
+				</h2>
+				<h3>
+					Why does ERC complain about +5V and GND?
+				</h3>
+				<p>
+					If your board is powered externally (e.g., via a screw terminal), KiCad may not detect a “power output” driving the net.
+					Add a
+					<strong>
+						PWR_FLAG
+					</strong>
+					to +5V and GND to tell ERC the net is intentionally powered.
+				</p>
+				<h3>
+					Should I always use a ground plane?
+				</h3>
+				<p>
+					For most digital/MCU boards, a solid ground plane reduces loop area and noise. It also makes routing easier and improves return paths.
+					Validate clearances and keep‑outs (especially near antennas) with DRC.
+				</p>
+				<h3>
+					What should I inspect before ordering PCBs?
+				</h3>
+				<p>
+					At minimum: outline (Edge.Cuts), hole sizes, solder mask openings, silkscreen readability, creepage/clearance, thermal relief settings,
+					and that all nets are connected. Always open the Gerbers in a viewer before uploading them to a manufacturer.
+				</p>
+			</section>
 		</main>
-
 		<footer class="site-footer">
-		  <div class="container footer-inner">
-			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
-			<p>
-			  <a class="footer-link" href="legal.html">Legal mentions</a>
-			  <a class="footer-link" href="privacy.html">Privacy policy</a>
-			</p>
-		  </div>
+			<div class="container footer-inner">
+				<p>
+					©
+					<span id="year">
+					</span>
+					JAK Services – Toulouse, France
+				</p>
+				<p>
+					<a class="footer-link" href="legal.html">
+						Legal mentions
+					</a>
+					<a class="footer-link" href="privacy.html">
+						Privacy policy
+					</a>
+				</p>
+			</div>
 		</footer>
-
-		<script src="../js/main.js"></script>
-		<script src="../js/tutorials.js"></script>
+		<script src="../js/main.js">
+		</script>
+		<script src="../js/tutorials.js">
+		</script>
 	</body>
 </html>
