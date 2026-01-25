@@ -46,7 +46,7 @@
 					const label = labelEl ? labelEl.textContent.trim() : "";
 					if (!label) return null;
 
-					const anchorId = `${card.id}__r${String(idx + 1).padStart(2, "0")}`;
+					const anchorId = `${card.id}__${slugify(label)}`;
 					// Best effort: set ID on the live page too (useful for copy/paste sharing).
 					if (!li.id) li.id = anchorId;
 
