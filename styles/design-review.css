@@ -146,16 +146,21 @@ textarea.notes-field{
   tr, td, th{ page-break-inside:avoid; }
 }
 
-
 /* --- Fix: ensure Notes textarea fills the Notes cell --- */
 td.notes{
   padding: 6px !important;
 }
-td.notes > textarea.notes-field{
+
+td.notes textarea, textarea.notes-field {
   width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-  display: block !important;
+  display: block !important; /* Removes extra bottom whitespace */
   margin: 0 !important;
+  padding: 6px 8px !important; /* Internal text padding */
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 13px;
+  min-height: 3.2em;
+  resize: vertical;
+  box-sizing: border-box !important; /* Ensures padding doesn't break the 100% width */
 }
