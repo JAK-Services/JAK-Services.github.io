@@ -502,64 +502,97 @@
 					</div>
 					<p class="meta">Technologies : Flask, Python, JavaScript, WMS, PostGIS</p>
 				</article>
-
 				<article class="card" id="electronics">
-					<h2>Ingénierie électronique – ESP32 &amp; conception PCB</h2>
+					<h2>Ingénierie électronique – ESP32 &amp; conception de PCB</h2>
+
 					<p>
-						Quelques projets d’électronique couvrant la mise en route de microcontrôleurs ESP32,
-						le prototypage rapide avec MicroPython, ainsi que la conception de cartes électroniques
-						avec KiCad, du schéma jusqu’aux fichiers Gerber prêts pour la fabrication.
-						L’ensemble du processus est documenté au travers de
-						<a href="tutorials.html">tutoriels pas à pas</a> et de
-						<a href="../fr/pcb-design-rules.html">règles de conception PCB</a> pratiques.
+						Travaux pratiques en électronique couvrant le <strong>démarrage de l’ESP32</strong>
+						(MicroPython et ESP-IDF), le <strong>prototypage rapide</strong> et la
+						<strong>conception de circuits imprimés avec KiCad</strong>
+						(schéma → routage → vérification → fichiers de fabrication).
+						L’ensemble du flux de travail est documenté à travers des
+						<a href="tutorials.html">tutoriels</a> pas à pas et une
+						<a href="pcb-design-rules.html">check-list de règles de conception PCB</a> concise.
 					</p>
+
 					<p class="tutorial-meta">
-						ESP32 • MicroPython • KiCad • <a href="../en/pcb-design-rules.html">PCB design rules</a>
+						ESP32 • MicroPython • ESP-IDF • Visual Studio Code • C • KiCad •
+						<a href="pcb-design-rules.html">règles de conception PCB</a>
 					</p>
-					<div aria-label="Aperçu des tutoriels électroniques" class="carousel">
+
+					<div class="carousel" aria-label="Aperçu des tutoriels en électronique">
 						<div class="carousel-track">
 							<div class="carousel-slide active">
 								<div class="carousel-caption">
-									Conception PCB avec KiCad 9 : du schéma au routage, vérifications (ERC/DRC) et exports Gerber.
+									KiCad 9.0 – Concevoir son premier PCB : capture du schéma,
+									assignation des empreintes, contrôles ERC/DRC et génération
+									des fichiers Gerber prêts pour la fabrication.
 								</div>
 								<div class="carousel-image-wrapper">
 									<a href="tutorial_kicad_9_build_your_first_pcb.html">
-										<img alt="Rendu 3D d’un PCB conçu avec KiCad 9" decoding="async" loading="lazy" src="/images/tutorials/kicad_9_your_first_pcb.webp"/>
+										<img src="/images/tutorials/kicad_9_your_first_pcb.webp"
+											 alt="Rendu 3D d’un PCB conçu avec KiCad 9"
+											 loading="lazy" decoding="async"/>
 									</a>
 								</div>
 							</div>
+
 							<div class="carousel-slide">
 								<div class="carousel-caption">
-									Démarrage ESP32 + MicroPython : pilote CP210x, configuration Thonny, câblage et LED clignotante sur GPIO16.
+									Démarrage de l’ESP32 avec MicroPython : pilote CP210x,
+									configuration de Thonny, câblage et LED clignotante sur GPIO16.
 								</div>
 								<div class="carousel-image-wrapper">
 									<a href="tutorial_getting_started_esp32_blinking_led_mockup.html">
-										<img alt="ESP32 DevKitC connecté à une breadboard avec une LED en MicroPython" decoding="async" loading="lazy" src="/images/tutorials/Getting_Started_With_ESP32.webp"/>
+										<img src="/images/tutorials/Getting_Started_With_ESP32.webp"
+											 alt="ESP32 DevKitC connecté à une LED sur breadboard avec MicroPython"
+											 loading="lazy" decoding="async"/>
+									</a>
+								</div>
+							</div>
+
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+									ESP32 à double ADC – « Serial Oscilloscope » :
+									acquisition de deux entrées analogiques, transmission CSV via USB
+									et affichage en temps réel (ESP-IDF + VS Code en C + Telemetry Viewer).
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">
+										<img src="/images/tutorials/esp32_adc_serial_oscilloscope.webp"
+											 alt="Aperçu du tutoriel serial oscilloscope avec double ADC sur ESP32"
+											 loading="lazy" decoding="async"/>
 									</a>
 								</div>
 							</div>
 						</div>
-						<button aria-label="Image précédente" class="carousel-btn prev" type="button">
-						❮
-						</button>
-						<button aria-label="Image suivante" class="carousel-btn next" type="button">
-						❯
-						</button>
-						<button aria-pressed="false" class="carousel-toggle" title="Mettre en pause ou relancer le diaporama" type="button">Pause</button>
+
+						<button class="carousel-btn prev" type="button" aria-label="Image précédente">❮</button>
+						<button class="carousel-btn next" type="button" aria-label="Image suivante">❯</button>
+						<button class="carousel-toggle" type="button"
+								title="Mettre en pause ou reprendre le diaporama"
+								aria-pressed="false">Pause</button>
+
 						<div class="carousel-dots">
-							<button aria-label="KiCad 9 – Premier PCB" class="dot" data-index="0" title="KiCad 9 – Premier PCB" type="button"></button>
-							<button aria-label="ESP32 MicroPython – LED clignotante" class="dot active" data-index="1" title="ESP32 MicroPython – LED clignotante" type="button"></button>
+							<button class="dot active" type="button" data-index="0"
+									title="KiCad 9 – Premier PCB"
+									aria-label="KiCad 9 – Premier PCB"></button>
+							<button class="dot" type="button" data-index="1"
+									title="ESP32 MicroPython – LED clignotante"
+									aria-label="ESP32 MicroPython – LED clignotante"></button>
+							<button class="dot" type="button" data-index="2"
+									title="ESP32 – Double ADC avec Serial Oscilloscope"
+									aria-label="ESP32 – Double ADC avec Serial Oscilloscope"></button>
 						</div>
 					</div>
+
 					<p>
-						<a class="btn primary" href="tutorials.html">
-						Voir les tutoriels
-						</a>
-						<a class="btn primary" href="guides.html">
-						Voir les guides
-						</a>
+						<a class="btn primary" href="tutorials.html">Voir les tutoriels</a>
+						<a class="btn secondary" href="pcb-design-rules.html">Règles PCB</a>
+						<a class="btn primary" href="guides.html">Voir les guides</a>
 					</p>
 				</article>
+
 			</section>
 		</main>
 		<footer class="site-footer">
