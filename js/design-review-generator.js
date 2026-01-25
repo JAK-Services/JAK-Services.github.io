@@ -144,13 +144,14 @@
 		</style>
 </head>
 	<body>
+		<div class="container">
 		<h1>PCB Design Review Checklist</h1>
 		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">
 			Click the check items for detailed explanations.
 		</p>
 
 		<div class="actions">
-			<button class="primary" onclick="window.print()">Print / Save as PDF</button>
+			<button class="btn primary" onclick="window.print()">Print / Save as PDF</button>
 		</div>
 
 		<table class="meta-table" role="presentation">
@@ -199,6 +200,7 @@
 					autosize(ta);				}));
 			})();
 		</script>
+		</div>
 	</body>
 </html>`;
 	}
