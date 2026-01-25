@@ -112,25 +112,6 @@ td.status select{
   padding:2px 6px;
 }
 
-/* Notes: textarea fills cell width (strong) */
-td.notes{ padding:6px; }
-td.notes textarea,
-textarea.notes-field{
-  width:100% !important;
-  min-width:100% !important;
-  max-width:100% !important;
-  box-sizing:border-box !important;
-  display:block !important;
-  margin:0 !important;
-  padding:6px 8px !important;
-  border:1px solid var(--line-strong);
-  border-radius:6px;
-  font:inherit;
-  font-size:13px;
-  min-height:3.2em;
-  resize:vertical;
-}
-
 /* Print */
 @media print{
   body{ padding:0; }
@@ -146,21 +127,25 @@ textarea.notes-field{
   tr, td, th{ page-break-inside:avoid; }
 }
 
-/* --- Fix: ensure Notes textarea fills the Notes cell --- */
-td.notes{
-  padding: 6px !important;
+
+.notes-field {
+  display: block;
+  width: 100%;
+  min-height: 3.2em;
+  padding: 6px 8px; /* Internal spacing for the text */
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fff;
+  outline: none; /* Removes the thick blue browser outline on click */
 }
 
-td.notes textarea, textarea.notes-field {
-  width: 100% !important;
-  display: block !important; /* Removes extra bottom whitespace */
-  margin: 0 !important;
-  padding: 6px 8px !important; /* Internal text padding */
-  border: 1px solid var(--line-strong);
-  border-radius: 4px;
-  font: inherit;
-  font-size: 13px;
-  min-height: 3.2em;
-  resize: vertical;
-  box-sizing: border-box !important; /* Ensures padding doesn't break the 100% width */
+.notes-field:focus {
+  border-color: #1d4ed8; /* Subtle highlight when typing */
+  box-shadow: 0 0 0 1px #1d4ed8;
+}
+
+/* Notes: textarea fills cell width (strong) */
+td.notes {
+  padding: 2px !important; /* The small outer padding you requested */
+  cursor: text;
 }
