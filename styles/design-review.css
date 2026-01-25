@@ -1,151 +1,246 @@
-/* design-review.css — clean consolidated version (v5) */
+/* ==========================================================================
+   PCB Design Review Checklist Generator
+   ========================================================================== */
 
-:root{
-  --bg:#fff;
-  --text:#111827;
-  --muted:#6b7280;
-  --line:#e5e7eb;
-  --line-strong:#d1d5db;
-}
+(function () {
+	"use strict";
 
-*{ box-sizing:border-box; }
+	// Create stable, human-readable fragment IDs (used for deep links).
+	function slugify(s) {
+		return String(s)
+			.toLowerCase()
+			.normalize("NFKD")
+			.replace(/[\u0300-\u036f]/g, "") // strip accents
+			.replace(/[^a-z0-9]+/g, "-")
+			.replace(/^-+|-+$/g, "")
+			.replace(/-{2,}/g, "-");
+	}
 
-body{
-  margin:0;
-  padding:28px 28px 40px;
-  background:var(--bg);
-  color:var(--text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height:1.45;
-}
+	function escapeHtml(s) {
+		return String(s)
+			.replaceAll("&", "&amp;")
+			.replaceAll("<", "&lt;")
+			.replaceAll(">", "&gt;")
+			.replaceAll('"', "&quot;")
+			.replaceAll("'", "&#039;");
+	}
 
-h1{ margin:0 0 8px; font-size:28px; }
-h2{ margin:18px 0 10px; font-size:18px; }
+	function collectChecklist() {
+		const sections = [];
+		const cards = document.querySelectorAll("main .card[id]");
 
-a{ color:#1d4ed8; text-decoration:underline; text-underline-offset:2px; }
-a:hover{ text-decoration-thickness:2px; }
+		cards.forEach((card) => {
+			const h2 = card.querySelector("h2");
+			const list = card.querySelector("ul.toggle-list");
 
-/* Buttons */
-.actions{ margin:10px 0 14px; }
-button.primary{
-  border:0;
-  background:#111827;
-  color:#fff;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:600;
-}
+			if (!h2 || !list) return;
 
-/* Meta table (2 rows) */
-.meta-table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;
-  margin:8px 0 18px;
-}
-.meta-table td{ padding:6px 8px; vertical-align:top; }
-.meta-table label{
-  display:block;
-  font-size:12px;
-  color:var(--muted);
-  margin:0 0 4px;
-}
-.meta-table input{
-  width:100%;
-  font:inherit;
-  font-size:14px;
-  padding:6px 8px;
-  border:1px solid var(--line-strong);
-  border-radius:6px;
-}
+			// Build a per-item anchor that can be used to deep-link to the exact
+			// rule on https://jak-services.github.io/en/pcb-design-rules.html
+			//
+			// IMPORTANT: The same ID algorithm must exist on the destination page
+			// (implemented in main.js) so hashes resolve and auto-expand.
+			const items = Array.from(list.querySelectorAll("li.has-detail"))
+				.map((li, idx) => {
+					const labelEl = li.querySelector(".item-label");
+					const label = labelEl ? labelEl.textContent.trim() : "";
+					if (!label) return null;
 
-/* Checklist tables */
-table.design-review-table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;
-  border:1px solid var(--line);
-  background:#fff;
-}
+					const anchorId = `${card.id}__${slugify(label)}`;
+					// Best effort: set ID on the live page too (useful for copy/paste sharing).
+					if (!li.id) li.id = anchorId;
 
-table.design-review-table th,
-table.design-review-table td{ border:1px solid var(--line); }
+					return { label, anchorId, idx };
+				})
+				.filter(Boolean);
 
-table.design-review-table thead th{
-  background:#f3f4f6;
-  font-size:12px;
-  color:#374151;
-  padding:10px 10px;
-}
+			if (!items.length) return;
 
-table.design-review-table tbody td{
-  padding:10px 10px;
-  vertical-align:top;
-}
+			sections.push({
+				title: h2.textContent.trim(),
+				items
+			});
+		});
 
-/* Column proportions: Done 4% | Check 30% | Status 6% | Notes 60% */
-table.design-review-table th:nth-child(1),
-table.design-review-table td:nth-child(1){ width:4%; text-align:center; }
-table.design-review-table th:nth-child(2),
-table.design-review-table td:nth-child(2){ width:30%; }
-table.design-review-table th:nth-child(3),
-table.design-review-table td:nth-child(3){ width:6%; text-align:center; }
-table.design-review-table th:nth-child(4),
-table.design-review-table td:nth-child(4){ width:60%; }
+		return sections;
+	}
 
-/* Check link wrapping */
-td.rule{
-  white-space:normal;
-  overflow-wrap:anywhere;
-  word-break:break-word;
-}
-td.rule a{ display:block; white-space:normal; overflow-wrap:anywhere; word-break:break-word; }
+	function buildHtmlDoc(sections) {
+		const today = new Date().toISOString().slice(0, 10);
+		const rulesBaseUrl = "https://jak-services.github.io/en/pcb-design-rules.html";
 
-/* Status tight */
-td.status{ padding:8px 6px; text-align:center; }
-td.status select{
-  width:auto;
-  max-width:100%;
-  font:inherit;
-  font-size:13px;
-  padding:2px 6px;
-}
+		const rows = sections.map((sec) => {
+			const itemsHtml = sec.items.map((item, idx) => {
+				const safe = escapeHtml(item.label);
+				const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
+				const href = `${rulesBaseUrl}#${encodeURIComponent(item.anchorId)}`;
 
-/* Print */
-@media print{
-  body{ padding:0; }
-  .actions{ display:none !important; }
-  a{ color:inherit; text-decoration:none; }
-  table.design-review-table, .meta-table{ border:1px solid #000; }
-  table.design-review-table th, table.design-review-table td{ border:1px solid #000; }
-  table.design-review-table thead th{
-    background:#eee !important;
-    -webkit-print-color-adjust:exact;
-    print-color-adjust:exact;
-  }
-  tr, td, th{ page-break-inside:avoid; }
-}
+				return `
+					<tr>
+						<td class="check">
+							<input type="checkbox" id="${id}"/>
+						</td>
+						<td class="rule">
+							<label for="${id}">
+								<a class="rule-link" href="${href}" target="_blank" rel="noopener noreferrer">${safe}</a>
+							 </label>
+						</td>
+						<td class="status">
+							<select aria-label="Status for ${safe}">
+								<option value="pass">Pass</option>
+								<option value="fail">Fail</option>
+								<option value="na">N/A</option>
+							</select>
+						</td>
+						<td class="notes">
+							<div class="notes-field" contenteditable="true" role="textbox" aria-multiline="true"></div>
+						</td>
+					</tr>
+				`;
+			}).join("");
 
+			return `
+				<section class="block">
+					<h2>${escapeHtml(sec.title)}</h2>
+					<table class="design-review-table" style="width:100%;table-layout:fixed;border-collapse:collapse;">
+						<colgroup>
+					<col style="width:4%"/>
+					<col style="width:30%"/>
+					<col style="width:6%"/>
+					<col style="width:60%"/>
+				</colgroup>
+						<thead>
+							<tr>
+								<th>Done</th>
+								<th>Check</th>
+								<th>Status</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>
+							${itemsHtml}
+						</tbody>
+					</table>
+				</section>
+			`;
+		}).join("");
 
-.notes-field {
-  display: block;
-  width: 100%;
-  min-height: 3.2em;
-  padding: 6px 8px; /* Internal spacing for the text */
-  border: 1px solid var(--line-strong);
-  border-radius: 6px;
-  background: #fff;
-  outline: none; /* Removes the thick blue browser outline on click */
-}
+		return `<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>PCB Design Review Checklist</title>
+		<link rel="stylesheet" href="https://jak-services.github.io/css/design-review.css"/>
+	
+		<style>
+			/* Fallback essentials if external CSS fails to load */
+			table.design-review-table{width:100%;table-layout:fixed;border-collapse:collapse;}
+			table.design-review-table th, table.design-review-table td{border:1px solid #e5e7eb;vertical-align:top;padding:8px;}
+			table.meta-table{width:100%;border-collapse:collapse;margin:0 0 16px;}
+			table.meta-table td{padding:4px 8px;vertical-align:top;}
+			table.meta-table input{width:100%;}
+			td.rule a{display:block;white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
+		</style>
+</head>
+	<body>
+		<h1>PCB Design Review Checklist</h1>
+		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">
+			Click the check items for detailed explanations.
+		</p>
 
-.notes-field:focus {
-  border-color: #1d4ed8; /* Subtle highlight when typing */
-  box-shadow: 0 0 0 1px #1d4ed8;
-}
+		<div class="actions">
+			<button class="primary" onclick="window.print()">Print / Save as PDF</button>
+		</div>
 
-/* Notes: textarea fills cell width (strong) */
-td.notes {
-  padding: 2px !important; /* The small outer padding you requested */
-  cursor: text;
-}
+		<table class="meta-table" role="presentation">
+			<tr>
+				<td>
+					<label>Project / Board name</label>
+					<input type="text" placeholder="e.g., SensorHub Rev A"/>
+				</td>
+				<td>
+					<label>Hardware revision</label>
+					<input type="text" placeholder="e.g., A / B / C"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Reviewer</label>
+					<input type="text" placeholder="Name"/>
+				</td>
+				<td>
+					<label>Date</label>
+					<input type="text" value="${today}"/>
+				</td>
+			</tr>
+		</table>
+
+		${rows}
+
+		<p class="small">Generated from: ${escapeHtml(location.href)}</p>
+
+		<script>
+			(function () {
+				"use strict";
+				function autosize(el) {
+					if (!el) return;
+					el.style.height = "auto";
+					// Add a couple of pixels to avoid clipping descenders in some print engines.
+					el.style.height = (el.scrollHeight + 2) + "px";
+				}
+				const areas = Array.from(document.querySelectorAll("textarea.notes-field"));
+				areas.forEach((ta) => {
+					autosize(ta);					ta.addEventListener("input", () => {
+						autosize(ta);					});
+				});
+				// Ensure the print/PDF version has the latest content.
+				window.addEventListener("beforeprint", () => areas.forEach((ta) => {
+					autosize(ta);				}));
+			})();
+		</script>
+	</body>
+</html>`;
+	}
+
+	function download(filename, text) {
+		const blob = new Blob([text], { type: "text/html;charset=utf-8" });
+		const url = URL.createObjectURL(blob);
+
+		const a = document.createElement("a");
+		a.href = url;
+		a.download = filename;
+		document.body.appendChild(a);
+		a.click();
+
+		a.remove();
+		URL.revokeObjectURL(url);
+	}
+
+	function handleDownload() {
+		const sections = collectChecklist();
+		const doc = buildHtmlDoc(sections);
+		const date = new Date().toISOString().slice(0, 10);
+		download(`pcb-design-review-checklist_${date}.html`, doc);
+	}
+
+	function handlePrint() {
+		window.print();
+	}
+
+	document.getElementById("download-design-review")
+		?.addEventListener("click", handleDownload);
+
+	document.getElementById("download-design-review-2")
+		?.addEventListener("click", handleDownload);
+
+	document.getElementById("print-design-review")
+		?.addEventListener("click", handlePrint);
+
+	document.getElementById("download-design-review-link")
+	  ?.addEventListener("click", (e) => {
+		e.preventDefault();
+		handleDownload();
+	  });
+		
+})();
