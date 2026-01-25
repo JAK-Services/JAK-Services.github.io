@@ -504,71 +504,75 @@
 					<p class="meta">Technologies: Flask, Python, JavaScript, WMS, PostGIS</p>
 				</article>
 				<article class="card" id="electronics">
-					<h2>Electronics Engineering – ESP32 &amp; PCB Design</h2>
-					<p>
-						Some electronics projects covering ESP32 bring-up, rapid prototyping
-						with MicroPython, and PCB design using KiCad, from schematic capture to
-						manufacturing-ready Gerber files. The full workflow is documented through
-						step-by-step <a href="tutorials.html">tutorials</a> and practical <a href="../en/pcb-design-rules.html">PCB design rules</a>.
-					</p>
+	<h2>Electronics Engineering – ESP32 &amp; PCB Design</h2>
 
-					<p class="tutorial-meta">ESP32 • MicroPython • KiCad • <a href="../en/pcb-design-rules.html">PCB design rules</a></p>
+	<p>
+		Practical electronics work spanning <strong>ESP32 bring‑up</strong> (MicroPython and ESP‑IDF),
+		<strong>rapid prototyping</strong>, and <strong>PCB design in KiCad</strong> (schematic → layout → verification → fabrication outputs).
+		The end‑to‑end workflow is documented through step‑by‑step <a href="tutorials.html">tutorials</a> and a concise
+		<a href="pcb-design-rules.html">PCB design rules checklist</a>.
+	</p>
 
-					<div class="carousel" aria-label="Electronics tutorials preview">
-						<div class="carousel-track">
-							<div class="carousel-slide active">
-								<div class="carousel-caption">
-									PCB design with KiCad 9: from schematic to layout,
-									ERC/DRC checks, and Gerber exports.
-								</div>
-								<div class="carousel-image-wrapper">
-									<a href="tutorial_kicad_9_build_your_first_pcb.html">
-										<img src="/images/tutorials/kicad_9_your_first_pcb.webp" alt="3D render of a PCB designed with KiCad 9" loading="lazy" decoding="async"/>
-									</a>
-								</div>
-							</div>
+	<p class="tutorial-meta">
+		ESP32 • MicroPython • ESP‑IDF • Visual Studio Code • C • KiCad •
+		<a href="pcb-design-rules.html">PCB design rules checklist</a>
+	</p>
 
-							<div class="carousel-slide">
-								<div class="carousel-caption">
-									ESP32 + MicroPython bring-up: CP210x driver, Thonny setup,
-									wiring, and a blinking LED on GPIO16.
-								</div>
-								<div class="carousel-image-wrapper">
-									<a href="tutorial_getting_started_esp32_blinking_led_mockup.html">
-										<img src="/images/tutorials/Getting_Started_With_ESP32.webp" alt="ESP32 DevKitC connected to a breadboard LED using MicroPython" loading="lazy" decoding="async"/>
-									</a>
-								</div>
-							</div>
-						</div>
+	<div class="carousel" aria-label="Electronics tutorials preview">
+		<div class="carousel-track">
+			<div class="carousel-slide active">
+				<div class="carousel-caption">
+					KiCad 9.0 – Build your first PCB: schematic capture, footprint assignment, ERC/DRC,
+					and manufacturing-ready Gerbers.
+				</div>
+				<div class="carousel-image-wrapper">
+					<a href="tutorial_kicad_9_build_your_first_pcb.html">
+						<img src="/images/tutorials/kicad_9_your_first_pcb.webp" alt="3D render of a PCB designed with KiCad 9" loading="lazy" decoding="async"/>
+					</a>
+				</div>
+			</div>
 
-						<button class="carousel-btn prev" type="button" aria-label="Previous image">
-							❮
-						</button>
-						<button class="carousel-btn next" type="button" aria-label="Next image">
-							❯
-						</button>
-						<button
-							class="carousel-toggle"
-							type="button"
-							title="Pause or resume slideshow"
-							aria-pressed="false">
-							Pause
-						</button>
+			<div class="carousel-slide">
+				<div class="carousel-caption">
+					ESP32 MicroPython bring‑up: CP210x driver, Thonny setup, wiring, and a blinking LED on GPIO16.
+				</div>
+				<div class="carousel-image-wrapper">
+					<a href="tutorial_getting_started_esp32_blinking_led_mockup.html">
+						<img src="/images/tutorials/Getting_Started_With_ESP32.webp" alt="ESP32 DevKitC connected to a breadboard LED using MicroPython" loading="lazy" decoding="async"/>
+					</a>
+				</div>
+			</div>
 
-						<div class="carousel-dots">
-							<button class="dot" type="button" data-index="0" title="KiCad 9 – First PCB" aria-label="KiCad 9 – First PCB"></button>
-							<button class="dot active" type="button" data-index="1" title="ESP32 MicroPython – Blinking LED" aria-label="ESP32 MicroPython – Blinking LED"></button>
-						</div>
-					</div>
-					<p>
-						<a class="btn primary" href="tutorials.html">
-							View tutorials
-						</a>
-						<a class="btn primary" href="guides.html">
-							View guides
-						</a>
-					</p>
-				</article>
+			<div class="carousel-slide">
+				<div class="carousel-caption">
+					ESP32 dual ADC “serial oscilloscope”: sample two analog inputs, stream CSV over USB,
+					and plot both channels live (ESP‑IDF + VS Code C + Telemetry Viewer).
+				</div>
+				<div class="carousel-image-wrapper">
+					<a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">
+						<img src="/images/tutorials/ESP32_Dual_ADC_Serial_Oscilloscope.webp" alt="ESP32 dual ADC serial oscilloscope tutorial preview" loading="lazy" decoding="async"/>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<button class="carousel-btn prev" type="button" aria-label="Previous image">❮</button>
+		<button class="carousel-btn next" type="button" aria-label="Next image">❯</button>
+		<button class="carousel-toggle" type="button" title="Pause or resume slideshow" aria-pressed="false">Pause</button>
+
+		<div class="carousel-dots">
+			<button class="dot active" type="button" data-index="0" title="KiCad 9 – First PCB" aria-label="KiCad 9 – First PCB"></button>
+			<button class="dot" type="button" data-index="1" title="ESP32 MicroPython – Blinking LED" aria-label="ESP32 MicroPython – Blinking LED"></button>
+			<button class="dot" type="button" data-index="2" title="ESP32 – Dual ADC Serial Oscilloscope" aria-label="ESP32 – Dual ADC Serial Oscilloscope"></button>
+		</div>
+	</div>
+
+	<p>
+		<a class="btn primary" href="tutorials.html">View tutorials</a>
+		<a class="btn secondary" href="pcb-design-rules.html">PCB design rules</a>
+		<a class="btn primary" href="guides.html">View guides</a>
+	</p>
+</article>
 				
 			</section>
 			
