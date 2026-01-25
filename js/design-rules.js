@@ -19,25 +19,25 @@
   }
 
   function ensureRuleIds() {
-    const items = document.querySelectorAll(".toggle-list .has-detail");
-    items.forEach((item) => {
-      if (item.id) return;
+    const sections = document.querySelectorAll("main section.card[id]");
 
-      const section = item.closest("section[id]");
-      const sectionId = section ? section.id : "pcb-design-rules";
+    sections.forEach((section) => {
+      const list = section.querySelector("ul.toggle-list");
+      if (!list) return;
 
-      // Use the visible label if present; fall back to title attribute
-      const labelEl = item.querySelector(".item-label");
-      const labelText = labelEl ? labelEl.textContent : (item.getAttribute("title") || "");
-      const labelSlug = slugify(labelText);
-
-      // Stable deterministic ID used by the checklist generator
-      item.id = `${sectionId}__${labelSlug}`;
+      const items = Array.from(list.querySelectorAll("li.has-detail"));
+      items.forEach((item, idx) => {
+        // Translation-proof stable ID: based on section and item order, not on visible text.
+        const stableId = `${section.id}__r${String(idx + 1).padStart(2, "0")}`;
+        if (item.id !== stableId) item.id = stableId;
+      });
     });
+  });
   }
 
   function openRuleFromHash() {
-    const hash = window.location.hash ? window.location.hash.substring(1) : "";
+    const raw = window.location.hash ? window.location.hash.substring(1) : "";
+    const hash = raw ? decodeURIComponent(raw) : "";
     if (!hash) return;
 
     const target = document.getElementById(hash);
@@ -62,6 +62,19 @@
   document.addEventListener("DOMContentLoaded", () => {
     ensureRuleIds();
     openRuleFromHash();
+
+    // Chrome Translate can rewrite large parts of the DOM after load.
+    // Re-apply IDs and re-open the hash when the DOM changes.
+    let t = null;
+    const onMut = () => {
+      if (t) clearTimeout(t);
+      t = setTimeout(() => {
+        ensureRuleIds();
+        openRuleFromHash();
+      }, 50);
+    };
+    const obs = new MutationObserver(onMut);
+    obs.observe(document.documentElement, { childList: true, subtree: true });
   });
 
   window.addEventListener("hashchange", () => {
