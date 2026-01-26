@@ -80,80 +80,81 @@
 	  <script async="" data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js">
 	  </script>
 	  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "KiCad 9.0 – Réaliser votre premier PCB (From Schematic to Gerbers)",
-  "description": "A complete PCB design walkthrough in KiCad 9: project setup, schematic capture, net classes, footprint assignment, BOM export, PCB layout, DRC, and Gerber manufacturing outputs.",
-  "image": "https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp",
-  "author": {
-    "@type": "Organization",
-    "name": "JAK Services"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "JAK Services",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://jak-services.github.io/images/jak-logo.svg"
-    }
-  },
-  "mainEntityOfPage": "https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"
-}
+			{
+			  "@context": "https://schema.org",
+			  "@type": "Article",
+			  "headline": "KiCad 9.0 – Réaliser votre premier PCB (From Schematic to Gerbers)",
+			  "description": "A complete PCB design walkthrough in KiCad 9: project setup, schematic capture, net classes, footprint assignment, BOM export, PCB layout, DRC, and Gerber manufacturing outputs.",
+			  "image": "https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp",
+			  "author": {
+				"@type": "Organization",
+				"name": "JAK Services"
+			  },
+			  "publisher": {
+				"@type": "Organization",
+				"name": "JAK Services",
+				"logo": {
+				  "@type": "ImageObject",
+				  "url": "https://jak-services.github.io/images/jak-logo.svg"
+				}
+			  },
+			  "mainEntityOfPage": "https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"
+			}
 	  </script>
 	  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "KiCad 9.0 – Réaliser votre premier PCB (From Schematic to Gerbers)",
-  "description": "Create your first PCB in KiCad 9: project setup, schematic capture, net classes, footprint assignment, PCB layout, DRC, and Gerber/drill outputs.",
-  "thumbnailUrl": [
-    "https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"
-  ],
-  "embedUrl": "https://www.youtube.com/embed/ScILHLxuSV8",
-  "contentUrl": "https://youtu.be/ScILHLxuSV8",
-  "publisher": {
-    "@type": "Organization",
-    "name": "JAK Services",
-    "url": "https://jak-services.github.io",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://jak-services.github.io/images/jak-logo.svg"
-    }
-  }
-}
+			{
+			  "@context": "https://schema.org",
+			  "@type": "VideoObject",
+			  "name": "KiCad 9.0 – Réaliser votre premier PCB (From Schematic to Gerbers)",
+			  "description": "Create your first PCB in KiCad 9: project setup, schematic capture, net classes, footprint assignment, PCB layout, DRC, and Gerber/drill outputs.",
+			  "thumbnailUrl": [
+				"https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"
+			  ],
+			  "uploadDate": "2026-01-23",
+			  "embedUrl": "https://www.youtube.com/embed/ScILHLxuSV8",
+			  "contentUrl": "https://youtu.be/ScILHLxuSV8",
+			  "publisher": {
+				"@type": "Organization",
+				"name": "JAK Services",
+				"url": "https://jak-services.github.io",
+				"logo": {
+				  "@type": "ImageObject",
+				  "url": "https://jak-services.github.io/images/jak-logo.svg"
+				}
+			  }
+			}
 	  </script>
 	  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Why does ERC complain about +5V and GND?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "If power enters the board externally (e.g., screw terminal), KiCad may not detect a power output driving the net. Place PWR_FLAG on +5V and GND to indicate the nets are intentionally powered."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Should I always use a ground plane?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For most MCU/digital boards, a solid ground plane reduces loop area, improves return paths, and helps EMI/noise. Validate clearances/keep-outs and confirm with DRC."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What should I inspect before ordering PCBs?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Inspect outline (Edge.Cuts), hole sizes, solder mask, silkscreen, clearances, thermal relief, and connectivity. Always open and review the plotted Gerbers/drills in a viewer before sending to a manufacturer."
-      }
-    }
-  ]
-}
+			{
+			  "@context": "https://schema.org",
+			  "@type": "FAQPage",
+			  "mainEntity": [
+				{
+				  "@type": "Question",
+				  "name": "Why does ERC complain about +5V and GND?",
+				  "acceptedAnswer": {
+					"@type": "Answer",
+					"text": "If power enters the board externally (e.g., screw terminal), KiCad may not detect a power output driving the net. Place PWR_FLAG on +5V and GND to indicate the nets are intentionally powered."
+				  }
+				},
+				{
+				  "@type": "Question",
+				  "name": "Should I always use a ground plane?",
+				  "acceptedAnswer": {
+					"@type": "Answer",
+					"text": "For most MCU/digital boards, a solid ground plane reduces loop area, improves return paths, and helps EMI/noise. Validate clearances/keep-outs and confirm with DRC."
+				  }
+				},
+				{
+				  "@type": "Question",
+				  "name": "What should I inspect before ordering PCBs?",
+				  "acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Inspect outline (Edge.Cuts), hole sizes, solder mask, silkscreen, clearances, thermal relief, and connectivity. Always open and review the plotted Gerbers/drills in a viewer before sending to a manufacturer."
+				  }
+				}
+			  ]
+			}
 	  </script>
 	</head>
 	<body>
@@ -387,6 +388,18 @@
 				<p>
 					Vous préférez suivre le tutoriel en vidéo ? Utilisez la vidéo et conservez cette page comme checklist consultable.
 				</p>
+				<div class="video-embed">
+					<iframe
+					  width="560"
+					  height="315"
+					  src="https://www.youtube.com/embed/ScILHLxuSV8"
+					  title="KiCad 9.0 – Réaliser votre premier PCB"
+					  frameborder="0"
+					  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					  allowfullscreen
+					  loading="lazy">
+					</iframe>
+				</div>
 				<p class="callout">
 					<a class="btn primary" href="https://youtu.be/ScILHLxuSV8" rel="noopener" target="_blank">
 						Ouvrir la vidéo YouTube
