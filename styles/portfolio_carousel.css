@@ -27,6 +27,7 @@
 /* Caption: one-liner above image, left aligned, wraps on multiple lines */
 .carousel-caption {
   line-height: 1.4;
+  height: calc(1.4em * 2);   /* reserve 2 lines */
   margin-bottom: 0.4rem;
   font-size: 0.9rem;
   text-align: left;
@@ -34,6 +35,7 @@
   white-space: normal;
   overflow-wrap: anywhere;     /* allow wrapping instead of cropping */
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Wrapper ensures the image scales responsively with no cropping */
