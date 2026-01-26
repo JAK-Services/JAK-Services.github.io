@@ -146,7 +146,8 @@
 			.btn { display: inline-block; padding: 0.55rem 1.2rem; border-radius: 999px; border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; text-decoration: none; background: transparent; }
 			.btn.primary { background: #004f9e; color: #ffffff; }
 			.btn.primary:hover { background: #003b75; }		
-			.container { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }			
+			.container { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }	
+			@media print { .actions { display: none !important; } }
 		</style>
 </head>
 	<body>
