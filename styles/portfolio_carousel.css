@@ -39,17 +39,20 @@
 /* Wrapper ensures the image scales responsively with no cropping */
 .carousel-image-wrapper {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;          /* just in case */
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 16 / 9;
 }
 
 /* Images scale to the carousel width, keep aspect ratio, no cropping */
 .carousel-image-wrapper img {
-  display: block;
   width: 100%;
-  height: auto;                /* 1280x720 ratio preserved */
+  height: 100%;              /* critical: tie image to wrapper height */
+  /*height: auto;*/                 /* 1280x720 ratio preserved */
+  object-fit: contain;       /* no cropping */
+  display: block;
   border-radius: 10px;
 }
 
@@ -118,4 +121,3 @@
 .carousel-toggle:hover {
   background: rgba(0, 0, 0, 0.5);
 }
-
