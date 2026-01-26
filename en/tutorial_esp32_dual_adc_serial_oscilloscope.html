@@ -34,55 +34,78 @@
 		</script>
 		<script type="application/ld+json">
 			{
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		"itemListElement": [
-				{
-						"@type": "ListItem",
-						"position": 1,
-						"name": "Home",
-						"item": "https://jak-services.github.io/en/index.html"
-				},
-				{
-						"@type": "ListItem",
-						"position": 2,
-						"name": "Tutorials",
-						"item": "https://jak-services.github.io/en/tutorials.html"
-				},
-				{
-						"@type": "ListItem",
-						"position": 3,
-						"name": "ESP32 Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code)",
-						"item": "https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html"
-				}
-		]
-}
+					"@context": "https://schema.org",
+					"@type": "BreadcrumbList",
+					"itemListElement": [
+							{
+									"@type": "ListItem",
+									"position": 1,
+									"name": "Home",
+									"item": "https://jak-services.github.io/en/index.html"
+							},
+							{
+									"@type": "ListItem",
+									"position": 2,
+									"name": "Tutorials",
+									"item": "https://jak-services.github.io/en/tutorials.html"
+							},
+							{
+									"@type": "ListItem",
+									"position": 3,
+									"name": "ESP32 Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code)",
+									"item": "https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html"
+							}
+					]
+			}
 		</script>
 		<script type="application/ld+json">
 			{
-		"@context": "https://schema.org",
-		"@type": "TechArticle",
-		"headline": "ESP32 – Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code) | JAK Services",
-		"description": "Sample two analog inputs on an ESP32 DevKitC, stream CSV over USB, and visualize both channels in Telemetry Viewer.",
-		"image": "https://jak-services.github.io/images/tutorials/esp32_adc.webp",
-		"author": {
-				"@type": "Organization",
-				"name": "JAK Services"
-		},
-		"publisher": {
+					"@context": "https://schema.org",
+					"@type": "TechArticle",
+					"headline": "ESP32 – Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code) | JAK Services",
+					"description": "Sample two analog inputs on an ESP32 DevKitC, stream CSV over USB, and visualize both channels in Telemetry Viewer.",
+					"image": "https://jak-services.github.io/images/tutorials/esp32_adc.webp",
+					"author": {
+							"@type": "Organization",
+							"name": "JAK Services"
+					},
+					"publisher": {
+							"@type": "Organization",
+							"name": "JAK Services",
+							"logo": {
+									"@type": "ImageObject",
+									"url": "https://jak-services.github.io/images/jak-logo.svg"
+							}
+					},
+					"mainEntityOfPage": {
+							"@type": "WebPage",
+							"@id": "https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html"
+					}
+			}
+		</script>
+	    <script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "VideoObject",
+			  "name": "ESP32 – Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP‑IDF + VS Code) | JAK Services",
+			  "description": "Sample two analog inputs on an ESP32 DevKitC, stream CSV over USB, and visualize both channels in Telemetry Viewer.",
+			  "thumbnailUrl": [
+				"https://jak-services.github.io/images/tutorials/esp32_adc_serial_oscilloscope.webp"
+			  ],
+			  "uploadDate": "2025-12-28",
+			  "embedUrl": "https://www.youtube.com/embed/zW5jnChzPlY",
+			  "contentUrl": "https://youtu.be/zW5jnChzPlY",
+			  "publisher": {
 				"@type": "Organization",
 				"name": "JAK Services",
+				"url": "https://jak-services.github.io",
 				"logo": {
-						"@type": "ImageObject",
-						"url": "https://jak-services.github.io/images/jak-logo.svg"
+				  "@type": "ImageObject",
+				  "url": "https://jak-services.github.io/images/jak-logo.svg"
 				}
-		},
-		"mainEntityOfPage": {
-				"@type": "WebPage",
-				"@id": "https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html"
-		}
-}
-		</script>
+			  }
+			}
+	    </script>
 		<script async="" data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js">
 		</script>
 	</head>
@@ -195,6 +218,18 @@
 			  <p class="tutorial-meta">
 				Board: ESP32 DevKitC (ESP32-WROOM-32) &bull; Language: C (ESP-IDF) &bull; IDE: Visual Studio Code &bull; Plotter: Telemetry Viewer
 			  </p>
+			  <div class="video-embed">
+				<iframe
+				  width="560"
+				  height="315"
+				  src="https://www.youtube.com/embed/zW5jnChzPlY"
+				  title="ESP32 &ndash; Dual ADC + Serial Oscilloscope (Telemetry Viewer, ESP-IDF + VS Code)"
+				  frameborder="0"
+				  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				  allowfullscreen
+				  loading="lazy">
+				</iframe>
+			  </div>
 
 			  <div class="hero-actions">
 				<a class="btn secondary" href="tutorials.html">&larr; Back to tutorials</a>
