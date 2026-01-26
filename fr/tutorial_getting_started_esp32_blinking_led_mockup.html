@@ -1,211 +1,272 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="fr">
 	<head>
-		<meta charset="utf-8"/>
-		<title>ESP32 MicroPython Blink LED Tutorial (DevKitC + Thonny) | JAK Services</title>
-		<meta content="width=device-width, initial-scale=1" name="viewport"/>
-		<meta content="Install the ESP32 CP210x USB driver, flash MicroPython, set up Thonny, wire an LED on GPIO16, and run a blinking script to validate your toolchain." name="description"/>
-		<link href="../styles/styles.css" rel="stylesheet"/>
-		<link href="../styles/portfolio_carousel.css" rel="stylesheet"/>
-		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-		<link href="https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html" rel="canonical"/>
-		<link href="https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html" hreflang="en" rel="alternate"/>
-		<link href="https://jak-services.github.io/fr/tutorial_getting_started_esp32_blinking_led_mockup.html" hreflang="fr" rel="alternate"/>
-		<link href="https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html" hreflang="x-default" rel="alternate"/>
-		<meta content="article" property="og:type"/><meta content="ESP32 MicroPython Blink LED Tutorial (DevKitC + Thonny) | JAK Services" property="og:title"/>
-		<meta content="Install the ESP32 CP210x USB driver, flash MicroPython, set up Thonny, wire an LED on GPIO16, and run a blinking script to validate your toolchain." property="og:description"/>
-		<meta content="https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html" property="og:url"/>
-		<meta content="https://jak-services.github.io/images/tutorials/Getting_Started_With_ESP32.webp" property="og:image"/>
-		<meta content="summary_large_image" name="twitter:card"/>
-		<meta content="ESP32 MicroPython Blink LED Tutorial (DevKitC + Thonny) | JAK Services" name="twitter:title"/>
-		<meta content="Install the ESP32 CP210x USB driver, flash MicroPython, set up Thonny, wire an LED on GPIO16, and run a blinking script to validate your toolchain." name="twitter:description"/>
-		<meta content="https://jak-services.github.io/images/tutorials/Getting_Started_With_ESP32.webp" name="twitter:image"/>
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org"
-				, "@type": "Organization"
-				, "name": "JAK Services"
-				, "url": "https://jak-services.github.io"
-				, "logo": "https://jak-services.github.io/images/jak-logo.svg"
+	  <meta charset="utf-8"/>
+	  <title>ESP32 MicroPython – Faire clignoter une LED (DevKitC + Thonny) | JAK Services</title>
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	  <meta name="description" content="Installer le pilote USB CP210x, flasher MicroPython sur un ESP32, configurer Thonny, câbler une LED sur GPIO16 et exécuter un script de clignotement pour valider la chaîne de développement."/>
+
+	  <link rel="stylesheet" href="../styles/styles.css"/>
+	  <link rel="stylesheet" href="../styles/portfolio_carousel.css"/>
+	  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+	  <!-- Canonical + hreflang -->
+	  <link rel="canonical" href="https://jak-services.github.io/fr/tutorial_getting_started_esp32_blinking_led_mockup.html"/>
+	  <link rel="alternate" hreflang="fr" href="https://jak-services.github.io/fr/tutorial_getting_started_esp32_blinking_led_mockup.html"/>
+	  <link rel="alternate" hreflang="en" href="https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html"/>
+	  <link rel="alternate" hreflang="x-default" href="https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html"/>
+
+	  <!-- Open Graph -->
+	  <meta property="og:type" content="article"/>
+	  <meta property="og:title" content="ESP32 MicroPython – Faire clignoter une LED (DevKitC + Thonny) | JAK Services"/>
+	  <meta property="og:description" content="Tutoriel pas à pas pour démarrer avec l’ESP32 et MicroPython : pilote CP210x, Thonny, câblage LED et script de clignotement."/>
+	  <meta property="og:url" content="https://jak-services.github.io/fr/tutorial_getting_started_esp32_blinking_led_mockup.html"/>
+	  <meta property="og:image" content="https://jak-services.github.io/images/tutorials/Getting_Started_With_ESP32.webp"/>
+
+	  <!-- Twitter -->
+	  <meta name="twitter:card" content="summary_large_image"/>
+	  <meta name="twitter:title" content="ESP32 MicroPython – Faire clignoter une LED (DevKitC + Thonny)"/>
+	  <meta name="twitter:description" content="Installer MicroPython sur ESP32, configurer Thonny et faire clignoter une LED sur GPIO16."/>
+	  <meta name="twitter:image" content="https://jak-services.github.io/images/tutorials/Getting_Started_With_ESP32.webp"/>
+
+	  <!-- Organization -->
+	  <script type="application/ld+json">
+		  {
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "JAK Services",
+			"url": "https://jak-services.github.io",
+			"logo": "https://jak-services.github.io/images/jak-logo.svg"
+		  }
+	  </script>
+
+	  <!-- Breadcrumbs -->
+	  <script type="application/ld+json">
+		  {
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+			  { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://jak-services.github.io/fr/index.html" },
+			  { "@type": "ListItem", "position": 2, "name": "Tutoriels", "item": "https://jak-services.github.io/fr/tutorials.html" },
+			  { "@type": "ListItem", "position": 3, "name": "ESP32 MicroPython – LED clignotante", "item": "https://jak-services.github.io/fr/tutorial_getting_started_esp32_blinking_led_mockup.html" }
+			]
+		  }
+	  </script>
+
+	  <!-- HowTo -->
+	  <script type="application/ld+json">
+		  {
+			"@context": "https://schema.org",
+			"@type": "HowTo",
+			"name": "ESP32 MicroPython – Faire clignoter une LED",
+			"description": "Tutoriel d’initiation à l’ESP32 avec MicroPython : installation du pilote CP210x, configuration de Thonny, câblage d’une LED et exécution d’un script de clignotement.",
+			"tool": [{ "@type": "HowToTool", "name": "Thonny IDE" }],
+			"supply": [
+			  { "@type": "HowToSupply", "name": "ESP32 DevKitC (ESP32-Wroom-32)" },
+			  { "@type": "HowToSupply", "name": "Câble Micro-USB" },
+			  { "@type": "HowToSupply", "name": "LED" },
+			  { "@type": "HowToSupply", "name": "Résistance 390 Ω" },
+			  { "@type": "HowToSupply", "name": "Breadboard" },
+			  { "@type": "HowToSupply", "name": "Fils de connexion" }
+			],
+			"step": [
+			  { "@type": "HowToStep", "name": "Installer le pilote CP210x", "text": "Vérifier le port COM dans le gestionnaire de périphériques Windows et installer le pilote Silicon Labs CP210x si nécessaire." },
+			  { "@type": "HowToStep", "name": "Installer Thonny et flasher MicroPython", "text": "Sélectionner MicroPython (ESP32) dans Thonny, choisir le port COM et installer ou mettre à jour MicroPython en maintenant le bouton BOOT." },
+			  { "@type": "HowToStep", "name": "Câbler la LED sur GPIO16", "text": "GPIO16 → résistance 390 Ω → anode de la LED ; cathode → GND." },
+			  { "@type": "HowToStep", "name": "Exécuter le script de clignotement", "text": "Lancer le script dans Thonny : la LED clignote toutes les 0,5 s." },
+			  { "@type": "HowToStep", "name": "Exécution automatique au démarrage", "text": "Sauvegarder le script sur l’ESP32 sous le nom main.py pour qu’il s’exécute au démarrage." }
+			]
+		  }
+	  </script>
+	  <script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "VideoObject",
+		  "name": "ESP32 MicroPython – Faire clignoter une LED (DevKitC + Thonny)",
+		  "description": "Un premier projet simple pour valider votre chaîne de développement: pilote CP210x → MicroPython → Thonny → LED clignotante sur GPIO16.",
+		  "thumbnailUrl": [
+			"https://jak-services.github.io/images/tutorials/Getting_Started_With_ESP32.webp"
+		  ],
+		  "uploadDate": "2025-12-28",
+		  "embedUrl": "https://www.youtube.com/embed/ZnQRUL4qtPA",
+		  "contentUrl": "https://youtu.be/ZnQRUL4qtPA",
+		  "publisher": {
+			"@type": "Organization",
+			"name": "JAK Services",
+			"url": "https://jak-services.github.io",
+			"logo": {
+			  "@type": "ImageObject",
+			  "url": "https://jak-services.github.io/images/jak-logo.svg"
 			}
-		</script><script type="application/ld+json">
-			{
-				"@context": "https://schema.org"
-				, "@type": "BreadcrumbList"
-				, "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://jak-services.github.io/en/index.html"}
-				, {"@type": "ListItem", "position": 2, "name": "Tutorials", "item": "https://jak-services.github.io/en/tutorials.html"}
-				, {"@type": "ListItem", "position": 3, "name": "ESP32 MicroPython Blink LED", "item": "https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html"}]
-			}
-		</script><script type="application/ld+json">
-			{
-				"@context": "https://schema.org"
-				, "@type": "HowTo", "name": "ESP32 MicroPython Blink LED (DevKitC + Thonny)"
-				, "description": "Install the ESP32 CP210x USB driver, flash MicroPython, set up Thonny, wire an LED on GPIO16, and run a blinking script to validate your toolchain."
-				, "tool": [{"@type": "HowToTool", "name": "Thonny IDE"}]
-				, "supply": [{"@type": "HowToSupply", "name": "ESP32 DevKitC (ESP32-Wroom-32)"}
-				, {"@type": "HowToSupply", "name": "Micro‑USB cable"}
-				, {"@type": "HowToSupply", "name": "LED"}
-				, {"@type": "HowToSupply", "name": "390 Ω resistor"}
-				, {"@type": "HowToSupply", "name": "Breadboard"}
-				, {"@type": "HowToSupply", "name": "Breadboard wires"}]
-				, "step": [{"@type": "HowToStep", "name": "Install CP210x driver", "text": "Check the COM port in Windows Device Manager and install the Silicon Labs CP210x VCP driver if the board does not appear."}
-				, {"@type": "HowToStep", "name": "Install Thonny and flash MicroPython", "text": "In Thonny, select MicroPython (ESP32), choose the COM port, then hold BOOT and install/update MicroPython."}
-				, {"@type": "HowToStep", "name": "Wire the LED to GPIO16", "text": "GPIO16 → 390 Ω resistor → LED anode (+); LED cathode (−) → GND."}
-				, {"@type": "HowToStep", "name": "Run the blinking script", "text": "Paste the script in Thonny and run it. The LED blinks every 0.5 seconds."}
-				, {"@type": "HowToStep", "name": "Autostart at boot", "text": "Save the file to the device as main.py so it runs automatically at startup."}]
-			}		
-		</script>
-	    <script type="application/ld+json">
-			{
-			  "@context": "https://schema.org",
-			  "@type": "VideoObject",
-			  "name": "ESP32 MicroPython Blink LED (DevKitC + Thonny)",
-			  "description": "A quick first project to validate your toolchain: CP210x driver → MicroPython → Thonny → blink an LED on GPIO16.",
-			  "thumbnailUrl": [
-				"https://jak-services.github.io/images/tutorials/Getting_Started_With_ESP32.webp"
-			  ],
-			  "uploadDate": "2026-01-23",
-			  "embedUrl": "https://www.youtube.com/embed/ZnQRUL4qtPA",
-			  "contentUrl": "https://youtu.be/ZnQRUL4qtPA",
-			  "publisher": {
-				"@type": "Organization",
-				"name": "JAK Services",
-				"url": "https://jak-services.github.io",
-				"logo": {
-				  "@type": "ImageObject",
-				  "url": "https://jak-services.github.io/images/jak-logo.svg"
-				}
-			  }
-			}
-	    </script>
-		<script async data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+		  }
+		}
+	  </script>
+
+	  <script async data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
 	</head>
 	<body>
 		<header class="site-header">
-			<div class="container header-inner">
-				<a class="brand" href="index.html">
-				<img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
-				<div class="brand-text">
-					<span class="brand-name">JAK Services</span>
-					<span class="brand-tagline">Software and Electronics Engineering Solutions</span>
-				</div>
-				</a>
-				<nav class="main-nav">
-					<a href="index.html">Home / About</a>
-					<a href="services.html">Services</a>
-					<a href="portefolio.html">Portefolio</a>
-					<a href="tutorials.html">Tutorials</a>
-					<a href="guides.html">Guides</a>
-					<a href="clients.html">Clients</a>
-					<a href="contact.html">Contact</a>
-				</nav>
-				<div aria-label="Language selector" class="lang-switch">
-					<a class="lang-btn" href="../fr/tutorial_getting_started_esp32_blinking_led_mockup.html">FR</a>
-					<a aria-current="true" class="lang-btn active" href="../en/tutorial_getting_started_esp32_blinking_led_mockup.html">EN</a>
-				</div>
+		  <div class="container header-inner">
+			<a class="brand" href="index.html">
+			  <img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
+			  <div class="brand-text">
+				<span class="brand-name">JAK Services</span>
+				<span class="brand-tagline">Solutions en ingénierie logicielle et électronique</span>
+			  </div>
+			</a>
+			<nav class="main-nav">
+			  <a href="index.html">Accueil / À propos</a>
+			  <a href="services.html">Services</a>
+			  <a href="portefolio.html">Portefolio</a>
+			  <a href="tutorials.html" aria-current="page">Tutoriels</a>
+			  <a href="guides.html">Guides</a>
+			  <a href="clients.html">Clients</a>
+			  <a href="contact.html">Contact</a>
+			</nav>
+			<div class="lang-switch" aria-label="Sélecteur de langue">
+			  <a class="lang-btn active" aria-current="true" href="../fr/tutorial_getting_started_esp32_blinking_led_mockup.html">FR</a>
+			  <a class="lang-btn" href="../en/tutorial_getting_started_esp32_blinking_led_mockup.html">EN</a>
 			</div>
+		  </div>
 		</header>
+
 		<main class="container">
-			<section class="hero">
-				<h1>ESP32 MicroPython Blink LED (DevKitC + Thonny)</h1>
-				<p class="lead">A quick first project to validate your toolchain: CP210x driver → MicroPython → Thonny → blink an LED on GPIO16.</p>
-				<p class="tutorial-meta">Board: ESP32 DevKitC (Wroom-32) • Language: MicroPython • IDE: Thonny</p>
-				<div class="video-embed">
-					<iframe
-					  width="560"
-					  height="315"
-					  src="https://www.youtube.com/embed/ZnQRUL4qtPA"
-					  title="ESP32 MicroPython Blink LED (DevKitC + Thonny)"
-					  frameborder="0"
-					  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					  allowfullscreen
-					  loading="lazy">
-					</iframe>
-				</div>
-				<div class="hero-actions">
-					<a class="btn secondary" href="tutorials.html">← Back to tutorials</a>
-					<a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA" rel="noopener" target="_blank">Watch the video</a>
-				</div>
-			</section>
-			<section class="card toc">
-				<h2>Contents</h2>
-				<nav aria-label="Tutorial contents">
-					<ul class="toc-list">
-						<li><a href="#what-you-need">What you need</a></li>
-						<li><a href="#driver">USB-to-UART driver (CP210x)</a></li>
-						<li><a href="#ide">Thonny + MicroPython</a></li>
-						<li><a href="#wiring">Wiring the LED</a></li>
-						<li><a href="#code">The blinking script</a></li>
-						<li><a href="#run">Run and validate</a></li>
-						<li><a href="#startup">Run the program automatically at startup</a></li>
-						<li><a href="#resources">Resources</a></li>
-					</ul>
-				</nav>
-			</section>
-			<section class="card" id="video">
-				<h2>YouTube tutorial</h2>
-				<p>Prefer to follow along in video form? Here’s the tutorial version.</p>
-				<p class="callout">
-				<a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA" rel="noopener" target="_blank">Open the YouTube video</a>
-				</p>
-			</section>
-			<section class="card" id="what-you-need">
-				<h2>What you need</h2>
-				<ul>
-					<li>ESP32 DevKitC (ESP32-Wroom-32) board</li>
-					<li>Micro‑USB cable (often not included with the board)</li>
-					<li>LED + 390 Ω resistor + breadboard wires</li>
-					<li>A computer (Windows instructions below; other OSes are similar)</li>
-				</ul>
-				<p class="callout">
-					ESP32 documentation is hosted by Espressif at <a href="https://documentation.espressif.com" rel="noopener" target="_blank">documentation.espressif.com</a>.
-				</p>
-			</section>
-			<section class="card" id="driver">
-				<h2>1) USB-to-UART driver (CP210x)</h2>
-				<p>
-					Most ESP32 dev boards expose USB via a USB‑to‑UART bridge chip, commonly the Silicon Labs <strong>CP2102/CP210x</strong>.
-					If the corresponding driver is missing, your board may not show up as a COM port.
-				</p>
-				<h3>Check in Windows</h3>
-				<ol>
-					<li>Open Device Manager with <span class="kbd">Win</span> + <span class="kbd">X</span>, then <span class="kbd">M</span>.</li>
-					<li>Plug in the ESP32 with a Micro‑USB cable.</li>
-					<li>Look for a new COM port (for example under “Ports (COM &amp; LPT)”).</li>
-				</ol>
-				<p>If no new port appears, install the Silicon Labs VCP driver:</p>
-				<p>
-				<a class="btn secondary" href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads" rel="noopener" target="_blank">Download CP210x VCP drivers</a>
-				</p>
-				<p>After installation, unplug/replug the board and verify the COM port appears.</p>
-			</section>
-			<section class="card" id="ide">
-				<h2>2) Thonny + MicroPython</h2>
-				<p>
-				For a quick prototype, we’ll use <a href="https://docs.micropython.org/en/latest/" rel="noopener" target="_blank">MicroPython</a> with the
-				<a href="https://thonny.org" rel="noopener" target="_blank">Thonny IDE</a>.
-				MicroPython is interpreted (great for rapid iteration); for performance‑heavy applications, a compiled environment (e.g., Arduino/ESP-IDF) may be preferable.
-				</p>
-				<ol>
-					<li>Install Thonny, then connect the ESP32.</li>
-					<li>In Thonny: <strong>Tools → Options → Interpreter</strong>.</li>
-					<li>Select <strong>MicroPython (ESP32)</strong> and your board’s COM port.</li>
-					<li>Hold the board’s <strong>BOOT</strong> button and click <strong>Install or update MicroPython</strong>.</li>
-				</ol>
-			</section>
-			<section class="card" id="wiring">
-				<h2>3) Wiring the LED</h2>
-				<p>Connect an LED to <strong>GPIO 16</strong> through a <strong>390 Ω</strong> series resistor to ground:</p>
-				<ul>
-					<li>GPIO16 → resistor → LED anode (+)</li>
-					<li>LED cathode (−) → GND</li>
-				</ul>
-				<p class="callout"><strong>Tip:</strong> Keep the USB cable connected during development; the board can be powered over USB for this test.</p>
-			</section>
-			<section class="card" id="code">
-				<h2>4) The blinking script</h2>
-				<p>Paste the following script into Thonny:</p>
+		  <section class="hero">
+			<h1>ESP32 MicroPython – Faire clignoter une LED (DevKitC + Thonny)</h1>
+			<p class="lead">
+			  Un premier projet simple pour valider votre chaîne de développement :
+			  pilote CP210x → MicroPython → Thonny → LED clignotante sur GPIO16.
+			</p>
+			<p class="tutorial-meta">
+			  Carte : ESP32 DevKitC (Wroom-32) • Langage : MicroPython • IDE : Thonny
+			</p>
+			<div class="video-embed">
+				<iframe
+				  width="560"
+				  height="315"
+				  src="https://www.youtube.com/embed/ZnQRUL4qtPA"
+				  title="ESP32 DevKitC connecté à une breadboard avec une LED pour un test de clignotement en MicroPython"
+				  frameborder="0"
+				  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				  allowfullscreen
+				  loading="lazy">
+				</iframe>
+			</div>
+			<div class="hero-actions">
+			  <a class="btn secondary" href="tutorials.html">← Retour aux tutoriels</a>
+			  <a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA" rel="noopener" target="_blank">
+				Voir la vidéo
+			  </a>
+			</div>
+		  </section>
+
+		  <section class="card toc">
+			<h2>Sommaire</h2>
+			<nav aria-label="Sommaire du tutoriel">
+			  <ul class="toc-list">
+				<li><a href="#what-you-need">Matériel nécessaire</a></li>
+				<li><a href="#driver">Pilote USB-UART (CP210x)</a></li>
+				<li><a href="#ide">Thonny + MicroPython</a></li>
+				<li><a href="#wiring">Câblage de la LED</a></li>
+				<li><a href="#code">Script de clignotement</a></li>
+				<li><a href="#run">Exécution et validation</a></li>
+				<li><a href="#startup">Exécution automatique au démarrage</a></li>
+				<li><a href="#resources">Ressources</a></li>
+			  </ul>
+			</nav>
+		  </section>
+
+		  <section class="card" id="video">
+			<h2>Tutoriel YouTube</h2>
+			<p>Vous préférez suivre ce tutoriel en vidéo ? Voici la version YouTube.</p>
+			<p class="callout">
+			  <a class="btn primary" href="https://youtu.be/ZnQRUL4qtPA" rel="noopener" target="_blank">
+				Ouvrir la vidéo YouTube
+			  </a>
+			</p>
+		  </section>
+
+		  <section class="card" id="what-you-need">
+			<h2>Matériel nécessaire</h2>
+			<ul>
+			  <li>Carte ESP32 DevKitC (ESP32-Wroom-32)</li>
+			  <li>Câble Micro-USB (souvent non fourni avec la carte)</li>
+			  <li>LED + résistance de 390 Ω + fils pour breadboard</li>
+			  <li>Un ordinateur (instructions pour Windows ci-dessous ; les autres OS sont similaires)</li>
+			</ul>
+			<p class="callout">
+			  La documentation ESP32 est fournie par Espressif sur <a href="https://documentation.espressif.com" rel="noopener" target="_blank"> documentation.espressif.com</a>.
+			</p>
+		  </section>
+
+		  <section class="card" id="driver">
+			<h2>1) Pilote USB-UART (CP210x)</h2>
+			<p>
+			  La plupart des cartes ESP32 utilisent une puce USB-UART, généralement une
+			  <strong>Silicon Labs CP2102 / CP210x</strong>.
+			  Si le pilote correspondant n’est pas installé, la carte peut ne pas apparaître
+			  comme port COM.
+			</p>
+
+			<h3>Vérification sous Windows</h3>
+			<ol>
+			  <li>Ouvrez le Gestionnaire de périphériques avec <span class="kbd">Win</span> + <span class="kbd">X</span>, puis <span class="kbd">M</span>.</li>
+			  <li>Connectez l’ESP32 à l’aide d’un câble Micro-USB.</li>
+			  <li>Recherchez un nouveau port COM (par exemple dans « Ports (COM et LPT) »).</li>
+			</ol>
+
+			<p>Si aucun nouveau port n’apparaît, installez le pilote VCP Silicon Labs :</p>
+			<p>
+			  <a class="btn secondary"
+				 href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads"
+				 rel="noopener"
+				 target="_blank">
+				Télécharger les pilotes CP210x VCP
+			  </a>
+			</p>
+			<p>
+			  Après l’installation, débranchez puis rebranchez la carte et vérifiez que le port COM apparaît.
+			</p>
+		  </section>
+
+		  <section class="card" id="ide">
+			<h2>2) Thonny + MicroPython</h2>
+			<p>
+			  Pour un prototype rapide, nous utiliserons
+			  <a href="https://docs.micropython.org/en/latest/" rel="noopener" target="_blank">MicroPython</a>
+			  avec l’IDE
+			  <a href="https://thonny.org" rel="noopener" target="_blank">Thonny</a>.
+			  MicroPython est interprété (idéal pour itérer rapidement) ;
+			  pour des applications plus exigeantes en performances, un environnement compilé
+			  (Arduino, ESP-IDF…) peut être préférable.
+			</p>
+			<ol>
+			  <li>Installez Thonny puis connectez l’ESP32.</li>
+			  <li>Dans Thonny : <strong>Outils → Options → Interpréteur</strong>.</li>
+			  <li>Sélectionnez <strong>MicroPython (ESP32)</strong> et le port COM de la carte.</li>
+			  <li>Maintenez le bouton <strong>BOOT</strong> de la carte et cliquez sur
+				<strong>Installer ou mettre à jour MicroPython</strong>.
+			  </li>
+			</ol>
+		  </section>
+
+		  <section class="card" id="wiring">
+			<h2>3) Câblage de la LED</h2>
+			<p>Connectez une LED sur <strong>GPIO 16</strong> via une résistance série de <strong>390 Ω</strong> vers la masse :</p>
+			<ul>
+			  <li>GPIO16 → résistance → anode de la LED (+)</li>
+			  <li>Cathode de la LED (−) → GND</li>
+			</ul>
+			<p class="callout">
+			  <strong>Astuce :</strong> laissez le câble USB branché pendant le développement ;
+			  l’alimentation USB est suffisante pour ce test.
+			</p>
+		  </section>
+
+		  <section class="card" id="code">
+			<h2>4) Script de clignotement</h2>
+			<p>Copiez le script suivant dans Thonny :</p>
 				<div class="code-wrapper">
 					<button aria-label="Copy code" class="copy-btn" data-target="blink-script">
 				⧉
@@ -235,57 +296,74 @@ while True:
 	time.sleep(0.5)
 					</code></pre>
 				</div>
-			</section>
-			<section class="card" id="run">
-				<h2>5) Run and validate</h2>
-				<p>Click the <strong>Play</strong> button in Thonny to run the script from your computer.</p>
-				<p>If everything is set up correctly, the LED on GPIO16 will blink every 0.5 seconds, confirming the mockup is working.</p>
-			</section>
-			<section class="card" id="startup">
-				<h2>6) Run the program automatically at startup</h2>
-				<p>
-					Now that the code works, we can flash it to the MCU so it runs automatically when the ESP32 powers up.
-					Connect the board to your computer, open Thonny, and choose <strong>File → Save As… → MicroPython device</strong>,
-					then save the script as <strong>main.py</strong> so it runs at startup. After that, press the reset button
-					(or unplug and reconnect the board), and the LED should begin blinking.
-				</p>
-				<p>
-					In the script, we added two Python <code>print</code> debugging statements inside the blinking loop: one prints “1” when the LED
-					is set to 1, and the other prints “0” when the LED is set to 0. These messages are sent over USB, so if you start Thonny
-					after the board is powered up and already blinking, the printed values will appear in the Thonny Shell window.
-				</p>
-				<p>
-					We can also use other serial-port applications, such as PuTTY or <a href="https://sourceforge.net/projects/tera-term/" rel="noopener" target="_blank">Tera Term</a>, to view the print values sent by the flashed script;
-					just remember that only one program can use the USB serial port at a time.
-				</p>
-				<p>
-					If you want to replace the existing startup program on the ESP32, save your new script to the device as
-					<strong>main.py</strong> and overwrite the existing file. After saving, press reset (or unplug and reconnect the board),
-					and the new script will run at startup. Occasionally, you may find that you need to reinstall MicroPython from the
-					Thonny options to make this work — if so, remember to hold the <strong>BOOT</strong> button during installation.
-				</p>
-			</section>
-			<section class="card" id="resources">
-				<h2>Resources</h2>
-				<ul>
-					<li>ESP32 Dev Kit C Development Board: <a href="https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG?th=1" rel="noopener" target="_blank">https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG?th=1</a></li>
-					<li>Espressif documentation: <a href="https://documentation.espressif.com" rel="noopener" target="_blank">https://documentation.espressif.com</a></li>
-					<li>MicroPython docs: <a href="https://docs.micropython.org/en/latest/" rel="noopener" target="_blank">https://docs.micropython.org/en/latest/</a></li>
-					<li>Thonny IDE: <a href="https://thonny.org" rel="noopener" target="_blank">https://thonny.org</a></li>
-					<li>CP210x VCP driver: <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads" rel="noopener" target="_blank">Silicon Labs download page</a></li>
-					<li>Tera Term: <a href="https://sourceforge.net/projects/tera-term/" rel="noopener" target="_blank">Tera Term download page</a></li>
-				</ul>
-			</section>
+		  </section>
+
+		<section class="card" id="run">
+		  <h2>5) Exécuter et valider</h2>
+		  <p>
+			Cliquez sur le bouton <strong>Play</strong> dans Thonny pour exécuter le script depuis votre ordinateur.
+		  </p>
+		  <p>
+			Si tout est correctement configuré, la LED connectée à GPIO16 clignotera toutes les 0,5 secondes,
+			confirmant que le mockup fonctionne correctement.
+		  </p>
+		</section>
+
+		<section class="card" id="startup">
+		  <h2>6) Exécuter le programme automatiquement au démarrage</h2>
+		  <p>
+			Maintenant que le code fonctionne, nous pouvons le flasher sur le microcontrôleur afin qu’il
+			s’exécute automatiquement à la mise sous tension de l’ESP32. Connectez la carte à votre ordinateur,
+			ouvrez Thonny et choisissez <strong>Fichier → Enregistrer sous… → Périphérique MicroPython</strong>,
+			puis enregistrez le script sous le nom <strong>main.py</strong> afin qu’il s’exécute au démarrage.
+			Ensuite, appuyez sur le bouton de réinitialisation (ou débranchez puis rebranchez la carte) ;
+			la LED devrait alors commencer à clignoter.
+		  </p>
+		  <p>
+			Dans le script, nous avons ajouté deux instructions de débogage Python <code>print</code> à
+			l’intérieur de la boucle de clignotement : l’une affiche « 1 » lorsque la LED est mise à 1,
+			et l’autre affiche « 0 » lorsque la LED est mise à 0. Ces messages sont envoyés via l’USB ;
+			ainsi, si vous démarrez Thonny après que la carte est déjà sous tension et en train de clignoter,
+			les valeurs affichées apparaîtront dans la fenêtre Shell de Thonny.
+		  </p>
+		  <p>
+			Il est également possible d’utiliser d’autres applications de port série, telles que PuTTY ou
+			<a href="https://sourceforge.net/projects/tera-term/" rel="noopener" target="_blank">Tera Term</a>,
+			pour visualiser les valeurs envoyées par le script flashé ; gardez simplement à l’esprit qu’un
+			seul programme peut utiliser le port série USB à la fois.
+		  </p>
+		  <p>
+			Si vous souhaitez remplacer le programme de démarrage existant sur l’ESP32, enregistrez votre
+			nouveau script sur l’appareil sous le nom <strong>main.py</strong> en écrasant le fichier existant.
+			Après l’enregistrement, appuyez sur reset (ou débranchez puis rebranchez la carte) et le nouveau
+			script s’exécutera au démarrage. Il peut arriver que vous deviez réinstaller MicroPython via les
+			options de Thonny pour que cela fonctionne ; dans ce cas, pensez à maintenir le bouton
+			<strong>BOOT</strong> enfoncé pendant l’installation.
+		  </p>
+		</section>
+
+		  <section class="card" id="resources">
+			<h2>Ressources</h2>
+			<ul>
+			  <li>Carte ESP32 DevKitC : <a href="https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG?th=1" rel="noopener" target="_blank">Lien Amazon</a></li>
+			  <li>Documentation Espressif : <a href="https://documentation.espressif.com" rel="noopener" target="_blank">documentation.espressif.com</a></li>
+			  <li>Documentation MicroPython : <a href="https://docs.micropython.org/en/latest/" rel="noopener" target="_blank">docs.micropython.org</a></li>
+			  <li>IDE Thonny : <a href="https://thonny.org" rel="noopener" target="_blank">thonny.org</a></li>
+			  <li>Pilote CP210x : <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads" rel="noopener" target="_blank">Silicon Labs</a></li>
+			</ul>
+		  </section>
 		</main>
+
 		<footer class="site-footer">
-			<div class="container footer-inner">
-				<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
-				<p>
-				<a class="footer-link" href="legal.html">Legal mentions</a>
-				<a class="footer-link" href="privacy.html">Privacy policy</a>
-				</p>
-			</div>
+		  <div class="container footer-inner">
+			<p>© <span id="year"></span> JAK Services – Toulouse, France</p>
+			<p>
+			  <a class="footer-link" href="legal.html">Mentions légales</a>
+			  <a class="footer-link" href="privacy.html">Politique de confidentialité</a>
+			</p>
+		  </div>
 		</footer>
+
 		<script src="../js/main.js"></script>
 		<script src="../js/tutorials.js"></script>
 	</body>
