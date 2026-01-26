@@ -26,12 +26,14 @@
 
 /* Caption: one-liner above image, left aligned, wraps on multiple lines */
 .carousel-caption {
+  line-height: 1.4;
   margin-bottom: 0.4rem;
   font-size: 0.9rem;
   text-align: left;
   color: #000000;
   white-space: normal;
   overflow-wrap: anywhere;     /* allow wrapping instead of cropping */
+  overflow-y: auto;
 }
 
 /* Wrapper ensures the image scales responsively with no cropping */
@@ -116,3 +118,4 @@
 .carousel-toggle:hover {
   background: rgba(0, 0, 0, 0.5);
 }
+
