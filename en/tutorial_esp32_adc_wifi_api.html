@@ -6,8 +6,8 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 	  <!-- PRIMARY SEO: IoT + API FIRST -->
-	  <title>ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter | JAK Services</title>
-	  <meta name="description" content="Build an ESP32 IoT sensor node exposing dual-channel true RMS measurements via a stable HTTP JSON API. ESP-IDF (C) firmware with Wi-Fi provisioning, curl testing, and local-network integration for Grafana, InfluxDB, Home Assistant, and Node-RED."/>
+	  <title>ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter and Graph Plot | JAK Services</title>
+	  <meta name="description" content="Build an ESP32 IoT sensor node exposing dual-channel true RMS measurements and graph plot via a stable HTTP JSON API. ESP-IDF (C) firmware with Wi-Fi provisioning, curl testing, and local-network integration for Grafana, InfluxDB, Home Assistant, and Node-RED."/>
 	  <meta name="robots" content="index,follow,max-image-preview:large"/>
 
 	  <!-- Styles / icons -->
@@ -23,16 +23,16 @@
 
 	  <!-- Open Graph (IoT-first, shareable) -->
 	  <meta property="og:type" content="article"/>
-	  <meta property="og:title" content="ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter"/>
-	  <meta property="og:description" content="Self-hosted ESP32 IoT sensor exposing dual-channel RMS measurements through an HTTP JSON API. ESP-IDF firmware with Wi-Fi provisioning and curl testing—ready for Grafana, InfluxDB, Home Assistant, and Node-RED."/>
+	  <meta property="og:title" content="ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter and Graph Plot"/>
+	  <meta property="og:description" content="Self-hosted ESP32 IoT sensor exposing dual-channel RMS measurements and Graph Plot through an HTTP JSON API. ESP-IDF firmware with Wi-Fi provisioning and curl testing—ready for Grafana, InfluxDB, Home Assistant, and Node-RED."/>
 	  <meta property="og:url" content="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"/>
 	  <meta property="og:image" content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp"/>
 	  <meta property="og:site_name" content="JAK Services"/>
 
 	  <!-- Twitter -->
 	  <meta name="twitter:card" content="summary_large_image"/>
-	  <meta name="twitter:title" content="ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter"/>
-	  <meta name="twitter:description" content="Expose true RMS measurements from an ESP32 IoT node via a clean HTTP JSON API. Wi-Fi provisioning + ESP-IDF firmware, ready for dashboards and automation."/>
+	  <meta name="twitter:title" content="ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter and Graph Plot"/>
+	  <meta name="twitter:description" content="Expose true RMS measurements and Graph Plot from an ESP32 IoT node via a clean HTTP JSON API. Wi-Fi provisioning + ESP-IDF firmware, ready for dashboards and automation."/>
 	  <meta name="twitter:image" content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp"/>
 
 	  <!-- Structured data -->
@@ -41,7 +41,7 @@
 		"@context": "https://schema.org",
 		"@type": "TechArticle",
 		"headline": "ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter (ESP-IDF)",
-		"description": "Build a self-hosted ESP32 IoT sensor node that computes dual-channel true RMS and exposes the latest values via a stable HTTP JSON API. Includes Wi-Fi provisioning, ESP-IDF (C), and curl testing for automation and dashboards.",
+		"description": "Build a self-hosted ESP32 IoT sensor node that computes dual-channel true RMS and Graph Plot and exposes the latest values via a stable HTTP JSON API. Includes Wi-Fi provisioning, ESP-IDF (C), and curl testing for automation and dashboards.",
 		"image": "https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp",
 		"author": {
 		  "@type": "Organization",
@@ -66,6 +66,7 @@
 		  "JSON",
 		  "ESP-IDF",
 		  "RMS measurement",
+		  "Graph plot",
 		  "Edge computing"
 		],
 		"keywords": [
@@ -74,6 +75,7 @@
 		  "ESP32 JSON API",
 		  "IoT sensor node",
 		  "RMS meter",
+		  "Graph plot",
 		  "Grafana",
 		  "InfluxDB",
 		  "Home Assistant",
@@ -119,11 +121,11 @@
 			  <h1>ESP32 IoT HTTP JSON API &ndash; Dual-Channel RMS Meter</h1>
 
 			  <p class="lead">
-                Build a <strong>self-hosted IoT measurement node</strong>: the ESP32 continuously computes true RMS on two analog channels and exposes the latest values through a <strong>clean HTTP JSON API</strong> for scripts, dashboards, and automation.
+                Build a <strong>self-hosted IoT measurement node</strong>: the ESP32 continuously computes true RMS and Graph Plot on two analog channels and exposes the latest values through a <strong>clean HTTP JSON API</strong> for scripts, dashboards, and automation.
               </p>
 
               <p style="margin-top:10px; margin-bottom:8px;">
-                <strong>Once connected to Wi-Fi:</strong> the ESP32 exposes the latest RMS measurements via a local HTTP JSON endpoint, accessible from any device on the same network.
+                <strong>Once connected to Wi-Fi:</strong> the ESP32 exposes the latest RMS and Graph Plot measurements via a local HTTP JSON endpoint, accessible from any device on the same network.
               </p>
 
               <div class="code-wrapper" style="margin-top:8px;">
@@ -251,7 +253,7 @@
 
           <p>
             The goal of this project is <strong>API-first</strong>: turn an ESP32 into a small, reliable <strong>IoT sensor node</strong> that publishes
-            <strong>machine-readable RMS measurements</strong> over your local network. The ADC and RMS math are the “sensor backend” &mdash; the
+            <strong>machine-readable RMS measurements and Graph Plot</strong> over your local network. The ADC and RMS math are the “sensor backend” &mdash; the
             HTTP JSON endpoint is the product you integrate into tools and dashboards.
           </p>
 
@@ -271,7 +273,7 @@
           <ul>
             <li>Provides <strong>Wi-Fi provisioning</strong> for first-boot setup.</li>
             <li>Samples <strong>two analog inputs</strong> using <strong>ADC1</strong>.</li>
-            <li>Computes <strong>true RMS voltage</strong> over a measurement window.</li>
+            <li>Computes <strong>true RMS voltage and Graph Plot</strong> over a measurement window.</li>
             <li>Updates results periodically (e.g. every 1&ndash;10 seconds).</li>
             <li>Continuously exposes the latest results via a <strong>stable HTTP JSON API</strong>.</li>
           </ul>
@@ -539,7 +541,7 @@ void app_main(void)
 			<section id="api" class="card">
 			  <h2>HTTP API (JSON)</h2>
 			  <p>
-				The API returns the <strong>latest completed RMS measurements</strong>. Sampling is not done on-demand,
+				The API returns the <strong>latest completed RMS measurements and Graph Plot</strong>. Sampling is not done on-demand,
 				so requests stay fast and Wi-Fi remains responsive.
 			  </p>
 
