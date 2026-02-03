@@ -2,87 +2,88 @@
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8"/>
-		<title>
-			ESP32 &ndash; Dual ADC RMS Meter + Wi-Fi Provisioning + HTTP API | JAK Services
-		</title>
-		<meta content="width=device-width, initial-scale=1" name="viewport"/>
-		<meta content="Measure two analog inputs on ESP32 (ADC1), compute true RMS periodically, and expose results over Wi-Fi with provisioning and a simple HTTP JSON API." name="description"/>
-		<link href="../styles/styles.css" rel="stylesheet"/>
-		<link href="../styles/portfolio_carousel.css" rel="stylesheet"/>
-		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+	  <meta charset="utf-8"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<link href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html" rel="canonical"/>
-		<link href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html" hreflang="en" rel="alternate"/>
-		<link href="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html" hreflang="fr" rel="alternate"/>
-		<link href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html" hreflang="x-default" rel="alternate"/>
-		<meta content="article" property="og:type"/>
-		<meta content="ESP32 &ndash; Dual ADC RMS Meter + Wi-Fi Provisioning + HTTP API (ESP-IDF + VS Code) | JAK Services" property="og:title"/>
-		<meta content="Measure two analog inputs on ESP32 (ADC1), compute true RMS periodically, and expose results over Wi-Fi with provisioning and a simple HTTP JSON API." property="og:description"/>
-		<meta content="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html" property="og:url"/>
-		<meta content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp" property="og:image"/>
-		<meta content="summary_large_image" name="twitter:card"/>
-		<meta content="ESP32 &ndash; Dual ADC RMS Meter + Wi-Fi Provisioning + HTTP API (ESP-IDF + VS Code) | JAK Services" name="twitter:title"/>
-		<meta content="Measure two analog inputs on ESP32 (ADC1), compute true RMS periodically, and expose results over Wi-Fi with provisioning and a simple HTTP JSON API." name="twitter:description"/>
-		<meta content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp" name="twitter:image"/>
+	  <!-- PRIMARY SEO: IoT + API FIRST -->
+	  <title>ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter | JAK Services</title>
+	  <meta name="description" content="Build an ESP32 IoT sensor node exposing dual-channel true RMS measurements via a stable HTTP JSON API. ESP-IDF (C) firmware with Wi-Fi provisioning, curl testing, and local-network integration for Grafana, InfluxDB, Home Assistant, and Node-RED."/>
+	  <meta name="robots" content="index,follow,max-image-preview:large"/>
 
-		<script type="application/ld+json">
-			{"@context":"https://schema.org"
-				,"@type":"Organization"
-				,"name":"JAK Services"
-				,"url":"https://jak-services.github.io"
-				,"logo":"https://jak-services.github.io/images/jak-logo.svg"
-			}
-		</script>
+	  <!-- Styles / icons -->
+	  <link rel="stylesheet" href="../styles/styles.css"/>
+	  <link rel="stylesheet" href="../styles/portfolio_carousel.css"/>
+	  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
-		<script type="application/ld+json">
-			{
-			  "@context": "https://schema.org",
-			  "@type": "BreadcrumbList",
-			  "itemListElement": [
-				{
-				  "@type": "ListItem",
-				  "position": 1,
-				  "name": "Home",
-				  "item": "https://jak-services.github.io/en/index.html"
-				},
-				{
-				  "@type": "ListItem",
-				  "position": 2,
-				  "name": "Tutorials",
-				  "item": "https://jak-services.github.io/en/tutorials.html"
-				},
-				{
-				  "@type": "ListItem",
-				  "position": 3,
-				  "name": "ESP32 Dual ADC RMS Meter + Wi-Fi Provisioning + HTTP API (ESP-IDF + VS Code)",
-				  "item": "https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"
-				}
-			  ]
-			}
-		</script>
+	  <!-- Canonical + i18n -->
+	  <link rel="canonical" href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"/>
+	  <link rel="alternate" hreflang="en" href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"/>
+	  <link rel="alternate" hreflang="fr" href="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html"/>
+	  <link rel="alternate" hreflang="x-default" href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"/>
 
-		<script type="application/ld+json">
-			{
-			  "@context": "https://schema.org",
-			  "@type": "TechArticle",
-			  "headline": "ESP32 – Dual ADC RMS Meter + Wi-Fi Provisioning + HTTP API (ESP-IDF + VS Code) | JAK Services",
-			  "description": "Measure two analog inputs on ESP32 (ADC1), compute true RMS periodically, and expose results over Wi-Fi with provisioning and a simple HTTP JSON API.",
-			  "image": "https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp",
-			  "author": { "@type": "Organization", "name": "JAK Services" },
-			  "publisher": {
-				"@type": "Organization",
-				"name": "JAK Services",
-				"logo": { "@type": "ImageObject", "url": "https://jak-services.github.io/images/jak-logo.svg" }
-			  },
-			  "mainEntityOfPage": {
-				"@type": "WebPage",
-				"@id": "https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"
-			  }
-			}
-		</script>
+	  <!-- Open Graph (IoT-first, shareable) -->
+	  <meta property="og:type" content="article"/>
+	  <meta property="og:title" content="ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter"/>
+	  <meta property="og:description" content="Self-hosted ESP32 IoT sensor exposing dual-channel RMS measurements through an HTTP JSON API. ESP-IDF firmware with Wi-Fi provisioning and curl testing—ready for Grafana, InfluxDB, Home Assistant, and Node-RED."/>
+	  <meta property="og:url" content="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"/>
+	  <meta property="og:image" content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp"/>
+	  <meta property="og:site_name" content="JAK Services"/>
 
-		<script async="" data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+	  <!-- Twitter -->
+	  <meta name="twitter:card" content="summary_large_image"/>
+	  <meta name="twitter:title" content="ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter"/>
+	  <meta name="twitter:description" content="Expose true RMS measurements from an ESP32 IoT node via a clean HTTP JSON API. Wi-Fi provisioning + ESP-IDF firmware, ready for dashboards and automation."/>
+	  <meta name="twitter:image" content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp"/>
+
+	  <!-- Structured data -->
+	  <script type="application/ld+json">
+	  {
+		"@context": "https://schema.org",
+		"@type": "TechArticle",
+		"headline": "ESP32 IoT HTTP JSON API – Dual-Channel RMS Meter (ESP-IDF)",
+		"description": "Build a self-hosted ESP32 IoT sensor node that computes dual-channel true RMS and exposes the latest values via a stable HTTP JSON API. Includes Wi-Fi provisioning, ESP-IDF (C), and curl testing for automation and dashboards.",
+		"image": "https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp",
+		"author": {
+		  "@type": "Organization",
+		  "name": "JAK Services"
+		},
+		"publisher": {
+		  "@type": "Organization",
+		  "name": "JAK Services",
+		  "logo": {
+			"@type": "ImageObject",
+			"url": "https://jak-services.github.io/images/jak-logo.svg"
+		  }
+		},
+		"mainEntityOfPage": {
+		  "@type": "WebPage",
+		  "@id": "https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"
+		},
+		"about": [
+		  "IoT",
+		  "ESP32",
+		  "HTTP API",
+		  "JSON",
+		  "ESP-IDF",
+		  "RMS measurement",
+		  "Edge computing"
+		],
+		"keywords": [
+		  "ESP32 IoT",
+		  "ESP32 HTTP API",
+		  "ESP32 JSON API",
+		  "IoT sensor node",
+		  "RMS meter",
+		  "Grafana",
+		  "InfluxDB",
+		  "Home Assistant",
+		  "Node-RED"
+		]
+	  }
+	  </script>
+
+	  <!-- Analytics -->
+	  <script async data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
 	</head>
 
 	<body>
@@ -118,8 +119,28 @@
 			  <h1>ESP32 &ndash; Dual ADC RMS Meter + Wi-Fi Provisioning + HTTP API (ESP-IDF + VS Code)</h1>
 
 			  <p class="lead">
-				Sample two analog inputs, calculate their RMS values, and retrieve the latest results via a Wi-Fi–connected JSON HTTP API.
-			  </p>
+                Build a <strong>self-hosted IoT measurement node</strong>: the ESP32 continuously computes true RMS on two analog channels and exposes the latest values through a <strong>clean HTTP JSON API</strong> for scripts, dashboards, and automation.
+              </p>
+
+              <p style="margin-top:10px; margin-bottom:8px;">
+                <strong>Proof in 10 seconds:</strong> once the ESP32 is on your Wi-Fi, fetch the latest RMS values from any machine on the same network.
+              </p>
+
+              <div class="code-wrapper" style="margin-top:8px;">
+                <button class="copy-btn" data-target="hero-curl" aria-label="Copy code" title="Copy">⧉</button>
+                <pre class="code-block"><code id="hero-curl">curl http://&lt;ESP32_IP&gt;/api/rms</code></pre>
+              </div>
+
+              <div class="code-wrapper" style="margin-top:10px;">
+                <button class="copy-btn" data-target="hero-json" aria-label="Copy code" title="Copy">⧉</button>
+                <pre class="code-block"><code id="hero-json">{
+  "channel_a_rms": 1.237,
+  "channel_b_rms": 0.982,
+  "unit": "volts",
+  "timestamp_ms": 12345678
+}</code></pre>
+              </div>
+
 
 			  <div class="carousel" aria-label="Tutorial highlights">
 				<div class="carousel-track">
@@ -209,6 +230,8 @@
 			  <nav aria-label="Tutorial contents">
 				<ul class="toc-list">
 				  <li><a href="#overview">Overview</a></li>
+				  <li><a href="#api">HTTP API (JSON)</a></li>
+				  <li><a href="#architecture">Architecture at a glance</a></li>
 				  <li><a href="#what-you-need">What you need</a></li>
 				  <li><a href="#wiring">Wiring (GPIO34 / GPIO35)</a></li>
 				  <li><a href="#vscode">VS Code + ESP-IDF Setup</a></li>
@@ -216,7 +239,6 @@
 				  <li><a href="#project">Build the project</a></li>
 				  <li><a href="#firmware-tour">Firmware tour: Boot → Measure → Serve</a></li>
 				  <li><a href="#provisioning">Wi-Fi provisioning</a></li>
-				  <li><a href="#api">HTTP API (JSON)</a></li>
 				  <li><a href="#flash">Build, Flash, Monitor, Debug</a></li>
 				  <li><a href="#troubleshooting">Troubleshooting</a></li>
 				  <li><a href="#resources">Resources</a></li>
@@ -225,30 +247,74 @@
 			</section>
 
 			<section id="overview" class="card">
-			  <h2>Overview</h2>
+          <h2>Overview</h2>
 
-			  <h3>What this project does</h3>
-			  <ul>
-				<li>Provides <strong>Wi-Fi provisioning</strong> for first-boot setup.</li>
-				<li>Samples <strong>two analog inputs</strong> using <strong>ADC1</strong></li>
-				<li>Computes <strong>true RMS voltage</strong> over a measurement window.</li>
-				<li>Updates results periodically (e.g. every 1&ndash;10 seconds).</li>
-				<li>Continuously exposes latest measurements via a <strong>simple HTTP JSON API</strong>.</li>
-			  </ul>
+          <p>
+            The goal of this project is <strong>API-first</strong>: turn an ESP32 into a small, reliable <strong>IoT sensor node</strong> that publishes
+            <strong>machine-readable RMS measurements</strong> over your local network. The ADC and RMS math are the “sensor backend” &mdash; the
+            HTTP JSON endpoint is the product you integrate into tools and dashboards.
+          </p>
 
-			  <h3>What this project is not</h3>
-			  <ul>
-				<li>No continuous raw sample streaming.</li>
-				<li>No oscilloscope visualization in Telemetry Viewer.</li>
-			  </ul>
+          <p class="callout">
+            This HTTP API is designed for <strong>machine consumption</strong> (scripts, automation, dashboards), not just manual testing.
+          </p>
 
-			  <p class="callout">
-				If you need real-time waveform plotting over USB, use the separate tutorial:
-				<a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">Dual ADC + Serial Oscilloscope (Telemetry Viewer)</a>.
-			  </p>
-			</section>
+          <h3>What this API enables</h3>
+          <ul>
+            <li>Poll values from scripts and tools (<code>curl</code>, Python, Go, Bash, CI checks, etc.).</li>
+            <li>Feed a time-series pipeline (Node-RED &rarr; InfluxDB/Prometheus &rarr; Grafana).</li>
+            <li>Integrate into home/industrial automation (Home Assistant, PLC gateways, custom services).</li>
+            <li>Use the ESP32 as a <strong>headless measurement endpoint</strong> you can deploy anywhere on your LAN.</li>
+          </ul>
 
-			<section id="what-you-need" class="card">
+          <h3>What this project does</h3>
+          <ul>
+            <li>Provides <strong>Wi-Fi provisioning</strong> for first-boot setup.</li>
+            <li>Samples <strong>two analog inputs</strong> using <strong>ADC1</strong>.</li>
+            <li>Computes <strong>true RMS voltage</strong> over a measurement window.</li>
+            <li>Updates results periodically (e.g. every 1&ndash;10 seconds).</li>
+            <li>Continuously exposes the latest results via a <strong>stable HTTP JSON API</strong>.</li>
+          </ul>
+
+          <h3>What this project is not</h3>
+          <ul>
+            <li>No continuous raw sample streaming.</li>
+            <li>No oscilloscope visualization in Telemetry Viewer.</li>
+          </ul>
+
+          <p class="callout">
+            If you need real-time waveform plotting over USB, use the separate tutorial:
+            <a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">Dual ADC + Serial Oscilloscope (Telemetry Viewer)</a>.
+          </p>
+        </section>
+
+
+			
+            <section id="architecture" class="card">
+              <h2>Architecture at a glance</h2>
+
+              <p>
+                The firmware is structured so the HTTP server always responds quickly: measurements happen in the background and the API serves
+                the latest completed result from a shared cache.
+              </p>
+
+              <div class="code-wrapper">
+                <button class="copy-btn" data-target="arch-flow" aria-label="Copy code" title="Copy">⧉</button>
+                <pre class="code-block"><code id="arch-flow">ADC (CH_A, CH_B)
+   ↓  periodic sampling window
+RMS compute task
+   ↓  update shared state (latest result)
+HTTP server
+   ↓
+GET /api/rms  → JSON for clients (curl / Node-RED / Grafana / apps)</code></pre>
+              </div>
+
+              <p class="callout">
+                Key design choice: the device does <strong>not</strong> sample “on request”. Requests simply return the most recent completed RMS window,
+                keeping Wi-Fi responsive and response times consistent.
+              </p>
+            </section>
+<section id="what-you-need" class="card">
 			  <h2>What you need</h2>
 			  <ul>
 				<li>ESP32 DevKitC (ESP32-WROOM-32) or similar ESP32 board.</li>
