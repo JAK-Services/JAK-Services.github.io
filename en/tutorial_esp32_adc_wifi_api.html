@@ -622,9 +622,14 @@ void app_main(void)
 
 			  <h3>Wi-Fi connects but API does not respond</h3>
 			  <ul>
-				<li>Confirm the IP address in the serial logs.</li>
-				<li>Try <code>http://&lt;ip&gt;/api/rms</code> in a browser.</li>
-				<li>Check that your firewall/network isolation is not blocking local traffic.</li>
+				  <li>Confirm the IP address in the serial logs.</li>
+				  <li>Try <code>http://&lt;ip&gt;/api/rms</code> in a browser.</li>
+				  <li>Check that your firewall/network isolation is not blocking local traffic.</li>
+				  <li>
+					If using a phone, <strong>disable Wi-Fi roaming / Wi-Fi Assist / mobile data switching</strong>.
+					Some phones automatically switch to cellular or another access point, which prevents access
+					to local network devices.
+				  </li>
 			  </ul>
 
 			  <h3>Why ADC1 only?</h3>
