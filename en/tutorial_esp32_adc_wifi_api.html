@@ -89,7 +89,7 @@
 		<header class="site-header">
 		  <div class="container header-inner">
 			<a class="brand" href="index.html">
-			  <img alt="JAK Services logo" class="logo" src="./images/jak-logo.svg"/>
+			  <img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
 			  <div class="brand-text">
 				<span class="brand-name">JAK Services</span>
 				<span class="brand-tagline">Software and Electronics Engineering Solutions</span>
@@ -118,18 +118,18 @@
 			  <h1>ESP32 &ndash; Dual ADC RMS Meter + Wi-Fi Provisioning + HTTP API (ESP-IDF + VS Code)</h1>
 
 			  <p class="lead">
-				Sample two analog signals (ADC1), compute true RMS periodically, and read the latest results from a JSON HTTP API endpoint over Wi-Fi.
+				Sample two analog inputs, calculate their RMS values, and retrieve the latest results via a Wi-Fi–connected JSON HTTP API.
 			  </p>
 
 			  <div class="carousel" aria-label="Tutorial highlights">
 				<div class="carousel-track">
 				  <div class="carousel-slide active">
-					<p class="carousel-caption">RMS Measurement API, Two ADC's</p>
+					<p class="carousel-caption">RMS Measurement API (Dual ADC)</p>
 					<div class="carousel-image-wrapper">
 					  <a href="tutorial_esp32_adc_wifi_api.html">
 						<img
 						  src="/images/tutorials/esp32_adc_wifi_2.webp"
-						  alt="RMS measurement API, Two ADC's illustration"
+						  alt="RMS Measurement API (Dual ADC) illustration"
 						  loading="lazy"
 						  decoding="async"
 						/>
@@ -138,12 +138,12 @@
 				  </div>
 
 				  <div class="carousel-slide">
-					<p class="carousel-caption">Connect the ESP32 to your home Wi-Fi</p>
+					<p class="carousel-caption">Connect the ESP32 to your home Wi-Fi network.</p>
 					<div class="carousel-image-wrapper">
 					  <a href="tutorial_esp32_adc_wifi_api.html">
 						<img
 						  src="/images/tutorials/esp32_adc_wifi_0.webp"
-						  alt="Connect the ESP32 to your home Wi-Fi image"
+						  alt="Connect the ESP32 to your home Wi-Fi network image"
 						  loading="eager"
 						  decoding="async"
 						/>
@@ -152,12 +152,12 @@
 				  </div>
 
 				  <div class="carousel-slide">
-					<p class="carousel-caption">Obtain the ESP32 IP assigned by your home Wi-Fi</p>
+					<p class="carousel-caption">Obtain the IP address assigned to the ESP32 by your home Wi-Fi network.</p>
 					<div class="carousel-image-wrapper">
 					  <a href="tutorial_esp32_adc_wifi_api.html">
 						<img
 						  src="/images/tutorials/esp32_adc_wifi_1.webp"
-						  alt="Obtain the ESP32 IP assigned by your home Wi-Fi illustration"
+						  alt="Obtain the IP address assigned to the ESP32 by your home Wi-Fi network illustration"
 						  loading="lazy"
 						  decoding="async"
 						/>
@@ -166,12 +166,12 @@
 				  </div>
 
 				  <div class="carousel-slide">
-					<p class="carousel-caption">The Mock-Up</p>
+					<p class="carousel-caption">Prototype Mockup</p>
 					<div class="carousel-image-wrapper">
 					  <a href="tutorial_esp32_adc_wifi_api.html">
 						<img
 						  src="/images/tutorials/esp32_adc.webp"
-						  alt="The Mock-Up illustration"
+						  alt="Prototype Mockup illustration"
 						  loading="lazy"
 						  decoding="async"
 						/>
@@ -187,10 +187,10 @@
 
 				<!-- IMPORTANT: 4 slides = 4 dots -->
 				<div class="carousel-dots" role="tablist" aria-label="Carousel navigation">
-				  <button class="dot active" type="button" data-index="0" aria-current="true" aria-label="Connect the ESP32 to your home Wi-Fi" title="Connect the ESP32 to your home Wi-Fi"></button>
-				  <button class="dot" type="button" data-index="1" aria-label="Obtain the ESP32 IP assigned by your home Wi-Fi" title="Obtain the ESP32 IP assigned by your home Wi-Fi"></button>
-				  <button class="dot" type="button" data-index="2" aria-label="RMS Measurement API, Two ADC's" title="RMS Measurement API, Two ADC's"></button>
-				  <button class="dot" type="button" data-index="3" aria-label="The Mock-Up" title="The Mock-Up"></button>
+				  <button class="dot active" type="button" data-index="0" aria-current="true" aria-label="RMS Measurement API (Dual ADC)" title="RMS Measurement API (Dual ADC)"></button>
+				  <button class="dot" type="button" data-index="1" aria-label="Connect the ESP32 to your home Wi-Fi network" title="Connect the ESP32 to your home Wi-Fi network"></button>
+				  <button class="dot" type="button" data-index="2" aria-label="Obtain the IP address assigned to the ESP32 by your home Wi-Fi network." title="Obtain the IP address assigned to the ESP32 by your home Wi-Fi network."></button>
+				  <button class="dot" type="button" data-index="3" aria-label="Prototype Mockup" title="Prototype Mockup"></button>
 				</div>
 			  </div>
 
@@ -229,11 +229,11 @@
 
 			  <h3>What this project does</h3>
 			  <ul>
-				<li>Samples <strong>two analog inputs</strong> using <strong>ADC1</strong> (Wi-Fi safe).</li>
+				<li>Provides <strong>Wi-Fi provisioning</strong> for first-boot setup.</li>
+				<li>Samples <strong>two analog inputs</strong> using <strong>ADC1</strong></li>
 				<li>Computes <strong>true RMS voltage</strong> over a measurement window.</li>
 				<li>Updates results periodically (e.g. every 1&ndash;10 seconds).</li>
-				<li>Provides <strong>Wi-Fi provisioning</strong> for first-boot setup.</li>
-				<li>Exposes latest measurements via a <strong>simple HTTP JSON API</strong>.</li>
+				<li>Continuously exposes latest measurements via a <strong>simple HTTP JSON API</strong>.</li>
 			  </ul>
 
 			  <h3>What this project is not</h3>
@@ -314,8 +314,7 @@
 			  </ul>
 
 			  <p class="callout">
-				Use a stable ESP-IDF version and keep it consistent across your projects. If you share code publicly,
-				consider pinning a known-good ESP-IDF version in your README.
+				Use a stable ESP-IDF release and keep it consistent across your projects. This tutorial was developed using Visual Studio Code v1.108.1 and ESP-IDF v1.11.1.
 			  </p>
 			</section>
 
@@ -327,7 +326,7 @@
 				<a href="https://github.com/jak-services/esp32-adc-rms-wifi-api" target="_blank" rel="noopener noreferrer">
 				  esp32-dual-adc-rms-wifi
 				</a>
-				<span style="opacity:0.8;">(placeholder link for now)</span>
+				<span style="opacity:0.8;"></span>
 			  </p>
 
 			  <div class="hero-actions" style="justify-content:flex-start;">
@@ -359,9 +358,9 @@ cd esp32-adc-rms-wifi-api</code></pre>
 
 			  <ol>
 				<li>Open VS Code in the project folder.</li>
-				<li>Set the target (if needed): <strong>ESP-IDF: Set Espressif Device Target</strong> &rarr; <strong>esp32</strong>.</li>
-				<li>Configure your serial port: <strong>ESP-IDF: Select Port to Use</strong>.</li>
-				<li>Build/Flash (CTRL + SHIFT + P): <strong>ESP-IDF: Build, Flash and Start a Monitor on Your Device</strong>.</li>
+				<li>Set the target (if needed, CTRL + SHIFT + P) : <strong>ESP-IDF: Set Espressif Device Target</strong> &rarr; <strong>esp32</strong>.</li>
+				<li>Configure your serial port (CTRL + SHIFT + P) : <strong>ESP-IDF: Select Port to Use</strong>.</li>
+				<li>Build/Flash (CTRL + SHIFT + P) : <strong>ESP-IDF: Build, Flash and Start a Monitor on Your Device</strong>.</li>
 			  </ol>
 
 			  <p class="callout">
@@ -386,30 +385,16 @@ cd esp32-adc-rms-wifi-api</code></pre>
 				<li><strong>Serve</strong>: return cached results instantly via HTTP.</li>
 			  </ol>
 
-			  <h3>Where to change things</h3>
-			  <ul>
-				<li><strong>GPIO mapping</strong> (CH_A / CH_B): ADC config module (GPIO34 / GPIO35).</li>
-				<li><strong>Sampling rate</strong> and <strong>window size</strong>: ADC sampler module.</li>
-				<li><strong>Measurement interval</strong>: measurement task/timer module.</li>
-				<li><strong>RMS math / filtering</strong>: RMS/DSP module.</li>
-				<li><strong>API routes</strong> and JSON shape: HTTP server module.</li>
-			  </ul>
 
-			  <p class="callout">
-				Your repo can (and should) include a short <code>README.md</code> that lists the exact filenames for these modules.
-				This tutorial explains the concepts; the README helps users jump directly to the right file.
-			  </p>
-
-			  <h3>Example pseudo-entrypoint (for orientation)</h3>
+			  <h3>Pseudo-entrypoint (for orientation)</h3>
 			  <p>
-				Your actual filenames may differ, but the main idea is always the same:
+				The main idea is always the same:
 				start Wi-Fi, start measurement, start server.
 			  </p>
 
 			  <div class="code-wrapper">
 				<button class="copy-btn" data-target="main-flow" aria-label="Copy code" title="Copy">⧉</button>
 				<pre class="code-block"><code id="main-flow">// PSEUDO-CODE (illustration)
-// In your project, look for app_main() in main/*.c
 
 void app_main(void)
 {
@@ -481,7 +466,7 @@ void app_main(void)
 				  The HTTP API does not implement authentication or encryption and is intended
 				  for use in trusted local environments. If stronger security is required
 				  (for example HTTPS, authentication, or restricted access), additional
-				  measures should be implemented by the user.
+				  measures, not included in this tutorial, should be implemented.
 				</p>
 			</section>
 
@@ -559,6 +544,14 @@ void app_main(void)
 				<li>Make sure signal ground is connected to ESP32 GND.</li>
 				<li>Use short wires and avoid breadboard mess for low-level signals.</li>
 				<li>Consider averaging, filtering, and calibration (especially for precise voltage numbers).</li>
+			  </ul>
+			  
+			  <h3>Can’t access the API after provisioning</h3>
+			  <ul>
+				  <li>During initial setup, connect to the provisioning access point named <strong>JAK_DEVICE_*</strong> to enter your home Wi-Fi SSID and password.</li>
+				  <li>After credentials are saved, disconnect from <strong>JAK_DEVICE_*</strong> and reconnect your client device to your home router’s Wi-Fi network.</li>
+				  <li>The RMS HTTP API is accessible only when both the ESP32 and your client are on the same home network.</li>
+				  <li>Use the router-assigned IP address shown in the serial logs to access the API.</li>
 			  </ul>
 
 			  <h3>Wi-Fi connects but API does not respond</h3>
