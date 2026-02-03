@@ -610,11 +610,17 @@ void app_main(void)
 				  <li>Utilisez l’adresse IP attribuée par le routeur (visible dans les logs série) pour accéder à l’API.</li>
 			  </ul>
 
-			  <h3>Le Wi‑Fi se connecte mais l’API ne répond pas</h3>
+			  <h3>Le Wi-Fi est connecté mais l’API ne répond pas</h3>
 			  <ul>
-				<li>Confirmez l’adresse IP dans les logs série.</li>
-				<li>Essayez <code>http://&lt;ip&gt;/api/rms</code> dans un navigateur.</li>
-				<li>Vérifiez que le pare-feu / l’isolation réseau ne bloque pas le trafic local.</li>
+				  <li>Vérifiez l’adresse IP affichée dans les logs série.</li>
+				  <li>Essayez <code>http://&lt;ip&gt;/api/rms</code> dans un navigateur.</li>
+				  <li>Vérifiez que votre pare-feu ou l’isolation réseau ne bloque pas le trafic local.</li>
+				  <li>
+					Si vous utilisez un téléphone, <strong>désactivez l’itinérance Wi-Fi / Wi-Fi Assist /
+					le basculement automatique vers les données mobiles</strong>.
+					Certains téléphones passent automatiquement au réseau cellulaire ou à un autre point d’accès,
+					ce qui empêche l’accès aux appareils du réseau local.
+				  </li>
 			  </ul>
 
 			  <h3>Pourquoi ADC1 uniquement ?</h3>
