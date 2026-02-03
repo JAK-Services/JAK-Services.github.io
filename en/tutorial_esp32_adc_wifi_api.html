@@ -116,14 +116,14 @@
 
 		<main class="container">
 			<section class="hero">
-			  <h1>ESP32 &ndash; Dual ADC RMS Meter + Wi-Fi Provisioning + HTTP API (ESP-IDF + VS Code)</h1>
+			  <h1>ESP32 IoT HTTP JSON API &ndash; Dual-Channel RMS Meter</h1>
 
 			  <p class="lead">
                 Build a <strong>self-hosted IoT measurement node</strong>: the ESP32 continuously computes true RMS on two analog channels and exposes the latest values through a <strong>clean HTTP JSON API</strong> for scripts, dashboards, and automation.
               </p>
 
               <p style="margin-top:10px; margin-bottom:8px;">
-                <strong>Proof in 10 seconds:</strong> once the ESP32 is on your Wi-Fi, fetch the latest RMS values from any machine on the same network.
+                <strong>Once connected to Wi-Fi:</strong> the ESP32 exposes the latest RMS measurements via a local HTTP JSON endpoint, accessible from any device on the same network.
               </p>
 
               <div class="code-wrapper" style="margin-top:8px;">
@@ -134,10 +134,10 @@
               <div class="code-wrapper" style="margin-top:10px;">
                 <button class="copy-btn" data-target="hero-json" aria-label="Copy code" title="Copy">⧉</button>
                 <pre class="code-block"><code id="hero-json">{
-  "channel_a_rms": 1.237,
-  "channel_b_rms": 0.982,
+  "channel_a_rms": 0.212,
+  "channel_b_rms": 0.106,
   "unit": "volts",
-  "timestamp_ms": 12345678
+  "timestamp_ms": 41596000
 }</code></pre>
               </div>
 
