@@ -2,96 +2,89 @@
 
 <html lang="fr">
 	<head>
-		<meta charset="utf-8"/>
-		<title>
-			ESP32 &ndash; Mesure RMS sur deux entrées ADC + Provisioning Wi-Fi + API HTTP | JAK Services
-		</title>
-		<meta content="width=device-width, initial-scale=1" name="viewport"/>
-		<meta content="Mesurer deux entrées analogiques sur ESP32 (ADC1), calculer le vrai RMS périodiquement, et exposer les résultats via Wi-Fi avec provisioning et une API HTTP JSON simple." name="description"/>
-		<link href="../styles/styles.css" rel="stylesheet"/>
-		<link href="../styles/portfolio_carousel.css" rel="stylesheet"/>
-		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+	  <meta charset="utf-8"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	  <title>API HTTP JSON IoT ESP32 – Mesure RMS double canal | JAK Services</title>
+	  <meta name="description" content="Construisez un nœud capteur IoT ESP32 exposant des mesures RMS réelles sur deux canaux via une API HTTP JSON stable. Firmware ESP-IDF (C) avec provisioning Wi-Fi, tests curl et intégration réseau local pour Grafana, InfluxDB, Home Assistant et Node-RED."/>
+	  <meta name="robots" content="index,follow,max-image-preview:large"/>
+	  <!-- Styles / icons -->
+	  <link rel="stylesheet" href="../styles/styles.css"/>
+	  <link rel="stylesheet" href="../styles/portfolio_carousel.css"/>
+	  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+	  <!-- Canonical + i18n -->
+	  <link rel="canonical" href="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html"/>
+	  <link rel="alternate" hreflang="en" href="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html"/>
+	  <link rel="alternate" hreflang="fr" href="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html"/>
+	  <link rel="alternate" hreflang="x-default" href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html"/>
+	  <!-- Open Graph (IoT-first, shareable) -->
+	  <meta property="og:type" content="article"/>
+	  <meta property="og:title" content="API HTTP JSON IoT ESP32 – Mesure RMS double canal"/>
+	  <meta property="og:description" content="Capteur IoT ESP32 auto‑hébergé exposant des mesures RMS double canal via une API HTTP JSON. Firmware ESP-IDF avec provisioning Wi‑Fi et tests curl — prêt pour Grafana, InfluxDB, Home Assistant et Node‑RED."/>
+	  <meta property="og:url" content="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html"/>
+	  <meta property="og:image" content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp"/>
+	  <meta property="og:site_name" content="JAK Services"/>
+	  <!-- Twitter -->
+	  <meta name="twitter:card" content="summary_large_image"/>
+	  <meta name="twitter:title" content="API HTTP JSON IoT ESP32 – Mesure RMS double canal"/>
+	  <meta name="twitter:description" content="Exposez des mesures RMS réelles depuis un nœud IoT ESP32 via une API HTTP JSON propre. Provisioning Wi‑Fi + firmware ESP‑IDF, prêt pour tableaux de bord et automatisation."/>
+	  <meta name="twitter:image" content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp"/>
+	  <!-- Structured data -->
+	  <script type="application/ld+json">
+	  {
+		"@context": "https://schema.org",
+		"@type": "TechArticle",
+		"headline": "API HTTP JSON IoT ESP32 – Mesure RMS double canal (ESP-IDF)",
+		"inLanguage": "fr",
+		"description": "Construisez un nœud capteur IoT ESP32 auto‑hébergé qui calcule le RMS réel sur deux canaux et expose les dernières valeurs via une API HTTP JSON stable. Inclut le provisioning Wi‑Fi, ESP-IDF (C) et des tests curl pour l’automatisation et les tableaux de bord.",
+		"image": "https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp",
+		"author": {
+		  "@type": "Organization",
+		  "name": "JAK Services"
+		},
+		"publisher": {
+		  "@type": "Organization",
+		  "name": "JAK Services",
+		  "logo": {
+			"@type": "ImageObject",
+			"url": "https://jak-services.github.io/images/jak-logo.svg"
+		  }
+		},
+		"mainEntityOfPage": {
+		  "@type": "WebPage",
+		  "@id": "https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html"
+		},
+		"about": [
+		  "IoT",
+		  "ESP32",
+		  "HTTP API",
+		  "JSON",
+		  "ESP-IDF",
+		  "RMS measurement",
+		  "Edge computing"
+		],
+		"keywords": [
+		  "ESP32 IoT",
+		  "ESP32 HTTP API",
+		  "ESP32 JSON API",
+		  "IoT sensor node",
+		  "RMS meter",
+		  "Grafana",
+		  "InfluxDB",
+		  "Home Assistant",
+		  "Node-RED"
+		]
+	  }
+	  </script>
 
-		<link href="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html" rel="canonical"/>
-		<link href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html" hreflang="en" rel="alternate"/>
-		<link href="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html" hreflang="fr" rel="alternate"/>
-		<link href="https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html" hreflang="x-default" rel="alternate"/>
-
-		<meta content="article" property="og:type"/>
-		<meta content="ESP32 &ndash; Mesure RMS sur deux entrées ADC + Provisioning Wi-Fi + API HTTP (ESP-IDF + VS Code) | JAK Services" property="og:title"/>
-		<meta content="Mesurer deux entrées analogiques sur ESP32 (ADC1), calculer le vrai RMS périodiquement, et exposer les résultats via Wi-Fi avec provisioning et une API HTTP JSON simple." property="og:description"/>
-		<meta content="https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html" property="og:url"/>
-		<meta content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp" property="og:image"/>
-
-		<meta content="summary_large_image" name="twitter:card"/>
-		<meta content="ESP32 &ndash; Mesure RMS sur deux entrées ADC + Provisioning Wi-Fi + API HTTP (ESP-IDF + VS Code) | JAK Services" name="twitter:title"/>
-		<meta content="Mesurer deux entrées analogiques sur ESP32 (ADC1), calculer le vrai RMS périodiquement, et exposer les résultats via Wi-Fi avec provisioning et une API HTTP JSON simple." name="twitter:description"/>
-		<meta content="https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp" name="twitter:image"/>
-
-		<script type="application/ld+json">
-			{"@context":"https://schema.org"
-				,"@type":"Organization"
-				,"name":"JAK Services"
-				,"url":"https://jak-services.github.io"
-				,"logo":"https://jak-services.github.io/images/jak-logo.svg"
-			}
-		</script>
-
-		<script type="application/ld+json">
-			{
-			  "@context": "https://schema.org",
-			  "@type": "BreadcrumbList",
-			  "itemListElement": [
-				{
-				  "@type": "ListItem",
-				  "position": 1,
-				  "name": "Accueil",
-				  "item": "https://jak-services.github.io/fr/index.html"
-				},
-				{
-				  "@type": "ListItem",
-				  "position": 2,
-				  "name": "Tutoriels",
-				  "item": "https://jak-services.github.io/fr/tutorials.html"
-				},
-				{
-				  "@type": "ListItem",
-				  "position": 3,
-				  "name": "ESP32 – Mesure RMS sur deux entrées ADC + Provisioning Wi-Fi + API HTTP (ESP-IDF + VS Code)",
-				  "item": "https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html"
-				}
-			  ]
-			}
-		</script>
-
-		<script type="application/ld+json">
-			{
-			  "@context": "https://schema.org",
-			  "@type": "TechArticle",
-			  "headline": "ESP32 – Mesure RMS sur deux entrées ADC + Provisioning Wi-Fi + API HTTP (ESP-IDF + VS Code) | JAK Services",
-			  "description": "Mesurer deux entrées analogiques sur ESP32 (ADC1), calculer le vrai RMS périodiquement, et exposer les résultats via Wi-Fi avec provisioning et une API HTTP JSON simple.",
-			  "image": "https://jak-services.github.io/images/tutorials/esp32_adc_wifi_2.webp",
-			  "author": { "@type": "Organization", "name": "JAK Services" },
-			  "publisher": {
-				"@type": "Organization",
-				"name": "JAK Services",
-				"logo": { "@type": "ImageObject", "url": "https://jak-services.github.io/images/jak-logo.svg" }
-			  },
-			  "mainEntityOfPage": {
-				"@type": "WebPage",
-				"@id": "https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html"
-			  }
-			}
-		</script>
-
-		<script async="" data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+	  <!-- Analytics -->
+	  <script async data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
 	</head>
 
 	<body>
 		<header class="site-header">
 		  <div class="container header-inner">
 			<a class="brand" href="index.html">
-			  <img alt="Logo JAK Services" class="logo" src="../images/jak-logo.svg"/>
+			  <img alt="JAK Services logo" class="logo" src="../images/jak-logo.svg"/>
 			  <div class="brand-text">
 				<span class="brand-name">JAK Services</span>
 				<span class="brand-tagline">Solutions d’ingénierie logicielle et électronique</span>
@@ -103,35 +96,54 @@
 			  <a href="services.html">Services</a>
 			  <a href="portefolio.html">Portfolio</a>
 			  <a href="tutorials.html" aria-current="page">Tutoriels</a>
-			  <a href="./fr/pcb-design-rules.html">Guides</a>
+			  <a href="../fr/pcb-design-rules.html">Guides</a>
 			  <a href="clients.html">Clients</a>
 			  <a href="contact.html">Contact</a>
 			</nav>
 
 			<div class="lang-switch" aria-label="Sélecteur de langue">
-			  <a class="lang-btn active" aria-current="true" href="./fr/tutorial_esp32_adc_wifi_api.html">FR</a>
-			  <a class="lang-btn" href="./en/tutorial_esp32_adc_wifi_api.html">EN</a>
+			  <a class="lang-btn active" aria-current="true" href="../fr/tutorial_esp32_adc_wifi_api.html">FR</a>
+			  <a class="lang-btn" href="../en/tutorial_esp32_adc_wifi_api.html">EN</a>
 			</div>
 		  </div>
 		</header>
 
 		<main class="container">
 			<section class="hero">
-			  <h1>ESP32 &ndash; Mesure RMS sur deux entrées ADC + Provisioning Wi-Fi + API HTTP (ESP-IDF + VS Code)</h1>
+			  <h1>API HTTP JSON IoT ESP32 &ndash; Mesure RMS double canal</h1>
 
 			  <p class="lead">
-				Échantillonnez deux entrées analogiques, calculez leurs valeurs RMS, et récupérez les derniers résultats via une API HTTP JSON connectée en Wi-Fi.
-			  </p>
+                Construisez un <strong>nœud de mesure IoT auto‑hébergé</strong> : l’ESP32 calcule en continu le RMS réel sur deux canaux analogiques et expose les dernières valeurs via une <strong>API HTTP JSON propre</strong> pour les scripts, tableaux de bord et l’automatisation.
+              </p>
 
-			  <div class="carousel" aria-label="Points clés du tutoriel">
+              <p style="margin-top:10px; margin-bottom:8px;">
+                <strong>Une fois connecté au Wi‑Fi :</strong> l’ESP32 expose les dernières mesures RMS via un endpoint HTTP JSON local, accessible depuis tout appareil sur le même réseau.
+              </p>
+
+              <div class="code-wrapper" style="margin-top:8px;">
+                <button class="copy-btn" data-target="hero-curl" aria-label="Copy code" title="Copy">⧉</button>
+                <pre class="code-block"><code id="hero-curl">curl http://&lt;ESP32_IP&gt;/api/rms</code></pre>
+              </div>
+
+              <div class="code-wrapper" style="margin-top:10px;">
+                <button class="copy-btn" data-target="hero-json" aria-label="Copy code" title="Copy">⧉</button>
+                <pre class="code-block"><code id="hero-json">{
+  "channel_a_rms": 0.212,
+  "channel_b_rms": 0.106,
+  "unit": "volts",
+  "timestamp_ms": 41596000
+}</code></pre>
+              </div>
+
+			  <div class="carousel" aria-label="Tutorial highlights">
 				<div class="carousel-track">
 				  <div class="carousel-slide active">
-					<p class="carousel-caption">API de mesure RMS (Double ADC)</p>
+					<p class="carousel-caption">API de mesure RMS (double ADC)</p>
 					<div class="carousel-image-wrapper">
 					  <a href="tutorial_esp32_adc_wifi_api.html">
 						<img
 						  src="/images/tutorials/esp32_adc_wifi_2.webp"
-						  alt="Illustration de l’API de mesure RMS (Double ADC)"
+						  alt="API de mesure RMS (double ADC) illustration"
 						  loading="lazy"
 						  decoding="async"
 						/>
@@ -140,12 +152,12 @@
 				  </div>
 
 				  <div class="carousel-slide">
-					<p class="carousel-caption">Connecter l’ESP32 à votre réseau Wi-Fi domestique.</p>
+					<p class="carousel-caption">Connectez l’ESP32 à votre réseau Wi‑Fi domestique.</p>
 					<div class="carousel-image-wrapper">
 					  <a href="tutorial_esp32_adc_wifi_api.html">
 						<img
 						  src="/images/tutorials/esp32_adc_wifi_0.webp"
-						  alt="Image de connexion de l’ESP32 à votre réseau Wi-Fi domestique"
+						  alt="Connect the ESP32 to your home Wi-Fi network image"
 						  loading="eager"
 						  decoding="async"
 						/>
@@ -154,12 +166,12 @@
 				  </div>
 
 				  <div class="carousel-slide">
-					<p class="carousel-caption">Obtenir l’adresse IP attribuée à l’ESP32 par votre réseau Wi-Fi.</p>
+					<p class="carousel-caption">Récupérez l’adresse IP attribuée à l’ESP32 par votre réseau Wi‑Fi.</p>
 					<div class="carousel-image-wrapper">
 					  <a href="tutorial_esp32_adc_wifi_api.html">
 						<img
 						  src="/images/tutorials/esp32_adc_wifi_1.webp"
-						  alt="Illustration de l’obtention de l’adresse IP attribuée à l’ESP32"
+						  alt="Obtain the IP address assigned to the ESP32 by your home Wi-Fi network illustration"
 						  loading="lazy"
 						  decoding="async"
 						/>
@@ -168,12 +180,12 @@
 				  </div>
 
 				  <div class="carousel-slide">
-					<p class="carousel-caption">Maquette du prototype</p>
+					<p class="carousel-caption">Maquette de prototype</p>
 					<div class="carousel-image-wrapper">
 					  <a href="tutorial_esp32_adc_wifi_api.html">
 						<img
 						  src="/images/tutorials/esp32_adc.webp"
-						  alt="Illustration de la maquette du prototype"
+						  alt="Maquette de prototype illustration"
 						  loading="lazy"
 						  decoding="async"
 						/>
@@ -188,11 +200,11 @@
 				<button aria-pressed="false" class="carousel-toggle" title="Mettre en pause ou reprendre le diaporama" type="button">Pause</button>
 
 				<!-- IMPORTANT: 4 slides = 4 dots -->
-				<div class="carousel-dots" role="tablist" aria-label="Navigation du carrousel">
-				  <button class="dot active" type="button" data-index="0" aria-current="true" aria-label="API de mesure RMS (Double ADC)" title="API de mesure RMS (Double ADC)"></button>
+				<div class="carousel-dots" role="tablist" aria-label="Carousel navigation">
+				  <button class="dot active" type="button" data-index="0" aria-current="true" aria-label="API de mesure RMS (double ADC)" title="API de mesure RMS (double ADC)"></button>
 				  <button class="dot" type="button" data-index="1" aria-label="Connecter l’ESP32 à votre réseau Wi-Fi domestique" title="Connecter l’ESP32 à votre réseau Wi-Fi domestique"></button>
-				  <button class="dot" type="button" data-index="2" aria-label="Obtenir l’adresse IP attribuée à l’ESP32 par votre réseau Wi-Fi." title="Obtenir l’adresse IP attribuée à l’ESP32 par votre réseau Wi-Fi."></button>
-				  <button class="dot" type="button" data-index="3" aria-label="Maquette du prototype" title="Maquette du prototype"></button>
+				  <button class="dot" type="button" data-index="2" aria-label="Récupérez l’adresse IP attribuée à l’ESP32 par votre réseau Wi‑Fi." title="Récupérez l’adresse IP attribuée à l’ESP32 par votre réseau Wi‑Fi."></button>
+				  <button class="dot" type="button" data-index="3" aria-label="Maquette de prototype" title="Maquette de prototype"></button>
 				</div>
 			  </div>
 
@@ -210,16 +222,17 @@
 			  <h2>Sommaire</h2>
 			  <nav aria-label="Sommaire du tutoriel">
 				<ul class="toc-list">
-				  <li><a href="#overview">Vue d’ensemble</a></li>
-				  <li><a href="#what-you-need">Matériel requis</a></li>
+				  <li><a href="#overview">Présentation</a></li>
+				  <li><a href="#api">API HTTP (JSON)</a></li>
+				  <li><a href="#architecture">Architecture en un coup d’œil</a></li>
+				  <li><a href="#what-you-need">Pré-requis</a></li>
 				  <li><a href="#wiring">Câblage (GPIO34 / GPIO35)</a></li>
 				  <li><a href="#vscode">Configuration VS Code + ESP-IDF</a></li>
 				  <li><a href="#get-the-code">Récupérer le code (GitHub)</a></li>
 				  <li><a href="#project">Compiler le projet</a></li>
-				  <li><a href="#firmware-tour">Tour du firmware : Démarrage → Mesure → Serveur</a></li>
-				  <li><a href="#provisioning">Provisioning Wi-Fi</a></li>
-				  <li><a href="#api">API HTTP (JSON)</a></li>
-				  <li><a href="#flash">Compiler, Flasher, Monitorer, Déboguer</a></li>
+				  <li><a href="#firmware-tour">Visite du firmware : Démarrer → Mesurer → Servir</a></li>
+				  <li><a href="#provisioning">Provisioning Wi‑Fi</a></li>
+				  <li><a href="#flash">Compiler, flasher, monitorer, déboguer</a></li>
 				  <li><a href="#troubleshooting">Dépannage</a></li>
 				  <li><a href="#resources">Ressources</a></li>
 				</ul>
@@ -227,47 +240,90 @@
 			</section>
 
 			<section id="overview" class="card">
-			  <h2>Vue d’ensemble</h2>
+          <h2>Présentation</h2>
 
-			  <h3>Ce que fait ce projet</h3>
+          <p>
+            L’objectif de ce projet est <strong>API‑first</strong> : transformer un ESP32 en un <strong>nœud capteur IoT</strong> petit et fiable qui publie des
+            <strong>mesures RMS exploitables par machine</strong> sur votre réseau local. L’ADC et le calcul RMS forment le “backend capteur” &mdash; l’endpoint
+            HTTP JSON est le produit que vous intégrez dans vos outils et tableaux de bord.
+          </p>
+
+          <p class="callout">
+            Cette API HTTP est conçue pour une <strong>consommation machine</strong> (scripts, automatisation, tableaux de bord), pas uniquement pour des tests manuels.
+          </p>
+
+          <h3>Ce que cette API permet</h3>
+          <ul>
+            <li>Interroger les valeurs depuis des scripts et outils (<code>curl</code>, Python, Go, Bash, checks CI, etc.).</li>
+            <li>Alimenter une chaîne time‑series (Node-RED &rarr; InfluxDB/Prometheus &rarr; Grafana).</li>
+            <li>Intégrer à l’automatisation domestique/industrielle (Home Assistant, passerelles PLC, services sur mesure).</li>
+            <li>Utiliser l’ESP32 comme <strong>endpoint de mesure headless</strong> déployable n’importe où sur votre LAN.</li>
+          </ul>
+
+          <h3>Ce que fait ce projet</h3>
+          <ul>
+            <li>Fournit un <strong>provisioning Wi-Fi</strong> pour la configuration au premier démarrage.</li>
+            <li>Échantillonne <strong>deux entrées analogiques</strong> via <strong>ADC1</strong>.</li>
+            <li>Calcule la <strong>tension RMS réelle</strong> sur une fenêtre de mesure.</li>
+            <li>Met à jour les résultats périodiquement (par ex. toutes les 1&ndash;10 secondes).</li>
+            <li>Expose en continu les derniers résultats via une <strong>API HTTP JSON stable</strong>.</li>
+          </ul>
+
+          <h3>Ce que ce projet ne fait pas</h3>
+          <ul>
+            <li>Pas de streaming continu des échantillons bruts.</li>
+            <li>Pas de visualisation oscilloscope dans Telemetry Viewer.</li>
+          </ul>
+
+          <p class="callout">
+            Si vous avez besoin d’un tracé de forme d’onde en temps réel via USB, utilisez le tutoriel séparé :
+            <a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">Double ADC + Serial Oscilloscope (Telemetry Viewer)</a>.
+          </p>
+        </section>
+
+		<section id="architecture" class="card">
+              <h2>Architecture en un coup d’œil</h2>
+
+              <p>
+                Le firmware est structuré pour que le serveur HTTP réponde toujours rapidement : les mesures se font en arrière‑plan et l’API sert
+                le dernier résultat terminé depuis un cache partagé.
+              </p>
+
+              <div class="code-wrapper">
+                <button class="copy-btn" data-target="arch-flow" aria-label="Copy code" title="Copy">⧉</button>
+                <pre class="code-block"><code id="arch-flow">ADC (CH_A, CH_B)
+   ↓  periodic sampling window
+RMS compute task
+   ↓  update shared state (latest result)
+HTTP server
+   ↓
+GET /api/rms  → JSON for clients (curl / Node-RED / Grafana / apps)</code></pre>
+              </div>
+
+              <p class="callout">
+                Choix de conception clé : l’appareil <strong>ne</strong> mesure <strong>pas</strong> “à la demande”. Les requêtes renvoient simplement la dernière fenêtre RMS terminée,
+                ce qui garde le Wi‑Fi réactif et des temps de réponse constants.
+              </p>
+		</section>
+		
+		<section id="what-you-need" class="card">
+			  <h2>Pré-requis</h2>
 			  <ul>
-				<li>Fournit un <strong>provisioning Wi-Fi</strong> pour la configuration au premier démarrage.</li>
-				<li>Échantillonne <strong>deux entrées analogiques</strong> via <strong>ADC1</strong>.</li>
-				<li>Calcule la <strong>tension RMS vraie</strong> sur une fenêtre de mesure.</li>
-				<li>Met à jour les résultats périodiquement (par ex. toutes les 1 à 10 secondes).</li>
-				<li>Expose en continu les dernières mesures via une <strong>API HTTP JSON simple</strong>.</li>
-			  </ul>
-
-			  <h3>Ce que ce projet ne fait pas</h3>
-			  <ul>
-				<li>Pas de streaming continu des échantillons bruts.</li>
-				<li>Pas de visualisation type oscilloscope dans Telemetry Viewer.</li>
-			  </ul>
-
-			  <p class="callout">
-				Si vous avez besoin d’un tracé temps réel de la forme d’onde via USB, utilisez le tutoriel dédié :
-				<a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">Double ADC + Oscilloscope série (Telemetry Viewer)</a>.
-			  </p>
-			</section>
-
-			<section id="what-you-need" class="card">
-			  <h2>Matériel requis</h2>
-			  <ul>
-				<li>ESP32 DevKitC (ESP32-WROOM-32) ou carte ESP32 équivalente.</li>
-				<li>Deux signaux analogiques (0 &ndash; 3,3 V). <a href="https://youtu.be/zW5jnChzPlY" target="_blank" rel="noopener">Voir ce tutoriel vidéo pour un exemple de circuit.</a>.</li>
-				<li>Câble USB pour flasher et lire les logs série.</li>
+				<li>ESP32 DevKitC (ESP32-WROOM-32) or similar ESP32 board.</li>
+				<li>Deux signaux analogiques (0&ndash;3,3 V). <a href="https://youtu.be/zW5jnChzPlY" target="_blank" rel="noopener">Voir ce tutoriel vidéo pour un exemple de circuit.</a>.</li>
+				<li>Câble USB pour le flash et les logs série.</li>
 				<li>Un téléphone ou un ordinateur pour se connecter au portail de provisioning.</li>
 			  </ul>
 
 			  <p class="callout">
-				Les entrées ADC de l’ESP32 doivent rester dans <strong>0 &ndash; 3,3 V</strong>. Ne dépassez jamais 3,3 V sur GPIO34/GPIO35.
+				Les entrées ADC de l’ESP32 doivent rester dans <strong>0&ndash;3,3 V</strong>. Ne dépassez jamais 3,3 V sur GPIO34/GPIO35.
 			  </p>
 			</section>
 
-			<section id="wiring" class="card">
+		<section id="wiring" class="card">
 			  <h2>Câblage (GPIO34 / GPIO35)</h2>
 			  <p>
-				Ce tutoriel utilise volontairement <strong>ADC1 uniquement</strong> afin d’éviter les conflits ADC2/Wi-Fi.
+				Ce tutoriel utilise volontairement <strong>ADC1 uniquement</strong> pour éviter les conflits ADC2/Wi‑Fi.
 			  </p>
 
 			  <div class="table-wrapper">
@@ -298,11 +354,11 @@
 			  </div>
 
 			  <p class="callout">
-				Reliez la <strong>masse du signal</strong> au <strong>GND</strong> de l’ESP32, sinon les mesures seront instables et sans signification.
+				Connectez la <strong>masse du signal</strong> au <strong>GND</strong> de l’ESP32, sinon vos mesures seront instables et inutilisables.
 			  </p>
-			</section>
+		</section>
 
-			<section id="vscode" class="card">
+		<section id="vscode" class="card">
 			  <h2>Configuration VS Code + ESP-IDF</h2>
 			  <p>
 				Installez ESP-IDF et l’extension VS Code exactement comme dans le <a href="tutorial_esp32_dual_adc_serial_oscilloscope.html">tutoriel oscilloscope série</a>.
@@ -312,15 +368,15 @@
 			  <ul>
 				<li>Installer Visual Studio Code</li>
 				<li>Installer l’extension <strong>Espressif IDF</strong></li>
-				<li>Lancer l’assistant de configuration ESP-IDF (toolchain + Python + IDF)</li>
+				<li>Lancer l’assistant d’installation ESP-IDF (toolchain + Python + IDF)</li>
 			  </ul>
 
 			  <p class="callout">
-				Utilisez une version stable d’ESP-IDF et gardez-la cohérente entre vos projets. Ce tutoriel a été développé avec Visual Studio Code v1.108.1 et ESP-IDF v1.11.1.
+				Utilisez une version stable d’ESP-IDF et gardez-la cohérente sur vos projets. Ce tutoriel a été développé avec Visual Studio Code v1.108.1 et ESP-IDF v1.11.1.
 			  </p>
-			</section>
+		</section>
 
-			<section id="get-the-code" class="card">
+		<section id="get-the-code" class="card">
 			  <h2>Récupérer le code (GitHub)</h2>
 
 			  <p>
@@ -350,9 +406,9 @@
 				<pre class="code-block"><code id="clone-code">git clone https://github.com/jak-services/esp32-adc-rms-wifi-api.git
 cd esp32-adc-rms-wifi-api</code></pre>
 			  </div>
-			</section>
+		</section>
 
-			<section id="project" class="card">
+		<section id="project" class="card">
 			  <h2>Compiler le projet</h2>
 			  <p>
 				C’est un projet ESP-IDF standard (CMake). Ouvrez le dossier dans VS Code et utilisez les commandes ESP-IDF.
@@ -361,40 +417,41 @@ cd esp32-adc-rms-wifi-api</code></pre>
 			  <ol>
 				<li>Ouvrez VS Code dans le dossier du projet.</li>
 				<li>Définissez la cible (si nécessaire, CTRL + SHIFT + P) : <strong>ESP-IDF: Set Espressif Device Target</strong> &rarr; <strong>esp32</strong>.</li>
-				<li>Configurez le port série (CTRL + SHIFT + P) : <strong>ESP-IDF: Select Port to Use</strong>.</li>
+				<li>Configurez votre port série (CTRL + SHIFT + P) : <strong>ESP-IDF: Select Port to Use</strong>.</li>
 				<li>Compiler/Flasher (CTRL + SHIFT + P) : <strong>ESP-IDF: Build, Flash and Start a Monitor on Your Device</strong>.</li>
 			  </ol>
 
 			  <p class="callout">
-				La plupart des DevKitC entrent automatiquement en mode bootloader. Si le flash reste bloqué sur « Connecting… », maintenez <strong>BOOT</strong>,
-				cliquez sur flash, puis relâchez BOOT quand vous voyez « Writing at … ».
+				La plupart des cartes DevKitC entrent automatiquement en mode bootloader. Si le flash reste bloqué sur “Connecting…”, maintenez <strong>BOOT</strong>,
+				cliquez sur flash, puis relâchez BOOT lorsque vous voyez “Writing at …”.
 			  </p>
-			</section>
+		</section>
 
-			<section id="firmware-tour" class="card">
-			  <h2>Tour du firmware : Démarrage → Mesure → Serveur</h2>
+		<section id="firmware-tour" class="card">
+			  <h2>Visite du firmware : Démarrer → Mesurer → Servir</h2>
 
 			  <p>
-				Ce projet est volontairement découpé en plusieurs fichiers pour que chaque sous-système reste lisible :
-				échantillonnage ADC, traitement RMS, provisioning, et serveur HTTP.
+				Ce projet est volontairement découpé en plusieurs fichiers pour garder chaque sous-système lisible :
+				échantillonnage ADC, traitement RMS, provisioning et serveur HTTP.
 			  </p>
 
 			  <h3>Flux global</h3>
 			  <ol>
 				<li><strong>Démarrage</strong> : initialiser NVS + logs.</li>
-				<li><strong>Wi-Fi</strong> : se connecter (ou lancer le provisioning si nécessaire).</li>
+				<li><strong>Wi‑Fi</strong> : se connecter (ou démarrer le provisioning si nécessaire).</li>
 				<li><strong>Mesure</strong> : capturer périodiquement des échantillons et calculer le RMS.</li>
-				<li><strong>Serveur</strong> : renvoyer instantanément les résultats en cache via HTTP.</li>
+				<li><strong>Service</strong> : renvoyer instantanément les résultats en cache via HTTP.</li>
 			  </ol>
 
-			  <h3>Pseudo-point d’entrée (pour se repérer)</h3>
+
+			  <h3>Pseudo-point d’entrée (pour s’orienter)</h3>
 			  <p>
-				L’idée principale est toujours la même :
-				démarrer le Wi-Fi, démarrer la mesure, démarrer le serveur.
+				The main idea is always the same:
+				démarrer le Wi‑Fi, démarrer la mesure, démarrer le serveur.
 			  </p>
 
 			  <div class="code-wrapper">
-				<button class="copy-btn" data-target="main-flow" aria-label="Copier le code" title="Copier">⧉</button>
+				<button class="copy-btn" data-target="main-flow" aria-label="Copy code" title="Copy">⧉</button>
 				<pre class="code-block"><code id="main-flow">// PSEUDO-CODE (illustration)
 
 void app_main(void)
@@ -402,23 +459,23 @@ void app_main(void)
     nvs_init();
     wifi_init_and_connect_or_provision();
 
-    measurements_init();         // alloue les buffers, init la config ADC
-    measurements_start_task();   // capture périodique + calcul RMS
+    measurements_init();         // allocate buffers, init ADC config
+    measurements_start_task();   // periodic capture + RMS compute
 
-    http_server_start();         // expose /api/rms
+    http_server_start();         // exposes /api/rms
 }</code></pre>
 			  </div>
-			</section>
+		</section>
 
-			<section id="provisioning" class="card">
-				<h2>Provisioning Wi-Fi</h2>
+		<section id="provisioning" class="card">
+				<h2>Provisioning Wi‑Fi</h2>
 
 				<p>
-				  Au premier démarrage (ou lorsqu’aucun identifiant Wi-Fi n’est stocké), l’appareil démarre un
-				  <strong>point d’accès Wi-Fi</strong> et expose un portail de provisioning.
+				  Au premier démarrage (ou lorsqu’aucun identifiant Wi‑Fi n’est stocké), l’appareil démarre un
+				  <strong>point d’accès Wi‑Fi</strong> et expose un portail de provisioning.
 				</p>
 
-				<h3>Étapes typiques</h3>
+				<h3>Étapes de provisioning typiques</h3>
 				<ol>
 				  <li>Alimentez l’ESP32 via un câble USB.</li>
 
@@ -434,23 +491,23 @@ void app_main(void)
 					<code>http://192.168.4.1</code> (modifiable dans <code>app_config.h</code>).
 				  </li>
 
-				  <li>Saisissez le SSID et le mot de passe de votre Wi-Fi domestique.</li>
+				  <li>Saisissez le SSID et le mot de passe de votre Wi‑Fi.</li>
 
 				  <li>
-					L’appareil enregistre les identifiants et se connecte à votre réseau Wi-Fi domestique.
+					L’appareil enregistre les identifiants et se connecte à votre réseau Wi‑Fi.
 				  </li>
 				</ol>
 
 				<p class="callout">
-				  Une fois connecté à votre Wi-Fi, l’ESP32 reçoit une adresse IP attribuée par votre
-				  routeur. Cette adresse IP est affichée dans l’API.
+				  Une fois connecté à votre Wi‑Fi, l’ESP32 reçoit une adresse IP de votre routeur.
+				  Cette adresse IP est affichée dans l’API.
 				  <br><br>
 				  À partir de là, vous pouvez accéder à l’ESP32 depuis n’importe quel téléphone ou ordinateur
-				  connecté au même réseau Wi-Fi domestique, en utilisant cette adresse IP, sans
-				  devoir vous reconnecter au point d’accès <code>JAK_DEVICE_*</code>.
+				  connecté au même réseau Wi‑Fi, en utilisant cette adresse IP, sans devoir
+				  vous reconnecter au point d’accès <code>JAK_DEVICE_*</code>.
 				  <br><br>
 				  Le point d’accès de provisioning reste disponible en permanence si vous devez
-				  reconfigurer l’appareil ou changer de réseau Wi-Fi.
+				  reconfigurer l’appareil ou changer de réseau Wi‑Fi.
 				</p>
 
 				<h3>Considérations de sécurité</h3>
@@ -459,27 +516,26 @@ void app_main(void)
 				  empêchant les connexions non autorisées pendant la configuration.
 				  <br><br>
 				  Tous les services fournis par l’appareil (interface de provisioning et API HTTP)
-				  sont accessibles uniquement depuis le réseau local et ne sont pas exposés à
-				  internet. L’appareil n’initie aucune connexion réseau externe et ne dépend
-				  d’aucun service cloud.
+				  ne sont accessibles que depuis le réseau local et ne sont pas exposés à Internet.
+				  L’appareil n’initie aucune connexion externe et ne dépend d’aucun service cloud.
 				  <br><br>
-				  L’API HTTP n’implémente ni authentification ni chiffrement et est conçue pour
-				  des environnements locaux de confiance. Si une sécurité renforcée est nécessaire
-				  (par exemple HTTPS, authentification ou restriction d’accès), des mesures
-				  complémentaires, non incluses dans ce tutoriel, doivent être mises en place.
+				  L’API HTTP n’implémente ni authentification ni chiffrement et est destinée
+				  à un usage en environnement local de confiance. Si une sécurité renforcée est requise
+				  (par exemple HTTPS, authentification, ou contrôle d’accès), des mesures additionnelles,
+				  non incluses dans ce tutoriel, doivent être mises en place.
 				</p>
-			</section>
+		</section>
 
-			<section id="api" class="card">
+		<section id="api" class="card">
 			  <h2>API HTTP (JSON)</h2>
 			  <p>
-				L’API renvoie les <strong>dernières mesures RMS terminées</strong>. L’échantillonnage n’est pas déclenché à la demande,
-				ce qui garde les requêtes rapides et le Wi-Fi réactif.
+				L’API renvoie les <strong>dernières mesures RMS terminées</strong>. L’échantillonnage n’est pas fait à la demande,
+				ce qui garantit des requêtes rapides et un Wi‑Fi réactif.
 			  </p>
 
 			  <h3>Endpoint</h3>
 			  <div class="code-wrapper">
-				<button class="copy-btn" data-target="api-endpoint" aria-label="Copier le code" title="Copier">⧉</button>
+				<button class="copy-btn" data-target="api-endpoint" aria-label="Copy code" title="Copy">⧉</button>
 				<pre class="code-block"><code id="api-endpoint">GET /api/rms</code></pre>
 			  </div>
 
@@ -496,7 +552,7 @@ void app_main(void)
 
 			  <h3>Tester avec curl</h3>
 			  <p>
-				Une fois l’appareil connecté en Wi-Fi, récupérez son adresse IP (dans l’API ou les logs série), puis :
+				Une fois l’appareil connecté au Wi‑Fi, récupérez son adresse IP dans l’API (ou dans les logs série), puis :
 			  </p>
 
 			  <div class="code-wrapper">
@@ -505,18 +561,18 @@ void app_main(void)
 			  </div>
 
 			  <p class="callout">
-				Si vous comptez intégrer ces données dans des dashboards (Home Assistant, Node-RED, Grafana, etc.),
+				Si vous prévoyez une intégration avec des tableaux de bord (Home Assistant, Node-RED, Grafana, etc.),
 				gardez le JSON stable et versionnez l’API lorsque vous introduisez des changements incompatibles.
 			  </p>
-			</section>
+		</section>
 
-			<section id="flash" class="card">
-			  <h2>Compiler, Flasher, Monitorer, Déboguer</h2>
+		<section id="flash" class="card">
+			  <h2>Compiler, flasher, monitorer, déboguer</h2>
 
 			  <h3>Compiler + Flasher</h3>
 			  <ol>
-				<li>Lancez (CTRL + SHIFT + P) : <strong>ESP-IDF: Full Clean Project</strong>.</li>
-				<li>Lancez (CTRL + SHIFT + P) : <strong>ESP-IDF: Build, Flash and Start a Monitor on Your Device</strong>.</li>
+				<li>Lancez (CTRL + SHIFT + P): <strong>ESP-IDF: Full Clean Project</strong>.</li>
+				<li>Lancez (CTRL + SHIFT + P): <strong>ESP-IDF: Build, Flash and Start a Monitor on Your Device</strong>.</li>
 			  </ol>
 
 			  <h3>Moniteur série</h3>
@@ -532,43 +588,43 @@ void app_main(void)
 
 			  <p class="callout">
 				Un seul programme peut ouvrir le port série à la fois. Fermez le moniteur (CTRL + T puis CTRL + X)
-				si un autre outil doit accéder au port.
+				si un autre outil a besoin du port.
 			  </p>
-			</section>
+		</section>
 
-			<section id="troubleshooting" class="card">
+		<section id="troubleshooting" class="card">
 			  <h2>Dépannage</h2>
 
 			  <h3>Mesures instables / bruit</h3>
 			  <ul>
-				<li>Vérifiez que la masse du signal est bien reliée au GND de l’ESP32.</li>
-				<li>Utilisez des fils courts et évitez les montages “spaghetti” sur breadboard pour les signaux faibles.</li>
-				<li>Envisagez moyennage, filtrage et calibration (surtout si vous voulez des valeurs de tension précises).</li>
+				<li>Vérifiez que la masse du signal est reliée au GND de l’ESP32.</li>
+				<li>Utilisez des fils courts et évitez les montages “spaghetti” sur breadboard pour les faibles signaux.</li>
+				<li>Envisagez moyenne, filtrage et calibration (surtout si vous voulez des tensions précises).</li>
 			  </ul>
-
+			  
 			  <h3>Impossible d’accéder à l’API après provisioning</h3>
 			  <ul>
-				  <li>Pendant la configuration initiale, connectez-vous au point d’accès de provisioning <strong>JAK_DEVICE_*</strong> pour saisir le SSID et le mot de passe de votre Wi-Fi.</li>
-				  <li>Une fois les identifiants enregistrés, déconnectez-vous de <strong>JAK_DEVICE_*</strong> puis reconnectez votre appareil client au Wi-Fi de votre routeur.</li>
-				  <li>L’API RMS HTTP est accessible uniquement lorsque l’ESP32 et votre client sont sur le même réseau domestique.</li>
+				  <li>Pendant la configuration initiale, connectez‑vous au point d’accès de provisioning <strong>JAK_DEVICE_*</strong> pour saisir le SSID et le mot de passe de votre Wi‑Fi.</li>
+				  <li>Une fois les identifiants enregistrés, déconnectez‑vous de <strong>JAK_DEVICE_*</strong> et reconnectez votre appareil client au Wi‑Fi de votre routeur.</li>
+				  <li>L’API HTTP RMS est accessible uniquement lorsque l’ESP32 et votre client sont sur le même réseau.</li>
 				  <li>Utilisez l’adresse IP attribuée par le routeur (visible dans les logs série) pour accéder à l’API.</li>
 			  </ul>
 
-			  <h3>Le Wi-Fi se connecte mais l’API ne répond pas</h3>
+			  <h3>Le Wi‑Fi se connecte mais l’API ne répond pas</h3>
 			  <ul>
 				<li>Confirmez l’adresse IP dans les logs série.</li>
 				<li>Essayez <code>http://&lt;ip&gt;/api/rms</code> dans un navigateur.</li>
-				<li>Vérifiez que votre pare-feu / l’isolation réseau ne bloque pas le trafic local.</li>
+				<li>Vérifiez que le pare-feu / l’isolation réseau ne bloque pas le trafic local.</li>
 			  </ul>
 
-			  <h3>Pourquoi uniquement ADC1 ?</h3>
+			  <h3>Pourquoi ADC1 uniquement ?</h3>
 			  <p class="callout">
-				Sur ESP32, <strong>ADC2 est partagé avec le Wi-Fi</strong>. Utiliser ADC2 quand le Wi-Fi est actif peut produire des mesures invalides
-				ou des dysfonctionnements. Ce projet utilise <strong>ADC1 uniquement</strong> pour une robustesse maximale.
+				Sur ESP32, <strong>ADC2 est partagé avec le Wi‑Fi</strong>. Utiliser ADC2 pendant que le Wi‑Fi est actif peut produire des mesures invalides
+				ou des erreurs. Ce projet utilise <strong>ADC1 uniquement</strong> pour un fonctionnement robuste.
 			  </p>
-			</section>
+		</section>
 
-			<section id="resources" class="card">
+		<section id="resources" class="card">
 			  <h2>Ressources</h2>
 			  <ul>
 				<li>Documentation Espressif : <a href="https://documentation.espressif.com" target="_blank" rel="noopener">documentation.espressif.com</a></li>
