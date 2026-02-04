@@ -59,9 +59,16 @@
     // If the hash points to a section, do nothing special (native behavior already scrolls).
   }
 
+  function openAllRulesByDefault() {
+    document.querySelectorAll(".toggle-list .has-detail").forEach((item) => {
+      item.classList.add("open");
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     ensureRuleIds();
-    openRuleFromHash();
+    openAllRulesByDefault();   // <-- added
+    openRuleFromHash();        // hash still works (and will scroll nicely)
   });
 
   window.addEventListener("hashchange", () => {
