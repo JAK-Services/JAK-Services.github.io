@@ -7,11 +7,13 @@
 
 	  <title>Services d’ingénierie (Embarqué, IoT, PCB, Logiciel &amp; Électronique) | JAK Services</title>
 	  <meta name="description"
-			content="Support d’ingénierie senior en embarqué &amp; IoT, PCB/électronique et logiciel : prototypage, tests/validation, acquisition de données et documentation technique. Basé à Toulouse, disponible en France et à l’international." />
+			content="Support d’ingénierie senior en embarqué &amp; IoT, PCB/électronique et logiciel : prototypage, test/validation, acquisition de données et documentation technique. Basé à Toulouse, disponible en France et à l’international." />
 	  <meta name="robots" content="index,follow" />
+
 
 	  <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
 	  <link rel="stylesheet" href="../styles/styles.css" />
+	  <link rel="stylesheet" href="../styles/portfolio_carousel.css" />
 	  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
 	  <link rel="canonical" href="https://jak-services.github.io/fr/services.html" />
@@ -24,14 +26,14 @@
 	  <meta property="og:locale" content="fr_FR" />
 	  <meta property="og:title" content="JAK Services – Services d’ingénierie" />
 	  <meta property="og:description"
-			content="Support senior en embarqué &amp; IoT, PCB/électronique et logiciel : prototypage, tests/validation et documentation technique." />
+			content="Support senior en embarqué &amp; IoT, PCB/électronique et logiciel : prototypage, test/validation et documentation technique." />
 	  <meta property="og:url" content="https://jak-services.github.io/fr/services.html" />
 	  <meta property="og:image" content="https://jak-services.github.io/images/jak-logo.svg" />
 
 	  <meta name="twitter:card" content="summary" />
 	  <meta name="twitter:title" content="JAK Services – Services d’ingénierie" />
 	  <meta name="twitter:description"
-			content="Support senior en embarqué &amp; IoT, PCB/électronique et logiciel : prototypage, tests/validation et documentation technique." />
+			content="Support senior en embarqué &amp; IoT, PCB/électronique et logiciel : prototypage, test/validation et documentation technique." />
 	  <meta name="twitter:image" content="https://jak-services.github.io/images/jak-logo.svg" />
 
 	  <script type="application/ld+json">
@@ -112,6 +114,7 @@
 	  <script data-goatcounter="https://jak-services.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 	</head>
 
+
 	<body>
 
 		<header class="site-header">
@@ -126,7 +129,7 @@
 				<nav class="main-nav">
 					<a href="index.html">Accueil / À propos</a>
 					<a href="services.html" aria-current="page">Services</a>
-					<a href="portefolio.html">Portfolio</a>
+					<a href="portefolio.html">Portefolio</a>
 					<a href="tutorials.html">Tutoriels</a>
 					<a href="../fr/pcb-design-rules.html">Guides</a>
 					<a href="clients.html">Clients</a>
@@ -140,107 +143,289 @@
 		</header>
 
 		<main class="container">
-			<section class="card">
-				<h1>Services d’ingénierie</h1>
+			<section class="hero">
+				<h1>Services d’ingénierie systèmes</h1>
 				<p class="lead">
-					Support d’ingénierie senior en <strong>systèmes embarqués &amp; IoT</strong>, <strong>PCB/électronique</strong>,
-					<strong>logiciel</strong>, <strong>systèmes géospatiaux</strong> et <strong>automatisation IA/ML</strong>.
-					De l’idée au prototypage, jusqu’à la validation et la transmission — basé à Toulouse, disponible en France et à l’international.
+				  Support d’ingénierie en <strong>systèmes embarqués &amp; IoT</strong>, <strong>PCB et électronique</strong>, <strong>logiciel</strong>,
+				  <strong>systèmes géospatiaux</strong> et <strong>automatisation IA/ML</strong>.
 				</p>
 				<div class="hero-actions">
 					<a class="btn primary" href="contact.html">Discuter d’un projet</a><a class="btn secondary" href="portefolio.html">Voir le portfolio</a>
 				</div>
+				<br>
 			</section>
-
 			<section class="grid">
+
+				<article class="card" id="electronics">
+					<h2>Systèmes embarqués &amp; IoT</h2>
+					<div class="carousel" aria-label="Mises en avant des tutoriels">
+						<div class="carousel-track">
+							<div class="carousel-slide active">
+								<p class="carousel-caption">
+									Conception de PCB : développement complet, de la saisie du schéma au routage, incluant la validation ERC/DRC, les <a href="../en/pcb-design-rules.html">revues de conception</a> et la génération des fichiers Gerber.
+								</p>
+								<div class="carousel-image-wrapper">
+									<a href="tutorial_kicad_9_build_your_first_pcb.html">
+										<img src="/images/tutorials/kicad_9_your_first_pcb.webp" alt="Conception de PCB : développement complet, de la saisie du schéma au routage, incluant la validation ERC/DRC, les revues de conception et la génération des fichiers Gerber." loading="lazy" decoding="async"/>
+									</a>
+								</div>
+							</div>
+
+							<div class="carousel-slide">
+								<p class="carousel-caption">
+									API IoT &ndash; Tracé de séries temporelles ADC double canal &amp; mesureur RMS
+								</p>
+								<div class="carousel-image-wrapper">
+									<a href="tutorial_esp32_adc_wifi_api.html">
+										<img src="/images/tutorials/esp32_adc_wifi_2.webp" alt="API IoT &ndash; Tracé de séries temporelles ADC double canal &amp; mesureur RMS" loading="eager" decoding="async"/>
+									</a>
+								</div>
+							</div>
+
+							<div class="carousel-slide">
+								<p class="carousel-caption">
+									Prototype IoT sur breadboard (maquette)
+								</p>
+								<div class="carousel-image-wrapper">
+									<a href="tutorial_esp32_adc_wifi_api.html">
+										<img src="/images/tutorials/esp32_adc.webp" alt="Exemple de maquette IoT sur breadboard" loading="eager" decoding="async"/>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<button class="carousel-btn prev" type="button" aria-label="Diapositive précédente">‹</button>
+						<button class="carousel-btn next" type="button" aria-label="Diapositive suivante">›</button>
+						<button aria-pressed="false" class="carousel-toggle" title="Mettre en pause ou reprendre le diaporama" type="button">Pause</button>
+
+						<div class="carousel-dots" role="tablist" aria-label="Navigation du carrousel">
+							<button class="dot active" type="button" data-index="0" aria-current="true" aria-label="Conception de PCB : développement complet, de la saisie du schéma au routage, incluant la validation ERC/DRC, les revues de conception et la génération des fichiers Gerber." title="Conception de PCB : développement complet, de la saisie du schéma au routage, incluant la validation ERC/DRC, les revues de conception et la génération des fichiers Gerber."></button>
+							<button class="dot" type="button" data-index="1" aria-label="API IoT – Tracé de séries temporelles ADC double canal &amp; mesureur RMS" title="API IoT – Tracé de séries temporelles ADC double canal &amp; mesureur RMS"></button>
+							<button class="dot" type="button" data-index="2" aria-label="Prototype IoT sur breadboard (maquette)" title="Prototype IoT sur breadboard (maquette)"></button>
+						</div>
+					</div>
+					<p>
+						Développement de firmware et d’équipements connectés (capteurs, bancs de test, produits edge), associé à l’ingénierie électronique sur des systèmes embarqués : 
+						conception de circuits, développement de PCB et instrumentation. 
+						L’approche privilégie le concret : conception pragmatique, prototypage rapide, validation, et documentation technique claire, avec une intégration étroite entre matériel et logiciel.
+					</p>
+					<ul>
+						<li>Saisie de schéma et routage PCB</li>
+						<li>Systèmes embarqués et IoT (conceptions à base de microcontrôleurs)</li>
+						<li>Développement de firmware et de logiciels de test</li>
+						<li>Prototypage, bring-up, débogage et validation</li>
+						<li>Documentation de conception et transfert vers la production</li>
+					</ul>
+					<a class="btn primary" href="tutorials.html">Tutoriels</a>
+					<a class="btn primary" href="../fr/pcb-design-rules.html">Guides de conception</a>
+				</article>			
+
 				<article class="card" id="software-engineering">
 					<h2>Ingénierie logicielle</h2>
+					<div aria-label="Images de projets" class="carousel">
+						<div class="carousel-track">
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+												Éditeur Sub Bottom Profiler (SBP), intégré à une application d’édition par lots : édition des en-têtes texte et traces, visualisation et navigation dans les graphes et valeurs des traces.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio.html">
+										<img alt="Éditeur Sub Bottom Profiler (SBP), intégré à une application d’édition par lots : édition des en-têtes texte et traces, visualisation et navigation dans les graphes et valeurs des traces." 
+										decoding="async" loading="lazy" src="../images/portfolio/Sbp/SBP_Edit_01.webp"/>
+									</a>
+								</div>
+							</div>
+
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+												Traitement automatisé temps réel de levés hydrographiques avec JK et Eiva
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio.html">
+										<img alt="Traitement automatisé temps réel de levés hydrographiques avec JK et Eiva" decoding="async" loading="lazy" src="../images/portfolio/RealTimeProcessing/RealTimeWithEiva.webp"/>
+									</a>
+								</div>
+							</div>
+
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+												Portail de données — navigation de fichiers avec upload/download, incluant des visualiseurs pour différents formats.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio.html">
+										<img alt="Portail de données — navigation de fichiers avec upload/download, incluant des visualiseurs pour différents formats." decoding="async" loading="lazy" src="../images/portfolio/web_server/File_Browsing_with_viewers.webp"/>
+									</a>
+								</div>
+							</div>
+
+						</div>
+						<button aria-label="Image précédente" class="carousel-btn prev" type="button">❮</button>
+						<button aria-label="Image suivante" class="carousel-btn next" type="button">❯</button>
+						<button aria-pressed="false" class="carousel-toggle" title="Mettre en pause ou reprendre le diaporama" type="button">Pause</button>
+						<div class="carousel-dots">
+							<button data-index="1" aria-label="Éditeur SBP, intégré à une application d’édition par lots : édition des en-têtes texte et traces, visualisation et navigation dans les graphes et valeurs des traces." class="dot" title="Éditeur SBP, intégré à une application d’édition par lots : édition des en-têtes texte et traces, visualisation et navigation dans les graphes et valeurs des traces." type="button"></button>
+							<button data-index="2" aria-label="Traitement automatisé temps réel de levés hydrographiques avec JK et Eiva" class="dot" title="Traitement automatisé temps réel de levés hydrographiques avec JK et Eiva" type="button"></button>
+							<button data-index="3" aria-label="Portail de données — navigation de fichiers avec upload/download, incluant des visualiseurs pour différents formats." class="dot" title="Portail de données — navigation de fichiers avec upload/download, incluant des visualiseurs pour différents formats." type="button"></button>
+						</div>
+					</div>
 					<p>
-						Conception et développement d’applications en Python, C#, C++ et JavaScript :
-						outils d’automatisation, services de données temps réel, utilitaires desktop et serveurs web.
+						Conception et réalisation de systèmes logiciels — outils d’automatisation, services de données temps réel, utilitaires desktop et services web — en Python, C#, C/C++ et JavaScript.
 				    </p>
 					<ul>
 						<li>Architectures modulaires et testables</li>
-						<li>Intégration avec des systèmes existants et des API</li>
-						<li>Documentation technique et passation</li>
+						<li>Intégration à des systèmes existants et à des API</li>
+						<li>Documentation technique et transfert</li>
 					</ul>
 					<a class="btn primary" href="portefolio.html#hydro-survey">Voir des réalisations</a>
 				</article>
 
 				<article class="card" id="ai-systems">
 					<h2>Automatisation IA / Machine Learning</h2>
+					<div aria-label="Images de projets" class="carousel">
+						<div class="carousel-track">
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+									Chaîne automatisée de traitement sonar à balayage latéral : normalisation du signal, suivi du fond, géoréférencement et mosaïquage, puis détection IA,
+									positionnement et dimensionnement de blocs, et délinéation de polygones de zones à forte densité de blocs en terrain de dunes de sable difficile.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio_ai_driven_applications.html">
+										<img alt="Chaîne automatisée de traitement sonar à balayage latéral : normalisation du signal, suivi du fond, géoréférencement et mosaïquage, puis détection IA, positionnement et dimensionnement de blocs, et délinéation de polygones de zones à forte densité de blocs en terrain de dunes de sable difficile." 
+											decoding="async" loading="lazy" src="../images/portfolio/Sss/SSS_Targets_Shape_Attributes.webp"/>
+									</a>
+								</div>
+							</div>
+
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+									Système complet de reporting de nœuds sismiques : intégration des données capteurs en direct, classification d’images par IA et génération en un clic de rapports normalisés.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio_ai_driven_applications.html">
+										<img alt="Système complet de reporting de nœuds sismiques : intégration des données capteurs en direct, classification d’images par IA et génération en un clic de rapports normalisés." decoding="async" loading="lazy" src="../images/portfolio/RealTimeProcessing/seismic_node_ai_driven_report.webp"/>
+									</a>
+								</div>
+							</div>
+						</div>
+						<button aria-label="Image précédente" class="carousel-btn prev" type="button">❮</button>
+						<button aria-label="Image suivante" class="carousel-btn next" type="button">❯</button>
+						<button aria-pressed="false" class="carousel-toggle" title="Mettre en pause ou reprendre le diaporama" type="button">Pause</button>
+						<div class="carousel-dots">
+							<button data-index="1" aria-label="Chaîne automatisée de traitement sonar à balayage latéral : normalisation du signal, suivi du fond, géoréférencement et mosaïquage, puis détection IA, positionnement et dimensionnement de blocs, et délinéation de polygones de zones à forte densité de blocs en terrain de dunes de sable difficile." class="dot" title="Chaîne automatisée de traitement sonar à balayage latéral : normalisation du signal, suivi du fond, géoréférencement et mosaïquage, puis détection IA, positionnement et dimensionnement de blocs, et délinéation de polygones de zones à forte densité de blocs en terrain de dunes de sable difficile." type="button"></button>
+							<button data-index="2" aria-label="Système complet de reporting de nœuds sismiques : intégration des données capteurs en direct, classification d’images par IA et génération en un clic de rapports normalisés." class="dot" title="Système complet de reporting de nœuds sismiques : intégration des données capteurs en direct, classification d’images par IA et génération en un clic de rapports normalisés." type="button"></button>
+						</div>
+					</div>
 					<p>
-						Flux de travail sur mesure en machine learning pour le contrôle qualité, la détection, la catégorisation,
-						la prise de mesures (dimensionnement), l’optimisation de process, etc.
+						Workflows sur mesure de machine learning pour le contrôle qualité, la détection, la catégorisation,
+						le dimensionnement, l’optimisation de processus, etc.
 					</p>
 					<ul>
 						<li>Conception, entraînement et prototypage</li>
 						<li>Intégration dans des pipelines existants</li>
-						<li>Suivi, monitoring et optimisation des performances</li>
+						<li>Supervision et optimisation des performances</li>
 					</ul>
 					<a class="btn primary" href="portefolio.html#ai-systems">Voir des réalisations</a>
 				</article>
 
 				<article class="card" id="geospatial-hydro">
 					<h2>Systèmes géospatiaux &amp; hydrographiques</h2>
+					<div aria-label="Images de projets" class="carousel">
+						<div class="carousel-track">
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+												Portail de données — visualiseur WMS : vue d’ensemble des projets accessibles à l’utilisateur.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio.html">
+										<img alt="Portail de données — visualiseur WMS : vue d’ensemble des projets accessibles à l’utilisateur." decoding="async" loading="lazy" src="../images/portfolio/web_server/WMS_Viewer_01.webp"/>
+									</a>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+												Portail de données — visualiseur WMS : arborescence et menus contextuels pour la gestion des couches et le téléchargement.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio.html">
+										<img alt="Portail de données — visualiseur WMS : arborescence et menus contextuels pour la gestion des couches et le téléchargement." decoding="async" loading="lazy" src="../images/portfolio/web_server/WMS_Viewer_02.webp"/>
+									</a>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+												Portail de données — navigation de fichiers avec upload/download, incluant des visualiseurs pour différents formats.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio.html">
+										<img alt="Portail de données — navigation de fichiers avec upload/download, incluant des visualiseurs pour différents formats." decoding="async" loading="lazy" src="../images/portfolio/web_server/File_Browsing_with_viewers.webp"/>
+									</a>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+												Portail de données — visualiseur de nuages de points.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio.html">
+										<img alt="Portail de données — visualiseur de nuages de points." decoding="async" loading="lazy" src="../images/portfolio/web_server/pcl_viewer.webp"/>
+									</a>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<div class="carousel-caption">
+												Portail de données — visualiseur de données Sub-Bottom Profiler (SBP) compatible SEG-Y : visualisation de traces, sections sismiques, inspection des formes d’onde et analyse détaillée des en-têtes texte, binaire et trace.
+								</div>
+								<div class="carousel-image-wrapper">
+									<a href="portefolio.html">
+										<img alt="Portail de données — visualiseur de données Sub-Bottom Profiler (SBP) compatible SEG-Y : visualisation de traces, sections sismiques, inspection des formes d’onde et analyse détaillée des en-têtes texte, binaire et trace." decoding="async" loading="lazy" src="../images/portfolio/web_server/SBP_Viewer.webp"/>
+									</a>
+								</div>
+							</div>
+
+						</div>
+						<button aria-label="Image précédente" class="carousel-btn prev" type="button">❮</button>
+						<button aria-label="Image suivante" class="carousel-btn next" type="button">❯</button>
+						<button aria-pressed="false" class="carousel-toggle" title="Mettre en pause ou reprendre le diaporama" type="button">Pause</button>
+						<div class="carousel-dots">
+							<button data-index="1" aria-label="Portail de données — visualiseur WMS : vue d’ensemble des projets accessibles à l’utilisateur." class="dot" title="Portail de données — visualiseur WMS : vue d’ensemble des projets accessibles à l’utilisateur." type="button"></button>
+							<button data-index="2" aria-label="Portail de données — visualiseur WMS : arborescence et menus contextuels pour la gestion des couches et le téléchargement." class="dot" title="Portail de données — visualiseur WMS : arborescence et menus contextuels pour la gestion des couches et le téléchargement." type="button"></button>
+							<button data-index="3" aria-label="Portail de données — navigation de fichiers avec upload/download, incluant des visualiseurs pour différents formats." class="dot" title="Portail de données — navigation de fichiers avec upload/download, incluant des visualiseurs pour différents formats." type="button"></button>
+							<button data-index="4" aria-label="Portail de données — visualiseur de nuages de points." class="dot" title="Portail de données — visualiseur de nuages de points." type="button"></button>
+							<button data-index="5" aria-label="Portail de données — visualiseur de données Sub-Bottom Profiler (SBP) compatible SEG-Y : visualisation de traces, sections sismiques, inspection des formes d’onde et analyse détaillée des en-têtes texte, binaire et trace." class="dot" title="Portail de données — visualiseur de données Sub-Bottom Profiler (SBP) compatible SEG-Y : visualisation de traces, sections sismiques, inspection des formes d’onde et analyse détaillée des en-têtes texte, binaire et trace." type="button"></button>
+						</div>
+					</div>
 					<p>
-						Conception et mise en œuvre de pipelines de traitement de données (temps réel et batch) pour des opérations de levés
-						offshore et onshore, incluant le traitement hydrographique embarqué, l’intégration multi-capteurs et des portails de données
-						projet basés sur WMS avec visualisation avancée.
+						Conception et mise en œuvre de chaînes de traitement de données temps réel et batch pour des opérations de levés offshore et onshore,
+						incluant le traitement hydrographique embarqué, l’intégration multi-capteurs et des portails de données projet basés sur WMS avec visualisations avancées.
 				    </p>
 					<ul>
 						<li>Pipelines temps réel et batch pour données de levés</li>
-						<li>Intégration SIG et WMS (QGIS, MapServer, PostGIS, etc.)</li>
+						<li>Intégration GIS et WMS (QGIS, MapServer, PostGIS, etc.)</li>
 						<li>Contrôle qualité automatisé, indicateurs go/no-go et workflows de diffusion</li>
 					</ul>
 					<a class="btn primary" href="portefolio.html#data-portal">Voir des réalisations</a>
 				</article>
-
-				<article class="card" id="electronics">
-					<h2>Systèmes embarqués &amp; IoT</h2>
-					<p>
-						Développement firmware et dispositifs connectés pour nœuds capteurs, bancs de test et produits edge, combiné à de l’ingénierie électronique
-						couvrant systèmes embarqués, IoT, conception de schémas, développement PCB et instrumentation de base.
-						L’objectif : un design pragmatique, du prototypage rapide, de la validation, et une documentation technique claire, avec une forte intégration
-						entre matériel et logiciel.
-					</p>
-					<ul>
-						<li>Saisie de schémas et routage PCB</li>
-						<li>Systèmes embarqués et IoT (designs à base de MCU)</li>
-						<li>Développement firmware et logiciels de test</li>
-						<li>Prototypage, bring-up, debug et validation</li>
-						<li>Documentation de conception et transfert vers la fabrication</li>
-					</ul>
-					<a class="btn primary" href="tutorials.html">Tutoriels</a>
-					<a class="btn primary" href="../fr/pcb-design-rules.html">Guides de conception</a>
-				</article>
 			</section>
 
-			<section class="card" aria-label="Liens utiles et FAQ">
-				<h2>Liens rapides</h2>
-				<p>
-					Dernière mise à jour : <time datetime="2026-01-14">2026-01-14</time>. Pour des exemples concrets, consultez notre
-					<a href="portefolio.html">portfolio</a> et nos <a href="clients.html">références clients</a>, ou
-					contactez-nous via la <a href="contact.html">page de contact</a>.
-				</p>
-				<ul>
-					<li><a href="#software-engineering">Ingénierie logicielle</a></li>
-					<li><a href="#ai-systems">Automatisation IA / Machine Learning</a></li>
-					<li><a href="#geospatial-hydro">Systèmes géospatiaux &amp; hydrographiques</a></li>
-					<li><a href="#electronics">Électronique &amp; systèmes embarqués</a></li>
-				</ul>
-
-				<h2>FAQ</h2>
-
-				<h3>Travaillez-vous avec des équipes hors de France ?</h3>
-				<p>Oui. JAK Services est basé à Toulouse et travaille avec des clients en France et à l’international, à distance ou sur site selon les besoins.</p>
-
-				<h3>Comment démarrent généralement les missions ?</h3>
-				<p>Nous commençons en général par un court échange de cadrage, puis nous proposons un plan avec périmètre défini (livrables, planning et étapes de validation).</p>
-
-				<h3>Pouvez-vous livrer la documentation et assurer la passation ?</h3>
-				<p>Oui. Une documentation technique claire et une passation font partie de la livraison standard pour les travaux logiciel, électronique et embarqué.</p>
+			<section class="card" aria-label="Mode d’intervention">
+			  <h2>Mode d’intervention</h2>
+			  <p>
+				Les projets sont généralement structurés autour d’un périmètre technique clairement défini,
+				avec des livrables, jalons et critères de validation convenus.
+			  </p>
+			  <p>
+				L’intervention peut prendre la forme d’un support d’ingénierie ciblé, du développement de
+				composants ou systèmes spécifiques, ou d’une contribution à des équipes et pipelines existants.
+			  </p>
+			  <p>
+				Les livrables incluent des systèmes fonctionnels, du code source, des fichiers de conception et une
+				documentation technique adaptée à la maintenance et aux évolutions futures.
+			  </p>
+			  <div class="card-actions">
+				<a class="btn secondary" href="contact.html">Discuter d’un projet</a>
+			  </div>
 			</section>
+
 		</main>
 
 		<footer class="site-footer">
@@ -254,5 +439,6 @@
 		</footer>
 
 		<script src="../js/main.js"></script>
+		<script src="../js/carousel.js"></script>
 	</body>
 </html>
