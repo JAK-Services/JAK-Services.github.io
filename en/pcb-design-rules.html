@@ -12,7 +12,6 @@
 		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 		<link href="https://jak-services.github.io/en/pcb-design-rules.html" rel="canonical"/>
 		<link href="https://jak-services.github.io/en/pcb-design-rules.html" hreflang="en" rel="alternate"/>
-		<link href="https://jak-services.github.io/fr/pcb-design-rules.html" hreflang="fr" rel="alternate"/>
 		<link href="https://jak-services.github.io/en/pcb-design-rules.html" hreflang="x-default" rel="alternate"/>
 		<meta content="article" property="og:type"/>
 		<meta content="PCB Design Rules – Design Review Checklist Cheat Sheet | JAK Services" property="og:title"/>
@@ -168,6 +167,18 @@
 				</h1>
 				<p class="lead">
 				A practical PCB design rules cheat sheet and design review checklist for designing low‑noise, reliable and manufacturable printed circuit boards.
+				</p>
+				<p class="callout">
+				  <strong>Important note:</strong>
+				  Passing your ECAD tool’s <strong>ERC</strong> (Electrical Rules Check) and <strong>DRC</strong> (Design Rule Check)
+				  is necessary, but <strong>does not guarantee</strong> a successful PCB.
+				  ERC/DRC mainly catch schematic connectivity/pin-type issues and layout manufacturability constraints.
+				:contentReference[oaicite:4]{index=4} review checklist</strong> walks through the crucial engineering checks that ERC/DRC typically do not cover:
+				  <strong>EMC/EMI control</strong>, <strong>noise reduction</strong>, <strong>return-path / loop-area control</strong>,
+				  <strong>stack-up & plane strategy</strong>, <strong>signal integrity</strong>, <strong>power integrity</strong>,
+				  <strong>ESD/surge robustness</strong>, <strong>creepage & clearance safety</strong>,
+				  <strong>high-current & thermal management</strong>, <strong>mechanical constraints</strong>,
+				  and <strong>design-for-test (DFT)</strong> / probe access.
 				</p>
 				<img class="hero-media" src="/images/tutorials/kicad_9_your_first_pcb.webp"
 					alt="3D render of a printed circuit board designed with KiCad, illustrating PCB layout and routing"
