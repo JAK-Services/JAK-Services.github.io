@@ -6,6 +6,7 @@
 		<title>Secure Project Data Portal | JAK Services</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport"/>
 		<meta content="Secure project-isolated web portal for hydrographic survey deliverables with WMS, point-cloud and SBP viewers, per-project access control, and cloud storage backend support." name="description"/>
+		<meta name="robots" content="index,follow,max-image-preview:large">
 		<link href="../styles/styles.css" rel="stylesheet"/>
 		<link href="../styles/portfolio_carousel.css" rel="stylesheet"/>
 		<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
@@ -55,20 +56,29 @@
 			  "item": "https://jak-services.github.io/en/portefolio_secure_project_data_portal.html"
 			}
 		  ]
-		}</script><script type="application/ld+json">{
-		  "@context": "https://schema.org",
-		  "@type": "CreativeWork",
-		  "name": "Secure Project Data Portal",
-		  "description": "Secure project-isolated web portal for hydrographic survey deliverables with WMS, point-cloud and SBP viewers, per-project access control, and cloud storage backend support.",
-		  "url": "https://jak-services.github.io/en/portefolio_secure_project_data_portal.html",
-		  "image": "https://jak-services.github.io/images/portfolio/web_server/WMS_Viewer_01.webp",
-		  "provider": {
-			"@type": "Organization",
-			"name": "JAK Services",
-			"url": "https://jak-services.github.io",
-			"logo": "https://jak-services.github.io/images/jak-logo.svg"
+		}
+		<script type="application/ld+json">
+		{
+		  "@context":"https://schema.org",
+		  "@type":"SoftwareApplication",
+		  "name":"Secure Project Data Portal",
+		  "applicationCategory":"BusinessApplication",
+		  "operatingSystem":"Web",
+		  "description":"Secure, project-isolated web portal for managing, visualizing, and distributing hydrographic survey deliverables (WMS, point cloud, SBP/SEG-Y viewers) with per-project access control and cloud storage backends.",
+		  "image":"https://jak-services.github.io/images/portfolio/web_server/WMS_Viewer_01.webp",
+		  "url":"https://jak-services.github.io/en/portefolio_secure_project_data_portal.html",
+		  "publisher":{
+			"@type":"Organization",
+			"name":"JAK Services",
+			"url":"https://jak-services.github.io",
+			"logo":"https://jak-services.github.io/images/jak-logo.svg"
+		  },
+		  "offers":{
+			"@type":"Offer",
+			"availability":"https://schema.org/OnlineOnly"
 		  }
-		}</script>
+		}
+		</script>
 	</head>
 	<body>
 		<header class="site-header">
@@ -90,15 +100,17 @@
 					<a href="contact.html">Contact</a>
 				</nav>
 				<div aria-label="Language selector" class="lang-switch">
-					<a class="lang-btn" href="../fr/portefolio.html">FR</a>
-					<a aria-current="true" class="lang-btn active" href="../en/portefolio.html">EN</a>
+					<a class="lang-btn" href="../fr/portefolio_secure_project_data_portal.html">FR</a>
+					<a aria-current="true" class="lang-btn active" href="../en/portefolio_secure_project_data_portal.html">EN</a>
 				</div>
 			</div>
 		</header>
 		<main class="container">
 			<section class="card">
 				<h1>Secure Project Data Portal</h1>
-				<p>Secure, project-isolated web portal for managing, visualizing, and distributing hydrographic survey data and products.</p>
+				<p>A secure, project-isolated web portal for hydrographic survey teams to deliver WMS layers, 
+				point clouds, DTM's, SBP/SEG-Y data etc. to clients — complete with per-project permissions, 
+				upload/download workflows, and cloud/on-prem storage backends.</p>
 			</section>
 			<article class="card">
 				<div aria-label="Data Portal Images" class="carousel">
@@ -108,7 +120,7 @@
 								WMS Viewer - providing an overview of the projects accessible to the user.
 							</div>
 							<div class="carousel-image-wrapper">
-								<img alt="WMS Viewer - providing an overview of the projects accessible to the user." decoding="async" loading="lazy" src="../images/portfolio/web_server/WMS_Viewer_01.webp"/>
+								<img alt="WMS Viewer - providing an overview of the projects accessible to the user." decoding="async" loading="eager" src="../images/portfolio/web_server/WMS_Viewer_01.webp"/>
 							</div>
 						</div>
 						<div class="carousel-slide">
@@ -148,26 +160,57 @@
 					<button aria-label="Next image" class="carousel-btn next" type="button">❯</button>
 					<button aria-pressed="false" class="carousel-toggle" title="Pause or resume the slideshow" type="button">Pause</button>
 					<div class="carousel-dots">
-						<button aria-label="WMS Viewer - providing an overview of the projects accessible to the user." class="dot active" data-index="0" title="WMS Viewer - providing an overview of the projects accessible to the user." type="button"></button>
-						<button aria-label="WMS Viewer - with file tree and contextual menus for layer management and file download." class="dot" data-index="1" title="WMS Viewer - with file tree and contextual menus for layer management and file download." type="button"></button>
-						<button aria-label="File browsing with upload and download support, including viewers for various file formats." class="dot" data-index="2" title="File browsing with upload and download support, including viewers for various file formats." type="button"></button>
-						<button aria-label="Point Cloud Viewer." class="dot" data-index="3" title="Point Cloud Viewer." type="button"></button>
-						<button aria-label="Sub-Bottom Profiler (SBP) data viewer supporting SEG-Y files, including trace visualization, seismic sections, waveform inspection, and detailed text, binary, and trace header analysis." class="dot" data-index="4" title="Sub-Bottom Profiler (SBP) data viewer supporting SEG-Y files, including trace visualization, seismic sections, waveform inspection, and detailed text, binary, and trace header analysis." type="button"></button>
+						<button data-index="0" aria-label="WMS Viewer - providing an overview of the projects accessible to the user." class="dot active" title="WMS Viewer - providing an overview of the projects accessible to the user." type="button"></button>
+						<button data-index="1" aria-label="WMS Viewer - with file tree and contextual menus for layer management and file download." class="dot" title="WMS Viewer - with file tree and contextual menus for layer management and file download." type="button"></button>
+						<button data-index="2" aria-label="File browsing with upload and download support, including viewers for various file formats." class="dot" title="File browsing with upload and download support, including viewers for various file formats." type="button"></button>
+						<button data-index="3" aria-label="Point Cloud Viewer." class="dot" title="Point Cloud Viewer." type="button"></button>
+						<button data-index="4" aria-label="Sub-Bottom Profiler (SBP) data viewer supporting SEG-Y files, including trace visualization, seismic sections, waveform inspection, and detailed text, binary, and trace header analysis." class="dot" title="Sub-Bottom Profiler (SBP) data viewer supporting SEG-Y files, including trace visualization, seismic sections, waveform inspection, and detailed text, binary, and trace header analysis." type="button"></button>
 					</div>
 				</div>
 
+				<h2>Project Overview</h2>
 				<p>
-					In response to the requirements of a client managing large-scale hydrographical survey projects, JAK Services designed and developed 
-					a project-isolated web portal offering file browsing and a range of viewers—including 
-					Web Map Services, point-cloud and Sub-Bottom Profiler viewers, video playback, and 
-					more—with per-project access control and upload/download workflows governed by individual 
-					credentials and size limits. The portal connects seamlessly to various storage backends, 
-					including cloud-based storage solutions. The WMS component, supported by background workers 
-					that convert GIS data to WMS as low-volume datasets are streamed from the vessel to the portal
-					, includes a tree-view layer manager that allows users to add and reorder layers, and provides 
-					an overview of all projects accessible to the user. The published WMS layers can also be 
-					consumed by desktop GIS applications and other WMS-enabled portals.
+					In response to the requirements of a client managing large-scale hydrographical survey projects,
+					JAK Services designed and developed a secure, project-isolated web portal dedicated to the
+					management, visualization, and distribution of survey data and deliverables.
 				</p>
+
+				<h2>Key Features and Workflows</h2>
+				<p>
+					The portal provides file browsing alongside a wide range of integrated viewers:
+					<ul>
+						<li>Web Map Services (WMS)</li>
+						<li>Point-Cloud Viewer</li>
+						<li>Sub-Bottom Profiler Viewers</li>
+						<li>Video Playback</li>
+						<li>and additional format-specific tools</li>
+					</ul>
+					Per-project access control ensures that upload and download workflows are
+					governed by individual user credentials and configurable size limits.
+				</p>
+
+				<h2>Data Management and Storage</h2>
+				<p>
+					The system connects seamlessly to multiple storage backends, including cloud-based storage
+					solutions, enabling efficient handling of large survey datasets streamed from survey vessels
+					and onshore processing environments.
+				</p>
+
+				<h2>WMS Processing and GIS Integration</h2>
+				<p>
+					The WMS component is supported by background workers that automatically convert GIS data into
+					WMS layers as low-volume datasets are streamed to the portal.
+				</p>
+				<p>
+					A tree-view layer manager allows
+					users to add, organize, and reorder layers while providing a consolidated overview of all
+					projects accessible to the user. 
+				</p>
+				<p>
+					Published WMS layers can also be consumed by desktop GIS
+					applications and other WMS-enabled portals.
+				</p>
+				
 				<p class="meta">Technologies: Flask, Python, JavaScript, WMS, PostGIS</p>
 				<p><a class="btn secondary" href="portefolio.html">Back to portfolio</a></p>
 			</article>
