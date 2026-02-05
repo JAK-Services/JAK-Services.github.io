@@ -296,6 +296,21 @@
 					Les couches WMS publiées peuvent également être consommées par des applications SIG de bureau et
 					d’autres portails compatibles WMS.
 				</p>
+				<h2>Sécurité</h2>
+				<p>
+					Le portail a été conçu selon un principe de « moindre privilège », combinant l’isolation des projets
+					et des autorisations basées sur les rôles afin de garantir que chaque utilisateur ne voie et n’accède
+					qu’aux jeux de données pertinents pour son rôle, son projet et l’organisation cliente.
+				</p>
+				<ul>
+					<li><strong>Authentification :</strong> connexion par email et mot de passe avec mots de passe hachés, contrôles de politique de mot de passe (longueur / complexité) et gestion de l’expiration ou du changement obligatoire lors de la première connexion.</li>
+					<li><strong>Authentification à deux facteurs (2FA par email) :</strong> <strong>code à usage unique</strong> lié à la session, envoyé par email et vérifié avant l’octroi de l’accès.</li>
+					<li><strong>Protection contre les attaques par force brute :</strong> comptage des tentatives de connexion avec mécanisme de verrouillage et limitation côté API en cas d’abus.</li>
+					<li><strong>Autorisation (RBAC et périmètre par projet) :</strong> rôles stockés en base de données (<code>roles</code>, <code>users_roles</code>) et affectations utilisateur / projet, incluant des permissions granulaires (lecture / écriture / suppression / téléchargement) et un mode d’accès limité aux seuls projets assignés.</li>
+					<li><strong>Protection contre l’injection SQL :</strong> accès aux données via ORM et utilisation de requêtes paramétrées.</li>
+					<li><strong>Sécurité web et des transports :</strong> HTTPS (TLS), protection CSRF, configuration CORS et durcissement du navigateur via des en-têtes de sécurité (CSP / HSTS lorsque activés).</li>
+					<li><strong>Journalisation orientée audit :</strong> centralisation des journaux d’erreurs applicatifs et API dans un stockage dédié pour la traçabilité et l’analyse des incidents.</li>
+				</ul>
 
 				<p class="meta">Technologies : Flask, Python, JavaScript, WMS, PostGIS</p>
 				<p><a class="btn secondary" href="portefolio.html">Retour au portfolio</a></p>
