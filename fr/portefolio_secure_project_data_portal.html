@@ -303,13 +303,13 @@
 					qu’aux jeux de données pertinents pour son rôle, son projet et l’organisation cliente.
 				</p>
 				<ul>
-					<li><strong>Authentification :</strong> connexion par email et mot de passe avec mots de passe hachés, contrôles de politique de mot de passe (longueur / complexité) et gestion de l’expiration ou du changement obligatoire lors de la première connexion.</li>
-					<li><strong>Authentification à deux facteurs (2FA par email) :</strong> <strong>code à usage unique</strong> lié à la session, envoyé par email et vérifié avant l’octroi de l’accès.</li>
-					<li><strong>Protection contre les attaques par force brute :</strong> comptage des tentatives de connexion avec mécanisme de verrouillage et limitation côté API en cas d’abus.</li>
-					<li><strong>Autorisation (RBAC et périmètre par projet) :</strong> rôles stockés en base de données (<code>roles</code>, <code>users_roles</code>) et affectations utilisateur / projet, incluant des permissions granulaires (lecture / écriture / suppression / téléchargement) et un mode d’accès limité aux seuls projets assignés.</li>
-					<li><strong>Protection contre l’injection SQL :</strong> accès aux données via ORM et utilisation de requêtes paramétrées.</li>
-					<li><strong>Sécurité web et des transports :</strong> HTTPS (TLS), protection CSRF, configuration CORS et durcissement du navigateur via des en-têtes de sécurité (CSP / HSTS lorsque activés).</li>
-					<li><strong>Journalisation orientée audit :</strong> centralisation des journaux d’erreurs applicatifs et API dans un stockage dédié pour la traçabilité et l’analyse des incidents.</li>
+					<li>Authentification : connexion par email et mot de passe avec mots de passe hachés, contrôles de politique de mot de passe (longueur / complexité) et gestion de l’expiration ou du changement obligatoire lors de la première connexion.</li>
+					<li>Authentification à deux facteurs (2FA par email) : code à usage unique lié à la session, envoyé par email et vérifié avant l’octroi de l’accès.</li>
+					<li>Protection contre les attaques par force brute : comptage des tentatives de connexion avec mécanisme de verrouillage et limitation côté API en cas d’abus.</li>
+					<li>Autorisation (RBAC et périmètre par projet) : rôles et affectations par utilisateur et par projet, incluant des permissions granulaires (lecture / écriture / suppression / téléchargement).</li>
+					<li>Protection contre l’injection SQL : accès aux données via ORM et utilisation de requêtes paramétrées.</li>
+					<li>Sécurité web et des transports : HTTPS (TLS), protection CSRF, configuration CORS et durcissement du navigateur via des en-têtes de sécurité (CSP / HSTS lorsque activés).</li>
+					<li>Journalisation orientée audit : centralisation des journaux d’erreurs applicatifs et API dans un stockage dédié pour la traçabilité et l’analyse des incidents.</li>
 				</ul>
 
 				<p class="meta">Technologies : Flask, Python, JavaScript, WMS, PostGIS</p>
