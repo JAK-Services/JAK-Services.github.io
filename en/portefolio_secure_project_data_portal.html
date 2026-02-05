@@ -220,7 +220,7 @@
 					<li><strong>Authentication:</strong> email/password login with hashed passwords, plus password policy checks (length/complexity) and password expiry / first-login change flows.</li>
 					<li><strong>2FA (email OTP):</strong> a session-bound <strong>one-time code</strong> sent by email and verified before granting access.</li>
 					<li><strong>Brute-force mitigation:</strong> login attempt counters with lockout and API-side throttling when abused.</li>
-					<li><strong>Authorization (RBAC + project scoping):</strong> database-backed roles (<code>roles</code>, <code>users_roles</code>) and per-user / per-project assignments, including granular permissions (read/write/delete/download) and “only assigned projects” access mode.</li>
+					<li><strong>Authorization (RBAC + project scoping):</strong> roles and per-user / per-project assignments, including granular permissions (read/write/delete/download).</li>
 					<li><strong>SQL injection mitigation:</strong> ORM-based data access and parameterized queries.</li>
 					<li><strong>Web &amp; transport security:</strong> HTTPS (TLS), CSRF protection, CORS configuration, and browser hardening via security headers (CSP / HSTS where enabled).</li>
 					<li><strong>Audit-friendly logging:</strong> central application and API error logging to a dedicated log store for traceability and incident analysis.</li>
