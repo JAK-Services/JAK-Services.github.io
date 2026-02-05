@@ -28,10 +28,7 @@
 					"url": "https://jak-services.github.io",
 					"logo": "https://jak-services.github.io/images/jak-logo.svg"
 				}
-				</script>
-
-
-		<script async="" data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js">
+		</script>
 		</script>
 		<link href="https://jak-services.github.io/en/portefolio_secure_project_data_portal.html" hreflang="en" rel="alternate"/><link href="https://jak-services.github.io/fr/portefolio_secure_project_data_portal.html" hreflang="fr" rel="alternate"/><link href="https://jak-services.github.io/en/portefolio_secure_project_data_portal.html" hreflang="x-default" rel="alternate"/><script type="application/ld+json">{
 		  "@context": "https://schema.org",
@@ -79,6 +76,7 @@
 		  }
 		}
 		</script>
+		<script async="" data-goatcounter="https://jak-services.goatcounter.com/count" src="//gc.zgo.at/count.js">
 	</head>
 	<body>
 		<header class="site-header">
@@ -178,13 +176,15 @@
 				<h2>Key Features and Workflows</h2>
 				<p>
 					The portal provides file browsing alongside a wide range of integrated viewers:
-					<ul>
-						<li>Web Map Services (WMS)</li>
-						<li>Point-Cloud Viewer</li>
-						<li>Sub-Bottom Profiler Viewers</li>
-						<li>Video Playback</li>
-						<li>and additional format-specific tools</li>
-					</ul>
+				</p>
+				<ul>
+					<li>Web Map Services (WMS)</li>
+					<li>Point-Cloud Viewer</li>
+					<li>Sub-Bottom Profiler Viewers</li>
+					<li>Video Playback</li>
+					<li>and additional format-specific tools</li>
+				</ul>
+				<p>
 					Per-project access control ensures that upload and download workflows are
 					governed by individual user credentials and configurable size limits.
 				</p>
@@ -210,6 +210,21 @@
 					Published WMS layers can also be consumed by desktop GIS
 					applications and other WMS-enabled portals.
 				</p>
+				<h2>Security</h2>
+				<p>
+					The portal was designed with a “least privilege” approach, combining project isolation with
+					role-based permissions to ensure each user only sees and accesses the datasets relevant to
+					their role, project, and client organization.
+				</p>
+				<ul>
+					<li><strong>Authentication:</strong> email/password login with hashed passwords, plus password policy checks (length/complexity) and password expiry / first-login change flows.</li>
+					<li><strong>2FA (email OTP):</strong> a session-bound <strong>one-time code</strong> sent by email and verified before granting access.</li>
+					<li><strong>Brute-force mitigation:</strong> login attempt counters with lockout and API-side throttling when abused.</li>
+					<li><strong>Authorization (RBAC + project scoping):</strong> database-backed roles (<code>roles</code>, <code>users_roles</code>) and per-user / per-project assignments, including granular permissions (read/write/delete/download) and “only assigned projects” access mode.</li>
+					<li><strong>SQL injection mitigation:</strong> ORM-based data access and parameterized queries.</li>
+					<li><strong>Web &amp; transport security:</strong> HTTPS (TLS), CSRF protection, CORS configuration, and browser hardening via security headers (CSP / HSTS where enabled).</li>
+					<li><strong>Audit-friendly logging:</strong> central application and API error logging to a dedicated log store for traceability and incident analysis.</li>
+				</ul>
 				
 				<p class="meta">Technologies: Flask, Python, JavaScript, WMS, PostGIS</p>
 				<p><a class="btn secondary" href="portefolio.html">Back to portfolio</a></p>
