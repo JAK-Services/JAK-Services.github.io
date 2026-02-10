@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 	<head>
 	  <meta charset="utf-8"/>
-	  <title>
-	    Tutoriel de conception de PCB : réalisez votre premier circuit imprimé avec KiCad 9 (du schéma aux fichiers Gerber) | JAK Services
-	  </title>
+	  <title>PCB Design Tutorial: Build Your First PCB in KiCad 9 (Schematic to Gerbers) | JAK Services</title>
 	  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-	  <meta content="Tutoriel de conception de PCB pour KiCad 9 : un guide complet pas à pas couvrant la création du projet, la saisie du schéma, l’association des empreintes, la génération de la nomenclature (BOM), le routage du PCB, les vérifications, les contrôles des règles de conception (DRC) et la génération des fichiers Gerber pour la fabrication." name="description"/>
+	  <meta content="PCB design tutorial for KiCad 9: a design walkthrough, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." name="description"/>
 	  <!-- Styles -->
 	  <link href="../styles/styles.css" rel="stylesheet"/>
 	  <link href="../styles/portfolio_carousel.css" rel="stylesheet"/>
@@ -14,23 +12,22 @@
 	  <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 	  <!-- Canonical + hreflang -->
 	  <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" rel="canonical"/>
-	  <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="fr" rel="alternate"/>
+	  <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="en" rel="alternate"/>
 	  <link href="https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html" hreflang="fr" rel="alternate"/>
 	  <link href="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" hreflang="x-default" rel="alternate"/>
 	  <!-- Open Graph -->
 	  <meta content="article" property="og:type"/>
-	  <meta content="Tutoriel de conception de PCB : réalisez votre premier circuit imprimé avec KiCad 9 (du schéma aux fichiers Gerber) | JAK Services" property="og:title"/>
-	  <meta content="Tutoriel de conception de PCB pour KiCad 9 : un guide complet pas à pas couvrant la création du projet, la saisie du schéma, l’association des empreintes, la génération de la nomenclature (BOM), le routage du PCB, les vérifications, les contrôles des règles de conception (DRC) et la génération des fichiers Gerber pour la fabrication." property="og:description"/>
+	  <meta content="PCB Design Tutorial: Build Your First PCB in KiCad 9 (Schematic to Gerbers) | JAK Services" property="og:title"/>
+	  <meta content="PCB design tutorial for KiCad 9: a design walkthrough, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." property="og:description"/>
 	  <meta content="https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html" property="og:url"/>
 	  <meta content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp" property="og:image"/>
 	  <!-- Twitter -->
 	  <meta content="summary_large_image" name="twitter:card"/>
-	  <meta content="Tutoriel de conception de PCB : réalisez votre premier circuit imprimé avec KiCad 9 (du schéma aux fichiers Gerber) | JAK Services" name="twitter:title"/>
-	  <meta content="Tutoriel de conception de PCB pour KiCad 9 : un guide complet pas à pas couvrant la création du projet, la saisie du schéma, l’association des empreintes, la génération de la nomenclature (BOM), le routage du PCB, les vérifications, les contrôles des règles de conception (DRC) et la génération des fichiers Gerber pour la fabrication." name="twitter:description"/>
+	  <meta content="PCB Design Tutorial: Build Your First PCB in KiCad 9 (Schematic to Gerbers) | JAK Services" name="twitter:title"/>
+	  <meta content="PCB design tutorial for KiCad 9: a design walkthrough, covering project setup, schematic capture, footprint assignment, BOM generation, PCB layout, verification, design-rule checks, and Gerber manufacturing outputs." name="twitter:description"/>
 	  <meta content="https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp" name="twitter:image"/>
 	  <!-- Structured data -->
 	  <script type="application/ld+json">
-
 		{
 		  "@context": "https://schema.org",
 		  "@type": "Organization",
@@ -47,8 +44,8 @@
 		  "@type":"BreadcrumbList",
 		  "itemListElement":[
 			{"@type":"ListItem","position":1,"name":"Home","item":"https://jak-services.github.io/en/index.html"},
-			{"@type":"ListItem","position":2,"name":"Tutoriels","item":"https://jak-services.github.io/en/tutorials.html"},
-			{"@type":"ListItem","position":3,"name":"KiCad 9.0 – Réaliser votre premier PCB","item":"https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"}
+			{"@type":"ListItem","position":2,"name":"Tutorials","item":"https://jak-services.github.io/en/tutorials.html"},
+			{"@type":"ListItem","position":3,"name":"KiCad 9.0 – Build Your First PCB","item":"https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html"}
 		  ]
 		}
 	  
@@ -58,8 +55,8 @@
 		{
 		  "@context":"https://schema.org",
 		  "@type":"HowTo",
-		  "name":"Tutoriel de conception de PCB : réalisez votre premier PCB avec KiCad 9 (du schéma aux fichiers Gerber)",
-		  "description":"Tutoriel de conception de PCB pour KiCad 9 : un guide complet pas à pas couvrant la création du projet, la saisie du schéma, l’association des empreintes, la génération de la nomenclature (BOM), le routage du PCB, les vérifications, les contrôles des règles de conception (DRC) et la génération des fichiers Gerber pour la fabrication.",
+		  "name":"PCB Design Tutorial: Build Your First PCB in KiCad 9 (Schematic to Gerbers)",
+		  "description":"PCB design tutorial for KiCad 9: a complete walkthrough covering project setup, schematic capture, net classes, footprint assignment, BOM generation, PCB layout, DRC, and Gerber manufacturing outputs.",
 		  "tool":[{"@type":"HowToTool","name":"KiCad 9"}],
 		  "step":[
 			{"@type":"HowToStep","name":"Project setup","text":"Create a new KiCad project, configure backups and page settings."},
@@ -83,8 +80,8 @@
 			{
 			  "@context": "https://schema.org",
 			  "@type": "Article",
-			  "headline": "Tutoriel de conception de PCB : réalisez votre premier PCB avec KiCad 9 (du schéma aux fichiers Gerber)",
-			  "description": "Tutoriel de conception de PCB pour KiCad 9 : un guide complet pas à pas couvrant la création du projet, la saisie du schéma, l’association des empreintes, la génération de la nomenclature (BOM), le routage du PCB, les vérifications, les contrôles des règles de conception (DRC) et la génération des fichiers Gerber pour la fabrication.",
+			  "headline": "PCB Design Tutorial: Build Your First PCB in KiCad 9 (Schematic to Gerbers)",
+			  "description": "PCB design tutorial for KiCad 9: a complete walkthrough covering project setup, schematic capture, net classes, footprint assignment, BOM generation, PCB layout, DRC, and Gerber manufacturing outputs.",
 			  "image": "https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp",
 			  "author": {
 				"@type": "Organization",
@@ -105,8 +102,8 @@
 			{
 			  "@context": "https://schema.org",
 			  "@type": "VideoObject",
-			  "name": "Tutoriel de conception de PCB : réalisez votre premier PCB avec KiCad 9 (du schéma aux fichiers Gerber)",
-			  "description": "Tutoriel de conception de PCB pour KiCad 9 : un guide complet pas à pas couvrant la création du projet, la saisie du schéma, l’association des empreintes, la génération de la nomenclature (BOM), le routage du PCB, les vérifications, les contrôles des règles de conception (DRC) et la génération des fichiers Gerber pour la fabrication.",
+			  "name": "PCB Design Tutorial: Build Your First PCB in KiCad 9 (Schematic to Gerbers)",
+			  "description": "PCB design tutorial for KiCad 9: a complete walkthrough covering project setup, schematic capture, net classes, footprint assignment, BOM generation, PCB layout, DRC, and Gerber manufacturing outputs.",
 			  "thumbnailUrl": [
 				"https://jak-services.github.io/images/tutorials/kicad_9_your_first_pcb.webp"
 			  ],
@@ -125,36 +122,36 @@
 			}
 	  </script>
 	  <script type="application/ld+json">
-		{
-		  "@context": "https://schema.org",
-		  "@type": "FAQPage",
-		  "mainEntity": [
 			{
-			  "@type": "Question",
-			  "name": "Pourquoi l’ERC signale-t-il un problème avec +5V et GND ?",
-			  "acceptedAnswer": {
-				"@type": "Answer",
-				"text": "Lorsque l’alimentation arrive sur la carte de manière externe (par exemple via un bornier à vis), KiCad peut ne pas détecter de source d’alimentation pilotant le net. Il est alors nécessaire de placer un symbole PWR_FLAG sur +5V et GND afin d’indiquer que ces nets sont intentionnellement alimentés."
-			  }
-			},
-			{
-			  "@type": "Question",
-			  "name": "Faut-il toujours utiliser un plan de masse ?",
-			  "acceptedAnswer": {
-				"@type": "Answer",
-				"text": "Pour la majorité des cartes à microcontrôleur ou numériques, un plan de masse continu réduit les boucles de courant, améliore les chemins de retour et limite les problèmes de bruit et d’EMI. Vérifiez les espacements, les zones d’exclusion et validez la conception avec le DRC."
-			  }
-			},
-			{
-			  "@type": "Question",
-			  "name": "Que faut-il vérifier avant de commander des PCB ?",
-			  "acceptedAnswer": {
-				"@type": "Answer",
-				"text": "Vérifiez le contour de la carte (Edge.Cuts), les diamètres des perçages, le masque de soudure, la sérigraphie, les espacements, les pastilles thermiques et la connectivité. Ouvrez et inspectez toujours les fichiers Gerber et de perçage générés dans un visualiseur avant de les envoyer au fabricant. Effectuez une dernière revue de conception à l’aide d’une liste de vérification."
-			  }
+			  "@context": "https://schema.org",
+			  "@type": "FAQPage",
+			  "mainEntity": [
+				{
+				  "@type": "Question",
+				  "name": "Why does ERC complain about +5V and GND?",
+				  "acceptedAnswer": {
+					"@type": "Answer",
+					"text": "If power enters the board externally (e.g., screw terminal), KiCad may not detect a power output driving the net. Place PWR_FLAG on +5V and GND to indicate the nets are intentionally powered."
+				  }
+				},
+				{
+				  "@type": "Question",
+				  "name": "Should I always use a ground plane?",
+				  "acceptedAnswer": {
+					"@type": "Answer",
+					"text": "For most MCU/digital boards, a solid ground plane reduces loop area, improves return paths, and helps EMI/noise. Validate clearances/keep-outs and confirm with DRC."
+				  }
+				},
+				{
+				  "@type": "Question",
+				  "name": "What should I inspect before ordering PCBs?",
+				  "acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Inspect outline (Edge.Cuts), hole sizes, solder mask, silkscreen, clearances, thermal relief, and connectivity. Always open and review the plotted Gerbers/drills in a viewer before sending to a manufacturer. Run a final design review using a checklist"
+				  }
+				}
+			  ]
 			}
-		  ]
-		}
 	  </script>
 	</head>
 	<body>
@@ -173,7 +170,7 @@
 				</a>
 				<nav class="main-nav">
 					<a href="index.html">
-						Accueil / À propos
+						Home / About
 					</a>
 					<a href="services.html">
 						Services
@@ -182,7 +179,7 @@
 						Portefolio
 					</a>
 					<a aria-current="page" href="tutorials.html">
-						Tutoriels
+						Tutorials
 					</a>
 					<a href="../en/pcb-design-rules.html">
 						Guides
@@ -195,19 +192,17 @@
 					</a>
 				</nav>
 				<div aria-label="Language selector" class="lang-switch">
-					<a aria-current="true" class="lang-btn active" href="../fr/tutorial_kicad_9_build_your_first_pcb.html">FR</a>
-					<a class="lang-btn" href="../en/tutorial_kicad_9_build_your_first_pcb.html">EN</a>
+					<a class="lang-btn" href="../fr/tutorial_kicad_9_build_your_first_pcb.html">FR</a>
+					<a aria-current="true" class="lang-btn active" href="../en/tutorial_kicad_9_build_your_first_pcb.html">EN</a>
 				</div>
 			</div>
 		</header>
 		<main class="container">
 			<section class="hero">
-				<h1>
-					Tutoriel de conception de PCB : réalisez votre premier PCB avec KiCad 9
-				</h1>
+				<h1>PCB Design Tutorial: Build Your First PCB in KiCad 9</h1>
 				<p class="lead">
-					Ce tutoriel de conception de PCB vous guide d’un projet KiCad 9 vierge jusqu’à des fichiers Gerber et de perçage prêts pour la fabrication :
-schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
+				  This PCB design tutorial takes you from a blank KiCad 9 project to manufacturing-ready Gerbers and drill files: 
+				  schematic → footprints → PCB layout → DRC → Gerbers/drills.
 				</p>
 				<p class="tutorial-meta">
 					Tool: KiCad 9 • Output: Gerbers + drill files • Example: ESP32 power + analog front‑end board
@@ -217,7 +212,7 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 					  width="560"
 					  height="315"
 					  src="https://www.youtube.com/embed/moP6JxN7FWk"
-					  title="KiCad 9.0 – Réaliser votre premier PCB"
+					  title="KiCad 9.0 – Build Your First PCB"
 					  frameborder="0"
 					  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					  allowfullscreen
@@ -226,92 +221,92 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 				</div>
 				<div class="hero-actions">
 					<a class="btn secondary" href="tutorials.html">
-						← Retour aux tutoriels
+						← Back to tutorials
 					</a>
 					<a class="btn primary" href="https://youtu.be/moP6JxN7FWk" rel="noopener" target="_blank">
-						Voir la vidéo
+						Watch the video
 					</a>
 				</div>
 			</section>
 			<section class="card toc">
 				<h2>
-					Sommaire
+					Contents
 				</h2>
 				<nav aria-label="Tutorial contents">
 					<ul class="toc-list">
 						<li>
 							<a href="#what-youll-build">
-								Ce que vous allez réaliser
+								What you’ll build
 							</a>
 						</li>
 						<li>
 							<a href="#what-you-need">
-								Pré-requis
+								What you need
 							</a>
 						</li>
 						<li>
 							<a href="#project-setup">
-								1) Créer un projet KiCad
+								1) Create a KiCad project
 							</a>
 						</li>
 						<li>
 							<a href="#schematic-setup">
-								2) Configuration du schéma (mise en page + classes de nets)
+								2) Schematic setup (page settings + net classes)
 							</a>
 						</li>
 						<li>
 							<a href="#symbols-libs">
-								3) Placement des symboles et ajout de bibliothèques externes
+								3) Place symbols and add external libraries
 							</a>
 						</li>
 						<li>
 							<a href="#wiring-erc">
-								4) Câblage + ERC (et correction des erreurs PWR)
+								4) Wiring + ERC (and fixing PWR errors)
 							</a>
 						</li>
 						<li>
 							<a href="#footprints">
-								5) Attribution des empreintes (et création d’une empreinte personnalisée)
+								5) Assign footprints (and make a custom one)
 							</a>
 						</li>
 						<li>
 							<a href="#bom">
-								6) Génération de la nomenclature (BOM)
+								6) Generate a BOM
 							</a>
 						</li>
 						<li>
 							<a href="#pcb-layout">
-								7) Import du PCB + configuration de la carte + placement
+								7) PCB import + board setup + placement
 							</a>
 						</li>
 						<li>
 							<a href="#routing-planes">
-								8) Routage + plan de masse + éléments mécaniques
+								8) Routing + ground plane + mechanics
 							</a>
 						</li>
 						<li>
 							<a href="#3d">
-								9) Visualisation 3D et modèles
+								9) 3D viewer + models
 							</a>
 						</li>
 						<li>
 							<a href="#drc">
-								10) DRC (vérification des règles de conception)
+								10) DRC (design‑rule check)
 							</a>
 						</li>
 						<li>
 							<a href="#gerbers">
-								11) Fichiers Gerber et perçages
+								11) Gerbers + drill files
 							</a>
 						</li>
 						<li>
 							<a href="#checklist">
-								12) Checklist de revue de conception
+								12) Design‑review checklist
 							</a>
 						</li>
 						<li>
 							<a href="#resources">
-								Ressources
+								Resources
 							</a>
 						</li>
 						<li>
@@ -324,113 +319,113 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 			</section>
 			<section class="card" id="what-youll-build">
 				<h2>
-					Ce que vous allez réaliser
+					What you’ll build
 				</h2>
 				<p>
-					Dans ce tutoriel, nous concevons un PCB simple à deux couches qui fournit
+					In this tutorial we design a simple two‑layer PCB that provides
 					<strong>
-						l’alimentation
+						power
 					</strong>
-					et une
+					and an
 					<strong>
-						interface analogique
+						analog front end
 					</strong>
-					pour une carte
-					ESP32 DevKitC. Le flux de travail est volontairement « de bout en bout » afin que vous puissiez le réutiliser pour vos propres conceptions.
+					for an
+					ESP32 DevKitC board. The workflow is intentionally “end‑to‑end” so you can reuse it for your own designs.
 				</p>
 				<ul>
 					<li>
-						Créer un schéma clair et documenté (cartouche, révision, date).
+						Create a clean, documented schematic (title block, revision, date).
 					</li>
 					<li>
-						Définir les classes de nets (signal, alimentation, masse) à l’aide de calculs de largeur de piste.
+						Define net classes (signal vs. power vs. ground) using trace‑width calculations.
 					</li>
 					<li>
-						Attribuer les empreintes, y compris la création d’une empreinte personnalisée lorsqu’aucune n’existe en bibliothèque.
+						Assign footprints, including a custom footprint when no library part exists.
 					</li>
 					<li>
-						Placer les composants, router les pistes, créer un plan de masse, puis vérifier avec ERC et DRC.
+						Place, route, pour a GND plane, then verify with ERC + DRC.
 					</li>
 					<li>
-						Générer et inspecter les fichiers de fabrication (Gerber et perçages).
+						Generate and inspect manufacturing outputs (Gerbers + drills).
 					</li>
 				</ul>
 				<p class="callout">
 					<strong>
-						Conseil :
+						Tip:
 					</strong>
-					Si vous réalisez votre premier PCB, restez sur deux couches et validez régulièrement avec ERC/DRC à chaque étape clé.
+					If you’re building your first PCB, keep it two layers and validate early with ERC/DRC at each milestone.
 				</p>
 			</section>
 			<section class="card" id="what-you-need">
 				<h2>
-					Pré-requis
+					What you need
 				</h2>
 				<ul>
 					<li>
 						<strong>
 							KiCad 9
 						</strong>
-						installé (éditeur de schéma + éditeur PCB + visualiseur Gerber).
+						installed (Schematic Editor + PCB Editor + Gerber Viewer).
 					</li>
 					<li>
-						Une connexion Internet pour accéder aux bibliothèques de fabricants / empreintes (par ex. SnapEDA / SnapMagic).
+						An internet connection for vendor libraries/footprints (e.g., SnapEDA/SnapMagic).
 					</li>
 					<li>
-						(Facultatif) Un fichier image de logo si vous souhaitez ajouter une identité visuelle sur la sérigraphie.
+						(Optional) A logo image file if you want to add branding to the silkscreen.
 					</li>
 					<li>
-						(Recommandé) Une checklist de fabrication pour la relecture avant la commande des cartes.
+						(Recommended) A fabrication checklist for review before ordering boards.
 					</li>
 				</ul>
 			</section>
 			<section class="card" id="project-setup">
 				<h2>
-					1) Créer un projet KiCad
+					1) Create a KiCad project
 				</h2>
 				<ol>
 					<li>
-						Ouvrez
+						Open
 						<strong>
 							KiCad
 						</strong>
 						→
 						<strong>
-							Gestionnaire de projets
+							Project Manager
 						</strong>
 						→
 						<strong>
-							Fichier → Nouveau projet
+							File → New Project
 						</strong>
 						.
 					</li>
 					<li>
-						Choisissez un nom de projet et un dossier. KiCad crée :
+						Choose a project name and folder. KiCad creates:
 						<ul>
 							<li>
 								<code>
-				.kicad_pro
+.kicad_pro
 								</code>
-								(projet)
+								(project)
 							</li>
 							<li>
 								<code>
-				.kicad_sch
+.kicad_sch
 								</code>
-								(schéma)
+								(schematic)
 							</li>
 							<li>
 								<code>
-				.kicad_pcb
+.kicad_pcb
 								</code>
-								(routage PCB)
+								(PCB layout)
 							</li>
 						</ul>
 					</li>
 					<li>
-						(Facultatif) Configurer les sauvegardes :
+						(Optional) Configure backups:
 						<strong>
-							Préférences → Paramètres généraux
+							Preferences → Common Settings
 						</strong>
 						.
 					</li>
@@ -438,411 +433,403 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 			</section>
 			<section class="card" id="schematic-setup">
 				<h2>
-					2) Configuration du schéma (mise en page + classes de nets)
+					2) Schematic setup (page settings + net classes)
 				</h2>
 				<h3>
-					Mise à jour du cartouche
+					Update the title block
 				</h3>
 				<p>
-					Une bonne documentation est rentable sur le long terme (traçabilité, révisions, transfert vers la fabrication).
-					Dans l’éditeur de schéma :
+					Good documentation pays off later (traceability, revisions, manufacturing handoff).
+					In the Schematic Editor:
 					<strong>
-						Fichier → Paramètres de page
+						File → Page Settings
 					</strong>
-					, renseignez ensuite le titre, l’entreprise, l’auteur, la version, la date et les commentaires.
+					, then fill in title, company, author, version, date, and comments.
 				</p>
 				<h3>
-					Définir les classes de nets à l’aide des calculs de largeur de piste
+					Define net classes using trace‑width calculations
 				</h3>
 				<p>
-					Les classes de nets définissent des règles telles que la largeur de piste et les distances d’isolement.
-					Avant de les configurer, utilisez
+					Net classes define rules like track width and clearance. Before setting them, use
 					<strong>
-						Outils → Outils de calcul → Largeur de piste
+						Tools → Calculator Tools → Track Width
 					</strong>
-					pour dimensionner prudemment votre net d’alimentation.
-					Dans l’exemple de la vidéo (0,5 A, cuivre 1 oz / 35 µm), le calculateur indique un minimum d’environ 5 mil ;
-					nous arrondissons à
+					to size your power net conservatively.
+					In the video example (0.5 A, 1 oz copper / 35 µm), the calculator suggests ~5 mil minimum; we round up to
 					<strong>
 						10 mil
 					</strong>
 					.
 				</p>
 				<p>
-					Ensuite, dans l’éditeur de schéma :
+					Then in the Schematic Editor:
 					<strong>
-						Fichier → Configuration du schéma → Classes de nets
+						File → Schematic Setup → Net Classes
 					</strong>
-					. Conservez la classe
+					. Keep the
 					<em>
-						Par défaut
+						Default
 					</em>
-					pour les signaux et ajoutez :
+					class for signals and add:
 				</p>
 				<ul>
 					<li>
 						<strong>
 							+5V
 						</strong>
-						(pistes plus larges, distances adaptées)
+						(wider tracks, appropriate clearance)
 					</li>
 					<li>
 						<strong>
 							GND
 						</strong>
-						(paramètres adaptés aux plans de cuivre)
+						(plane/pour friendly settings)
 					</li>
 				</ul>
 			</section>
 			<section class="card" id="symbols-libs">
 				<h2>
-					3) Placement des symboles et ajout de bibliothèques externes
+					3) Place symbols and add external libraries
 				</h2>
 				<p>
-					Utilisez
+					Use
 					<strong>
-						Placer → Placer des symboles
+						Place → Place Symbols
 					</strong>
-					pour insérer les composants (connecteurs, TVS, résistances/condensateurs, transformateur, etc.).
-					Si un symbole ou une empreinte n’est pas présent(e) dans la bibliothèque par défaut, installez-le/la comme bibliothèque.
+					to insert parts (connectors, TVS, resistors/caps, transformer, etc.).
+					If a symbol/footprint isn’t in the default library, install it as a library.
 				</p>
 				<h3>
-					Ajouter un symbole et une empreinte ESP32 DevKitC
+					Add an ESP32 DevKitC symbol + footprint
 				</h3>
 				<ol>
 					<li>
-						Téléchargez le composant depuis SnapEDA/SnapMagic et décompressez l’archive.
+						Download the part from SnapEDA/SnapMagic and unzip it.
 					</li>
 					<li>
-						Gestionnaire de projets →
+						Project Manager →
 						<strong>
-							Préférences → Gérer les bibliothèques de symboles
+							Preferences → Manage Symbol Libraries
 						</strong>
-						→ ajoutez le fichier
+						→ add the
 						<code>
-				.kicad_sym
+.kicad_sym
 						</code>
 						.
 					</li>
 					<li>
-						Gestionnaire de projets →
+						Project Manager →
 						<strong>
-							Préférences → Gérer les bibliothèques d’empreintes
+							Preferences → Manage Footprint Libraries
 						</strong>
-						→ ajoutez le même dossier pour les empreintes.
+						→ add the same folder for footprints.
 					</li>
 				</ol>
 				<p class="callout">
 					<strong>
-						Conseil :
+						Tip:
 					</strong>
-					Privilégiez des bibliothèques locales au projet et versionnées pour les tutoriels et les travaux clients, afin de garantir la reproductibilité des conceptions.
+					Prefer version‑controlled, project‑local libraries for tutorials and client work to keep builds reproducible.
 				</p>
 			</section>
 			<section class="card" id="wiring-erc">
 				<h2>
-					4) Câblage + ERC (et correction des erreurs PWR)
+					4) Wiring + ERC (and fixing PWR errors)
 				</h2>
 				<p>
-					Dessinez les connexions avec
+					Draw connections with
 					<strong>
-						Placer → Tracer des fils
+						Place → Draw Wires
 					</strong>
-					. Ajoutez les symboles d’alimentation via
+					. Add power symbols via
 					<strong>
-						Placer → Symboles d’alimentation
+						Place → Power Symbols
 					</strong>
 					.
-					Attribuez ensuite les nets à leurs classes dans
+					Then assign nets to your net classes in
 					<strong>
-						Configuration du schéma → Classes de nets → Affectation des classes
+						Schematic Setup → Net Classes → Netclass Assignments
 					</strong>
 					.
 				</p>
 				<h3>
-					Lancer l’ERC
+					Run ERC
 				</h3>
 				<p>
-					Lancez
+					Run
 					<strong>
-						Inspection → Vérification des règles électriques (ERC)
+						Inspect → Electrical Rules Checker (ERC)
 					</strong>
-					.
-					Dans l’exemple, les broches ESP32 non utilisées génèrent des erreurs (comportement normal dans un tutoriel),
-					mais
+					. In the example, unused ESP32 pins flag errors (expected for a tutorial),
+					but
 					<strong>
 						+5V
 					</strong>
-					et
+					and
 					<strong>
 						GND
 					</strong>
-					peuvent également provoquer des erreurs, car KiCad ne « voit » pas de source d’alimentation.
+					can also error because KiCad doesn’t “see” a power source.
 				</p>
 				<p>
-					Corrigez cela en plaçant des symboles
+					Fix that by placing
 					<strong>
 						PWR_FLAG
 					</strong>
-					sur les nets alimentés extérieurement (+5V et GND).
+					symbols on the externally powered nets (+5V and GND).
 				</p>
 			</section>
 			<section class="card" id="footprints">
 				<h2>
-					5) Attribution des empreintes (et création d’une empreinte personnalisée)
+					5) Assign footprints (and make a custom one)
 				</h2>
 				<p>
-					Ouvrez
+					Open
 					<strong>
-						Outils → Attribuer les empreintes
+						Tools → Assign Footprints
 					</strong>
-					. Sélectionnez un symbole dans la liste centrale, puis double-cliquez sur une empreinte dans la liste de droite.
-					Utilisez le champ de recherche pour trouver rapidement une empreinte par son nom.
+					. Select a symbol in the center list, then double‑click a footprint on the right.
+					Use the search bar to quickly find footprints by name.
 				</p>
 				<h3>
-					Inspecter les empreintes avant validation
+					Inspect footprints before committing
 				</h3>
 				<ul>
 					<li>
-						Cliquez avec le bouton droit sur une empreinte →
+						Right‑click a footprint →
 						<strong>
-							Voir l’empreinte sélectionnée
+							View Selected Footprint
 						</strong>
-						pour ouvrir le visualiseur d’empreintes.
+						to open the Footprint Viewer.
 					</li>
 					<li>
-						Vérifiez les dimensions des pastilles, les diamètres de perçage ainsi que les zones de cour et les distances d’isolement
-						en les comparant à la fiche technique du composant.
+						Check pad sizes, drill sizes, and courtyard/clearances against your part datasheet.
 					</li>
 				</ul>
 				<h3>
-					Créer une empreinte personnalisée (lorsqu’aucune n’existe en bibliothèque)
+					Create a custom footprint (when no library part exists)
 				</h3>
 				<ol>
 					<li>
-						Ouvrez l’
+						Open the
 						<strong>
-							Éditeur d’empreintes
+							Footprint Editor
 						</strong>
-						via le gestionnaire de projets ou la barre d’outils.
+						from the Project Manager or toolbar.
 					</li>
 					<li>
-						Copiez une empreinte similaire : clic droit →
+						Copy a similar footprint: right‑click →
 						<strong>
-							Enregistrer sous
+							Save As
 						</strong>
-						, puis modifiez la copie.
+						, then edit the copy.
 					</li>
 					<li>
-						Ajustez les dimensions des pastilles et des perçages, puis renumérotez les pastilles pour qu’elles correspondent aux numéros de broches du schéma.
+						Adjust pad/drill sizes and renumber pads to match the schematic pin numbers.
 					</li>
 				</ol>
 			</section>
 			<section class="card" id="bom">
 				<h2>
-					6) Génération de la nomenclature (BOM)
+					6) Generate a BOM
 				</h2>
 				<p>
-					Le générateur de nomenclature de KiCad,
-					<strong>
-						Outils → Générer la nomenclature
-					</strong>
-					, regroupe les composants identiques (valeur, référence fabricant, empreinte) sur une seule ligne avec les quantités correspondantes.
-					Utilisez l’onglet
+					KiCad’s BOM generator, <strong>Tools → Generate Bill of Materials</strong>, groups identical parts (value, part number, footprint) into single lines with quantities.
+					Use the
 					<strong>
 						Export
 					</strong>
-					pour générer un fichier CSV exploitable dans un tableur.
+					tab to output CSV for spreadsheets.
 				</p>
 				<p class="callout">
 					<strong>
-						Conseil :
+						Tip:
 					</strong>
-					Ajoutez dès le début des champs tels que la référence fabricant et l’URL de la fiche technique — votre futur vous (et votre assembleur) vous remercieront.
+					Add fields like manufacturer part number and datasheet URL early—future you (and your assembler) will thank you.
 				</p>
 			</section>
 			<section class="card" id="pcb-layout">
 				<h2>
-					7) Import du PCB + configuration de la carte + placement
+					7) PCB import + board setup + placement
 				</h2>
 				<ol>
 					<li>
-						Ouvrez l’éditeur PCB :
+						Open the PCB Editor:
 						<strong>
-							Outils → Basculer vers l’éditeur PCB
+							Tools → Switch to PCB Editor
 						</strong>
 						.
 					</li>
 					<li>
-						Importez les modifications :
+						Import changes:
 						<strong>
-							Outils → Mettre à jour le PCB depuis le schéma
+							Tools → Update PCB from Schematic
 						</strong>
-						(les paramètres par défaut conviennent).
+						(defaults are fine).
 					</li>
 					<li>
-						Ouvrez
+						Open
 						<strong>
-							Fichier → Configuration de la carte
+							File → Board Setup
 						</strong>
-						pour configurer les couches, les règles et les classes de nets (beaucoup sont reprises depuis le schéma).
+						to configure layers, rules, and net classes (many transfer from the schematic).
 					</li>
 				</ol>
 				<p>
-					Activez l’affichage du « ratsnest » (panneau Apparence à droite) pour visualiser les connexions requises.
-					Placez d’abord les composants volumineux ou mécaniques (connecteurs, transformateur), puis affinez pour obtenir des pistes plus courtes et une meilleure CEM.
+					Turn on ratsnest visibility (right‑hand Appearance panel) to see required connections.
+					Place larger/mechanical parts first (connectors, transformer), then refine for shorter routes and better EMC.
 				</p>
 			</section>
 			<section class="card" id="routing-planes">
 				<h2>
-					8) Routage + plan de masse + mécanique
+					8) Routing + ground plane + mechanics
 				</h2>
 				<h3>
-					Plan de masse sur la couche inférieure
+					Ground plane on the bottom layer
 				</h3>
 				<p>
-					Afin de réduire les boucles de courant et d’améliorer la CEM, créez un plan de masse plein sur la couche inférieure :
+					To reduce loop area and improve EMC, pour a solid GND plane on the bottom layer:
 					<strong>
-						Tracer une zone remplie
+						Draw Filled Zone
 					</strong>
-					→ sélectionnez
+					→ select
 					<strong>
 						B.Cu
 					</strong>
-					et assignez la zone à
+					and assign the zone to
 					<strong>
 						GND
 					</strong>
 					.
-					Fermez le polygone (clic droit → Fermer le polygone).
+					Close the polygon (right‑click → Close Polygon).
 				</p>
 				<h3>
-					Routage sur la couche supérieure
+					Route on the top layer
 				</h3>
 				<p>
-					Routez les signaux et l’alimentation sur la couche supérieure et laissez le plan fournir des chemins de retour propres.
-					Conservez des boucles de courant élevées aussi compactes que possible et éloignez les sections analogiques sensibles des antennes/RF.
+					Route signals/power on the top layer and let the plane provide clean return paths.
+					Keep high‑current loops tight and sensitive analog sections away from antennas/RF.
 				</p>
 				<h3>
-					Trous de fixation, logo de sérigraphie et contour de carte
+					Mounting holes, silkscreen logo, and board outline
 				</h3>
 				<ul>
 					<li>
-						Ajoutez des trous de fixation :
+						Add mounting holes:
 						<strong>
-							Placer → Empreinte
+							Place → Footprint
 						</strong>
-						(choisissez une empreinte de trou de fixation).
+						(choose a Mounting Hole footprint).
 					</li>
 					<li>
-						Ajoutez un logo : utilisez l’
+						Add a logo: use KiCad’s
 						<strong>
-							Convertisseur d’images
+							Image Converter
 						</strong>
-						de KiCad pour exporter une empreinte de sérigraphie, puis ajoutez le dossier de bibliothèque correspondant et placez-le.
+						to export a silkscreen footprint, then add its library folder and place it.
 					</li>
 					<li>
-						Définissez le contour de la carte sur
+						Define the board outline on
 						<strong>
 							Edge.Cuts
 						</strong>
-						en conservant un dégagement suffisant par rapport au cuivre (par ex. ≥ 0,5 mm).
+						with sensible clearance from copper (e.g., ≥ 0.5 mm).
 					</li>
 				</ul>
 			</section>
 			<section class="card" id="3d">
 				<h2>
-					9) Visualisation 3D et modèles
+					9) 3D viewer + models
 				</h2>
 				<p>
-					Attribuez les modèles 3D dans
+					Assign 3D models in
 					<strong>
-						Propriétés de l’empreinte → Modèles 3D
+						Footprint Properties → 3D Models
 					</strong>
-					(échelle / rotation / décalage selon les besoins),
-					puis ouvrez
+					(scale/rotation/offset as needed),
+					then open
 					<strong>
-						Affichage → Visualiseur 3D
+						View → 3D Viewer
 					</strong>
-					pour inspecter la carte assemblée.
+					to inspect the assembled board.
 				</p>
 				<p class="callout">
 					<strong>
-						Note RF :
+						RF note:
 					</strong>
-					Si vous utilisez une carte ESP32 avec une section antenne intégrée, maintenez cette zone exempte de cuivre et de métal, et éloignée des zones analogiques bruyantes.
+					If you use an ESP32 dev board with an antenna section, keep it clear of copper/metal and away from noisy analog areas.
 				</p>
 			</section>
 			<section class="card" id="drc">
 				<h2>
-					10) DRC (vérification des règles de conception)
+					10) DRC (design‑rule check)
 				</h2>
 				<p>
-					Avant la fabrication, lancez
+					Before fabrication, run
 					<strong>
-						Inspection → Vérification des règles de conception (DRC)
+						Inspect → Design Rules Checker (DRC)
 					</strong>
 					.
-					Corrigez les problèmes tels que les chevauchements de sérigraphie, les violations de dégagement et les éléments non connectés.
+					Fix issues like silkscreen overlap, clearance violations, and unconnected items.
 				</p>
 			</section>
 			<section class="card" id="gerbers">
 				<h2>
-					11) Fichiers Gerber et perçages
+					11) Gerbers + drill files
 				</h2>
 				<ol>
 					<li>
 						<strong>
-							Fichier → Sorties de fabrication → Gerbers
+							File → Fabrication Outputs → Gerbers
 						</strong>
 						.
 					</li>
 					<li>
-						Sélectionnez les couches nécessaires (cuivre, masque, sérigraphie, contour de carte), puis cliquez sur
+						Select required layers (copper, mask, silkscreen, edge cuts), then click
 						<strong>
-							Tracer
+							Plot
 						</strong>
 						.
 					</li>
 					<li>
-						Cliquez sur
+						Click
 						<strong>
-							Générer les fichiers de perçage
+							Generate Drill Files
 						</strong>
-						et enregistrez-les dans le même dossier
+						and save into the same
 						<code>
-				Gerbers/
+Gerbers/
 						</code>
-						.
+						folder.
 					</li>
 					<li>
-						Inspectez les fichiers générés dans le
+						Inspect outputs in
 						<strong>
-							Visualiseur Gerber
+							Gerber Viewer
 						</strong>
-						avant de les transmettre à votre fabricant.
+						before sending to your manufacturer.
 					</li>
 				</ol>
 			</section>
 			<section class="card" id="checklist">
 				<h2>
-					12) Checklist de revue de conception
+					12) Design‑review checklist
 				</h2>
 				<p>
-					Les problèmes de PCB proviennent souvent d’erreurs évitables (CEM, chemins de retour inadaptés, dégagements, fabricabilité, contraintes thermiques, accès aux points de test).
-					Utilisez une checklist avant de commander les cartes afin de limiter les mauvaises surprises.
+					PCB issues often come from avoidable mistakes (EMI, poor return paths, clearance, manufacturability, thermal limits, test access).
+					Use a checklist before ordering boards to reduce surprises.
 				</p>
 				<p class="callout">
-					Recommandé :
+					Recommended:
 					<a href="../en/pcb-design-rules.html">
-						Règles de conception PCB – Checklist
+						PCB Design Rules – Checklist
 					</a>
-					(inclut une fiche de revue téléchargeable).
+					(includes a downloadable review sheet).
 				</p>
 			</section>
 			<section class="card" id="resources">
 				<h2>
-					Ressources
+					Resources
 				</h2>
 				<ul>
 					<li>
@@ -852,14 +839,14 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 						</a>
 					</li>
 					<li>
-						SnapEDA / SnapMagic (symboles &amp; empreintes):
+						SnapEDA / SnapMagic (symbols &amp; footprints):
 						<a href="https://www.snapeda.com" rel="noopener" target="_blank">
 							https://www.snapeda.com
 						</a>
 					</li>
 					<li>
 						<a href="../en/pcb-design-rules.html">
-							Règles de conception PCB – Checklist
+							PCB Design Rules – Checklist
 						</a>
 					</li>
 				</ul>
@@ -869,36 +856,31 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 					FAQ
 				</h2>
 				<h3>
-					Pourquoi l’ERC signale-t-il des erreurs sur +5V et GND ?
+					Why does ERC complain about +5V and GND?
 				</h3>
 				<p>
-					Si votre carte est alimentée de manière externe (par exemple via un bornier à vis), KiCad peut ne pas détecter de « sortie d’alimentation » pilotant le net.
-					Ajoutez un
+					If your board is powered externally (e.g., via a screw terminal), KiCad may not detect a “power output” driving the net.
+					Add a
 					<strong>
 						PWR_FLAG
 					</strong>
-					sur +5V et GND afin d’indiquer à l’ERC que ces nets sont volontairement alimentés.
+					to +5V and GND to tell ERC the net is intentionally powered.
 				</p>
 				<h3>
-					Faut-il toujours utiliser un plan de masse ?
+					Should I always use a ground plane?
 				</h3>
 				<p>
-					Pour la plupart des cartes numériques ou à microcontrôleur, un plan de masse continu réduit les boucles de courant et le bruit.
-					Il facilite également le routage et améliore les chemins de retour.
-					Validez les dégagements et zones d’exclusion (en particulier à proximité des antennes) à l’aide du DRC.
+					For most digital/MCU boards, a solid ground plane reduces loop area and noise. It also makes routing easier and improves return paths.
+					Validate clearances and keep‑outs (especially near antennas) with DRC.
 				</p>
 				<h3>
-					Que faut-il vérifier avant de commander des PCB ?
+					What should I inspect before ordering PCBs?
 				</h3>
 				<p>
-					À minima : le contour de la carte (Edge.Cuts), les diamètres de perçage, les ouvertures de masque de soudure, la lisibilité de la sérigraphie,
-					les distances d’isolement et de fuite, les paramètres de relief thermique,
-					ainsi que la connectivité de tous les nets.
-					Ouvrez toujours les fichiers Gerber dans un visualiseur avant de les transmettre à un fabricant.
+					At minimum: outline (Edge.Cuts), hole sizes, solder mask openings, silkscreen readability, creepage/clearance, thermal relief settings,
+					and that all nets are connected. Always open the Gerbers in a viewer before uploading them to a manufacturer.
 					<br>
-					Il est fortement recommandé d’effectuer une revue finale du design à l’aide d’une checklist, comme la
-					<a href="../en/pcb-design-rules.html">PCB Design Rules – Checklist JAK Services</a>,
-					afin de détecter les problèmes de fabricabilité, de CEM/EMI, d’assemblage et autres points que le DRC seul ne permet pas d’identifier.
+					It's strongly recommended to run a final design review using a checklist, such as the <a href="../en/pcb-design-rules.html">JAK Services PCB Design Rules – Checklist</a>, to catch manufacturability, EMI, assembly issues and other that DRC alone won’t flag.					
 				</p>
 			</section>
 		</main>
@@ -912,10 +894,10 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 				</p>
 				<p>
 					<a class="footer-link" href="legal.html">
-						Mentions légales
+						Legal mentions
 					</a>
 					<a class="footer-link" href="privacy.html">
-						Politique de confidentialité
+						Privacy policy
 					</a>
 				</p>
 			</div>
