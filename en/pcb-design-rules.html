@@ -742,6 +742,15 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="If the design uses multiple grounds (e.g., analog ground, digital ground, chassis/earth), define a controlled bonding strategy. Avoid multiple unintended connections between grounds, which can create ground loops and inject noise. Where a single-point bond is required, ensure it is the only intentional connection.">
+				  <span class="item-label">Multiple grounds: define a controlled bond point and avoid ground loops</span>
+				  <div class="item-detail">
+					If the design uses multiple grounds (analog, digital, chassis/earth), define how they are bonded.
+					Avoid multiple unintended connections that create ground loops and noise coupling.
+					Where a single-point bond is required, ensure it is the only intentional connection between those ground domains.
+				  </div>
+				</li>
+
 			  </ul>
 			</section>
 
@@ -752,8 +761,9 @@
 				<li class="has-detail" title="Route sensitive analog, RF, and clock signals first, before general digital routing. This ensures optimal placement, shortest paths, and best return-path control for the most critical nets.">
 				  <span class="item-label">Route critical and sensitive signals first</span>
 				  <div class="item-detail">
-					Route sensitive analog, RF, and clock signals first, before general digital routing.
-					This ensures optimal placement, shortest paths, and best return-path control for the most critical nets.
+					Route sensitive analog, RF, clock, and other high-speed or fast-edge signals first, before general digital routing.
+					This ensures optimal placement, shortest and most direct routing, and good return-path control for the most critical nets.
+					Avoid unnecessary detours and excess meanders unless required for length matching or impedance control, as extra length increases loss, delay, crosstalk risk, and EMI.
 				  </div>
 				</li>
 
@@ -905,6 +915,15 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="If an RF shield can is required (for EMI compliance or to protect sensitive RF/analog sections), reserve the footprint early: shield outline, keep-out height, grounding perimeter, and assembly clearance. Missing shield allowance late in the design can force major reroutes or mechanical changes.">
+				  <span class="item-label">RF shielding: reserve footprint and grounding early if needed</span>
+				  <div class="item-detail">
+					Verify whether an RF shield can is required for any section of the design.
+					If so, reserve sufficient footprint and keep-out (height and perimeter), and provide a solid grounding strategy around the shield boundary
+					so it can be assembled and bonded reliably.
+				  </div>
+				</li>
+
 			  </ul>
 			</section>
 
@@ -947,6 +966,15 @@
 					These support lower-frequency current demand and stabilise regulators and long power distribution paths.
 					<br><small>Note: Verify any already designed regulator's datasheets for allowable output capacitance and ESR (Equivalent Series Resistance) ranges, 
 					as excessive or very low-ESR capacitance can affect stability or startup behaviour.</small>
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Connectors and cable interfaces can inject or draw fast transient currents. Where relevant, place local decoupling or bulk capacitance near connectors (and any connector-adjacent via transitions) so transient currents do not travel across the board and disturb sensitive rails.">
+				  <span class="item-label">Add local decoupling near connectors where needed</span>
+				  <div class="item-detail">
+					Verify that connectors and cable interfaces that source or sink transient current have appropriate local decoupling nearby.
+					Where relevant, place the capacitors close to the connector pins (and any connector-adjacent via transitions) to keep the loop short
+					and prevent transients from propagating onto the PCB power distribution.
 				  </div>
 				</li>
 
@@ -1064,21 +1092,31 @@
 			  <h2>Voltage Transients &amp; ESD Protection</h2>
 			  <ul class="toggle-list">
 
-				<li class="has-detail" title="TVS (Transient Voltage Suppressor) diodes should be located as close as possible to the entry point of the transient, with short, wide copper back to the chosen ESD reference (ground or chassis) to minimise inductance and clamp the event locally.">
-				  <span class="item-label">Place TVS diodes close to the connector with a short return path</span>
+				<li class="has-detail" title="For effective ESD protection, the protected line should first reach the clamp node (TVS / protection component) before continuing to the sensitive device. Avoid routing that tees off to the IC before the clamp, or the ESD pulse can reach the IC before it is shunted.">
+				  <span class="item-label">ESD topology: place the clamp at the entry and avoid tee-before-clamp routing</span>
 				  <div class="item-detail">
-					TVS (Transient Voltage Suppressor) diodes should be located as close as possible to the entry point of the transient, 
-					with short, wide copper back to the chosen ESD reference (ground or chassis) to minimise inductance and clamp the event locally.
+					Verify ESD protection topology: the connector line should reach the TVS / clamp node first,
+					then continue to the sensitive device.
+					Avoid tee branches where the trace splits to the IC before the clamp, as the ESD pulse can couple into the IC ahead of protection.
 				  </div>
 				</li>
 
-				<li class="has-detail" title="ESD current should return to ground or chassis near the injection point. Avoid layouts that force ESD currents to travel through sensitive analog or digital ground regions.">
-				  <span class="item-label">Keep ESD return currents local</span>
+				<li class="has-detail" title="ESD protection is only effective if the transient is clamped locally and discharged through a short, low-inductance return path. Place TVS diodes close to the entry point, decide whether ESD returns to ground or chassis, and keep discharge currents out of sensitive circuit areas.">
+				  <span class="item-label">ESD placement and return path: clamp locally and discharge safely</span>
 				  <div class="item-detail">
-					ESD current should return to ground or chassis near the injection point. 
-					Avoid layouts that force ESD currents to travel through sensitive analog or digital ground regions.
+					Place TVS (Transient Voltage Suppressor) diodes as close as possible to the entry point of the transient
+					(e.g. connector or cable interface), with short, wide copper back to the chosen ESD reference
+					(PCB ground or chassis) to minimise inductance and clamp the event locally.
+					<br><br>
+					Ensure ESD currents return near the injection point and do not flow through sensitive analog or digital ground regions.
+					Decide whether ESD should return to PCB ground or to chassis/earth for the specific product and enclosure,
+					and provide a short, low-inductance discharge path accordingly.
+					<br><br>
+					Where required, use a dedicated ESD/earth return path or controlled chassis bond to keep discharge currents
+					out of functional ground and reference nodes.
 				  </div>
 				</li>
+
 
 			  </ul>
 			</section>
