@@ -2,126 +2,130 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jak-services.github.io/en/index.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/services.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/portefolio.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/portefolio_ai_driven_applications.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/tutorials.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/tutorial_getting_started_esp32_blinking_led_mockup.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/tutorial_esp32_dual_adc_serial_oscilloscope.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/tutorial_esp32_adc_wifi_api.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/tutorial_kicad_9_build_your_first_pcb.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/guides.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/pcb-design-rules.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/clients.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/contact.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/privacy.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/legal.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/en/thanks.html</loc>
-    <lastmod>2026-02-05</lastmod>
-  </url>
+    <lastmod>2026-02-11</lastmod>
+  <!-- </url> -->
   <url>
     <loc>https://jak-services.github.io/fr/index.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/services.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/portefolio.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/portefolio_ai_driven_applications.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/tutorial_kicad_9_build_your_first_pcb.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/tutorials.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/tutorial_getting_started_esp32_blinking_led_mockup.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/tutorial_esp32_dual_adc_serial_oscilloscope.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/tutorial_esp32_adc_wifi_api.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/guides.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
+  </url>
+  <url>
+    <loc>https://jak-services.github.io/fr/pcb-design-rules.html</loc>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/clients.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/contact.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/privacy.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/legal.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
   <url>
     <loc>https://jak-services.github.io/fr/thanks.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-11</lastmod>
   </url>
 </urlset>
