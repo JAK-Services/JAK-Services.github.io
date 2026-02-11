@@ -5,6 +5,24 @@
 (function () {
 	"use strict";
 
+	function onReady(fn) {
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", fn, { once: true });
+		} else {
+			fn();
+		}
+	}
+
+	function detectPageLang() {
+		const htmlLang = (document.documentElement.getAttribute("lang") || "")
+			.toLowerCase()
+			.trim();
+		if (htmlLang.startsWith("fr")) return "fr";
+		if (htmlLang.startsWith("en")) return "en";
+		if (location.pathname.includes("/fr/")) return "fr";
+		return "en";
+	}
+
 	// Create stable, human-readable fragment IDs (used for deep links).
 	function slugify(s) {
 		return String(s)
@@ -36,7 +54,7 @@
 			if (!h2 || !list) return;
 
 			// Build a per-item anchor that can be used to deep-link to the exact
-			// rule on https://jak-services.github.io/en/pcb-design-rules.html
+			// rule on the rules page (language-specific).
 			//
 			// IMPORTANT: The same ID algorithm must exist on the destination page
 			// (implemented in main.js) so hashes resolve and auto-expand.
@@ -65,17 +83,76 @@
 		return sections;
 	}
 
-	function buildHtmlDoc(sections) {
+	const I18N = {
+		en: {
+			htmlLang: "en",
+			docTitle: "PCB Design Review Checklist",
+			h1: "PCB Design Review Checklist",
+			intro: "Click the check items for detailed explanations.",
+			printBtn: "Print / Save as PDF",
+			metaProject: "Project / Board name",
+			metaProjectPh: "e.g., SensorHub Rev A",
+			metaRev: "Hardware revision",
+			metaRevPh: "e.g., A / B / C",
+			metaReviewer: "Reviewer",
+			metaReviewerPh: "Name",
+			metaDate: "Date",
+			thDone: "Done",
+			thCheck: "Check",
+			thStatus: "Status",
+			thNotes: "Notes",
+			ariaStatus: "Status for",
+			optPass: "Pass",
+			optFail: "Fail",
+			optNA: "N/A",
+			generatedFrom: "Generated from:"
+		},
+		fr: {
+			htmlLang: "fr",
+			docTitle: "Liste de revue de conception PCB",
+			h1: "Liste de revue de conception PCB",
+			intro: "Cliquez sur les éléments pour afficher les explications détaillées.",
+			printBtn: "Imprimer / Enregistrer en PDF",
+			metaProject: "Nom du projet / de la carte",
+			metaProjectPh: "ex. SensorHub Rev A",
+			metaRev: "Révision matérielle",
+			metaRevPh: "ex. A / B / C",
+			metaReviewer: "Relecteur",
+			metaReviewerPh: "Nom",
+			metaDate: "Date",
+			thDone: "Fait",
+			thCheck: "Vérification",
+			thStatus: "Statut",
+			thNotes: "Notes",
+			ariaStatus: "Statut pour",
+			optPass: "Réussi",
+			optFail: "Échec",
+			optNA: "N/A",
+			generatedFrom: "Généré depuis :"
+		}
+	};
+
+	function buildHtmlDoc(sections, options) {
+		const opts = options || {};
+		const lang = opts.lang === "fr" ? "fr" : "en";
+		const t = I18N[lang];
+
 		const today = new Date().toISOString().slice(0, 10);
-		const rulesBaseUrl = "https://jak-services.github.io/en/pcb-design-rules.html";
+		const rulesBaseUrl =
+			opts.rulesBaseUrl ||
+			(lang === "fr"
+				? "https://jak-services.github.io/fr/pcb-design-rules.html"
+				: "https://jak-services.github.io/en/pcb-design-rules.html");
 
-		const rows = sections.map((sec) => {
-			const itemsHtml = sec.items.map((item, idx) => {
-				const safe = escapeHtml(item.label);
-				const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
-				const href = `${rulesBaseUrl}#${encodeURIComponent(item.anchorId)}`;
+		const rows = sections
+			.map((sec) => {
+				const itemsHtml = sec.items
+					.map((item, idx) => {
+						const safe = escapeHtml(item.label);
+						const id = "item_" + Math.random().toString(36).slice(2) + "_" + idx;
+						const href = `${rulesBaseUrl}#${encodeURIComponent(item.anchorId)}`;
 
-				return `
+						return `
 					<tr>
 						<td class="check">
 							<input type="checkbox" id="${id}"/>
@@ -86,10 +163,10 @@
 							</label>
 						</td>
 						<td class="status">
-							<select aria-label="Status for ${safe}">
-								<option value="pass">Pass</option>
-								<option value="fail">Fail</option>
-								<option value="na">N/A</option>
+							<select aria-label="${escapeHtml(t.ariaStatus)} ${safe}">
+								<option value="pass">${escapeHtml(t.optPass)}</option>
+								<option value="fail">${escapeHtml(t.optFail)}</option>
+								<option value="na">${escapeHtml(t.optNA)}</option>
 							</select>
 						</td>
 						<td class="notes">
@@ -97,24 +174,25 @@
 						</td>
 					</tr>
 				`;
-			}).join("");
+					})
+					.join("");
 
-			return `
+				return `
 				<section class="block">
 					<h2>${escapeHtml(sec.title)}</h2>
 					<table class="design-review-table" style="width:100%;table-layout:fixed;border-collapse:collapse;">
 						<colgroup>
-					<col style="width:10%"/>
-					<col style="width:30%"/>
-					<col style="width:10%"/>
-					<col style="width:50%"/>
-				</colgroup>
+							<col style="width:10%"/>
+							<col style="width:30%"/>
+							<col style="width:10%"/>
+							<col style="width:50%"/>
+						</colgroup>
 						<thead>
 							<tr>
-								<th>Done</th>
-								<th>Check</th>
-								<th>Status</th>
-								<th>Notes</th>
+								<th>${escapeHtml(t.thDone)}</th>
+								<th>${escapeHtml(t.thCheck)}</th>
+								<th>${escapeHtml(t.thStatus)}</th>
+								<th>${escapeHtml(t.thNotes)}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -123,17 +201,18 @@
 					</table>
 				</section>
 			`;
-		}).join("");
+			})
+			.join("");
 
 		return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${escapeHtml(t.htmlLang)}">
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>PCB Design Review Checklist</title>
+		<title>${escapeHtml(t.docTitle)}</title>
 		<link rel="stylesheet" href="https://jak-services.github.io/css/main.css"/>
 		<link rel="stylesheet" href="https://jak-services.github.io/css/design-review.css"/>
-	
+
 		<style>
 			/* Fallback essentials if external CSS fails to load */
 			table.design-review-table{width:100%;table-layout:fixed;border-collapse:collapse;}
@@ -152,33 +231,33 @@
 </head>
 	<body>
 		<div class="container">
-		<h1>PCB Design Review Checklist</h1>
+		<h1>${escapeHtml(t.h1)}</h1>
 		<p class="small" style="margin: 0 0 14px; opacity: 0.9;">
-			Click the check items for detailed explanations.
+			${escapeHtml(t.intro)}
 		</p>
 
 		<div class="actions">
-			<button class="btn primary" onclick="window.print()">Print / Save as PDF</button>
+			<button class="btn primary" onclick="window.print()">${escapeHtml(t.printBtn)}</button>
 		</div>
 
 		<table class="meta-table" role="presentation">
 			<tr>
 				<td>
-					<label>Project / Board name</label>
-					<input type="text" placeholder="e.g., SensorHub Rev A"/>
+					<label>${escapeHtml(t.metaProject)}</label>
+					<input type="text" placeholder="${escapeHtml(t.metaProjectPh)}"/>
 				</td>
 				<td>
-					<label>Hardware revision</label>
-					<input type="text" placeholder="e.g., A / B / C"/>
+					<label>${escapeHtml(t.metaRev)}</label>
+					<input type="text" placeholder="${escapeHtml(t.metaRevPh)}"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label>Reviewer</label>
-					<input type="text" placeholder="Name"/>
+					<label>${escapeHtml(t.metaReviewer)}</label>
+					<input type="text" placeholder="${escapeHtml(t.metaReviewerPh)}"/>
 				</td>
 				<td>
-					<label>Date</label>
+					<label>${escapeHtml(t.metaDate)}</label>
 					<input type="text" value="${today}"/>
 				</td>
 			</tr>
@@ -186,27 +265,8 @@
 
 		${rows}
 
-		<p class="small">Generated from: ${escapeHtml(location.href)}</p>
+		<p class="small">${escapeHtml(t.generatedFrom)} ${escapeHtml(location.href)}</p>
 
-		<script>
-			(function () {
-				"use strict";
-				function autosize(el) {
-					if (!el) return;
-					el.style.height = "auto";
-					// Add a couple of pixels to avoid clipping descenders in some print engines.
-					el.style.height = (el.scrollHeight + 2) + "px";
-				}
-				const areas = Array.from(document.querySelectorAll("textarea.notes-field"));
-				areas.forEach((ta) => {
-					autosize(ta);					ta.addEventListener("input", () => {
-						autosize(ta);					});
-				});
-				// Ensure the print/PDF version has the latest content.
-				window.addEventListener("beforeprint", () => areas.forEach((ta) => {
-					autosize(ta);				}));
-			})();
-		</script>
 		</div>
 	</body>
 </html>`;
@@ -223,12 +283,19 @@
 		a.click();
 
 		a.remove();
-		URL.revokeObjectURL(url);
+		// Some browsers (Safari) can be picky if we revoke immediately.
+		setTimeout(() => URL.revokeObjectURL(url), 0);
 	}
 
-	function handleDownload() {
+	function handleDownload(lang) {
 		const sections = collectChecklist();
-		const doc = buildHtmlDoc(sections);
+		const doc = buildHtmlDoc(sections, {
+			lang: lang === "fr" ? "fr" : "en",
+			rulesBaseUrl:
+				lang === "fr"
+					? "https://jak-services.github.io/fr/pcb-design-rules.html"
+					: "https://jak-services.github.io/en/pcb-design-rules.html"
+		});
 		const date = new Date().toISOString().slice(0, 10);
 		download(`pcb-design-review-checklist_${date}.html`, doc);
 	}
@@ -237,19 +304,50 @@
 		window.print();
 	}
 
-	document.getElementById("download-design-review")
-		?.addEventListener("click", handleDownload);
+	onReady(() => {
+		const pageLang = detectPageLang();
 
-	document.getElementById("download-design-review-2")
-		?.addEventListener("click", handleDownload);
+		function bindOnce(el, handler, opts) {
+			if (!el || el.dataset.drBound === "1") return;
+			el.dataset.drBound = "1";
+			el.addEventListener("click", handler, opts);
+		}
 
-	document.getElementById("print-design-review")
-		?.addEventListener("click", handlePrint);
+		// English triggers
+		bindOnce(document.getElementById("download-design-review"), () => handleDownload("en"));
 
-	document.getElementById("download-design-review-link")
-	  ?.addEventListener("click", (e) => {
-		e.preventDefault();
-		handleDownload();
-	  });
-		
+		bindOnce(document.getElementById("download-design-review-2"), () => handleDownload("en"));
+
+		bindOnce(
+			document.getElementById("download-design-review-link"),
+			(e) => {
+				e.preventDefault();
+				handleDownload("en");
+			},
+			{ passive: false }
+		);
+
+		// French triggers
+		bindOnce(document.getElementById("download-design-review-fr"), () => handleDownload("fr"));
+
+		bindOnce(
+			document.getElementById("download-design-review-fr-link"),
+			(e) => {
+				e.preventDefault();
+				handleDownload("fr");
+			},
+			{ passive: false }
+		);
+
+		// If a page only has one set of IDs (or they changed), fall back to the page language.
+		// (This makes the FR page still work even if it reuses the EN IDs, or vice versa.)
+		// Fallback: if the page uses different IDs than expected, still bind any element
+		// that looks like a design-review download control.
+		document.querySelectorAll("[id^='download-design-review']").forEach((el) => {
+			bindOnce(el, () => handleDownload(pageLang));
+		});
+
+		// Print trigger (if present on any page)
+		bindOnce(document.getElementById("print-design-review"), handlePrint);
+	});
 })();
