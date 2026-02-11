@@ -237,6 +237,8 @@
 				  <li><a href="#pcb_design_rules_creepage_and_clearance">Creepage &amp; Clearance (important for &gt;30&nbsp;V)</a></li>
 				  <li><a href="#pcb_design_rules_high_current_and_temperature">High Current &amp; Temperature</a></li>
 				  <li><a href="#pcb_design_rules_design_test_dft">Design for Test (DFT)</a></li>
+				  <li><a href="#pcb_design_rules_pre_submission_review">Pre-Submission PCB Review (Before Design Review)</a></li>
+				  <li><a href="#pcb_design_rules_documentation">Documentation & Manufacturing Deliverables</a></li>
 				  <li><a href="#pcb_design_rules_calculators">Calculators</a></li>
 				  <li><a href="#Electronic_Standards">Pertinent Electronic Standards</a></li>
 				  <li><a href="#pcb_design_rules_resources">Resources</a></li>
@@ -439,6 +441,9 @@
 					and configure your ECAD tool’s design rules to match these conservatively — <strong>before you place or route anything</strong>. 
 					This ensures the design is buildable with good yield and cost from the start, prevents unmanufacturable features being created, and avoids costly late-stage rework.
 					<br><br>
+					As part of these constraints, ensure sufficient physical clearance is provided for production pick-and-place heads, manual assembly during prototyping,
+					and access for a soldering iron tip if rework or repair is required.
+					<br><br>
 					Align your ECAD DRC limits with what your fab and assembler can reliably produce, and verify compliance during layout using 
 					<a href="https://jlcpcb.com/blog/how-to-run-design-rule-check" target="_blank" rel="noopener">DRC</a> and 
 					<a href="https://jlcdfm.com/" target="_blank" rel="noopener">DFMA tools</a>.
@@ -481,6 +486,14 @@
 				  <div class="item-detail">
 					Create footprints from datasheets and verify pad sizes, keepouts, and courtyard areas. 
 					IPC-7351-based footprints are recommended to ensure manufacturability and solderability across vendors.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Any through-hole pad intended to be soldered must be defined as a plated through-hole (PTH). Non-plated holes should only be used for mechanical features or tooling.">
+				  <span class="item-label">Verify soldered through-hole pads are plated</span>
+				  <div class="item-detail">
+					Verify that all through-hole pads intended for soldering are defined as plated through-holes (PTH).
+					Non-plated through-holes (NPTH) should only be used for mechanical features, mounting, or tooling.
 				  </div>
 				</li>
 
@@ -563,7 +576,12 @@
 					<li class="has-detail" title="Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, as they strongly influence board layout, airflow, and enclosure design.">
 						<span class="item-label">Large components</span>
 						<div class="item-detail">
-							Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, as they strongly influence board layout, airflow, and enclosure design.
+							Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, 
+							as they strongly influence board layout, airflow, and enclosure design.
+							<br><br>
+							Avoid placing components with high thermal mass (e.g. large inductors or transformers)
+							immediately adjacent to very small or thermally sensitive components,
+							as this can cause soldering defects and thermal stress.
 						</div>
 					</li>
 
@@ -592,6 +610,16 @@
 					  </div>
 					</li>
 					
+					<li class="has-detail" title="Board slots, milled gaps, or cutouts are sometimes used as a physical 'guard barrier' to prevent signals from crossing a region or to enforce isolation. Ensure no tracks, planes, or copper pours unintentionally bridge or cross these milled features (including on inner layers). Add explicit keep-outs around the slot/cutout, and ensure the feature is clearly defined on the mechanical / Edge.Cuts layers that go to the fabricator, with notes if the slot is functionally critical.">
+					  <span class="item-label">Guard barriers: verify slots / cutouts prevent nets crossing milled regions</span>
+					  <div class="item-detail">
+						Board slots, milled gaps, or cutouts are sometimes used as a physical guard barrier (isolation or field-control feature).
+						Ensure no tracks, planes, or copper pours unintentionally bridge or cross these milled features (including on inner layers).
+						<br><br>
+						Add explicit copper keep-outs around the slot/cutout and verify pours don’t reconnect across it after refill.
+						Ensure the feature is clearly defined on the mechanical / Edge.Cuts layers included in the fabrication package, and add a short fabrication note if the slot is functionally critical.
+					  </div>
+					</li>					
 				</ul>
 			</section>
 
@@ -615,6 +643,9 @@
 				  <div class="item-detail">
 					Use a continuous, unbroken ground plane wherever possible. Place the main power plane on the adjacent layer so the ground–power pair 
 					forms a tight capacitor, reducing loop area and improving noise immunity.
+					<br><br>
+					Ensure the ground plane includes sufficient current-return vias near connectors, power entry points, and major load or return locations.
+					Verify that all ground pins of components have at least one direct via connection to the ground plane to minimize impedance and return-path discontinuities.
 				  </div>
 				</li>
 
@@ -688,8 +719,8 @@
 				<li class="has-detail" title="Keep fast edges routed directly over a continuous ground plane wherever possible. This provides a defined impedance, short return path, lower emissions, and reduced crosstalk — especially for clocks, SERDES, USB, HDMI, and fast MCU buses.">
 				  <span class="item-label">Route high-speed signals adjacent to a ground plane</span>
 				  <div class="item-detail">
-					Keep fast edges routed directly over a continuous ground plane wherever possible. 
-					This provides a defined impedance, short return path, lower emissions, and reduced crosstalk — especially for clocks, SERDES, USB, HDMI, and fast MCU buses.
+					Keep fast edges routed directly over a continuous, uninterrupted ground plane wherever possible. 
+					This provides a defined impedance, short and stable return path, lower emissions, and reduced crosstalk — especially for clocks, SERDES, USB, HDMI, and fast MCU buses.
 				  </div>
 				</li>
 
@@ -698,6 +729,16 @@
 				  <div class="item-detail">
 					Physically separate analog, digital, and power sections so noisy return currents do not flow through sensitive analog ground paths. 
 					Place the most sensitive analog circuits furthest from switching regulators, clocks, and fast digital edges.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="If you use guard traces (guard rings) to reduce coupling into high-impedance or sensitive nodes, ensure the guard is continuous where it matters and follows the geometry of the sensitive area (often near the board edge or around an analog front-end). Tie the guard to a low-impedance reference (usually GND) and stitch it to the reference plane frequently so it does not behave like a floating antenna. Avoid leaving long, unterminated guard segments.">
+				  <span class="item-label">Guard traces: keep them continuous, grounded, and stitched</span>
+				  <div class="item-detail">
+					If you use guard traces (guard rings) to reduce coupling into high-impedance or sensitive nodes, ensure the guard is continuous where it matters and follows the geometry of the sensitive area (e.g., around an analog front-end, or along the board perimeter when relevant).
+					<br><br>
+					Tie the guard to a low-impedance reference (usually GND) and stitch it to the reference plane frequently with vias so it stays at a stable potential and does not behave like a floating antenna.
+					Avoid long, dangling guard segments.
 				  </div>
 				</li>
 
@@ -725,6 +766,14 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="EMI/RFI filtering is most effective when placed at the boundary of the PCB. Filters should be located as close as possible to connectors, board edges, or shield interfaces to prevent noise from propagating onto or off the board.">
+				  <span class="item-label">Place EMI/RFI filtering at PCB entry and exit points</span>
+				  <div class="item-detail">
+					Ensure EMI/RFI filtering components are placed as close as possible to the point of entry or exit
+					(e.g. board edge, connector, or shield interface) to prevent noise from propagating onto or off the PCB.
+				  </div>
+				</li>
+
 				<li class="has-detail" title="Avoid routing signals through narrow necks between copper pours or plane voids, as this increases impedance, concentrates current density, and worsens EMI.">
 				  <span class="item-label">Avoid routing through narrow copper neck-downs</span>
 				  <div class="item-detail">
@@ -733,11 +782,14 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Clock nets switch continuously and radiate energy. Route them as short as practical, over a solid reference plane, and keep them away from sensitive analog or high-impedance nodes.">
-				  <span class="item-label">Keep clocks short and isolated</span>
+				<li class="has-detail" title="Clock nets switch continuously and radiate energy. Place crystal or oscillator sources as close as possible to the IC clock pins, and route clock nets as short as practical over a solid reference plane. Keep clock traces away from sensitive analog or high-impedance nodes to minimize noise coupling and jitter.">
+				  <span class="item-label">Clock sources and nets: keep loops short and isolated</span>
 				  <div class="item-detail">
-					Clock nets switch continuously and radiate energy. 
-					Route them as short as practical, over a solid reference plane, and keep them away from sensitive analog or high-impedance nodes.
+					Clock nets switch continuously and radiate energy.
+					Place crystal or oscillator sources as close as possible to the associated IC clock pins to minimize loop area.
+					<br><br>
+					Route clock nets as short as practical, over a solid reference plane, and keep them away from sensitive analog or high-impedance nodes
+					to reduce noise coupling and clock jitter.
 				  </div>
 				</li>
 
@@ -813,18 +865,23 @@
 				<li class="has-detail" title="Route differential pairs together with consistent spacing and width so their impedance stays balanced. Avoid stubs and branching off the pair — vias, test pads, or unused track segments that form “dangling” connections introduce reflections and imbalance. Minimise skew, and length-match only as required by the interface specification. Common differential pairs include such as: USB 2.0 (D+ / D-) and USB 3.x lanes Ethernet (TX+/TX-, RX+/RX-) LVDS links and camera/display interfaces PCIe lanes HDMI / DisplayPort lanes DDR address/command or data groups when specified by the memory vendor">
 				  <span class="item-label">Differential pairs: keep equal length, constant spacing, and matched impedance</span>
 				  <div class="item-detail">
-					Route differential pairs together with consistent spacing and width so their impedance stays balanced. 
+					Route differential pairs together with consistent spacing and width, keeping the traces as close together as practical to maintain balanced impedance and minimise skew.
 					Avoid stubs and branching off the pair — vias, test pads, or unused track segments that form “dangling” connections introduce reflections and imbalance. 
 					Minimise skew, and length-match only as required by the interface specification.					
+					<br><br>
+					Verify that all controlled-impedance signals are assigned to the correct net classes and use the intended impedance profiles.
+					Ensure impedance remains consistent along the entire trace length, including across layer transitions.
+					<br><br>
+					Apply length matching to high-speed interfaces such as DDR, PCIe, Ethernet, LVDS, HDMI, USB3+, and MIPI according to interface requirements.
 					<br><br>
 					Common differential pairs include such as:
 					<ul>
 					  <li>USB&nbsp;2.0&nbsp;(D+ / D-) and USB&nbsp;3.x&nbsp;lanes</li>
 					  <li>Ethernet&nbsp;(TX+/TX-, RX+/RX-)</li>
-					  <li>LVDS links and camera/display interfaces</li>
+					  <li>LVDS and MIPI (CSI-2 / DSI) camera or display interfaces</li>
 					  <li>PCIe lanes</li>
 					  <li>HDMI / DisplayPort lanes</li>
-					  <li>DDR&nbsp;address/command or data groups when specified by the memory vendor</li>
+					  <li>DDR address/command or data groups (when specified by the memory vendor)</li>
 					</ul>
 				  </div>
 				</li>
@@ -834,6 +891,17 @@
 				  <div class="item-detail">
 					Length-matching adds complexity and extra meanders, which can increase crosstalk and loss. 
 					Only match lengths where the interface requires controlled timing (e.g., DDR, some SERDES buses) — otherwise keep routing simple and direct.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="High-speed or long traces may require simulation to validate signal integrity. Termination components should be present and correctly placed to control reflections and overshoot.">
+				  <span class="item-label">Verify simulation and termination for high-speed signals</span>
+				  <div class="item-detail">
+					Verify that traces longer than approximately one-sixth of the signal rise or fall time have been evaluated using signal integrity simulation.
+					<br><br>
+					Ensure appropriate termination (resistive or otherwise) is present where required, and that termination components are placed at the correct locations along the signal path, typically as close as possible to the signal source or as specified by the interface.
+					<br><br>
+					Evaluate crosstalk for long, closely coupled parallel traces, and simulate where spacing alone may be insufficient.
 				  </div>
 				</li>
 
@@ -850,8 +918,8 @@
 					Each IC (Integrated Circuit) supply pin should have its own local decoupling capacitor to provide a low-impedance energy reservoir at the device and keep 
 					the rail stable during fast current transients. 
 					A 0.1&nbsp;µF MLCC (Multilayer Ceramic Capacitor) is a good general-purpose high-frequency decoupler — 
-					place it as close as physically possible to the IC power pin and its return to 
-					ground, with very short tracks and minimal vias.
+					Place decoupling capacitors as close as physically possible to the IC power pin and its return to ground,
+					using very short tracks (and vias only if it reduce the loop size), typically within a few millimeters and preferably well under 15&nbsp;mm.
 				  </div>
 				</li>
 				
@@ -861,6 +929,14 @@
 					Use multiple capacitor values (e.g., 100 nF, 1 µF, 10 µF) where required
 					to provide low impedance across a broad frequency range.
 					Do not rely on a single capacitor value to cover all transient frequencies.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Each decoupling capacitor should have its own dedicated vias to the power and ground reference planes to minimize impedance and prevent shared return paths.">
+				  <span class="item-label">Ensure decoupling capacitors use dedicated vias</span>
+				  <div class="item-detail">
+					Verify that each decoupling capacitor has its own dedicated via to the power plane and its own dedicated via to the ground plane.
+					Avoid sharing vias between multiple capacitors, as this increases loop inductance and reduces decoupling effectiveness.
 				  </div>
 				</li>
 
@@ -893,13 +969,17 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Sensitive analog circuits should not share supply or return paths with noisy digital loads. Use star-style routing or separate power regions, rather than daisy chaining, so high-current switching noise does not modulate precision analog references or ADC inputs.<br>Ensure the star point is a well-defined reference node, as voltage drops in shared returns can otherwise create bias errors in analog measurements. Often this star point is placed near: the ADC reference pin the regulator output or sense point the system ground star or chassis connection">
-				  <span class="item-label">Star-route sensitive analog supplies where possible</span>
+				<li class="has-detail" title="Sensitive analog circuits should be isolated from noisy digital activity both electrically and physically. Avoid shared supply or return paths with noisy loads, and prevent sensitive nets from being routed near or beneath noise-generating components such as switching regulators or high-speed clocks.">
+				  <span class="item-label">Isolate sensitive analog circuits from noisy digital activity</span>
 				  <div class="item-detail">
 					Sensitive analog circuits should not share supply or return paths with noisy digital loads.
 					Use star-style routing or separate power regions, rather than daisy chaining, so high-current switching noise does not modulate precision analog references or ADC inputs.
+					<br><br>
+					Verify that sensitive or high-impedance signal nets are not routed under or immediately adjacent to noisy components,
+					such as switching regulators, high-speed clocks, or large current-switching devices.
 					<small>
-					  <br>Ensure the star point is a well-defined reference node, as voltage drops in shared returns can otherwise create bias errors in analog measurements.
+					  <br><br>
+					  Ensure the star point is a well-defined reference node, as voltage drops in shared returns can otherwise create bias errors in analog measurements.
 					  Often this star point is placed near:
 					  <ul>
 						<li>the ADC reference pin</li>
@@ -909,6 +989,7 @@
 					</small>
 				  </div>
 				</li>
+
 
 			  </ul>
 			</section>
@@ -1054,12 +1135,22 @@
 				  </div>
 				</li>
 
-
 				<li class="has-detail" title="Use PCB trace width calculators and IPC guidelines to choose suitable copper width and thickness for the expected current and permitted temperature rise. Consider both external and internal layers, as buried traces run hotter for the same current.">
 				  <span class="item-label">Size copper traces using calculators or standards</span>
 				  <div class="item-detail">
 					Use PCB trace width <a href="https://www.digikey.in/en/resources/conversion-calculators/conversion-calculator-pcb-trace-width" target="_blank" rel="noopener">calculators</a> and IPC guidelines to choose suitable copper width and thickness for the expected current and permitted temperature rise. 
 					Consider both external and internal layers, as buried traces run hotter for the same current.
+					<br><br>
+					Verify that the minimum trace widths for all current-carrying nets are sufficient for the expected current.
+					Consider defining explicit design rules or net classes for high-current nets to enforce minimum widths and via counts.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Ensure that power planes and copper areas have sufficient via connections to meet current requirements, especially near regulators, connectors, and high-load devices. Inadequate via count can limit current capacity and increase voltage drop.">
+				  <span class="item-label">Verify via density for power planes and copper areas</span>
+				  <div class="item-detail">
+					Ensure that power planes and copper areas include a sufficient number of vias to support the required current.
+					Pay particular attention to vias near power entry points, regulators, and high-current loads.
 				  </div>
 				</li>
 
@@ -1073,6 +1164,26 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="High-dissipation components require sufficient copper area for heat spreading and thermal relief. Inadequate copper can lead to excessive temperature rise and reduced reliability.">
+				  <span class="item-label">Provide sufficient thermal copper for high-dissipation components</span>
+				  <div class="item-detail">
+					Verify that high-dissipation components have sufficient copper area for heat spreading and thermal relief,
+					including but not limited to:
+					<ul>
+					  <li>Linear regulators</li>
+					  <li>Switching power supplies and LED drivers</li>
+					  <li>High-power LEDs</li>
+					  <li>High-frequency gate drivers</li>
+					  <li>MOSFETs</li>
+					  <li>Motor drivers</li>
+					  <li>Battery chargers</li>
+					  <li>High-speed microprocessors</li>
+					  <li>Power amplifiers</li>
+					</ul>
+				  </div>
+				</li>
+
+
 			  </ul>
 			</section>
 
@@ -1085,6 +1196,9 @@
 				  <div class="item-detail">
 					Provide accessible test pads or vias on important signals such as GND, supply rails (e.g., 3V3, 5V), reset, clock, debug interfaces, UART, and other critical control or measurement nodes. 
 					This simplifies bring-up, fault-finding, and production test.
+					<br><br>
+					Verify that programmable devices include accessible programming headers or test pads
+					to support initial programming, firmware updates, and recovery.
 					<small>
 					  <br>Note: Avoid placing test pads directly on high-speed or impedance-controlled nets, as the added stub can cause reflections and signal degradation. 
 					  If probing is required, consider high-impedance probes, matched probe pads, or test at a buffered node 
@@ -1093,11 +1207,12 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Leave enough clearance around test points for oscilloscope or multimeter probes, or for bed-of-nails or pogo-pin fixtures in production. Avoid placing test points under tall components or heatsinks unless dedicated fixtures are planned.">
+				<li class="has-detail" title="Leave enough clearance around test points for oscilloscope or multimeter probes, or for bed-of-nails or pogo-pin fixtures in production. Avoid placing test points under tall components or heatsinks unless dedicated fixtures are planned. Insufficient spacing can increase the risk of accidental shorts during probing.">
 				  <span class="item-label">Ensure physical access for probes</span>
 				  <div class="item-detail">
-					Leave enough clearance around test points for oscilloscope or multimeter probes, or for bed-of-nails or pogo-pin fixtures in production. 
+					Leave enough clearance around test points for instrument probes, or for bed-of-nails or pogo-pin fixtures in production. 
 					Avoid placing test points under tall components or heatsinks unless dedicated fixtures are planned.
+					<br>Ensure adequate spacing from neighboring pads and copper features to reduce the risk of accidental shorts during test.
 				  </div>
 				</li>
 
@@ -1108,12 +1223,131 @@
 					Where possible, align test points to a grid to suit automated or semi-automated fixtures.
 				  </div>
 				</li>
-				
+
+				<li class="has-detail" title="Place test points with mechanical constraints in mind. Avoid locations too close to board edges, mounting holes, or enclosure interfaces, as these can interfere with fixturing, handling, or final assembly. Review and relocate poorly placed test points during design revisions if needed.">
+				  <span class="item-label">Account for mechanical and board-edge constraints</span>
+				  <div class="item-detail">
+					Place test points with sufficient distance from board edges, mounting features, and enclosure interfaces to avoid mechanical interference. 
+					Test points located too close to edges or hardware can complicate fixturing, probing, or final assembly.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Where practical, place test points on a single side of the PCB to simplify testing. Bottom-side placement is preferred for bed-of-nails or pogo-pin fixtures, while top-side placement is often better for manual probing during bring-up and debugging.">
+				  <span class="item-label">Use a consistent PCB side for test points</span>
+				  <div class="item-detail">
+					Where practical, place test points on a single side of the PCB to simplify access and fixturing, and to reduce fixture complexity and overall test fixture cost.
+					<br>Bottom-side placement is typically preferred for automated test fixtures such as bed-of-nails.
+					<br>Top-side placement is often more suitable for manual access during bring-up and debugging.
+				  </div>
+				</li>
+
 				<li class="has-detail" title="Provide a clear and repeatable power-up sequence for test and production. Ensure it is possible to power the board safely with current-limited supplies during bring-up.">
 				  <span class="item-label">Support safe and controlled power-up during test</span>
 				  <div class="item-detail">
 					Provide a clear and repeatable power-up sequence for test and production.
 					Ensure it is possible to power the board safely with current-limited supplies during bring-up.
+				  </div>
+				</li>
+
+			  </ul>
+			</section>
+
+			<section class="card" id="pcb_design_rules_pre_submission_review">
+			  <h2>Pre-Submission PCB Review (Before Design Review)</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail" title="Before submitting the PCB for design review, ensure there are no unrouted or partially routed nets left in the layout. Unrouted connections often indicate missing constraints or incomplete placement decisions.">
+				  <span class="item-label">Verify no unrouted nets remain</span>
+				  <div class="item-detail">
+					Before submitting the PCB for design review, ensure there are no unrouted or partially routed nets left in the layout.
+					Unrouted connections often indicate incomplete placement, missing constraints, or unresolved design decisions.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Refill all copper pours and polygons to ensure clearances, connectivity, and thermal behavior reflect the final design state used for manufacturing outputs.">
+				  <span class="item-label">Refill all copper pours and polygons</span>
+				  <div class="item-detail">
+					Refill all copper pours and polygons to ensure clearances, connectivity, and thermal behavior reflect the final design state.
+					This avoids false DRC results and ensures generated manufacturing files are accurate.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Update the PCB from the schematic and verify that schematic and layout data are fully synchronized before review or release.">
+				  <span class="item-label">Ensure schematic and PCB are synchronized</span>
+				  <div class="item-detail">
+					Update the PCB from the schematic and verify that schematic symbols, footprints, and net connectivity are fully synchronized.
+					Resolve any forward-annotation or back-annotation mismatches before review.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Run a full design rule check and ensure it completes without errors. Include a rule to detect nets with only a single connected pin, which may indicate missing connections or schematic issues.">
+				  <span class="item-label">Confirm DRC passes with no errors</span>
+				  <div class="item-detail">
+					Run a full design rule check and ensure it completes without errors.
+					<br>Ensure a specific rule exists to detect nets with only a single connected pin, as these often indicate missing or unintended connections.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Ensure the board outline is defined on a mechanical or Edge.Cuts layer that will be included in the manufacturing data sent to the PCB fabricator.">
+				  <span class="item-label">Verify board outline is present in fabrication layers</span>
+				  <div class="item-detail">
+					Ensure the board outline is correctly defined on a mechanical or Edge.Cuts layer
+					and that this layer is included in the fabrication data sent to the PCB manufacturer.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Ensure all required silkscreen markings are present, including company and product identification, copyright notices, safety labels, connector labels, and board revision information.">
+				  <span class="item-label">Verify silkscreen and marking completeness</span>
+				  <div class="item-detail">
+					Ensure the PCB silkscreen includes all required markings:
+					<ul>
+					  <li>Company and product identification (logos where applicable)</li>
+					  <li>Copyright notice</li>
+					  <li>Safety or warning labels and icons</li>
+					  <li>Connector labels and pinout indications where relevant</li>
+					  <li>Board name, revision identifier, and print date</li>
+					</ul>
+				  </div>
+				</li>
+
+				<li class="has-detail" title="If reference designators are shown on the silkscreen, ensure they are clearly associated with their components, consistently oriented, and remain legible after fabrication and assembly.">
+				  <span class="item-label">Check reference designator placement and readability</span>
+				  <div class="item-detail">
+					If reference designators are present on the silkscreen:
+					<ul>
+					  <li>Ensure each designator clearly identifies its associated component</li>
+					  <li>Limit orientations to one or two consistent directions</li>
+					  <li>Verify text size and font remain legible after fabrication and assembly</li>
+					</ul>
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Include a dedicated QA or test identification area on the PCB for traceability during production, test, and service.">
+				  <span class="item-label">Provide QA and traceability markings</span>
+				  <div class="item-detail">
+					Include a dedicated QA or test identification area on the PCB, such as:
+					<ul>
+					  <li>Barcode or DataMatrix for traceability</li>
+					  <li>Blank fields for serial number, date code, and QA / test approval marks</li>
+					</ul>
+				  </div>
+				</li>
+
+				<li class="has-detail" title="If an enclosure model is available, verify the PCB using 3D models to ensure there are no mechanical interferences between the board, components, and enclosure.">
+				  <span class="item-label">Verify enclosure fit using 3D models</span>
+				  <div class="item-detail">
+					If an enclosure model is available, verify the PCB using 3D models to ensure there are no mechanical interferences
+					between the PCB, mounted components, and enclosure features.
+					<br>Ensure all components, including mechanical parts, have accurate 3D models.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Before sending the design for peer review, confirm that the PCB is considered fully production-ready by the designer.">
+				  <span class="item-label">Confirm production readiness before peer review</span>
+				  <div class="item-detail">
+					Before sending the design to colleagues for a design review,
+					confirm that the PCB is considered fully production-ready by the designer.
+					This avoids unnecessary review effort on incomplete or transitional designs.
 				  </div>
 				</li>
 
