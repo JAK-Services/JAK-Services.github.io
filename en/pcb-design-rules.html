@@ -322,6 +322,14 @@
 						This greatly reduces the risk of accidental net ties and hard-to-find errors during bring-up and debugging.
 					  </div>
 					</li>		
+										
+					<li class="has-detail" title="Verify that all IC power pins are explicitly connected and decoupled as required by the datasheet. Pay special attention to hidden or multi-unit power pins and ensure no supply pins are left floating or unintentionally tied together.">
+					  <span class="item-label">Verify all IC power pins are correctly connected</span>
+					  <div class="item-detail">
+						Verify that all IC power pins are explicitly connected and decoupled as required by the datasheet.
+						Pay special attention to hidden or multi-unit power pins and ensure no supply pins are left floating or unintentionally tied together.
+					  </div>
+					</li>
 					
 					<li class="has-detail" title="Mark polarity, pin-1, and orientation clearly on both the schematic and PCB footprint . Ensure diodes, electrolytic capacitors, connectors, ICs, and LEDs have unambiguous orientation marks that match the silkscreen and assembly drawings. Clear polarity and pin-1 indicators greatly reduce placement errors during assembly and prevent costly rework or board damage.">
 						<span class="item-label">Mark polarity, pin-1, and orientation clearly</span>
@@ -330,6 +338,14 @@
 							Ensure diodes, electrolytic capacitors, connectors, ICs, and LEDs have unambiguous orientation marks that match the silkscreen and assembly drawings. 
 							Clear polarity and pin-1 indicators greatly reduce placement errors during assembly and prevent costly rework or board damage.
 						</div>
+					</li>
+
+					<li class="has-detail" title="Check that all configuration, mode-select, and address pins are set to a defined logic level using pull-ups or pull-downs according to the datasheet. Avoid relying on internal defaults unless explicitly guaranteed by the manufacturer.">
+					  <span class="item-label">Define all configuration and mode pins</span>
+					  <div class="item-detail">
+						Check that all configuration, mode-select, and address pins are set to a defined logic level using pull-ups or pull-downs according to the datasheet.
+						Avoid relying on internal defaults unless explicitly guaranteed by the manufacturer.
+					  </div>
 					</li>
 					
 					<li class="has-detail" title="Label connectors meaningfully, not just J1, J2, etc. Use names that describe the function or interface — such as PWR_IN, BAT_CONN, ETHERNET, or UART_DEBUG. Also label key pins (e.g., TX, RX, 5V, GND). Good connector naming prevents wiring mistakes and makes installation and troubleshooting much easier.">
@@ -407,6 +423,14 @@
 			  <h2>Manufacturability (DFMA)</h2>
 			  <ul class="toggle-list">
 
+				<li class="has-detail" title="Confirm that all components are available, not obsolete, and have acceptable lead times. Where possible, identify second-source alternatives with compatible footprints to reduce supply-chain risk.">
+				  <span class="item-label">Check component availability and second sources</span>
+				  <div class="item-detail">
+					Confirm that all components are available, not obsolete, and have acceptable lead times.
+					Where possible, identify second-source alternatives with compatible footprints to reduce supply-chain risk.
+				  </div>
+				</li>
+
 				<li class="has-detail"
 				  title="Confirm your manufacturer’s real process limits, then configure your ECAD tool’s clearance, trace width, via size, annular ring, solder-mask, and other manufacturing rules to match — before you place or route anything. This prevents unmanufacturable features being created and improves yield and cost. Verify compliance during layout using DFMA/DRC tools.">
 				  <span class="item-label">Design Rule Check (DRC)</span>
@@ -433,6 +457,14 @@
 				  <div class="item-detail">
 					Single-sided assembly is cheaper and simpler than double-sided, reducing pick-and-place time, reflow steps, and yield risk. 
 					Place only truly necessary parts on the second side.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Ensure polarity, pin-1, and orientation markings are visible after assembly. Avoid placing critical silkscreen markings under components or in areas likely to be obscured.">
+				  <span class="item-label">Ensure silkscreen markings remain visible after assembly</span>
+				  <div class="item-detail">
+					Ensure polarity, pin-1, and orientation markings are visible after assembly.
+					Avoid placing critical silkscreen markings under components or in areas likely to be obscured.
 				  </div>
 				</li>
 
@@ -519,12 +551,28 @@
 							Fix the position and orientation of connectors early, and align them consistently at the board edge so cables, panels, and future enclosures can be designed to mate reliably.
 						</div>
 					</li>
+										
+					<li class="has-detail" title="Keep sufficient mechanical clearance around connectors for mating cables, latches, strain relief, and user handling. Consider insertion forces and connector wear over product lifetime.">
+					  <span class="item-label">Allow clearance for connector mating and strain relief</span>
+					  <div class="item-detail">
+						Keep sufficient mechanical clearance around connectors for mating cables, latches, strain relief, and user handling.
+						Consider insertion forces and connector wear over product lifetime.
+					  </div>
+					</li>
 					
 					<li class="has-detail" title="Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, as they strongly influence board layout, airflow, and enclosure design.">
 						<span class="item-label">Large components</span>
 						<div class="item-detail">
 							Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, as they strongly influence board layout, airflow, and enclosure design.
 						</div>
+					</li>
+
+					<li class="has-detail" title="Ensure components that may require adjustment, calibration, or replacement (e.g., trim pots, jumpers, fuses) remain physically accessible in the final assembly, and that potensiometers increases the voltage or signal when turned clockwise.">
+					  <span class="item-label">Keep adjustable or serviceable parts accessible</span>
+					  <div class="item-detail">
+						Ensure components that may require adjustment, calibration, or replacement
+						(e.g., trim pots, jumpers, fuses) remain physically accessible in the final assembly, and that potensiometers increases the voltage or signal when turned clockwise.
+					  </div>
 					</li>
 					
 					<li class="has-detail" title="Identify and place electrically sensitive or timing-critical parts early (e.g., oscillators, RF parts, precision references) so routing and grounding can be optimised around them.">
@@ -579,10 +627,35 @@
 				</li>
 
 				<li class="has-detail" title="Split or fragmented planes force return currents to detour around gaps, increasing noise and EMI risk. Keep planes solid unless a split is absolutely necessary — and if you must split, control where signals cross.">
-				  <span class="item-label">Avoid split planes where possible</span>
+				  <span class="item-label">Avoid split planes that break return paths</span>
 				  <div class="item-detail">
 					Split or fragmented planes force return currents to detour around gaps, increasing noise and EMI risk. 
 					Keep planes solid unless a split is absolutely necessary — and if you must split, control where signals cross.
+				  </div>
+				</li>
+
+				<li class="has-detail"
+					title="Avoid vertically overlapping split power regions on adjacent layers. Overlapping copper areas form unintended capacitors, allowing high-frequency noise to couple between different supply rails (e.g., 3.3 V and 5 V).">
+				  <span class="item-label">Avoid vertically overlapping different power rails on adjacent layers</span>
+				  <div class="item-detail">
+					Avoid vertically overlapping split power regions on adjacent layers.
+					Copper areas that overlap across layers behave as unintended capacitors,
+					allowing high-frequency noise to couple between otherwise separate supply rails.
+					<br><br>
+					<strong>Example:</strong> If a 3.3&nbsp;V plane on one layer overlaps a 5&nbsp;V plane on the adjacent layer,
+					switching noise on the 5&nbsp;V rail can capacitively inject into the 3.3&nbsp;V rail (and vice versa),
+					defeating power isolation.
+					<br><br>
+					Where possible, align identical voltages above/below each other, place a solid ground plane between power layers,
+					or offset splits so different supplies do not overlap in the stack-up.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Ensure every signal layer has an adjacent solid reference plane (ground or power). Avoid signal layers that reference distant or fragmented planes, as this increases impedance and EMI.">
+				  <span class="item-label">Ensure each signal layer has a nearby reference plane</span>
+				  <div class="item-detail">
+					Ensure every signal layer has an adjacent solid reference plane (ground or power).
+					Avoid signal layers that reference distant or fragmented planes, as this increases impedance and EMI.
 				  </div>
 				</li>
 
@@ -635,6 +708,14 @@
 			  <h2>Signal Integrity, EMI &amp; Routing</h2>
 			  <ul class="toggle-list">
 
+				<li class="has-detail" title="Route sensitive analog, RF, and clock signals first, before general digital routing. This ensures optimal placement, shortest paths, and best return-path control for the most critical nets.">
+				  <span class="item-label">Route critical and sensitive signals first</span>
+				  <div class="item-detail">
+					Route sensitive analog, RF, and clock signals first, before general digital routing.
+					This ensures optimal placement, shortest paths, and best return-path control for the most critical nets.
+				  </div>
+				</li>
+
 				<li class="has-detail" title="High-speed and fast-edge signals form a loop with their return current which should be flowing directly beneath the trace in the nearest solid reference plane. Keep a continuous plane under critical routing so the return current does not have to detour — breaks in the return path increase loop area, noise, and EMI. Shorter traces and closely-coupled outgoing/return paths further reduce inductance and improve signal integrity.">
 				  <span class="item-label">Control the return path and minimise loop area</span>
 				  <div class="item-detail">
@@ -644,11 +725,11 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="When a high-speed signal changes layer, the return current must also transition between planes. Place a ground stitching via close to the signal via to provide a short, controlled return path and reduce loop inductance.">
-				  <span class="item-label">Add stitching vias near layer transitions</span>
+				<li class="has-detail" title="Avoid routing signals through narrow necks between copper pours or plane voids, as this increases impedance, concentrates current density, and worsens EMI.">
+				  <span class="item-label">Avoid routing through narrow copper neck-downs</span>
 				  <div class="item-detail">
-					When a high-speed signal changes layer, the return current must also transition between planes. 
-					Place a ground stitching via close to the signal via to provide a short, controlled return path and reduce loop inductance.
+					Avoid routing signals through narrow necks between copper pours or plane voids,
+					as this increases impedance, concentrates current density, and worsens EMI.
 				  </div>
 				</li>
 
@@ -668,6 +749,14 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="When a high-speed signal changes layer, the return current must also transition between planes. Place a ground stitching via close to the signal via to provide a short, controlled return path and reduce loop inductance.">
+				  <span class="item-label">Add stitching vias near layer transitions</span>
+				  <div class="item-detail">
+					When a high-speed signal changes layer, the return current must also transition between planes. 
+					Place a ground stitching via close to the signal via to provide a short, controlled return path and reduce loop inductance.
+				  </div>
+				</li>
+				
 				<li class="has-detail" title="At higher frequencies (roughly above 80 MHz and for fast-edge logic), through-hole leads and long traces add significant inductance and behave like small antennas. Prefer SMD parts and keep traces as short as practical. Avoid stubs or unused track segments — for example, test pads or via branches that form “dangling” connections — as these create reflections and radiation points. Note that even ~10 cm of trace can act as an efficient radiator in the FM band.">
 				  <span class="item-label">Avoid long traces and through-hole parts at RF / fast edges</span>
 				  <div class="item-detail">
@@ -765,12 +854,13 @@
 					ground, with very short tracks and minimal vias.
 				  </div>
 				</li>
-
-				<li class="has-detail" title="The decoupling capacitor, power pin, and ground return form a loop. Keep this loop extremely small (short, wide connections; direct via to ground plane) to reduce inductance and improve transient response and EMI performance.">
-				  <span class="item-label">Minimise the cap–VCC–GND loop area</span>
+				
+				<li class="has-detail" title="Use multiple capacitor values (e.g., 100 nF, 1 µF, 10 µF) where required to provide low impedance across a broad frequency range. Do not rely on a single capacitor value to cover all transient frequencies.">
+				  <span class="item-label">Use a range of decoupling capacitor values where needed</span>
 				  <div class="item-detail">
-					The decoupling capacitor, power pin, and ground return form a loop. 
-					Keep this loop extremely small (short, wide connections; direct via to ground plane) to reduce inductance and improve transient response and EMI performance.
+					Use multiple capacitor values (e.g., 100 nF, 1 µF, 10 µF) where required
+					to provide low impedance across a broad frequency range.
+					Do not rely on a single capacitor value to cover all transient frequencies.
 				  </div>
 				</li>
 
@@ -781,6 +871,14 @@
 					These support lower-frequency current demand and stabilise regulators and long power distribution paths.
 					<br><small>Note: Verify any already designed regulator's datasheets for allowable output capacitance and ESR (Equivalent Series Resistance) ranges, 
 					as excessive or very low-ESR capacitance can affect stability or startup behaviour.</small>
+				  </div>
+				</li>
+
+				<li class="has-detail" title="The decoupling capacitor, power pin, and ground return form a loop. Keep this loop extremely small (short, wide connections; direct via to ground plane) to reduce inductance and improve transient response and EMI performance.">
+				  <span class="item-label">Minimise the cap–VCC–GND loop area</span>
+				  <div class="item-detail">
+					The decoupling capacitor, power pin, and ground return form a loop. 
+					Keep this loop extremely small (short, wide connections; direct via to ground plane) to reduce inductance and improve transient response and EMI performance.
 				  </div>
 				</li>
 
@@ -1008,6 +1106,39 @@
 				  <div class="item-detail">
 					Logical grouping and clear silkscreen labels reduce wiring mistakes and speed debugging. 
 					Where possible, align test points to a grid to suit automated or semi-automated fixtures.
+				  </div>
+				</li>
+				
+				<li class="has-detail" title="Provide a clear and repeatable power-up sequence for test and production. Ensure it is possible to power the board safely with current-limited supplies during bring-up.">
+				  <span class="item-label">Support safe and controlled power-up during test</span>
+				  <div class="item-detail">
+					Provide a clear and repeatable power-up sequence for test and production.
+					Ensure it is possible to power the board safely with current-limited supplies during bring-up.
+				  </div>
+				</li>
+
+			  </ul>
+			</section>
+
+			<section class="card" id="pcb_design_rules_documentation">
+			  <h2>Documentation & Manufacturing Deliverables</h2>
+			  <ul class="toggle-list">
+
+				<li class="has-detail" title="Verify that all fabrication outputs are complete and consistent: Gerbers or ODB++, drill files, stack-up notes, impedance requirements, and material specifications.">
+				  <span class="item-label">Verify fabrication data completeness</span>
+				  <div class="item-detail">
+					Verify that all fabrication outputs are complete and consistent:
+					Gerbers or ODB++, drill files, stack-up notes, impedance requirements,
+					and material specifications.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Ensure the assembly package includes pick-and-place files, BoM with manufacturer part numbers, polarity/orientation notes, and assembly drawings where required.">
+				  <span class="item-label">Verify assembly documentation</span>
+				  <div class="item-detail">
+					Ensure the assembly package includes pick-and-place files,
+					BoM with manufacturer part numbers,
+					polarity/orientation notes, and assembly drawings where required.
 				  </div>
 				</li>
 
