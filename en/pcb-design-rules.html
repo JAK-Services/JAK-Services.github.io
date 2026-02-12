@@ -609,6 +609,14 @@
 			<section class="card" id="pcb_design_rules_stack_up_and_planes">
 			  <h2>Stack-Up, Planes &amp; EMI Control</h2>
 			  <ul class="toggle-list">
+
+				<li class="has-detail" title="Physically separate analog, digital, and power sections so noisy return currents do not flow through sensitive analog ground paths. Place the most sensitive analog circuits furthest from switching regulators, clocks, and fast digital edges.">
+				  <span class="item-label">Use board zoning for analog, digital, and power</span>
+				  <div class="item-detail">
+					Physically separate analog, digital, and power sections so noisy return currents do not flow through sensitive analog ground paths. 
+					Place the most sensitive analog circuits furthest from switching regulators, clocks, and fast digital edges.
+				  </div>
+				</li>
 			  
 				<li class="has-detail" title="Agree the layer stack-up at the start of layout — including materials, copper weights, dielectric thickness, and any impedance-controlled layers — so routing strategy, EMI control, and manufacturability decisions are based on a stable structure. Choose materials that match environmental and production needs (e.g., operating temperature, reflow profile, reliability requirements), and confirm the stack-up is supported by your PCB manufacturer at the required cost and capability. Make sure the chosen materials and clearances also meet relevant standards and regulations (e.g., IPC class, UL flammability rating, RoHS/REACH, and local compliance requirements).">
 				  <span class="item-label">Decide stack-up early</span>
@@ -632,6 +640,15 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="If the design uses multiple grounds (e.g., analog ground, digital ground, chassis/earth), define a controlled bonding strategy. Avoid multiple unintended connections between grounds, which can create ground loops and inject noise. Where a single-point bond is required, ensure it is the only intentional connection.">
+				  <span class="item-label">Multiple grounds: define a controlled bond point and avoid ground loops</span>
+				  <div class="item-detail">
+					If the design uses multiple grounds (analog, digital, chassis/earth), define how they are bonded.
+					Avoid multiple unintended connections that create ground loops and noise coupling.
+					Where a single-point bond is required, ensure it is the only intentional connection between those ground domains.
+				  </div>
+				</li>
+
 				<li class="has-detail" title="On 2-layer designs, use large copper pours for ground and power instead of thin tracks, and stitch the top and bottom pours together liberally with vias to lower impedance and improve return-path continuity.">
 				  <span class="item-label">2-layer boards: pour copper for power & ground</span>
 				  <div class="item-detail">
@@ -640,11 +657,46 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Split or fragmented planes force return currents to detour around gaps, increasing noise and EMI risk. Keep planes solid unless a split is absolutely necessary — and if you must split, control where signals cross.">
-				  <span class="item-label">Avoid split planes that break return paths</span>
+				<li class="has-detail"
+				  title="Ensure every signal layer has an adjacent solid reference plane (ground or power), and route fast-edge / high-speed signals directly over a continuous ground plane wherever possible. Avoid referencing distant or fragmented planes, as this increases impedance, EMI, and crosstalk.">
+				  <span class="item-label">Ensure nearby reference planes for all signals — especially high-speed</span>
 				  <div class="item-detail">
-					Split or fragmented planes force return currents to detour around gaps, increasing noise and EMI risk. 
-					Keep planes solid unless a split is absolutely necessary — and if you must split, control where signals cross.
+					Ensure every signal layer has an adjacent, solid reference plane (ground or power).
+					Avoid signal layers that reference distant or fragmented planes, as this increases impedance and EMI.
+					<br><br>
+					Keep fast-edge / high-speed signals routed directly over a continuous, uninterrupted ground plane wherever possible.
+					This provides a well-defined impedance, short and stable return path, lower emissions, and reduced crosstalk —
+					especially for clocks, SERDES, USB, HDMI, and fast MCU buses.
+				  </div>
+				</li>
+				
+				<li class="has-detail" title="Avoid split or fragmented planes that force return currents to detour around gaps. Never route high-speed / fast-edge signals across plane splits, because the return current cannot follow the trace, increasing loop area, EMI, and signal integrity problems. Keep planes solid unless a split is absolutely necessary — and if you must split, strictly control where signals cross.">
+				  <span class="item-label">Avoid plane splits that break return paths — never cross them with high-speed signals</span>
+				  <div class="item-detail">
+					Split or fragmented planes force return currents to detour around gaps, increasing loop area, noise, and EMI risk.
+					Keep planes solid unless a split is absolutely necessary — and if you must split, strictly control where signals cross.
+					<br><br>
+					A high-speed signal returns under its trace via the nearest reference plane. If the trace crosses a plane split, the return current must detour —
+					increasing loop area, adding EMI, and degrading signal integrity. Always keep high-speed traces over a continuous reference plane.
+					<br><br>
+					This applies to fast-edge signals such as:
+					<ul>
+					  <li>clocks</li>
+					  <li>USB / Ethernet / HDMI / SERDES</li>
+					  <li>DDR memory buses</li>
+					  <li>SPI on fast MCUs</li>
+					  <li>and generally anything with edge rates faster than ~5–10&nbsp;ns</li>
+					</ul>
+				  </div>
+				</li>
+
+				<li class="has-detail" title="If you use guard traces (guard rings) to reduce coupling into high-impedance or sensitive nodes, ensure the guard is continuous where it matters and follows the geometry of the sensitive area (often near the board edge or around an analog front-end). Tie the guard to a low-impedance reference (usually GND) and stitch it to the reference plane frequently so it does not behave like a floating antenna. Avoid leaving long, unterminated guard segments.">
+				  <span class="item-label">Guard traces: keep them continuous, grounded, and stitched</span>
+				  <div class="item-detail">
+					If you use guard traces (guard rings) to reduce coupling into high-impedance or sensitive nodes, ensure the guard is continuous where it matters and follows the geometry of the sensitive area (e.g., around an analog front-end, or along the board perimeter when relevant).
+					<br><br>
+					Tie the guard to a low-impedance reference (usually GND) and stitch it to the reference plane frequently with vias so it stays at a stable potential and does not behave like a floating antenna.
+					Avoid long, dangling guard segments.
 				  </div>
 				</li>
 
@@ -665,72 +717,11 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Ensure every signal layer has an adjacent solid reference plane (ground or power). Avoid signal layers that reference distant or fragmented planes, as this increases impedance and EMI.">
-				  <span class="item-label">Ensure each signal layer has a nearby reference plane</span>
-				  <div class="item-detail">
-					Ensure every signal layer has an adjacent solid reference plane (ground or power).
-					Avoid signal layers that reference distant or fragmented planes, as this increases impedance and EMI.
-				  </div>
-				</li>
-
 				<li class="has-detail" title="Feed major loads or sensitive circuits from a single, well-defined distribution point rather than daisy-chaining through devices. This helps avoid shared return currents modulating other circuits and reduces ground bounce.">
 				  <span class="item-label">Prefer star / single-point power distribution</span>
 				  <div class="item-detail">
 					Feed major loads or sensitive circuits from a single, well-defined distribution point rather than daisy-chaining through devices. 
 					This helps avoid shared return currents modulating other circuits and reduces ground bounce.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="A high-speed signal returns under its trace via the nearest reference plane. If the trace crosses a plane split, the return current must detour — increasing loop area, adding EMI, and degrading signal integrity. Always keep high-speed traces over a continuous reference plane. This applies to fast-edge signals such as: clocks USB / Ethernet / HDMI / SERDES DDR memory buses SPI on fast MCUs and generally anything with edge rates faster than ~5–10 ns">
-				  <span class="item-label">Never route high-speed / fast-edge signals across plane splits</span>
-				  <div class="item-detail">
-					A high-speed signal returns under its trace via the nearest reference plane. 
-					If the trace crosses a plane split, the return current must detour — increasing loop area, adding EMI, 
-					and degrading signal integrity. Always keep high-speed traces over a continuous reference plane.
-					<br><br>
-					This applies to fast-edge signals such as:
-					<ul>
-					  <li>clocks</li>
-					  <li>USB / Ethernet / HDMI / SERDES</li>
-					  <li>DDR memory buses</li>
-					  <li>SPI on fast MCUs</li>
-					  <li>and generally anything with edge rates faster than ~5–10&nbsp;ns</li>
-					</ul>
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Keep fast edges routed directly over a continuous ground plane wherever possible. This provides a defined impedance, short return path, lower emissions, and reduced crosstalk — especially for clocks, SERDES, USB, HDMI, and fast MCU buses.">
-				  <span class="item-label">Route high-speed signals adjacent to a ground plane</span>
-				  <div class="item-detail">
-					Keep fast edges routed directly over a continuous, uninterrupted ground plane wherever possible. 
-					This provides a defined impedance, short and stable return path, lower emissions, and reduced crosstalk — especially for clocks, SERDES, USB, HDMI, and fast MCU buses.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Physically separate analog, digital, and power sections so noisy return currents do not flow through sensitive analog ground paths. Place the most sensitive analog circuits furthest from switching regulators, clocks, and fast digital edges.">
-				  <span class="item-label">Use board zoning for analog, digital, and power</span>
-				  <div class="item-detail">
-					Physically separate analog, digital, and power sections so noisy return currents do not flow through sensitive analog ground paths. 
-					Place the most sensitive analog circuits furthest from switching regulators, clocks, and fast digital edges.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="If you use guard traces (guard rings) to reduce coupling into high-impedance or sensitive nodes, ensure the guard is continuous where it matters and follows the geometry of the sensitive area (often near the board edge or around an analog front-end). Tie the guard to a low-impedance reference (usually GND) and stitch it to the reference plane frequently so it does not behave like a floating antenna. Avoid leaving long, unterminated guard segments.">
-				  <span class="item-label">Guard traces: keep them continuous, grounded, and stitched</span>
-				  <div class="item-detail">
-					If you use guard traces (guard rings) to reduce coupling into high-impedance or sensitive nodes, ensure the guard is continuous where it matters and follows the geometry of the sensitive area (e.g., around an analog front-end, or along the board perimeter when relevant).
-					<br><br>
-					Tie the guard to a low-impedance reference (usually GND) and stitch it to the reference plane frequently with vias so it stays at a stable potential and does not behave like a floating antenna.
-					Avoid long, dangling guard segments.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="If the design uses multiple grounds (e.g., analog ground, digital ground, chassis/earth), define a controlled bonding strategy. Avoid multiple unintended connections between grounds, which can create ground loops and inject noise. Where a single-point bond is required, ensure it is the only intentional connection.">
-				  <span class="item-label">Multiple grounds: define a controlled bond point and avoid ground loops</span>
-				  <div class="item-detail">
-					If the design uses multiple grounds (analog, digital, chassis/earth), define how they are bonded.
-					Avoid multiple unintended connections that create ground loops and noise coupling.
-					Where a single-point bond is required, ensure it is the only intentional connection between those ground domains.
 				  </div>
 				</li>
 
