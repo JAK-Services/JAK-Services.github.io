@@ -1111,7 +1111,7 @@
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="Pour qu’une protection ESD soit efficace, la ligne protégée doit d’abord atteindre le point de clamp (TVS / composant de protection) avant de continuer vers le dispositif sensible. Évitez tout routage qui se divise vers le CI avant le clamp, sinon l’impulsion ESD peut atteindre le CI avant d’être déviée.">
-				  <span class="item-label">Topologie ESD : placer le clamp à l’entrée et éviter les dérivations avant le clamp</span>
+				  <span class="item-label">Topologie ESD : le clamp doit être rencontré avant le circuit protégé</span>
 				  <div class="item-detail">
 					Vérifiez la topologie de protection ESD : la piste issue du connecteur doit atteindre en premier le nœud TVS / clamp,
 					puis continuer vers le dispositif sensible.
@@ -1121,7 +1121,7 @@
 				</li>
 
 				<li class="has-detail" title="La protection ESD n’est efficace que si la surtension est écrêtée localement et évacuée par un chemin de retour court et à faible inductance. Placez les diodes TVS près du point d’entrée, définissez si le retour ESD se fait vers la masse ou le châssis, et empêchez les courants de décharge de traverser des zones de circuits sensibles.">
-				  <span class="item-label">Placement ESD et chemin de retour : écrêtage local et décharge maîtrisée</span>
+				  <span class="item-label">ESD : chemin de retour court et décharge confinée</span>
 				  <div class="item-detail">
 					Placez les diodes TVS (Transient Voltage Suppressor) aussi près que possible du point d’entrée de la surtension
 					(par exemple connecteur ou interface câble), avec un retour cuivre court et large vers la référence ESD choisie
