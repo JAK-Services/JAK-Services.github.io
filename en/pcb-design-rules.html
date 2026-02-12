@@ -656,19 +656,6 @@
 					together liberally with vias to lower impedance and improve return-path continuity.
 				  </div>
 				</li>
-
-				<li class="has-detail"
-				  title="Ensure every signal layer has an adjacent solid reference plane (ground or power), and route fast-edge / high-speed signals directly over a continuous ground plane wherever possible. Avoid referencing distant or fragmented planes, as this increases impedance, EMI, and crosstalk.">
-				  <span class="item-label">Ensure nearby reference planes for all signals — especially high-speed</span>
-				  <div class="item-detail">
-					Ensure every signal layer has an adjacent, solid reference plane (ground or power).
-					Avoid signal layers that reference distant or fragmented planes, as this increases impedance and EMI.
-					<br><br>
-					Keep fast-edge / high-speed signals routed directly over a continuous, uninterrupted ground plane wherever possible.
-					This provides a well-defined impedance, short and stable return path, lower emissions, and reduced crosstalk —
-					especially for clocks, SERDES, USB, HDMI, and fast MCU buses.
-				  </div>
-				</li>
 				
 				<li class="has-detail" title="Avoid split or fragmented planes that force return currents to detour around gaps. Never route high-speed / fast-edge signals across plane splits, because the return current cannot follow the trace, increasing loop area, EMI, and signal integrity problems. Keep planes solid unless a split is absolutely necessary — and if you must split, strictly control where signals cross.">
 				  <span class="item-label">Avoid plane splits that break return paths — never cross them with high-speed signals</span>
@@ -717,14 +704,6 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Feed major loads or sensitive circuits from a single, well-defined distribution point rather than daisy-chaining through devices. This helps avoid shared return currents modulating other circuits and reduces ground bounce.">
-				  <span class="item-label">Prefer star / single-point power distribution</span>
-				  <div class="item-detail">
-					Feed major loads or sensitive circuits from a single, well-defined distribution point rather than daisy-chaining through devices. 
-					This helps avoid shared return currents modulating other circuits and reduces ground bounce.
-				  </div>
-				</li>
-
 			  </ul>
 			</section>
 
@@ -741,108 +720,22 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="High-speed and fast-edge signals form a loop with their return current which should be flowing directly beneath the trace in the nearest solid reference plane. Keep a continuous plane under critical routing so the return current does not have to detour — breaks in the return path increase loop area, noise, and EMI. Shorter traces and closely-coupled outgoing/return paths further reduce inductance and improve signal integrity.">
-				  <span class="item-label">Control the return path and minimise loop area</span>
+				<li class="has-detail"
+				  title="Ensure every signal layer has an adjacent solid reference plane (ground or power) so return currents can flow directly beneath their traces. Route fast-edge / high-speed signals over continuous, uninterrupted reference planes to minimise loop area, control impedance, reduce EMI, and improve signal integrity. Avoid distant or fragmented planes, as breaks in the return path force detours that increase noise and emissions.">
+				  <span class="item-label">Ensure continuous reference planes and controlled return paths for all signals — especially high-speed</span>
 				  <div class="item-detail">
-					High-speed and fast-edge signals form a loop with their return current which should be flowing directly beneath the trace in the nearest solid reference plane. 
-					Keep a continuous plane under critical routing so the return current does not have to detour — breaks in the return path increase loop area, noise, and EMI. 
-					Shorter traces and closely-coupled outgoing/return paths further reduce inductance and improve signal integrity.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="EMI/RFI filtering is most effective when placed at the boundary of the PCB. Filters should be located as close as possible to connectors, board edges, or shield interfaces to prevent noise from propagating onto or off the board.">
-				  <span class="item-label">Place EMI/RFI filtering at PCB entry and exit points</span>
-				  <div class="item-detail">
-					Ensure EMI/RFI filtering components are placed as close as possible to the point of entry or exit
-					(e.g. board edge, connector, or shield interface) to prevent noise from propagating onto or off the PCB.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Avoid routing signals through narrow necks between copper pours or plane voids, as this increases impedance, concentrates current density, and worsens EMI.">
-				  <span class="item-label">Avoid routing through narrow copper neck-downs</span>
-				  <div class="item-detail">
-					Avoid routing signals through narrow necks between copper pours or plane voids,
-					as this increases impedance, concentrates current density, and worsens EMI.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Clock nets switch continuously and radiate energy. Place crystal or oscillator sources as close as possible to the IC clock pins, and route clock nets as short as practical over a solid reference plane. Keep clock traces away from sensitive analog or high-impedance nodes to minimize noise coupling and jitter.">
-				  <span class="item-label">Clock sources and nets: keep loops short and isolated</span>
-				  <div class="item-detail">
-					Clock nets switch continuously and radiate energy.
-					Place crystal or oscillator sources as close as possible to the associated IC clock pins to minimize loop area.
+					Ensure every signal layer has an adjacent, solid reference plane (ground or power) so the signal’s return current can flow directly beneath the trace.
+					Avoid signal layers that reference distant or fragmented planes, as this increases impedance, loop area, noise, and EMI.
 					<br><br>
-					Route clock nets as short as practical, over a solid reference plane, and keep them away from sensitive analog or high-impedance nodes
-					to reduce noise coupling and clock jitter.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="45° bends (or gentle curves) provide cleaner routing, maintain more constant impedance, reduce current crowding, and avoid creating unnecessary stubs — especially useful at RF and high-speed edges.">
-				  <span class="item-label">Prefer 45° bends over 90°</span>
-				  <div class="item-detail">
-					45° bends (or gentle curves) provide cleaner routing, maintain more constant impedance, reduce current crowding, 
-					and avoid creating unnecessary stubs — especially useful at RF and high-speed edges.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="When a high-speed signal changes layer, the return current must also transition between planes. Place a ground stitching via close to the signal via to provide a short, controlled return path and reduce loop inductance.">
-				  <span class="item-label">Add stitching vias near layer transitions</span>
-				  <div class="item-detail">
-					When a high-speed signal changes layer, the return current must also transition between planes. 
-					Place a ground stitching via close to the signal via to provide a short, controlled return path and reduce loop inductance.
-				  </div>
-				</li>
-				
-				<li class="has-detail" title="At higher frequencies (roughly above 80 MHz and for fast-edge logic), through-hole leads and long traces add significant inductance and behave like small antennas. Prefer SMD parts and keep traces as short as practical. Avoid stubs or unused track segments — for example, test pads or via branches that form “dangling” connections — as these create reflections and radiation points. Note that even ~10 cm of trace can act as an efficient radiator in the FM band.">
-				  <span class="item-label">Avoid long traces and through-hole parts at RF / fast edges</span>
-				  <div class="item-detail">
-					At higher frequencies (roughly above 80&nbsp;MHz and for fast-edge logic), through-hole leads and long traces add significant inductance and behave like small antennas. 
-					Prefer SMD parts and keep traces as short as practical. 
-					Avoid stubs or unused track segments — for example, test pads or via branches that form “dangling” connections — as these create reflections and radiation points. 
-					Note that even ~10&nbsp;cm of trace can act as an efficient radiator in the FM band.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Long, closely-spaced parallel traces couple capacitively and inductively. Avoid running signals in parallel for long distances — and if unavoidable, keep spacing at least three times the trace width or route over a solid reference plane with good return-path control.">
-				  <span class="item-label">Reduce crosstalk by spacing parallel runs, keep ≥ 3× trace‑width spacing</span>
-				  <div class="item-detail">
-					Long, closely-spaced parallel traces couple capacitively and inductively. 
-					Avoid running signals in parallel for long distances — and if unavoidable, keep spacing at least three times the trace width or route over a solid reference plane with good return-path control.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Fast, noisy signals near the PCB edge radiate more easily and are more susceptible to interference. Keep switching and high-speed nets away from the perimeter wherever possible.">
-				  <span class="item-label">Avoid routing noisy traces near board edges</span>
-				  <div class="item-detail">
-					Fast, noisy signals near the PCB edge radiate more easily and are more susceptible to interference. 
-					Keep switching and high-speed nets away from the perimeter wherever possible.
-				  </div>
-				</li>
-				
-				<li class="has-detail" title="Crystals and oscillators are sensitive to noise and stray capacitance. Avoid placing unrelated components close to the crystal, and don’t route other signals directly under or around the crystal network. Leaving a few centimetres of clearance helps maintain frequency stability, minimise coupling into the oscillator return path, and preserve startup margin.">
-				  <span class="item-label">Keep components and routing away from the crystal / oscillator</span>
-				  <div class="item-detail">
-					Crystals and oscillators are sensitive to noise and stray capacitance. 
-					Avoid placing unrelated components close to the crystal, and don’t route other signals directly under or around the crystal network. 
-					Leaving a few centimetres of clearance helps maintain frequency stability, minimise coupling into the oscillator return path, and preserve startup margin.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Floating inputs can oscillate, inject noise, or increase power consumption. Follow the datasheet and use pull-ups or pull-downs as recommended so each unused input has a clean, defined logic level.">
-				  <span class="item-label">Give unused inputs a defined logic state</span>
-				  <div class="item-detail">
-					Floating inputs can oscillate, inject noise, or increase power consumption. 
-					Follow the datasheet and use pull-ups or pull-downs as recommended so each unused input has a clean, defined logic level.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Adding a small series resistor (typically 10–100 Ω), and in some cases a small RC network, can slow very fast edges and damp ringing and electromagnetic interference (EMI) on long or noisy traces or cables. This reduces radiated emissions, improves signal integrity, and can also limit surge current into devices. Apply this only where the protocol timing and edge-rate requirements are still met and the additional delay is acceptable.">
-				  <span class="item-label">Use series resistors or small RC networks to control edges and ringing (where the protocol allows)</span>
-				  <div class="item-detail">
-					Adding a small series resistor (typically 10–100&nbsp;Ω), and in some cases a small RC network, can slow very 
-					fast edges and damp ringing and electromagnetic interference (EMI) on long or noisy traces or cables. 
-					This reduces radiated emissions, improves signal integrity, and can also limit surge current into devices. 
-					Apply this only where the protocol timing and edge-rate requirements are still met and the additional delay is acceptable.
+					High-speed and fast-edge signals form a loop with their return current.
+					Keep a continuous, uninterrupted reference plane under critical routing so the return current does not have to detour.
+					Breaks in the return path increase loop area, radiated emissions, and degrade signal integrity.
+					<br><br>
+					Route fast-edge / high-speed signals directly over a continuous ground plane wherever possible.
+					This provides a well-defined impedance, short and stable return path, lower emissions, and reduced crosstalk —
+					especially for clocks, SERDES, USB, HDMI, and fast MCU buses.
+					<br><br>
+					Shorter traces and closely coupled outgoing/return paths further reduce inductance and improve signal integrity.
 				  </div>
 				</li>
 
@@ -878,14 +771,81 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="High-speed or long traces may require simulation to validate signal integrity. Termination components should be present and correctly placed to control reflections and overshoot.">
-				  <span class="item-label">Verify simulation and termination for high-speed signals</span>
+				<li class="has-detail" title="When a high-speed signal changes layer, the return current must also transition between planes. Place a ground stitching via close to the signal via to provide a short, controlled return path and reduce loop inductance.">
+				  <span class="item-label">Add stitching vias near layer transitions</span>
 				  <div class="item-detail">
-					Verify that traces longer than approximately one-sixth of the signal rise or fall time have been evaluated using signal integrity simulation.
+					When a high-speed signal changes layer, the return current must also transition between planes. 
+					Place a ground stitching via close to the signal via to provide a short, controlled return path and reduce loop inductance.
+				  </div>
+				</li>
+				
+				<li class="has-detail" title="At higher frequencies (roughly above 80 MHz and for fast-edge logic), through-hole leads and long traces add significant inductance and behave like small antennas. Prefer SMD parts and keep traces as short as practical. Avoid stubs or unused track segments — for example, test pads or via branches that form “dangling” connections — as these create reflections and radiation points. Note that even ~10 cm of trace can act as an efficient radiator in the FM band.">
+				  <span class="item-label">Avoid long traces and through-hole parts at RF / fast edges</span>
+				  <div class="item-detail">
+					At higher frequencies (roughly above 80&nbsp;MHz and for fast-edge logic), through-hole leads and long traces add significant inductance and behave like small antennas. 
+					Prefer SMD parts and keep traces as short as practical. 
+					Avoid stubs or unused track segments — for example, test pads or via branches that form “dangling” connections — as these create reflections and radiation points. 
+					Note that even ~10&nbsp;cm of trace can act as an efficient radiator in the FM band.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Long, closely-spaced parallel traces couple capacitively and inductively. Avoid running signals in parallel for long distances — and if unavoidable, keep spacing at least three times the trace width or route over a solid reference plane with good return-path control.">
+				  <span class="item-label">Reduce crosstalk by spacing parallel runs, keep ≥ 3× trace‑width spacing</span>
+				  <div class="item-detail">
+					Long, closely-spaced parallel traces couple capacitively and inductively. 
+					Avoid running signals in parallel for long distances — and if unavoidable, keep spacing at least three times the trace width or route over a solid reference plane with good return-path control.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="45° bends (or gentle curves) provide cleaner routing, maintain more constant impedance, reduce current crowding, and avoid creating unnecessary stubs — especially useful at RF and high-speed edges.">
+				  <span class="item-label">Prefer 45° bends over 90°</span>
+				  <div class="item-detail">
+					45° bends (or gentle curves) provide cleaner routing, maintain more constant impedance, reduce current crowding, 
+					and avoid creating unnecessary stubs — especially useful at RF and high-speed edges.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Avoid routing signals through narrow necks between copper pours or plane voids, as this increases impedance, concentrates current density, and worsens EMI.">
+				  <span class="item-label">Avoid routing through narrow copper neck-downs</span>
+				  <div class="item-detail">
+					Avoid routing signals through narrow necks between copper pours or plane voids,
+					as this increases impedance, concentrates current density, and worsens EMI.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Fast, noisy signals near the PCB edge radiate more easily and are more susceptible to interference. Keep switching and high-speed nets away from the perimeter wherever possible.">
+				  <span class="item-label">Avoid routing noisy traces near board edges</span>
+				  <div class="item-detail">
+					Fast, noisy signals near the PCB edge radiate more easily and are more susceptible to interference. 
+					Keep switching and high-speed nets away from the perimeter wherever possible.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Clock nets switch continuously and radiate energy. Place crystal or oscillator sources as close as possible to the IC clock pins, and route clock nets as short as practical over a solid reference plane. Keep clock traces away from sensitive analog or high-impedance nodes to minimize noise coupling and jitter.">
+				  <span class="item-label">Clock sources and nets: keep loops short and isolated</span>
+				  <div class="item-detail">
+					Clock nets switch continuously and radiate energy.
+					Place crystal or oscillator sources as close as possible to the associated IC clock pins to minimize loop area.
 					<br><br>
-					Ensure appropriate termination (resistive or otherwise) is present where required, and that termination components are placed at the correct locations along the signal path, typically as close as possible to the signal source or as specified by the interface.
-					<br><br>
-					Evaluate crosstalk for long, closely coupled parallel traces, and simulate where spacing alone may be insufficient.
+					Route clock nets as short as practical, over a solid reference plane, and keep them away from sensitive analog or high-impedance nodes
+					to reduce noise coupling and clock jitter.
+				  </div>
+				</li>
+				
+				<li class="has-detail" title="Crystals and oscillators are sensitive to noise and stray capacitance. Avoid placing unrelated components close to the crystal, and don’t route other signals directly under or around the crystal network. Leaving a few centimetres of clearance helps maintain frequency stability, minimise coupling into the oscillator return path, and preserve startup margin.">
+				  <span class="item-label">Keep components and routing away from the crystal / oscillator</span>
+				  <div class="item-detail">
+					Crystals and oscillators are sensitive to noise and stray capacitance. 
+					Avoid placing unrelated components close to the crystal, and don’t route other signals directly under or around the crystal network. 
+					Leaving a few centimetres of clearance helps maintain frequency stability, minimise coupling into the oscillator return path, and preserve startup margin.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="EMI/RFI filtering is most effective when placed at the boundary of the PCB. Filters should be located as close as possible to connectors, board edges, or shield interfaces to prevent noise from propagating onto or off the board.">
+				  <span class="item-label">Place EMI/RFI filtering at PCB entry and exit points</span>
+				  <div class="item-detail">
+					Ensure EMI/RFI filtering components are placed as close as possible to the point of entry or exit
+					(e.g. board edge, connector, or shield interface) to prevent noise from propagating onto or off the PCB.
 				  </div>
 				</li>
 
@@ -898,6 +858,35 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="Adding a small series resistor (typically 10–100 Ω), and in some cases a small RC network, can slow very fast edges and damp ringing and electromagnetic interference (EMI) on long or noisy traces or cables. This reduces radiated emissions, improves signal integrity, and can also limit surge current into devices. Apply this only where the protocol timing and edge-rate requirements are still met and the additional delay is acceptable.">
+				  <span class="item-label">Use series resistors or small RC networks to control edges and ringing (where the protocol allows)</span>
+				  <div class="item-detail">
+					Adding a small series resistor (typically 10–100&nbsp;Ω), and in some cases a small RC network, can slow very 
+					fast edges and damp ringing and electromagnetic interference (EMI) on long or noisy traces or cables. 
+					This reduces radiated emissions, improves signal integrity, and can also limit surge current into devices. 
+					Apply this only where the protocol timing and edge-rate requirements are still met and the additional delay is acceptable.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Floating inputs can oscillate, inject noise, or increase power consumption. Follow the datasheet and use pull-ups or pull-downs as recommended so each unused input has a clean, defined logic level.">
+				  <span class="item-label">Give unused inputs a defined logic state</span>
+				  <div class="item-detail">
+					Floating inputs can oscillate, inject noise, or increase power consumption. 
+					Follow the datasheet and use pull-ups or pull-downs as recommended so each unused input has a clean, defined logic level.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="High-speed or long traces may require simulation to validate signal integrity. Termination components should be present and correctly placed to control reflections and overshoot.">
+				  <span class="item-label">Verify simulation and termination for high-speed signals</span>
+				  <div class="item-detail">
+					Verify that traces longer than approximately one-sixth of the signal rise or fall time have been evaluated using signal integrity simulation.
+					<br><br>
+					Ensure appropriate termination (resistive or otherwise) is present where required, and that termination components are placed at the correct locations along the signal path, typically as close as possible to the signal source or as specified by the interface.
+					<br><br>
+					Evaluate crosstalk for long, closely coupled parallel traces, and simulate where spacing alone may be insufficient.
+				  </div>
+				</li>
+
 			  </ul>
 			</section>
 
@@ -905,31 +894,35 @@
 			  <h2>Decoupling, Power Integrity &amp; EMI</h2>
 			  <ul class="toggle-list">
 
-				<li class="has-detail" title="Each IC (Integrated Circuit) supply pin should have its own local decoupling capacitor to provide a low-impedance energy reservoir at the device and keep the rail stable during fast current transients. A 0.1 µF MLCC (Multilayer Ceramic Capacitor) is a good general-purpose high-frequency decoupler — place it as close as physically possible to the IC power pin and its return to ground, with very short tracks and minimal vias.">
-				  <span class="item-label">Place a local decoupling capacitor on every IC supply pin</span>
+				<li class="has-detail"
+				  title="Provide local decoupling at every IC supply pin using shortest-possible, low-inductance placement and connections. Place a dedicated high-frequency decoupling capacitor close to each power pin, use appropriate capacitor values to cover a broad frequency range, and ensure each capacitor has its own short, dedicated connection to the power and ground references to minimise loop inductance and maintain rail stability during fast current transients.">
+				  <span class="item-label">Provide proper local decoupling on every IC supply pin</span>
 				  <div class="item-detail">
-					Each IC (Integrated Circuit) supply pin should have its own local decoupling capacitor to provide a low-impedance energy reservoir at the device and keep 
-					the rail stable during fast current transients. 
-					A 0.1&nbsp;µF MLCC (Multilayer Ceramic Capacitor) is a good general-purpose high-frequency decoupler — 
+					Each IC (Integrated Circuit) supply pin should have its own local decoupling capacitor to provide a low-impedance energy reservoir at the device and keep the supply rail stable during fast current transients.
+					A 0.1&nbsp;µF MLCC (Multilayer Ceramic Capacitor) is a good general-purpose high-frequency decoupler.
+					<br><br>
 					Place decoupling capacitors as close as physically possible to the IC power pin and its return to ground,
-					using very short tracks (and vias only if it reduce the loop size), typically within a few millimeters and preferably well under 15&nbsp;mm.
-				  </div>
-				</li>
-				
-				<li class="has-detail" title="Use multiple capacitor values (e.g., 100 nF, 1 µF, 10 µF) where required to provide low impedance across a broad frequency range. Do not rely on a single capacitor value to cover all transient frequencies.">
-				  <span class="item-label">Use a range of decoupling capacitor values where needed</span>
-				  <div class="item-detail">
-					Use multiple capacitor values (e.g., 100 nF, 1 µF, 10 µF) where required
+					using very short tracks and minimising loop area (use vias only if they reduce the loop size).
+					Typical placement is within a few millimetres of the pin, and preferably well under 15&nbsp;mm.
+					<br><br>
+					Ensure each decoupling capacitor has its own dedicated, shortest-possible, low-inductance connection
+					to the power and ground references, minimising the current-loop area.
+					Avoid sharing vias or trace segments between multiple capacitors, as shared or elongated current paths
+					increase loop inductance and reduce decoupling effectiveness.
+					<br><br>
+					In addition to local per-pin decoupling, use multiple capacitor values
+					(e.g. 100 nF, 1 µF, 10 µF) at appropriate locations on the power rail
 					to provide low impedance across a broad frequency range.
 					Do not rely on a single capacitor value to cover all transient frequencies.
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Each decoupling capacitor should have its own dedicated vias to the power and ground reference planes to minimize impedance and prevent shared return paths.">
-				  <span class="item-label">Ensure decoupling capacitors use dedicated vias</span>
+				<li class="has-detail" title="Connectors and cable interfaces can inject or draw fast transient currents. Where relevant, place local decoupling or bulk capacitance near connectors (and any connector-adjacent via transitions) so transient currents do not travel across the board and disturb sensitive rails.">
+				  <span class="item-label">Add local decoupling near connectors where needed</span>
 				  <div class="item-detail">
-					Verify that each decoupling capacitor has its own dedicated via to the power plane and its own dedicated via to the ground plane.
-					Avoid sharing vias between multiple capacitors, as this increases loop inductance and reduces decoupling effectiveness.
+					Verify that connectors and cable interfaces that source or sink transient current have appropriate local decoupling nearby.
+					Where relevant, place the capacitors close to the connector pins (and any connector-adjacent via transitions) to keep the loop short
+					and prevent transients from propagating onto the PCB power distribution.
 				  </div>
 				</li>
 
@@ -943,25 +936,8 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Connectors and cable interfaces can inject or draw fast transient currents. Where relevant, place local decoupling or bulk capacitance near connectors (and any connector-adjacent via transitions) so transient currents do not travel across the board and disturb sensitive rails.">
-				  <span class="item-label">Add local decoupling near connectors where needed</span>
-				  <div class="item-detail">
-					Verify that connectors and cable interfaces that source or sink transient current have appropriate local decoupling nearby.
-					Where relevant, place the capacitors close to the connector pins (and any connector-adjacent via transitions) to keep the loop short
-					and prevent transients from propagating onto the PCB power distribution.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="The decoupling capacitor, power pin, and ground return form a loop. Keep this loop extremely small (short, wide connections; direct via to ground plane) to reduce inductance and improve transient response and EMI performance.">
-				  <span class="item-label">Minimise the cap–VCC–GND loop area</span>
-				  <div class="item-detail">
-					The decoupling capacitor, power pin, and ground return form a loop. 
-					Keep this loop extremely small (short, wide connections; direct via to ground plane) to reduce inductance and improve transient response and EMI performance.
-				  </div>
-				</li>
-
 				<li class="has-detail" title="Power rails should have low resistance and low inductance to minimise voltage drop and improve transient response. Use power planes or wide copper traces, and avoid narrow neck-downs that create local heating and voltage droop during current surges. Keep power traces consistently wide, especially near regulators and high-current devices. Use calculators to ensure sufficient cross-section area.">
-				  <span class="item-label">Use planes or wide traces for power</span>
+				  <span class="item-label">Design low-impedance power distribution (planes or wide copper)</span>
 				  <div class="item-detail">
 					Power rails should have low resistance and low inductance to minimise voltage drop and improve transient response. 
 					Use power planes or wide copper traces, and avoid narrow neck-downs that create local heating and voltage droop during current surges. 
@@ -971,27 +947,34 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Sensitive analog circuits should be isolated from noisy digital activity both electrically and physically. Avoid shared supply or return paths with noisy loads, and prevent sensitive nets from being routed near or beneath noise-generating components such as switching regulators or high-speed clocks.">
-				  <span class="item-label">Isolate sensitive analog circuits from noisy digital activity</span>
+				<li class="has-detail"
+				  title="Sensitive circuits should be isolated from noisy loads by avoiding shared supply or return paths. Use star or single-point power distribution for sensitive or high-current circuits instead of daisy-chaining, and ensure physical separation from noise-generating components so switching currents do not modulate references or inject noise.">
+				  <span class="item-label">Isolate sensitive circuits using star / single-point power distribution</span>
 				  <div class="item-detail">
-					Sensitive analog circuits should not share supply or return paths with noisy digital loads.
-					Use star-style routing or separate power regions, rather than daisy chaining, so high-current switching noise does not modulate precision analog references or ADC inputs.
+					Sensitive analog or precision circuits should not share supply or return paths with noisy or high-current digital loads.
+					Avoid daisy-chaining power or ground connections through devices, as shared return currents and voltage drops
+					can modulate analog references, ADC inputs, or other sensitive nodes.
 					<br><br>
-					Verify that sensitive or high-impedance signal nets are not routed under or immediately adjacent to noisy components,
+					Use star-style or single-point power distribution for sensitive circuits and major loads,
+					so switching currents return directly to a well-defined reference point rather than flowing through shared paths.
+					This reduces ground bounce and noise coupling between subsystems.
+					<br><br>
+					Ensure sensitive or high-impedance signal nets are physically isolated from noise-generating components,
 					such as switching regulators, high-speed clocks, or large current-switching devices.
+					Avoid routing sensitive signals under or immediately adjacent to these sources.
 					<small>
 					  <br><br>
-					  Ensure the star point is a well-defined reference node, as voltage drops in shared returns can otherwise create bias errors in analog measurements.
-					  Often this star point is placed near:
+					  The star point must be a clearly defined, low-impedance reference node.
+					  Poorly defined star points can introduce bias errors due to voltage drops in shared conductors.
+					  Typical locations include:
 					  <ul>
-						<li>the ADC reference pin</li>
+						<li>the ADC reference pin or analog reference node</li>
 						<li>the regulator output or sense point</li>
 						<li>the system ground star or chassis connection</li>
 					  </ul>
 					</small>
 				  </div>
 				</li>
-
 
 			  </ul>
 			</section>
