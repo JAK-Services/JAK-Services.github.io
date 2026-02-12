@@ -1050,7 +1050,7 @@
 			  <ul class="toggle-list">
 
 				<li class="has-detail" title="For effective ESD protection, the protected line should first reach the clamp node (TVS / protection component) before continuing to the sensitive device. Avoid routing that tees off to the IC before the clamp, or the ESD pulse can reach the IC before it is shunted.">
-				  <span class="item-label">ESD topology: place the clamp at the entry and avoid tee-before-clamp routing</span>
+				  <span class="item-label">ESD topology: the clamp must be encountered before the protected circuit</span>
 				  <div class="item-detail">
 					Verify ESD protection topology: the connector line should reach the TVS / clamp node first,
 					then continue to the sensitive device.
@@ -1059,7 +1059,7 @@
 				</li>
 
 				<li class="has-detail" title="ESD protection is only effective if the transient is clamped locally and discharged through a short, low-inductance return path. Place TVS diodes close to the entry point, decide whether ESD returns to ground or chassis, and keep discharge currents out of sensitive circuit areas.">
-				  <span class="item-label">ESD placement and return path: clamp locally and discharge safely</span>
+				  <span class="item-label">ESD: short return path and confined discharge</span>
 				  <div class="item-detail">
 					Place TVS (Transient Voltage Suppressor) diodes as close as possible to the entry point of the transient
 					(e.g. connector or cable interface), with short, wide copper back to the chosen ESD reference
