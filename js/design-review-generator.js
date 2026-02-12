@@ -377,4 +377,3 @@
 		bindOnce(document.getElementById("print-design-review"), handlePrint);
 	});
 })();
-})();
