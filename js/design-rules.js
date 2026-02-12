@@ -63,6 +63,23 @@
     document.querySelectorAll(".toggle-list .has-detail").forEach((item) => {
       item.classList.add("open");
     });
+  function getToggleAllStrings() {
+    const langAttr = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+    const path = (window.location && window.location.pathname ? window.location.pathname.toLowerCase() : "");
+    const isFr = langAttr.startsWith("fr") || path.includes("/fr/");
+
+    return isFr
+      ? {
+          label: "Tout développer",
+          aria: "Développer/réduire tous les détails des règles",
+        }
+      : {
+          label: "Expand all",
+          aria: "Expand/collapse all rule details",
+        };
+  }
+
+
   }
 
   // --- Global expand/collapse toggle (checkboxes next to each <h2> from "Schematics" onward) ---
@@ -138,10 +155,12 @@
       const box = document.createElement("input");
       box.type = "checkbox";
       box.setAttribute("data-toggle-all-rules", "true");
-      box.setAttribute("aria-label", "Expand/collapse all rule details");
+      const strings = getToggleAllStrings();
+
+      box.setAttribute("aria-label", strings.aria);
 
       const label = document.createElement("span");
-      label.textContent = "Expand all";
+      label.textContent = strings.label;
 
       // Clicking the checkbox should not trigger any other click handlers
       box.addEventListener("click", (e) => e.stopPropagation());
