@@ -616,6 +616,16 @@
 			<section class="card" id="pcb_design_rules_stack_up_and_planes">
 			  <h2>Empilement, Plans &amp; Contrôle CEM / EMI</h2>
 			  <ul class="toggle-list">
+
+				<li class="has-detail" title="Séparez physiquement les zones analogiques, numériques et d’alimentation afin que les courants de retour bruyants ne circulent pas dans les chemins de masse analogiques sensibles. Placez les circuits analogiques les plus sensibles aussi loin que possible des régulateurs à découpage, horloges et fronts numériques rapides.">
+				  <span class="item-label">Zonage de la carte : analogique, numérique et puissance</span>
+				  <div class="item-detail">
+					Séparez physiquement les zones analogiques, numériques et d’alimentation afin que les courants de retour bruyants
+					ne circulent pas dans les chemins de masse analogiques sensibles.
+					Placez les circuits analogiques les plus sensibles aussi loin que possible des régulateurs à découpage,
+					des horloges et des fronts numériques rapides.
+				  </div>
+				</li>
 			  
 				<li class="has-detail" title="Définissez l’empilement des couches dès le début du routage — incluant les matériaux, les épaisseurs de cuivre, les épaisseurs diélectriques et les couches à impédance contrôlée — afin que la stratégie de routage, le contrôle EMI et les décisions de fabricabilité reposent sur une structure stable. Choisissez des matériaux adaptés aux contraintes environnementales et de production (température de fonctionnement, profil de refusion, exigences de fiabilité), et confirmez que l’empilement est supporté par votre fabricant PCB au coût et au niveau de capacité requis. Assurez-vous également que les matériaux et dégagements choisis respectent les normes et réglementations applicables (classe IPC, indice d’inflammabilité UL, RoHS/REACH et exigences de conformité locales).">
 				  <span class="item-label">Définir l’empilement des couches dès le départ</span>
@@ -642,6 +652,15 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="Si la conception utilise plusieurs masses (par exemple masse analogique, masse numérique, châssis/terre), définissez une stratégie de liaison contrôlée. Évitez les connexions multiples involontaires entre masses, qui peuvent créer des boucles de masse et injecter du bruit. Lorsqu’une liaison en un point unique est requise, assurez-vous qu’il s’agit de la seule connexion intentionnelle.">
+				  <span class="item-label">Masses multiples : définir un point de liaison contrôlé et éviter les boucles de masse</span>
+				  <div class="item-detail">
+					Si la conception utilise plusieurs masses (analogique, numérique, châssis/terre), définissez clairement leur mode de liaison.
+					Évitez les connexions multiples involontaires qui créent des boucles de masse et des couplages de bruit.
+					Lorsqu’une liaison en un point unique est requise, assurez-vous qu’il s’agit de la seule connexion intentionnelle entre ces domaines de masse.
+				  </div>
+				</li>
+
 				<li class="has-detail" title="Sur les cartes 2 couches, utilisez de larges zones de cuivre pour la masse et l’alimentation plutôt que des pistes fines, et reliez abondamment les zones supérieure et inférieure avec des vias afin de réduire l’impédance et d’améliorer la continuité du chemin de retour.">
 				  <span class="item-label">Cartes 2 couches : utiliser des plans cuivre pour l’alimentation et la masse</span>
 				  <div class="item-detail">
@@ -649,14 +668,55 @@
 					et reliez abondamment les zones supérieure et inférieure avec des vias afin de réduire l’impédance et d’améliorer la continuité du chemin de retour.
 				  </div>
 				</li>
+				
+				<li class="has-detail"
+				  title="S’assurer que chaque couche de signaux dispose d’un plan de référence solide adjacent (masse ou alimentation), et router les signaux à fronts rapides / haute vitesse directement au-dessus d’un plan de masse continu chaque fois que possible. Éviter les plans de référence éloignés ou fragmentés, car ils augmentent l’impédance, les émissions EMI et la diaphonie.">
+				  <span class="item-label">Assurer des plans de référence proches pour tous les signaux — en particulier les signaux rapides</span>
+				  <div class="item-detail">
+					Assurez-vous que chaque couche de signaux dispose d’un plan de référence solide et adjacent (masse ou alimentation).
+					Éviter les couches de signaux référencées à des plans éloignés ou fragmentés, car cela augmente l’impédance et les EMI.
+					<br><br>
+					Routez les signaux à fronts rapides directement au-dessus d’un plan de masse continu et ininterrompu autant que possible.
+					Cela fournit une impédance définie, un chemin de retour court et stable,
+					réduit les émissions et le diaphonie — en particulier pour les horloges, SERDES, USB, HDMI et bus rapides de microcontrôleurs.
+				  </div>
+				</li>
 
-				<li class="has-detail" title="Les plans découpés ou fragmentés forcent les courants de retour à contourner les discontinuités, ce qui augmente le bruit et le risque EMI. Conservez des plans pleins sauf si une séparation est absolument nécessaire — et dans ce cas, contrôlez précisément les zones de traversée des signaux.">
-				  <span class="item-label">Éviter les plans découpés qui interrompent les chemins de retour</span>
+				<li class="has-detail"
+				  title="Éviter les plans scindés ou fragmentés qui forcent les courants de retour à contourner des discontinuités. Ne jamais router des signaux à haute vitesse / fronts rapides au-dessus de coupures de plans, car le courant de retour ne peut plus suivre la piste, ce qui augmente la surface de boucle, les émissions EMI et dégrade l’intégrité du signal. Conserver des plans continus sauf nécessité absolue — et dans ce cas, contrôler strictement les zones de croisement des signaux.">
+				  <span class="item-label">Éviter les coupures de plans qui interrompent les chemins de retour — ne jamais les traverser avec des signaux rapides</span>
 				  <div class="item-detail">
 					Les plans découpés ou fragmentés forcent les courants de retour à contourner les discontinuités,
 					ce qui augmente le bruit et le risque EMI.
 					Conservez des plans pleins sauf si une séparation est absolument nécessaire — et dans ce cas,
 					contrôlez précisément les zones de traversée des signaux.
+					<br><br>
+					Un signal rapide retourne sous sa piste via le plan de référence le plus proche.
+					Si la piste traverse une coupure de plan, le courant de retour doit contourner l’obstacle — augmentant la surface de boucle,
+					les EMI et dégradant l’intégrité du signal.
+					Les signaux rapides doivent toujours être routés au-dessus d’un plan de référence continu.
+					<br><br>
+					Cela s’applique notamment aux signaux à fronts rapides tels que :
+					<ul>
+					  <li>les horloges</li>
+					  <li>USB / Ethernet / HDMI / SERDES</li>
+					  <li>les bus mémoire DDR</li>
+					  <li>le SPI sur des microcontrôleurs rapides</li>
+					  <li>et, de manière générale, tout signal ayant des fronts plus rapides qu’environ 5–10&nbsp;ns</li>
+					</ul>
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Si vous utilisez des pistes de garde (anneaux de garde) pour réduire le couplage vers des nœuds à haute impédance ou sensibles, assurez-vous que la garde est continue là où c’est critique et qu’elle suit la géométrie de la zone sensible (souvent près du bord de la carte ou autour d’un front-end analogique). Reliez la garde à une référence à faible impédance (généralement la masse) et reliez-la fréquemment au plan de référence avec des vias afin qu’elle ne se comporte pas comme une antenne flottante. Évitez les segments de garde longs et non terminés.">
+				  <span class="item-label">Pistes de garde : continues, reliées à la masse et maillées par vias</span>
+				  <div class="item-detail">
+					Si vous utilisez des pistes de garde (anneaux de garde) pour réduire le couplage vers des nœuds à haute impédance ou sensibles,
+					assurez-vous que la garde est continue là où c’est critique et qu’elle suit la géométrie de la zone sensible
+					(par exemple autour d’un front-end analogique ou le long du périmètre de la carte lorsque pertinent).
+					<br><br>
+					Reliez la garde à une référence à faible impédance (généralement la masse) et reliez-la fréquemment au plan de référence à l’aide de vias
+					afin qu’elle reste à un potentiel stable et ne se comporte pas comme une antenne flottante.
+					Évitez les segments de garde longs ou pendants.
 				  </div>
 				</li>
 
@@ -678,81 +738,12 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Assurez-vous que chaque couche de signaux dispose d’un plan de référence plein adjacent (masse ou alimentation). Évitez les couches de signaux référencées à des plans éloignés ou fragmentés, car cela augmente l’impédance et les EMI.">
-				  <span class="item-label">Assurer un plan de référence proche pour chaque couche de signaux</span>
-				  <div class="item-detail">
-					Assurez-vous que chaque couche de signaux dispose d’un plan de référence plein adjacent (masse ou alimentation).
-					Évitez les couches de signaux référencées à des plans éloignés ou fragmentés,
-					car cela augmente l’impédance et les EMI.
-				  </div>
-				</li>
-
 				<li class="has-detail" title="Alimentez les charges principales ou les circuits sensibles à partir d’un point de distribution unique et bien défini plutôt que de chaîner l’alimentation à travers les composants. Cela permet d’éviter que des courants de retour partagés ne modulent d’autres circuits et réduit le rebond de masse.">
 				  <span class="item-label">Privilégier une distribution d’alimentation en étoile / point unique</span>
 				  <div class="item-detail">
 					Alimentez les charges principales ou les circuits sensibles à partir d’un point de distribution unique et bien défini
 					plutôt que de chaîner l’alimentation à travers les composants.
 					Cela permet d’éviter que des courants de retour partagés ne modulent d’autres circuits et réduit le rebond de masse.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Un signal rapide retourne sous sa piste via le plan de référence le plus proche. Si la piste traverse une coupure de plan, le courant de retour doit contourner l’obstacle — augmentant la surface de boucle, les EMI et dégradant l’intégrité du signal. Les signaux rapides doivent toujours être routés au-dessus d’un plan de référence continu. Cela s’applique notamment aux signaux à fronts rapides tels que : horloges USB / Ethernet / HDMI / SERDES bus mémoire DDR SPI sur microcontrôleurs rapides et, de manière générale, tout signal ayant des temps de montée/descente plus rapides que ~5–10 ns.">
-				  <span class="item-label">Ne jamais faire passer de signaux rapides à travers des coupures de plan</span>
-				  <div class="item-detail">
-					Un signal rapide retourne sous sa piste via le plan de référence le plus proche.
-					Si la piste traverse une coupure de plan, le courant de retour doit contourner l’obstacle — augmentant la surface de boucle,
-					les EMI et dégradant l’intégrité du signal.
-					Les signaux rapides doivent toujours être routés au-dessus d’un plan de référence continu.
-					<br><br>
-					Cela s’applique notamment aux signaux à fronts rapides tels que :
-					<ul>
-					  <li>les horloges</li>
-					  <li>USB / Ethernet / HDMI / SERDES</li>
-					  <li>les bus mémoire DDR</li>
-					  <li>SPI sur microcontrôleurs rapides</li>
-					  <li>et plus généralement tout signal ayant des temps de montée/descente plus rapides que ~5–10&nbsp;ns</li>
-					</ul>
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Routage des signaux à fronts rapides directement au-dessus d’un plan de masse continu autant que possible. Cela fournit une impédance définie, un chemin de retour court, réduit les émissions et le diaphonie — en particulier pour les horloges, SERDES, USB, HDMI et bus rapides de microcontrôleurs.">
-				  <span class="item-label">Router les signaux rapides à proximité immédiate d’un plan de masse</span>
-				  <div class="item-detail">
-					Routez les signaux à fronts rapides directement au-dessus d’un plan de masse continu et ininterrompu autant que possible.
-					Cela fournit une impédance définie, un chemin de retour court et stable,
-					réduit les émissions et le diaphonie — en particulier pour les horloges, SERDES, USB, HDMI et bus rapides de microcontrôleurs.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Séparez physiquement les zones analogiques, numériques et d’alimentation afin que les courants de retour bruyants ne circulent pas dans les chemins de masse analogiques sensibles. Placez les circuits analogiques les plus sensibles aussi loin que possible des régulateurs à découpage, horloges et fronts numériques rapides.">
-				  <span class="item-label">Zonage de la carte : analogique, numérique et puissance</span>
-				  <div class="item-detail">
-					Séparez physiquement les zones analogiques, numériques et d’alimentation afin que les courants de retour bruyants
-					ne circulent pas dans les chemins de masse analogiques sensibles.
-					Placez les circuits analogiques les plus sensibles aussi loin que possible des régulateurs à découpage,
-					des horloges et des fronts numériques rapides.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Si vous utilisez des pistes de garde (anneaux de garde) pour réduire le couplage vers des nœuds à haute impédance ou sensibles, assurez-vous que la garde est continue là où c’est critique et qu’elle suit la géométrie de la zone sensible (souvent près du bord de la carte ou autour d’un front-end analogique). Reliez la garde à une référence à faible impédance (généralement la masse) et reliez-la fréquemment au plan de référence avec des vias afin qu’elle ne se comporte pas comme une antenne flottante. Évitez les segments de garde longs et non terminés.">
-				  <span class="item-label">Pistes de garde : continues, reliées à la masse et maillées par vias</span>
-				  <div class="item-detail">
-					Si vous utilisez des pistes de garde (anneaux de garde) pour réduire le couplage vers des nœuds à haute impédance ou sensibles,
-					assurez-vous que la garde est continue là où c’est critique et qu’elle suit la géométrie de la zone sensible
-					(par exemple autour d’un front-end analogique ou le long du périmètre de la carte lorsque pertinent).
-					<br><br>
-					Reliez la garde à une référence à faible impédance (généralement la masse) et reliez-la fréquemment au plan de référence à l’aide de vias
-					afin qu’elle reste à un potentiel stable et ne se comporte pas comme une antenne flottante.
-					Évitez les segments de garde longs ou pendants.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Si la conception utilise plusieurs masses (par exemple masse analogique, masse numérique, châssis/terre), définissez une stratégie de liaison contrôlée. Évitez les connexions multiples involontaires entre masses, qui peuvent créer des boucles de masse et injecter du bruit. Lorsqu’une liaison en un point unique est requise, assurez-vous qu’il s’agit de la seule connexion intentionnelle.">
-				  <span class="item-label">Masses multiples : définir un point de liaison contrôlé et éviter les boucles de masse</span>
-				  <div class="item-detail">
-					Si la conception utilise plusieurs masses (analogique, numérique, châssis/terre), définissez clairement leur mode de liaison.
-					Évitez les connexions multiples involontaires qui créent des boucles de masse et des couplages de bruit.
-					Lorsqu’une liaison en un point unique est requise, assurez-vous qu’il s’agit de la seule connexion intentionnelle entre ces domaines de masse.
 				  </div>
 				</li>
 
