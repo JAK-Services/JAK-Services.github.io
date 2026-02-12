@@ -526,6 +526,51 @@
 				<h2>PCB Layout — Physical Constraints</h2>
 				<ul class="toggle-list">
 					
+					<li class="has-detail" title="Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, as they strongly influence board layout, airflow, and enclosure design.">
+						<span class="item-label">Large components</span>
+						<div class="item-detail">
+							Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, 
+							as they strongly influence board layout, airflow, and enclosure design.
+							<br><br>
+							Avoid placing components with high thermal mass (e.g. large inductors or transformers)
+							immediately adjacent to very small or thermally sensitive components,
+							as this can cause soldering defects and thermal stress.
+						</div>
+					</li>
+					
+					<li class="has-detail" title="Identify and place electrically sensitive or timing-critical parts early (e.g., oscillators, RF parts, precision references) so routing and grounding can be optimised around them.">
+						<span class="item-label">Critical components</span>
+						<div class="item-detail">
+							Identify and place electrically sensitive or timing-critical parts early (e.g., oscillators, RF parts, precision references) so routing and grounding can be optimised around them.
+						</div>
+					</li>
+
+					<li class="has-detail" title="Fix the position and orientation of connectors early, align them consistently at the board edge, and keep sufficient mechanical clearance for mating cables, latches, strain relief, and user handling. Consider insertion forces and connector wear over product lifetime.">
+					  <span class="item-label">Connectors</span>
+					  <div class="item-detail">
+						Fix the position and orientation of connectors early, and align them consistently at the board edge so cables, panels, and future enclosures can be designed to mate reliably.
+						<br><br>
+						Keep sufficient mechanical clearance around connectors for mating cables, latches, strain relief, and user handling. Consider insertion forces and connector wear over product lifetime.
+					  </div>
+					</li>
+
+					<li class="has-detail" title="Ensure components that may require adjustment, calibration, or replacement (e.g., trim pots, jumpers, fuses) remain physically accessible in the final assembly, and that potensiometers increases the voltage or signal when turned clockwise.">
+					  <span class="item-label">Keep adjustable or serviceable parts accessible</span>
+					  <div class="item-detail">
+						Ensure components that may require adjustment, calibration, or replacement
+						(e.g., trim pots, jumpers, fuses) remain physically accessible in the final assembly, and that potensiometers increases the voltage or signal when turned clockwise.
+					  </div>
+					</li>
+					
+					<li class="has-detail" title="Add mounting holes early with consistent spacing, pad sizes, and clearances, and keep their positions fixed so mechanical supports and the enclosure can be designed with confidence. Reserve copper-free keep-out areas around mounting holes for washers, standoffs, and to avoid unintended chassis connections.">
+						<span class="item-label">Mounting holes</span>
+						<div class="item-detail">
+							Add mounting holes early with consistent spacing, pad sizes, and clearances, and keep their 
+							positions fixed so mechanical supports and the enclosure can be designed with confidence.
+							Reserve copper-free keep-out areas around mounting holes for washers, standoffs, and to avoid unintended chassis connections.
+						</div>
+					</li>
+					
 					<li class="has-detail"
 						title="Define the PCB outline early (mechanical constraints) and implement it correctly on Edge.Cuts. Keep silkscreen off pads/solder-mask openings and observe copper/graphics-to-edge clearances.">
 					  <span class="item-label">Board outline</span>
@@ -546,51 +591,6 @@
 						Fabs often clip silkscreen over exposed copper (and it can interfere with soldering), leading to unreadable markings and possible assembly defects.
 						Use DRC rules for <em>silkscreen-to-solder-mask</em> clearance and fix violations before generating Gerbers.
 					  </div>
-					</li>
-					
-					<li class="has-detail" title="Add mounting holes early with consistent spacing, pad sizes, and clearances, and keep their positions fixed so mechanical supports and the enclosure can be designed with confidence. Reserve copper-free keep-out areas around mounting holes for washers, standoffs, and to avoid unintended chassis connections.">
-						<span class="item-label">Mounting holes</span>
-						<div class="item-detail">
-							Add mounting holes early with consistent spacing, pad sizes, and clearances, and keep their 
-							positions fixed so mechanical supports and the enclosure can be designed with confidence.
-							Reserve copper-free keep-out areas around mounting holes for washers, standoffs, and to avoid unintended chassis connections.
-						</div>
-					</li>
-
-					<li class="has-detail" title="Fix the position and orientation of connectors early, align them consistently at the board edge, and keep sufficient mechanical clearance for mating cables, latches, strain relief, and user handling. Consider insertion forces and connector wear over product lifetime.">
-					  <span class="item-label">Connectors</span>
-					  <div class="item-detail">
-						Fix the position and orientation of connectors early, and align them consistently at the board edge so cables, panels, and future enclosures can be designed to mate reliably.
-						<br><br>
-						Keep sufficient mechanical clearance around connectors for mating cables, latches, strain relief, and user handling. Consider insertion forces and connector wear over product lifetime.
-					  </div>
-					</li>
-					
-					<li class="has-detail" title="Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, as they strongly influence board layout, airflow, and enclosure design.">
-						<span class="item-label">Large components</span>
-						<div class="item-detail">
-							Place tall or bulky parts (e.g., transformers, heat sinks, large capacitors, batteries) early and lock their positions, 
-							as they strongly influence board layout, airflow, and enclosure design.
-							<br><br>
-							Avoid placing components with high thermal mass (e.g. large inductors or transformers)
-							immediately adjacent to very small or thermally sensitive components,
-							as this can cause soldering defects and thermal stress.
-						</div>
-					</li>
-
-					<li class="has-detail" title="Ensure components that may require adjustment, calibration, or replacement (e.g., trim pots, jumpers, fuses) remain physically accessible in the final assembly, and that potensiometers increases the voltage or signal when turned clockwise.">
-					  <span class="item-label">Keep adjustable or serviceable parts accessible</span>
-					  <div class="item-detail">
-						Ensure components that may require adjustment, calibration, or replacement
-						(e.g., trim pots, jumpers, fuses) remain physically accessible in the final assembly, and that potensiometers increases the voltage or signal when turned clockwise.
-					  </div>
-					</li>
-					
-					<li class="has-detail" title="Identify and place electrically sensitive or timing-critical parts early (e.g., oscillators, RF parts, precision references) so routing and grounding can be optimised around them.">
-						<span class="item-label">Critical components</span>
-						<div class="item-detail">
-							Identify and place electrically sensitive or timing-critical parts early (e.g., oscillators, RF parts, precision references) so routing and grounding can be optimised around them.
-						</div>
 					</li>
 					
 					<li class="has-detail" title="Board slots, milled gaps, or cutouts are sometimes used as a physical 'guard barrier' to prevent signals from crossing a region or to enforce isolation. Ensure no tracks, planes, or copper pours unintentionally bridge or cross these milled features (including on inner layers). Add explicit keep-outs around the slot/cutout, and ensure the feature is clearly defined on the mechanical / Edge.Cuts layers that go to the fabricator, with notes if the slot is functionally critical.">
