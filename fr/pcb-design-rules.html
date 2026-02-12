@@ -668,19 +668,6 @@
 					et reliez abondamment les zones supérieure et inférieure avec des vias afin de réduire l’impédance et d’améliorer la continuité du chemin de retour.
 				  </div>
 				</li>
-				
-				<li class="has-detail"
-				  title="S’assurer que chaque couche de signaux dispose d’un plan de référence solide adjacent (masse ou alimentation), et router les signaux à fronts rapides / haute vitesse directement au-dessus d’un plan de masse continu chaque fois que possible. Éviter les plans de référence éloignés ou fragmentés, car ils augmentent l’impédance, les émissions EMI et la diaphonie.">
-				  <span class="item-label">Assurer des plans de référence proches pour tous les signaux — en particulier les signaux rapides</span>
-				  <div class="item-detail">
-					Assurez-vous que chaque couche de signaux dispose d’un plan de référence solide et adjacent (masse ou alimentation).
-					Éviter les couches de signaux référencées à des plans éloignés ou fragmentés, car cela augmente l’impédance et les EMI.
-					<br><br>
-					Routez les signaux à fronts rapides directement au-dessus d’un plan de masse continu et ininterrompu autant que possible.
-					Cela fournit une impédance définie, un chemin de retour court et stable,
-					réduit les émissions et le diaphonie — en particulier pour les horloges, SERDES, USB, HDMI et bus rapides de microcontrôleurs.
-				  </div>
-				</li>
 
 				<li class="has-detail"
 				  title="Éviter les plans scindés ou fragmentés qui forcent les courants de retour à contourner des discontinuités. Ne jamais router des signaux à haute vitesse / fronts rapides au-dessus de coupures de plans, car le courant de retour ne peut plus suivre la piste, ce qui augmente la surface de boucle, les émissions EMI et dégrade l’intégrité du signal. Conserver des plans continus sauf nécessité absolue — et dans ce cas, contrôler strictement les zones de croisement des signaux.">
@@ -766,129 +753,22 @@
 				  </div>
 				</li>
 
-				<li class="has-detail" title="Les signaux rapides et à fronts raides forment une boucle avec leur courant de retour, qui doit circuler directement sous la piste dans le plan de référence plein le plus proche. Maintenez un plan continu sous les routages critiques afin que le courant de retour n’ait pas à contourner des discontinuités — les ruptures de chemin de retour augmentent la surface de boucle, le bruit et les EMI. Des pistes plus courtes et des chemins aller/retour étroitement couplés réduisent encore l’inductance et améliorent l’intégrité du signal.">
-				  <span class="item-label">Contrôler le chemin de retour et minimiser la surface de boucle</span>
+				<li class="has-detail"
+				  title="S’assurer que chaque couche de signaux dispose d’un plan de référence solide et adjacent (masse ou alimentation) afin que les courants de retour puissent circuler directement sous les pistes. Router les signaux à fronts rapides / haute vitesse au-dessus de plans de référence continus et ininterrompus pour minimiser la surface de boucle, maîtriser l’impédance, réduire les émissions EMI et améliorer l’intégrité du signal. Éviter les plans éloignés ou fragmentés, car les discontinuités du chemin de retour imposent des détours qui augmentent le bruit et les émissions.">
+				  <span class="item-label">Assurer des plans de référence continus et des chemins de retour maîtrisés pour tous les signaux — en particulier les signaux rapides</span>
 				  <div class="item-detail">
-					Les signaux rapides et à fronts raides forment une boucle avec leur courant de retour,
-					qui doit circuler directement sous la piste dans le plan de référence plein le plus proche.
-					Maintenez un plan continu sous les routages critiques afin que le courant de retour n’ait pas à contourner des discontinuités —
-					les ruptures de chemin de retour augmentent la surface de boucle, le bruit et les EMI.
-					Des pistes plus courtes et des chemins aller/retour étroitement couplés réduisent encore l’inductance
-					et améliorent l’intégrité du signal.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Le filtrage EMI/RFI est le plus efficace lorsqu’il est placé à la frontière de la carte. Les filtres doivent être positionnés aussi près que possible des connecteurs, des bords de la carte ou des interfaces de blindage afin d’empêcher le bruit de se propager sur ou hors du PCB.">
-				  <span class="item-label">Placer le filtrage EMI/RFI aux points d’entrée et de sortie du PCB</span>
-				  <div class="item-detail">
-					Assurez-vous que les composants de filtrage EMI/RFI sont placés aussi près que possible du point d’entrée ou de sortie
-					(par exemple le bord de la carte, un connecteur ou une interface de blindage)
-					afin d’empêcher le bruit de se propager sur ou hors du PCB.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Évitez de router des signaux à travers des étranglements étroits entre zones de cuivre ou vides de plan, car cela augmente l’impédance, concentre la densité de courant et aggrave les EMI.">
-				  <span class="item-label">Éviter le routage à travers des étranglements de cuivre</span>
-				  <div class="item-detail">
-					Évitez de router des signaux à travers des étranglements étroits entre zones de cuivre ou vides de plan,
-					car cela augmente l’impédance, concentre la densité de courant et aggrave les EMI.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Les signaux d’horloge commutent en permanence et rayonnent de l’énergie. Placez les cristaux ou oscillateurs aussi près que possible des broches d’horloge des CI, et routez les pistes d’horloge aussi courtes que possible au-dessus d’un plan de référence plein. Maintenez les horloges éloignées des nœuds analogiques sensibles ou à haute impédance afin de réduire le couplage de bruit et la gigue.">
-				  <span class="item-label">Sources et réseaux d’horloge : boucles courtes et bien isolées</span>
-				  <div class="item-detail">
-					Les signaux d’horloge commutent en permanence et rayonnent de l’énergie.
-					Placez les cristaux ou oscillateurs aussi près que possible des broches d’horloge associées afin de minimiser la surface de boucle.
+					S’assurer que chaque couche de signaux dispose d’un plan de référence solide et adjacent (masse ou alimentation) afin que le courant de retour du signal puisse circuler directement sous la piste.
+					Éviter les couches de signaux référencées à des plans éloignés ou fragmentés, car cela augmente l’impédance, la surface de boucle, le bruit et les émissions EMI.
 					<br><br>
-					Routez les pistes d’horloge aussi courtes que possible, au-dessus d’un plan de référence plein,
-					et maintenez-les éloignées des nœuds analogiques sensibles ou à haute impédance
-					afin de réduire le couplage de bruit et la gigue d’horloge.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Les angles à 45° (ou les courbes douces) offrent un routage plus propre, maintiennent une impédance plus constante, réduisent la concentration de courant et évitent la création de stubs inutiles — particulièrement utile en RF et pour les fronts rapides.">
-				  <span class="item-label">Préférer les angles à 45° aux angles à 90°</span>
-				  <div class="item-detail">
-					Les angles à 45° (ou les courbes douces) offrent un routage plus propre,
-					maintiennent une impédance plus constante, réduisent la concentration de courant
-					et évitent la création de stubs inutiles — particulièrement utile en RF et pour les fronts rapides.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Lorsqu’un signal rapide change de couche, le courant de retour doit également passer d’un plan à l’autre. Placez un via de couture de masse près du via de signal afin de fournir un chemin de retour court et contrôlé et de réduire l’inductance de boucle.">
-				  <span class="item-label">Ajouter des vias de couture près des transitions de couche</span>
-				  <div class="item-detail">
-					Lorsqu’un signal rapide change de couche, le courant de retour doit également passer d’un plan à l’autre.
-					Placez un via de couture de masse près du via de signal afin de fournir un chemin de retour court et contrôlé
-					et de réduire l’inductance de boucle.
-				  </div>
-				</li>
-				
-				<li class="has-detail" title="À des fréquences plus élevées (environ au-dessus de 80 MHz et pour les logiques à fronts rapides), les broches traversantes et les longues pistes ajoutent une inductance significative et se comportent comme de petites antennes. Préférez les composants CMS et maintenez les pistes aussi courtes que possible. Évitez les stubs ou segments de piste inutilisés — par exemple des pastilles de test ou des branches de vias formant des connexions pendantes — car ils créent des réflexions et des points de rayonnement. Notez que même ~10 cm de piste peut agir comme un radiateur efficace dans la bande FM.">
-				  <span class="item-label">Éviter les longues pistes et les composants traversants en RF / fronts rapides</span>
-				  <div class="item-detail">
-					À des fréquences plus élevées (environ au-dessus de 80&nbsp;MHz et pour les logiques à fronts rapides),
-					les broches traversantes et les longues pistes ajoutent une inductance significative
-					et se comportent comme de petites antennes.
-					Préférez les composants CMS et maintenez les pistes aussi courtes que possible.
-					Évitez les stubs ou segments de piste inutilisés — par exemple des pastilles de test ou des branches de vias formant des connexions pendantes —
-					car ils créent des réflexions et des points de rayonnement.
-					Notez que même ~10&nbsp;cm de piste peut agir comme un radiateur efficace dans la bande FM.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Des pistes parallèles longues et rapprochées se couplent de manière capacitive et inductive. Évitez de faire courir des signaux en parallèle sur de longues distances — et si cela est inévitable, maintenez un espacement d’au moins trois fois la largeur de piste ou routez au-dessus d’un plan de référence plein avec un bon contrôle du chemin de retour.">
-				  <span class="item-label">Réduire la diaphonie : espacer les pistes parallèles (≥ 3× la largeur)</span>
-				  <div class="item-detail">
-					Des pistes parallèles longues et rapprochées se couplent de manière capacitive et inductive.
-					Évitez de faire courir des signaux en parallèle sur de longues distances —
-					et si cela est inévitable, maintenez un espacement d’au moins trois fois la largeur de piste
-					ou routez au-dessus d’un plan de référence plein avec un bon contrôle du chemin de retour.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Les signaux rapides et bruyants proches du bord du PCB rayonnent plus facilement et sont plus sensibles aux interférences. Maintenez les réseaux de commutation et à haute vitesse éloignés du périmètre autant que possible.">
-				  <span class="item-label">Éviter de router des signaux bruyants près des bords de la carte</span>
-				  <div class="item-detail">
-					Les signaux rapides et bruyants proches du bord du PCB rayonnent plus facilement
-					et sont plus sensibles aux interférences.
-					Maintenez les réseaux de commutation et à haute vitesse éloignés du périmètre autant que possible.
-				  </div>
-				</li>
-				
-				<li class="has-detail" title="Les cristaux et oscillateurs sont sensibles au bruit et aux capacités parasites. Évitez de placer des composants non liés à proximité du cristal et ne routez pas d’autres signaux directement sous ou autour du réseau d’oscillation. Laisser quelques centimètres de dégagement aide à maintenir la stabilité de fréquence, à réduire le couplage vers le chemin de retour de l’oscillateur et à préserver la marge de démarrage.">
-				  <span class="item-label">Éloigner les composants et le routage du cristal / oscillateur</span>
-				  <div class="item-detail">
-					Les cristaux et oscillateurs sont sensibles au bruit et aux capacités parasites.
-					Évitez de placer des composants non liés à proximité du cristal
-					et ne routez pas d’autres signaux directement sous ou autour du réseau d’oscillation.
-					Laisser quelques centimètres de dégagement aide à maintenir la stabilité de fréquence,
-					à réduire le couplage vers le chemin de retour de l’oscillateur
-					et à préserver la marge de démarrage.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Les entrées flottantes peuvent osciller, injecter du bruit ou augmenter la consommation d’énergie. Suivez la fiche technique et utilisez des résistances de tirage haut ou bas recommandées afin que chaque entrée inutilisée ait un niveau logique propre et défini.">
-				  <span class="item-label">Donner un état logique défini aux entrées inutilisées</span>
-				  <div class="item-detail">
-					Les entrées flottantes peuvent osciller, injecter du bruit ou augmenter la consommation d’énergie.
-					Suivez la fiche technique et utilisez des résistances de tirage haut ou bas recommandées
-					afin que chaque entrée inutilisée ait un niveau logique propre et défini.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="L’ajout d’une petite résistance série (typiquement 10–100 Ω), et dans certains cas d’un petit réseau RC, peut ralentir des fronts très rapides et amortir les oscillations et les interférences électromagnétiques (EMI) sur des pistes ou câbles longs ou bruyants. Cela réduit les émissions rayonnées, améliore l’intégrité du signal et peut également limiter les courants de surtension dans les composants. À appliquer uniquement lorsque les exigences de temporisation et de vitesse de front du protocole restent respectées et que le délai supplémentaire est acceptable.">
-				  <span class="item-label">Utiliser des résistances série ou de petits réseaux RC pour maîtriser les fronts et les oscillations (lorsque le protocole le permet)</span>
-				  <div class="item-detail">
-					L’ajout d’une petite résistance série (typiquement 10–100&nbsp;Ω),
-					et dans certains cas d’un petit réseau RC,
-					peut ralentir des fronts très rapides et amortir les oscillations
-					et les interférences électromagnétiques (EMI) sur des pistes ou câbles longs ou bruyants.
-					Cela réduit les émissions rayonnées, améliore l’intégrité du signal
-					et peut également limiter les courants de surtension dans les composants.
-					À appliquer uniquement lorsque les exigences de temporisation et de vitesse de front du protocole restent respectées
-					et que le délai supplémentaire est acceptable.
+					Les signaux à haute vitesse ou à fronts raides forment une boucle avec leur courant de retour.
+					Maintenir un plan de référence continu et ininterrompu sous les routages critiques afin d’éviter tout détour du courant de retour.
+					Les discontinuités du chemin de retour augmentent la surface de boucle, les émissions rayonnées et dégradent l’intégrité du signal.
+					<br><br>
+					Router les signaux à fronts rapides / haute vitesse directement au-dessus d’un plan de masse continu chaque fois que possible.
+					Cela garantit une impédance bien définie, un chemin de retour court et stable, des émissions réduites et une diaphonie limitée —
+					en particulier pour les horloges, les liaisons SERDES, USB, HDMI et les bus rapides de microcontrôleurs.
+					<br><br>
+					Des pistes plus courtes et un couplage étroit entre le trajet aller et le trajet retour réduisent encore l’inductance et améliorent l’intégrité du signal.
 				  </div>
 				</li>
 
@@ -932,6 +812,130 @@
 				  </div>
 				</li>
 
+				<li class="has-detail" title="Lorsqu’un signal rapide change de couche, le courant de retour doit également passer d’un plan à l’autre. Placez un via de couture de masse près du via de signal afin de fournir un chemin de retour court et contrôlé et de réduire l’inductance de boucle.">
+				  <span class="item-label">Ajouter des vias de couture près des transitions de couche</span>
+				  <div class="item-detail">
+					Lorsqu’un signal rapide change de couche, le courant de retour doit également passer d’un plan à l’autre.
+					Placez un via de couture de masse près du via de signal afin de fournir un chemin de retour court et contrôlé
+					et de réduire l’inductance de boucle.
+				  </div>
+				</li>
+				
+				<li class="has-detail" title="À des fréquences plus élevées (environ au-dessus de 80 MHz et pour les logiques à fronts rapides), les broches traversantes et les longues pistes ajoutent une inductance significative et se comportent comme de petites antennes. Préférez les composants CMS et maintenez les pistes aussi courtes que possible. Évitez les stubs ou segments de piste inutilisés — par exemple des pastilles de test ou des branches de vias formant des connexions pendantes — car ils créent des réflexions et des points de rayonnement. Notez que même ~10 cm de piste peut agir comme un radiateur efficace dans la bande FM.">
+				  <span class="item-label">Éviter les longues pistes et les composants traversants en RF / fronts rapides</span>
+				  <div class="item-detail">
+					À des fréquences plus élevées (environ au-dessus de 80&nbsp;MHz et pour les logiques à fronts rapides),
+					les broches traversantes et les longues pistes ajoutent une inductance significative
+					et se comportent comme de petites antennes.
+					Préférez les composants CMS et maintenez les pistes aussi courtes que possible.
+					Évitez les stubs ou segments de piste inutilisés — par exemple des pastilles de test ou des branches de vias formant des connexions pendantes —
+					car ils créent des réflexions et des points de rayonnement.
+					Notez que même ~10&nbsp;cm de piste peut agir comme un radiateur efficace dans la bande FM.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Des pistes parallèles longues et rapprochées se couplent de manière capacitive et inductive. Évitez de faire courir des signaux en parallèle sur de longues distances — et si cela est inévitable, maintenez un espacement d’au moins trois fois la largeur de piste ou routez au-dessus d’un plan de référence plein avec un bon contrôle du chemin de retour.">
+				  <span class="item-label">Réduire la diaphonie : espacer les pistes parallèles (≥ 3× la largeur)</span>
+				  <div class="item-detail">
+					Des pistes parallèles longues et rapprochées se couplent de manière capacitive et inductive.
+					Évitez de faire courir des signaux en parallèle sur de longues distances —
+					et si cela est inévitable, maintenez un espacement d’au moins trois fois la largeur de piste
+					ou routez au-dessus d’un plan de référence plein avec un bon contrôle du chemin de retour.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Les angles à 45° (ou les courbes douces) offrent un routage plus propre, maintiennent une impédance plus constante, réduisent la concentration de courant et évitent la création de stubs inutiles — particulièrement utile en RF et pour les fronts rapides.">
+				  <span class="item-label">Préférer les angles à 45° aux angles à 90°</span>
+				  <div class="item-detail">
+					Les angles à 45° (ou les courbes douces) offrent un routage plus propre,
+					maintiennent une impédance plus constante, réduisent la concentration de courant
+					et évitent la création de stubs inutiles — particulièrement utile en RF et pour les fronts rapides.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Évitez de router des signaux à travers des étranglements étroits entre zones de cuivre ou vides de plan, car cela augmente l’impédance, concentre la densité de courant et aggrave les EMI.">
+				  <span class="item-label">Éviter le routage à travers des étranglements de cuivre</span>
+				  <div class="item-detail">
+					Évitez de router des signaux à travers des étranglements étroits entre zones de cuivre ou vides de plan,
+					car cela augmente l’impédance, concentre la densité de courant et aggrave les EMI.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Les signaux rapides et bruyants proches du bord du PCB rayonnent plus facilement et sont plus sensibles aux interférences. Maintenez les réseaux de commutation et à haute vitesse éloignés du périmètre autant que possible.">
+				  <span class="item-label">Éviter de router des signaux bruyants près des bords de la carte</span>
+				  <div class="item-detail">
+					Les signaux rapides et bruyants proches du bord du PCB rayonnent plus facilement
+					et sont plus sensibles aux interférences.
+					Maintenez les réseaux de commutation et à haute vitesse éloignés du périmètre autant que possible.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Les signaux d’horloge commutent en permanence et rayonnent de l’énergie. Placez les cristaux ou oscillateurs aussi près que possible des broches d’horloge des CI, et routez les pistes d’horloge aussi courtes que possible au-dessus d’un plan de référence plein. Maintenez les horloges éloignées des nœuds analogiques sensibles ou à haute impédance afin de réduire le couplage de bruit et la gigue.">
+				  <span class="item-label">Sources et réseaux d’horloge : boucles courtes et bien isolées</span>
+				  <div class="item-detail">
+					Les signaux d’horloge commutent en permanence et rayonnent de l’énergie.
+					Placez les cristaux ou oscillateurs aussi près que possible des broches d’horloge associées afin de minimiser la surface de boucle.
+					<br><br>
+					Routez les pistes d’horloge aussi courtes que possible, au-dessus d’un plan de référence plein,
+					et maintenez-les éloignées des nœuds analogiques sensibles ou à haute impédance
+					afin de réduire le couplage de bruit et la gigue d’horloge.
+				  </div>
+				</li>
+				
+				<li class="has-detail" title="Les cristaux et oscillateurs sont sensibles au bruit et aux capacités parasites. Évitez de placer des composants non liés à proximité du cristal et ne routez pas d’autres signaux directement sous ou autour du réseau d’oscillation. Laisser quelques centimètres de dégagement aide à maintenir la stabilité de fréquence, à réduire le couplage vers le chemin de retour de l’oscillateur et à préserver la marge de démarrage.">
+				  <span class="item-label">Éloigner les composants et le routage du cristal / oscillateur</span>
+				  <div class="item-detail">
+					Les cristaux et oscillateurs sont sensibles au bruit et aux capacités parasites.
+					Évitez de placer des composants non liés à proximité du cristal
+					et ne routez pas d’autres signaux directement sous ou autour du réseau d’oscillation.
+					Laisser quelques centimètres de dégagement aide à maintenir la stabilité de fréquence,
+					à réduire le couplage vers le chemin de retour de l’oscillateur
+					et à préserver la marge de démarrage.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Le filtrage EMI/RFI est le plus efficace lorsqu’il est placé à la frontière de la carte. Les filtres doivent être positionnés aussi près que possible des connecteurs, des bords de la carte ou des interfaces de blindage afin d’empêcher le bruit de se propager sur ou hors du PCB.">
+				  <span class="item-label">Placer le filtrage EMI/RFI aux points d’entrée et de sortie du PCB</span>
+				  <div class="item-detail">
+					Assurez-vous que les composants de filtrage EMI/RFI sont placés aussi près que possible du point d’entrée ou de sortie
+					(par exemple le bord de la carte, un connecteur ou une interface de blindage)
+					afin d’empêcher le bruit de se propager sur ou hors du PCB.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Si un capot de blindage RF est requis (pour la conformité EMI ou pour protéger des sections RF/analogiques sensibles), réservez l’empreinte dès le début : contour du blindage, hauteur de dégagement, périmètre de masse et espace d’assemblage. L’absence de réservation tardive peut imposer des reroutages majeurs ou des modifications mécaniques.">
+				  <span class="item-label">Blindage RF : réserver l’empreinte et la mise à la masse dès le départ si nécessaire</span>
+				  <div class="item-detail">
+					Vérifiez si un capot de blindage RF est requis pour une partie de la conception.
+					Le cas échéant, réservez une empreinte et des zones de dégagement suffisantes (hauteur et périmètre),
+					et prévoyez une stratégie de mise à la masse robuste autour du contour du blindage
+					afin qu’il puisse être assemblé et connecté de manière fiable.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="L’ajout d’une petite résistance série (typiquement 10–100 Ω), et dans certains cas d’un petit réseau RC, peut ralentir des fronts très rapides et amortir les oscillations et les interférences électromagnétiques (EMI) sur des pistes ou câbles longs ou bruyants. Cela réduit les émissions rayonnées, améliore l’intégrité du signal et peut également limiter les courants de surtension dans les composants. À appliquer uniquement lorsque les exigences de temporisation et de vitesse de front du protocole restent respectées et que le délai supplémentaire est acceptable.">
+				  <span class="item-label">Utiliser des résistances série ou de petits réseaux RC pour maîtriser les fronts et les oscillations (lorsque le protocole le permet)</span>
+				  <div class="item-detail">
+					L’ajout d’une petite résistance série (typiquement 10–100&nbsp;Ω),
+					et dans certains cas d’un petit réseau RC,
+					peut ralentir des fronts très rapides et amortir les oscillations
+					et les interférences électromagnétiques (EMI) sur des pistes ou câbles longs ou bruyants.
+					Cela réduit les émissions rayonnées, améliore l’intégrité du signal
+					et peut également limiter les courants de surtension dans les composants.
+					À appliquer uniquement lorsque les exigences de temporisation et de vitesse de front du protocole restent respectées
+					et que le délai supplémentaire est acceptable.
+				  </div>
+				</li>
+
+				<li class="has-detail" title="Les entrées flottantes peuvent osciller, injecter du bruit ou augmenter la consommation d’énergie. Suivez la fiche technique et utilisez des résistances de tirage haut ou bas recommandées afin que chaque entrée inutilisée ait un niveau logique propre et défini.">
+				  <span class="item-label">Donner un état logique défini aux entrées inutilisées</span>
+				  <div class="item-detail">
+					Les entrées flottantes peuvent osciller, injecter du bruit ou augmenter la consommation d’énergie.
+					Suivez la fiche technique et utilisez des résistances de tirage haut ou bas recommandées
+					afin que chaque entrée inutilisée ait un niveau logique propre et défini.
+				  </div>
+				</li>
+
 				<li class="has-detail" title="Les pistes longues ou à haute vitesse peuvent nécessiter une simulation afin de valider l’intégrité du signal. Des composants de terminaison doivent être présents et correctement placés afin de maîtriser les réflexions et les dépassements.">
 				  <span class="item-label">Vérifier la simulation et les terminaisons pour les signaux rapides</span>
 				  <div class="item-detail">
@@ -944,16 +948,6 @@
 					<br><br>
 					Évaluez la diaphonie pour les pistes longues et étroitement couplées en parallèle,
 					et simulez lorsque l’espacement seul peut être insuffisant.
-				  </div>
-				</li>
-
-				<li class="has-detail" title="Si un capot de blindage RF est requis (pour la conformité EMI ou pour protéger des sections RF/analogiques sensibles), réservez l’empreinte dès le début : contour du blindage, hauteur de dégagement, périmètre de masse et espace d’assemblage. L’absence de réservation tardive peut imposer des reroutages majeurs ou des modifications mécaniques.">
-				  <span class="item-label">Blindage RF : réserver l’empreinte et la mise à la masse dès le départ si nécessaire</span>
-				  <div class="item-detail">
-					Vérifiez si un capot de blindage RF est requis pour une partie de la conception.
-					Le cas échéant, réservez une empreinte et des zones de dégagement suffisantes (hauteur et périmètre),
-					et prévoyez une stratégie de mise à la masse robuste autour du contour du blindage
-					afin qu’il puisse être assemblé et connecté de manière fiable.
 				  </div>
 				</li>
 
