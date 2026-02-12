@@ -434,17 +434,16 @@
 				</li>
 
 				<li class="has-detail"
-				  title="Confirm your manufacturer’s real process limits, then configure your ECAD tool’s clearance, trace width, via size, annular ring, solder-mask, and other manufacturing rules to match — before you place or route anything. This prevents unmanufacturable features being created and improves yield and cost. Verify compliance during layout using DFMA/DRC tools.">
-				  <span class="item-label">Design Rule Check (DRC)</span>
+				  title="Confirm your PCB manufacturer’s real fabrication and assembly limits early, then configure your ECAD design rules (clearance, trace width, via size, annular ring, solder mask, component spacing, heights, and tolerances) to match. This prevents unmanufacturable features, improves yield and cost, and ensures violations are caught during layout rather than at fabrication. Verify compliance regularly using DRC and DFMA tools.">
+				  <span class="item-label">DFMA &amp; Design Rule Check (DRC)</span>
 				  <div class="item-detail">
-					Confirm your PCB manufacturer’s real process limits (standard vs. advanced capability, trace width/spacing, via size, annular ring, solder-mask expansion, copper weight, layer count, stack-up etc.) 
-					and configure your ECAD tool’s design rules to match these conservatively — <strong>before you place or route anything</strong>. 
-					This ensures the design is buildable with good yield and cost from the start, prevents unmanufacturable features being created, and avoids costly late-stage rework.
+					Confirm your PCB manufacturer’s real fabrication and assembly process limits early (standard vs. advanced capability, minimum trace width and spacing, via sizes, annular rings, solder-mask and silkscreen limits, copper weight, layer count, stack-up, tolerances, panelisation, component spacing and heights).
+					Configure your ECAD design rules conservatively to match these capabilities — <strong>before you place or route anything</strong>.
+					This ensures the design is buildable with good yield and reasonable cost from the start, prevents unmanufacturable features, and avoids costly late-stage rework.
 					<br><br>
-					As part of these constraints, ensure sufficient physical clearance is provided for production pick-and-place heads, manual assembly during prototyping,
-					and access for a soldering iron tip if rework or repair is required.
+					As part of these constraints, ensure sufficient physical clearance for automated pick-and-place heads, manual assembly during prototyping, and access for a soldering-iron tip if rework or repair is required.
 					<br><br>
-					Align your ECAD DRC limits with what your fab and assembler can reliably produce, and verify compliance during layout using 
+					Align your ECAD DRC limits with what your fab and assembler can reliably produce, and verify compliance regularly during layout using 
 					<a href="https://jlcpcb.com/blog/how-to-run-design-rule-check" target="_blank" rel="noopener">DRC</a> and 
 					<a href="https://jlcdfm.com/" target="_blank" rel="noopener">DFMA tools</a>.
 					<p><strong>Typical baseline limits (always verify with your fab first):</strong></p>
@@ -592,16 +591,6 @@
 						<div class="item-detail">
 							Identify and place electrically sensitive or timing-critical parts early (e.g., oscillators, RF parts, precision references) so routing and grounding can be optimised around them.
 						</div>
-					</li>
-					
-					<li class="has-detail" title="Check PCB and assembly constraints early (minimum trace/space, via sizes, tolerances, panelisation, component spacing and heights, solder mask / silkscreen limits, and drill tolerances) to ensure the design can be produced consistently and at reasonable cost. Configure your ECAD design rules to match your chosen manufacturer’s capabilities so violations are caught automatically rather than at fabrication time. Use DFMA/DRC tools regularly during layout to verify that the finished design remains within buildable limits.">
-					  <span class="item-label">DFMA — Design for manufacturability &amp; assembly: match your design to your manufacturer’s capabilities</span>
-					  <div class="item-detail">
-						Check PCB and assembly constraints early (minimum trace/space, via sizes, tolerances, panelisation, component spacing and heights, solder mask / silkscreen limits, and drill tolerances) 
-						to ensure the design can be produced consistently and at reasonable cost. 
-						Configure your ECAD design rules to match your chosen manufacturer’s capabilities so violations are caught automatically rather than at fabrication time. 
-						Use <a href="https://jlcdfm.com/" target="_blank" rel="noopener">DFMA/DRC tools</a> regularly during layout to verify that the finished design remains within buildable limits.
-					  </div>
 					</li>
 					
 					<li class="has-detail" title="Board slots, milled gaps, or cutouts are sometimes used as a physical 'guard barrier' to prevent signals from crossing a region or to enforce isolation. Ensure no tracks, planes, or copper pours unintentionally bridge or cross these milled features (including on inner layers). Add explicit keep-outs around the slot/cutout, and ensure the feature is clearly defined on the mechanical / Edge.Cuts layers that go to the fabricator, with notes if the slot is functionally critical.">
