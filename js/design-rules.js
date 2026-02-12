@@ -63,15 +63,16 @@
     document.querySelectorAll(".toggle-list .has-detail").forEach((item) => {
       item.classList.add("open");
     });
+  }
+
+  
   function getToggleAllStrings() {
     const langAttr = (document.documentElement.getAttribute("lang") || "").toLowerCase();
-    const path = (window.location && window.location.pathname ? window.location.pathname.toLowerCase() : "");
-    const isFr = langAttr.startsWith("fr") || path.includes("/fr/");
-
+    const isFr = langAttr.startsWith("fr") || window.location.pathname.includes("/fr/");
     return isFr
       ? {
-          label: "Tout développer",
-          aria: "Développer/réduire tous les détails des règles",
+          label: "Tout déplier",
+          aria: "Déplier ou replier tous les détails des règles",
         }
       : {
           label: "Expand all",
@@ -79,10 +80,7 @@
         };
   }
 
-
-  }
-
-  // --- Global expand/collapse toggle (checkboxes next to each <h2> from "Schematics" onward) ---
+// --- Global expand/collapse toggle (checkboxes next to each <h2> from "Schematics" onward) ---
 
   function setAllRuleItemsOpen(isOpen) {
     document.querySelectorAll(".toggle-list .has-detail").forEach((item) => {
@@ -156,7 +154,6 @@
       box.type = "checkbox";
       box.setAttribute("data-toggle-all-rules", "true");
       const strings = getToggleAllStrings();
-
       box.setAttribute("aria-label", strings.aria);
 
       const label = document.createElement("span");
