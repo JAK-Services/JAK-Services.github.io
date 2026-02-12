@@ -1,11 +1,15 @@
-/* ==========================================================================
-   PCB Design Review Checklist Generator
-   ========================================================================== */
+// Generates a printable PCB design review checklist from rule pages.
+// Extracts visible rules and builds a structured review document.
+// Supports deep links, printing, and offline HTML export.
 
 (function () {
 	"use strict";
 
+	// Runs a callback once the DOM is fully ready.
+	// Ensures handlers run consistently across load states.
+	// Avoids duplicate execution on fast loads.
 	function onReady(fn) {
+		// Decide whether to wait or execute immediately
 		if (document.readyState === "loading") {
 			document.addEventListener("DOMContentLoaded", fn, { once: true });
 		} else {
@@ -13,28 +17,42 @@
 		}
 	}
 
+	// Detects the active language of the current page.
+	// Uses HTML attributes and URL structure.
+	// Defaults safely when detection is ambiguous.
 	function detectPageLang() {
+		// Read and normalize the document language
 		const htmlLang = (document.documentElement.getAttribute("lang") || "")
 			.toLowerCase()
 			.trim();
+
+		// Resolve language from attributes or URL
 		if (htmlLang.startsWith("fr")) return "fr";
 		if (htmlLang.startsWith("en")) return "en";
 		if (location.pathname.includes("/fr/")) return "fr";
 		return "en";
 	}
 
-	// Create stable, human-readable fragment IDs (used for deep links).
+	// Converts text into a stable URL-safe identifier (human-readable fragment IDs (used for deep links).
+	// Used to create deep-linkable rule anchors.
+	// Ensures consistency across pages and languages.
 	function slugify(s) {
+		// Normalize and strip accents
 		return String(s)
 			.toLowerCase()
 			.normalize("NFKD")
-			.replace(/[\u0300-\u036f]/g, "") // strip accents
+			.replace(/[\u0300-\u036f]/g, "")
+			// Replace non-alphanumerics with separators
 			.replace(/[^a-z0-9]+/g, "-")
 			.replace(/^-+|-+$/g, "")
 			.replace(/-{2,}/g, "-");
 	}
 
+	// Escapes text for safe HTML injection.
+	// Prevents markup breakage and injection.
+	// Used for all user-visible strings.
 	function escapeHtml(s) {
+		// Replace critical HTML characters
 		return String(s)
 			.replaceAll("&", "&amp;")
 			.replaceAll("<", "&lt;")
@@ -43,14 +61,20 @@
 			.replaceAll("'", "&#039;");
 	}
 
+	// Extracts checklist sections and items from the page.
+	// Mirrors the visible rule structure.
+	// Produces data used to generate the review document.
 	function collectChecklist() {
+		// Initialize section collection
 		const sections = [];
 		const cards = document.querySelectorAll("main .card[id]");
 
+		// Iterate through each rule card
 		cards.forEach((card) => {
 			const h2 = card.querySelector("h2");
 			const list = card.querySelector("ul.toggle-list");
 
+			// Skip incomplete cards
 			if (!h2 || !list) return;
 
 			// Build a per-item anchor that can be used to deep-link to the exact
@@ -64,16 +88,18 @@
 					const label = labelEl ? labelEl.textContent.trim() : "";
 					if (!label) return null;
 
+					// Create and assign stable anchor IDs
 					const anchorId = `${card.id}__${slugify(label)}`;
-					// Best effort: set ID on the live page too (useful for copy/paste sharing).
 					if (!li.id) li.id = anchorId;
 
 					return { label, anchorId, idx };
 				})
 				.filter(Boolean);
 
+			// Skip empty sections
 			if (!items.length) return;
 
+			// Store collected section data
 			sections.push({
 				title: h2.textContent.trim(),
 				items
@@ -350,4 +376,5 @@
 		// Print trigger (if present on any page)
 		bindOnce(document.getElementById("print-design-review"), handlePrint);
 	});
+})();
 })();
