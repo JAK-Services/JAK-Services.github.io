@@ -533,6 +533,51 @@
 				<h2>Routage PCB — Contraintes Physiques</h2>
 				<ul class="toggle-list">
 					
+					<li class="has-detail" title="Placez tôt les composants hauts ou volumineux (par exemple : transformateurs, dissipateurs, gros condensateurs, batteries) et figez leurs positions, car ils influencent fortement le routage, le flux d’air et la conception du boîtier.">
+						<span class="item-label">Gros composants</span>
+						<div class="item-detail">
+							Placez tôt les composants hauts ou volumineux (par exemple : transformateurs, dissipateurs, gros condensateurs, batteries) et figez leurs positions,
+							car ils influencent fortement le routage, le flux d’air et la conception du boîtier.
+							<br><br>
+							Évitez de placer des composants à forte masse thermique (par exemple de grosses inductances ou transformateurs)
+							immédiatement à côté de composants très petits ou sensibles thermiquement,
+							car cela peut provoquer des défauts de soudure et des contraintes thermiques.
+						</div>
+					</li>
+					
+					<li class="has-detail" title="Identifiez et placez tôt les composants électriquement sensibles ou critiques en temps (par exemple : oscillateurs, composants RF, références de précision) afin d’optimiser le routage et la mise à la masse autour d’eux.">
+						<span class="item-label">Composants critiques</span>
+						<div class="item-detail">
+							Identifiez et placez tôt les composants électriquement sensibles ou critiques en temps (par exemple : oscillateurs, composants RF, références de précision) afin d’optimiser le routage et la mise à la masse autour d’eux.
+						</div>
+					</li>
+					
+					<li class="has-detail" title="Définir tôt la position et l’orientation des connecteurs, les aligner de manière cohérente au bord du circuit, et prévoir un dégagement mécanique suffisant pour l’accouplement des câbles, les verrous, le soulagement de traction et la manipulation par l’utilisateur. Prendre en compte les forces d’insertion et l’usure des connecteurs sur la durée de vie du produit.">
+					  <span class="item-label">Connecteurs</span>
+					  <div class="item-detail">
+						Définir dès le début la position et l’orientation des connecteurs, et les aligner de manière cohérente au bord du circuit afin que les câbles, panneaux et futurs boîtiers puissent s’accoupler de façon fiable.
+						<br><br>
+						Prévoir un dégagement mécanique suffisant autour des connecteurs pour l’accouplement des câbles, les systèmes de verrouillage, le soulagement de traction et la manipulation par l’utilisateur. Prendre en compte les forces d’insertion et l’usure des connecteurs sur toute la durée de vie du produit.
+					  </div>
+					</li>
+
+					<li class="has-detail" title="Assurez-vous que les composants susceptibles de nécessiter un réglage, un étalonnage ou un remplacement (par exemple : potentiomètres de réglage, cavaliers, fusibles) restent accessibles physiquement dans l’assemblage final, et que les potentiomètres augmentent la tension ou le signal lorsqu’on les tourne dans le sens horaire.">
+					  <span class="item-label">Garder accessibles les composants réglables ou remplaçables</span>
+					  <div class="item-detail">
+						Assurez-vous que les composants susceptibles de nécessiter un réglage, un étalonnage ou un remplacement
+						(par exemple : potentiomètres de réglage, cavaliers, fusibles) restent accessibles physiquement dans l’assemblage final, et que les potentiomètres augmentent la tension ou le signal lorsqu’on les tourne dans le sens horaire.
+					  </div>
+					</li>
+					
+					<li class="has-detail" title="Ajoutez tôt les trous de fixation avec des entraxes, dimensions de pastilles et dégagements cohérents, et figez leurs positions afin que les supports mécaniques et le boîtier puissent être conçus en toute confiance. Réservez des zones d’exclusion sans cuivre autour des trous de fixation pour les rondelles, entretoises, et pour éviter des connexions involontaires au châssis.">
+						<span class="item-label">Trous de fixation</span>
+						<div class="item-detail">
+							Ajoutez tôt les trous de fixation avec des entraxes, dimensions de pastilles et dégagements cohérents, et figez leurs 
+							positions afin que les supports mécaniques et le boîtier puissent être conçus en toute confiance.
+							Réservez des zones d’exclusion sans cuivre autour des trous de fixation pour les rondelles, entretoises, et pour éviter des connexions involontaires au châssis.
+						</div>
+					</li>
+					
 					<li class="has-detail"
 						title="Définissez tôt le contour du PCB (contraintes mécaniques) et implémentez-le correctement sur Edge.Cuts. Évitez la sérigraphie sur les pastilles / ouvertures du masque de soudure et respectez les dégagements cuivre/graphismes vers le bord.">
 					  <span class="item-label">Contour de carte</span>
@@ -553,51 +598,6 @@
 						Les fabricants tronquent souvent la sérigraphie au-dessus du cuivre exposé (et cela peut gêner la soudure), ce qui conduit à des marquages illisibles et à d’éventuels défauts d’assemblage.
 						Utilisez des règles DRC pour le dégagement <em>sérigraphie-vers-masque de soudure</em> et corrigez les violations avant de générer les Gerbers.
 					  </div>
-					</li>
-					
-					<li class="has-detail" title="Ajoutez tôt les trous de fixation avec des entraxes, dimensions de pastilles et dégagements cohérents, et figez leurs positions afin que les supports mécaniques et le boîtier puissent être conçus en toute confiance. Réservez des zones d’exclusion sans cuivre autour des trous de fixation pour les rondelles, entretoises, et pour éviter des connexions involontaires au châssis.">
-						<span class="item-label">Trous de fixation</span>
-						<div class="item-detail">
-							Ajoutez tôt les trous de fixation avec des entraxes, dimensions de pastilles et dégagements cohérents, et figez leurs 
-							positions afin que les supports mécaniques et le boîtier puissent être conçus en toute confiance.
-							Réservez des zones d’exclusion sans cuivre autour des trous de fixation pour les rondelles, entretoises, et pour éviter des connexions involontaires au châssis.
-						</div>
-					</li>
-					
-					<li class="has-detail" title="Définir tôt la position et l’orientation des connecteurs, les aligner de manière cohérente au bord du circuit, et prévoir un dégagement mécanique suffisant pour l’accouplement des câbles, les verrous, le soulagement de traction et la manipulation par l’utilisateur. Prendre en compte les forces d’insertion et l’usure des connecteurs sur la durée de vie du produit.">
-					  <span class="item-label">Connecteurs</span>
-					  <div class="item-detail">
-						Définir dès le début la position et l’orientation des connecteurs, et les aligner de manière cohérente au bord du circuit afin que les câbles, panneaux et futurs boîtiers puissent s’accoupler de façon fiable.
-						<br><br>
-						Prévoir un dégagement mécanique suffisant autour des connecteurs pour l’accouplement des câbles, les systèmes de verrouillage, le soulagement de traction et la manipulation par l’utilisateur. Prendre en compte les forces d’insertion et l’usure des connecteurs sur toute la durée de vie du produit.
-					  </div>
-					</li>
-					
-					<li class="has-detail" title="Placez tôt les composants hauts ou volumineux (par exemple : transformateurs, dissipateurs, gros condensateurs, batteries) et figez leurs positions, car ils influencent fortement le routage, le flux d’air et la conception du boîtier.">
-						<span class="item-label">Gros composants</span>
-						<div class="item-detail">
-							Placez tôt les composants hauts ou volumineux (par exemple : transformateurs, dissipateurs, gros condensateurs, batteries) et figez leurs positions,
-							car ils influencent fortement le routage, le flux d’air et la conception du boîtier.
-							<br><br>
-							Évitez de placer des composants à forte masse thermique (par exemple de grosses inductances ou transformateurs)
-							immédiatement à côté de composants très petits ou sensibles thermiquement,
-							car cela peut provoquer des défauts de soudure et des contraintes thermiques.
-						</div>
-					</li>
-
-					<li class="has-detail" title="Assurez-vous que les composants susceptibles de nécessiter un réglage, un étalonnage ou un remplacement (par exemple : potentiomètres de réglage, cavaliers, fusibles) restent accessibles physiquement dans l’assemblage final, et que les potentiomètres augmentent la tension ou le signal lorsqu’on les tourne dans le sens horaire.">
-					  <span class="item-label">Garder accessibles les composants réglables ou remplaçables</span>
-					  <div class="item-detail">
-						Assurez-vous que les composants susceptibles de nécessiter un réglage, un étalonnage ou un remplacement
-						(par exemple : potentiomètres de réglage, cavaliers, fusibles) restent accessibles physiquement dans l’assemblage final, et que les potentiomètres augmentent la tension ou le signal lorsqu’on les tourne dans le sens horaire.
-					  </div>
-					</li>
-					
-					<li class="has-detail" title="Identifiez et placez tôt les composants électriquement sensibles ou critiques en temps (par exemple : oscillateurs, composants RF, références de précision) afin d’optimiser le routage et la mise à la masse autour d’eux.">
-						<span class="item-label">Composants critiques</span>
-						<div class="item-detail">
-							Identifiez et placez tôt les composants électriquement sensibles ou critiques en temps (par exemple : oscillateurs, composants RF, références de précision) afin d’optimiser le routage et la mise à la masse autour d’eux.
-						</div>
 					</li>
 					
 					<li class="has-detail" title="Des fentes, évidements fraisés ou découpes de carte sont parfois utilisés comme « barrière de garde » physique pour empêcher des signaux de traverser une zone ou pour imposer une isolation. Assurez-vous qu’aucune piste, plan ou zone de cuivre ne pont ou ne traverse involontairement ces usinages (y compris sur les couches internes). Ajoutez des zones d’exclusion explicites autour de la fente/découpe, et assurez-vous que la fonctionnalité est clairement définie sur les couches mécaniques / Edge.Cuts transmises au fabricant, avec une note si la fente est fonctionnellement critique.">
