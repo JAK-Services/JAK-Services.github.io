@@ -434,25 +434,31 @@
 				</li>
 
 				<li class="has-detail"
-				  title="Confirmez les limites réelles du procédé de votre fabricant, puis configurez les règles de dégagement, largeur de piste, taille de via, anneau annulaire, masque de soudure et autres règles de fabrication de votre outil ECAD en conséquence — avant de placer ou de router quoi que ce soit. Cela évite la création de caractéristiques non fabricables et améliore le rendement et les coûts. Vérifiez la conformité pendant le routage à l’aide d’outils DFMA/DRC.">
-				  <span class="item-label">Vérification des règles de conception (DRC)</span>
+				  title="Confirmer dès le début les limites réelles de fabrication et d’assemblage de votre fabricant de PCB, puis configurer les règles de conception de votre outil ECAD (dégagements, largeur de pistes, dimensions des vias, anneaux annulaires, masque de soudure, espacement et hauteur des composants, tolérances) en conséquence. Cela évite les caractéristiques non fabricables, améliore le rendement et les coûts, et permet de détecter les violations dès la phase de routage plutôt qu’à la fabrication. Vérifier régulièrement la conformité à l’aide d’outils DRC et DFMA.">
+				  <span class="item-label">DFMA &amp; Vérification des règles de conception (DRC)</span>
 				  <div class="item-detail">
-					Confirmez les limites réelles du procédé de votre fabricant de PCB (capacité standard vs avancée, largeur/espacement des pistes, taille des vias, anneau annulaire, ouverture du masque de soudure, poids du cuivre, nombre de couches, empilement, etc.)
-					et configurez de manière conservatrice les règles de conception de votre outil ECAD pour qu’elles correspondent — <strong>avant de placer ou de router quoi que ce soit</strong>.
-					Cela garantit une conception fabricable dès le départ avec un bon rendement et des coûts maîtrisés, évite la création de caractéristiques non fabricables et prévient des retouches coûteuses en fin de projet.
+					Confirmer dès les premières étapes les limites réelles des procédés de fabrication et d’assemblage de votre fabricant de PCB
+					(capacités standard ou avancées, largeur et espacement minimum des pistes, dimensions des vias, anneaux annulaires,
+					limites du masque de soudure et de la sérigraphie, épaisseur du cuivre, nombre de couches, empilage, tolérances,
+					panelisation, espacement et hauteur des composants).
+					Configurer de manière conservatrice les règles de conception de votre outil ECAD pour correspondre à ces capacités —
+					<strong>avant toute implantation ou routage</strong>.
+					Cela garantit une conception fabricable avec un bon rendement et un coût maîtrisé dès le départ, évite la création
+					de caractéristiques non fabricables et limite les reprises coûteuses en fin de projet.
 					<br><br>
-					Dans le cadre de ces contraintes, assurez-vous qu’un dégagement physique suffisant est prévu pour les têtes de placement en production, l’assemblage manuel lors des prototypes,
-					et l’accès à la panne d’un fer à souder si une retouche ou une réparation est nécessaire.
+					Dans le cadre de ces contraintes, prévoir un dégagement physique suffisant pour les têtes de placement automatiques,
+					l’assemblage manuel lors des prototypes, ainsi que l’accès à la pointe d’un fer à souder en cas de retouche ou de réparation.
 					<br><br>
-					Alignez les limites DRC de votre outil ECAD avec ce que votre fabricant et votre assembleur peuvent produire de manière fiable, et vérifiez la conformité pendant le routage à l’aide d’outils 
-					<a href="https://jlcpcb.com/blog/how-to-run-design-rule-check" target="_blank" rel="noopener">DRC</a> et 
+					Aligner les limites DRC de l’outil ECAD avec ce que le fabricant et l’assembleur peuvent produire de manière fiable,
+					et vérifier régulièrement la conformité pendant la conception à l’aide des outils
+					<a href="https://jlcpcb.com/blog/how-to-run-design-rule-check" target="_blank" rel="noopener">DRC</a> et
 					<a href="https://jlcdfm.com/" target="_blank" rel="noopener">DFMA</a>.
-					<p><strong>Limites de base typiques (à toujours vérifier au préalable avec votre fabricant) :</strong></p>
+					<p><strong>Limites de référence typiques (toujours à valider auprès de votre fabricant) :</strong></p>
 					<ul>
-					  <li>Largeur minimale de piste : ~6&nbsp;mil typique</li>
-					  <li>Dégagement (espacement) : ~6&nbsp;mil typique</li>
-					  <li>Diamètre de perçage des vias : ≥0,30&nbsp;mm typique</li>
-					  <li>Ouverture du masque de soudure : 3–5&nbsp;mil</li>
+					  <li>Largeur minimale de piste : ~6&nbsp;mil (typique)</li>
+					  <li>Dégagement (espacement) : ~6&nbsp;mil (typique)</li>
+					  <li>Diamètre de perçage des vias : ≥ 0,30&nbsp;mm (typique)</li>
+					  <li>Expansion du masque de soudure : 3–5&nbsp;mil</li>
 					</ul>
 				  </div>
 				</li>
@@ -592,16 +598,6 @@
 						<div class="item-detail">
 							Identifiez et placez tôt les composants électriquement sensibles ou critiques en temps (par exemple : oscillateurs, composants RF, références de précision) afin d’optimiser le routage et la mise à la masse autour d’eux.
 						</div>
-					</li>
-					
-					<li class="has-detail" title="Vérifiez tôt les contraintes de fabrication et d’assemblage (piste/espacement minimal, tailles de vias, tolérances, panélisation, espacement et hauteurs des composants, limites de masque de soudure / sérigraphie, et tolérances de perçage) afin d’assurer une production reproductible et à coût raisonnable. Configurez les règles de conception de votre outil ECAD pour qu’elles correspondent aux capacités du fabricant choisi afin que les violations soient détectées automatiquement plutôt qu’au moment de la fabrication. Utilisez régulièrement des outils DFMA/DRC pendant le routage pour vérifier que la conception finale reste dans des limites fabricables.">
-					  <span class="item-label">DFMA — Conception pour fabrication &amp; assemblage : adapter la conception aux capacités du fabricant</span>
-					  <div class="item-detail">
-						Vérifiez tôt les contraintes de fabrication et d’assemblage (piste/espacement minimal, tailles de vias, tolérances, panélisation, espacement et hauteurs des composants, limites de masque de soudure / sérigraphie, et tolérances de perçage)
-						afin d’assurer une production reproductible et à coût raisonnable.
-						Configurez les règles de conception de votre outil ECAD pour qu’elles correspondent aux capacités du fabricant choisi afin que les violations soient détectées automatiquement plutôt qu’au moment de la fabrication.
-						Utilisez régulièrement des <a href="https://jlcdfm.com/" target="_blank" rel="noopener">outils DFMA/DRC</a> pendant le routage pour vérifier que la conception finale reste dans des limites fabricables.
-					  </div>
 					</li>
 					
 					<li class="has-detail" title="Des fentes, évidements fraisés ou découpes de carte sont parfois utilisés comme « barrière de garde » physique pour empêcher des signaux de traverser une zone ou pour imposer une isolation. Assurez-vous qu’aucune piste, plan ou zone de cuivre ne pont ou ne traverse involontairement ces usinages (y compris sur les couches internes). Ajoutez des zones d’exclusion explicites autour de la fente/découpe, et assurez-vous que la fonctionnalité est clairement définie sur les couches mécaniques / Edge.Cuts transmises au fabricant, avec une note si la fente est fonctionnellement critique.">
