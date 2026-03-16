@@ -714,7 +714,7 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 						GND
 					</strong>
 					.
-					Fermez le polygone (clic droit → Fermer le polygone).
+					Fermez le polygone (clic droit → Fermer le polygone), puis appuyez sur la touche B pour le remplir.
 				</p>
 				<h3>
 					Routage sur la couche supérieure
@@ -722,6 +722,12 @@ schéma → empreintes → routage du PCB → DRC → Gerbers/perçages.
 				<p>
 					Routez les signaux et l’alimentation sur la couche supérieure et laissez le plan fournir des chemins de retour propres.
 					Conservez des boucles de courant élevées aussi compactes que possible et éloignez les sections analogiques sensibles des antennes/RF.
+				</p>
+				<p>
+					Si votre PCB ne comporte que deux couches et que l’une d’elles est un plan de masse, le croisement de pistes sur la couche supérieure à l’aide de vias peut être difficile. Dans ce cas, vous pouvez dessiner une zone remplie (CTRL + SHIFT + Z) sur la couche de masse afin de créer un petit « îlot » dans le plan de masse permettant à la piste de passer.
+					Après avoir créé cet « îlot », appuyez sur la touche B pour remplir à nouveau les zones. KiCad appliquera alors l’espacement requis entre le plan de masse et l’îlot de signal conformément aux paramètres de votre classe de nets (Net Class).
+					<br>
+					Cependant, veillez à ce que cette modification n’agrandisse pas les boucles de courant de retour, car cela peut dégrader les performances CEM.
 				</p>
 				<h3>
 					Trous de fixation, logo de sérigraphie et contour de carte
