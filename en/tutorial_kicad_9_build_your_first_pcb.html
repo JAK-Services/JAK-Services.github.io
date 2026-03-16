@@ -701,7 +701,7 @@
 						GND
 					</strong>
 					.
-					Close the polygon (right‑click → Close Polygon).
+					Close the polygon (right‑click → Close Polygon), then hit the B key to fill the polygon.
 				</p>
 				<h3>
 					Route on the top layer
@@ -709,6 +709,12 @@
 				<p>
 					Route signals/power on the top layer and let the plane provide clean return paths.
 					Keep high‑current loops tight and sensitive analog sections away from antennas/RF.
+				</p>
+				<p>
+					If your PCB has only two layers and one of them is a ground plane, crossing traces on the top layer with vias can be difficult. In this situation, you can draw a filled zone (CTRL + SHIFT + Z) on the ground layer to create a small 'island' in the ground plane that allows the trace to pass. 
+					After creating the 'island', press B to refill the zones. KiCad will then apply the required clearance between the ground plane and the signal island according to your Net Class settings.
+					<br>
+					However, make sure this modification does not enlarge return-current loops, as that can negatively affect EMC performance.				
 				</p>
 				<h3>
 					Mounting holes, silkscreen logo, and board outline
